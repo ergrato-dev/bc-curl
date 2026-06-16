@@ -6,20 +6,17 @@
   <rect width="900" height="280" fill="#0d1117" rx="12"/>
 
   <!-- ═══════════════════════════════════════════════════
-       LEFT: Terminal window
-       x=32, y=24, w=384, h=232
+       LEFT: Terminal window x=32, y=24, w=384, h=232
        ═══════════════════════════════════════════════════ -->
   <rect x="32" y="24" width="384" height="232" rx="8" fill="#161b22" stroke="#30363d" stroke-width="1"/>
 
   <!-- Traffic-light dots -->
-  <circle cx="54"  cy="44" r="5" fill="#f78166"/>
-  <circle cx="72"  cy="44" r="5" fill="#e3b341"/>
-  <circle cx="90"  cy="44" r="5" fill="#3fb950"/>
+  <circle cx="54" cy="44" r="5" fill="#f78166"/>
+  <circle cx="72" cy="44" r="5" fill="#e3b341"/>
+  <circle cx="90" cy="44" r="5" fill="#3fb950"/>
 
   <!-- Terminal title -->
-  <text x="216" y="49"
-        font-family="system-ui,-apple-system,'Segoe UI',sans-serif"
-        font-size="12" fill="#7d8590" text-anchor="middle">bash — 80×24</text>
+  <text x="216" y="49" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="12" fill="#7d8590" text-anchor="middle">bash — 80×24</text>
 
   <!-- Title-bar bottom border -->
   <line x1="32" y1="58" x2="416" y2="58" stroke="#30363d" stroke-width="1"/>
@@ -28,22 +25,28 @@
 
   <!-- Line 1: prompt + command -->
   <text y="80" font-family="'Courier New',Courier,monospace" font-size="13">
-    <tspan x="50" fill="#3fb950">$</tspan><tspan fill="#e6edf3"> curl -si https://api.example.com/</tspan>
+    <tspan x="50" fill="#3fb950">$</tspan>
+    <tspan fill="#e6edf3"> curl -si https://api.example.com/</tspan>
   </text>
 
   <!-- Line 2: HTTP/2 status -->
   <text y="100" font-family="'Courier New',Courier,monospace" font-size="13">
-    <tspan x="50" fill="#7d8590">HTTP/2 </tspan><tspan fill="#3fb950">200</tspan><tspan fill="#7d8590"> OK</tspan>
+    <tspan x="50" fill="#7d8590">HTTP/2 </tspan>
+    <tspan fill="#3fb950">200</tspan>
+    <tspan fill="#7d8590"> OK</tspan>
   </text>
 
   <!-- Line 3: content-type header -->
   <text y="116" font-family="'Courier New',Courier,monospace" font-size="13">
-    <tspan x="50" fill="#58a6ff">content-type</tspan><tspan fill="#7d8590">: application/json</tspan>
+    <tspan x="50" fill="#58a6ff">content-type</tspan>
+    <tspan fill="#7d8590">: application/json</tspan>
   </text>
 
   <!-- Line 4: rate-limit header -->
   <text y="132" font-family="'Courier New',Courier,monospace" font-size="13">
-    <tspan x="50" fill="#58a6ff">x-ratelimit-limit</tspan><tspan fill="#7d8590">: </tspan><tspan fill="#e3b341">5000</tspan>
+    <tspan x="50" fill="#58a6ff">x-ratelimit-limit</tspan>
+    <tspan fill="#7d8590">: </tspan>
+    <tspan fill="#e3b341">5000</tspan>
   </text>
 
   <!-- Line 5: JSON open brace (gap before it) -->
@@ -53,12 +56,17 @@
 
   <!-- Line 6: "status": "mastered", (indent = 2 chars = 15.6 px → x=66) -->
   <text y="170" font-family="'Courier New',Courier,monospace" font-size="13">
-    <tspan x="66" fill="#e3b341">"status"</tspan><tspan fill="#e6edf3">: </tspan><tspan fill="#a5d6ff">"mastered"</tspan><tspan fill="#7d8590">,</tspan>
+    <tspan x="66" fill="#e3b341">"status"</tspan>
+    <tspan fill="#e6edf3">: </tspan>
+    <tspan fill="#a5d6ff">"mastered"</tspan>
+    <tspan fill="#7d8590">,</tspan>
   </text>
 
   <!-- Line 7: "level": "production" -->
   <text y="186" font-family="'Courier New',Courier,monospace" font-size="13">
-    <tspan x="66" fill="#e3b341">"level"</tspan><tspan fill="#e6edf3">:  </tspan><tspan fill="#a5d6ff">"production"</tspan>
+    <tspan x="66" fill="#e3b341">"level"</tspan>
+    <tspan fill="#e6edf3">:  </tspan>
+    <tspan fill="#a5d6ff">"production"</tspan>
   </text>
 
   <!-- Line 8: JSON close brace -->
@@ -81,65 +89,47 @@
   <rect x="446" y="24" width="3" height="232" rx="1" fill="#30363d"/>
 
   <!-- Title -->
-  <text x="466" y="76"
-        font-family="system-ui,-apple-system,'Segoe UI',sans-serif"
-        font-size="38" font-weight="700" fill="#e6edf3">Bootcamp curl</text>
+  <text x="466" y="76" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="38" font-weight="700" fill="#e6edf3">Bootcamp curl</text>
 
   <!-- Tagline -->
-  <text x="466" y="116"
-        font-family="system-ui,-apple-system,'Segoe UI',sans-serif"
-        font-size="28" font-weight="300" fill="#58a6ff">Zero to Hero</text>
+  <text x="466" y="116" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="28" font-weight="300" fill="#58a6ff">Zero to Hero</text>
 
   <!-- Thin separator -->
   <line x1="466" y1="128" x2="868" y2="128" stroke="#21262d" stroke-width="1"/>
 
   <!-- Description -->
-  <text x="466" y="148"
-        font-family="system-ui,-apple-system,'Segoe UI',sans-serif"
-        font-size="13" fill="#7d8590">De cero a producción en 10 semanas · 80 horas</text>
+  <text x="466" y="148" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="13" fill="#7d8590">De cero a producción en 10 semanas · 80 horas</text>
 
   <!-- ─── Stat badges ─── -->
-  <rect x="466" y="162" width="96"  height="24" rx="4" fill="#0d1f0d" stroke="#3fb950" stroke-width="1"/>
-  <text x="514" y="179" font-family="system-ui,-apple-system,'Segoe UI',sans-serif"
-        font-size="11" font-weight="600" fill="#3fb950" text-anchor="middle">10 semanas</text>
+  <rect x="466" y="162" width="96" height="24" rx="4" fill="#0d1f0d" stroke="#3fb950" stroke-width="1"/>
+  <text x="514" y="179" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="11" font-weight="600" fill="#3fb950" text-anchor="middle">10 semanas</text>
 
-  <rect x="570" y="162" width="76"  height="24" rx="4" fill="#1f1800" stroke="#e3b341" stroke-width="1"/>
-  <text x="608" y="179" font-family="system-ui,-apple-system,'Segoe UI',sans-serif"
-        font-size="11" font-weight="600" fill="#e3b341" text-anchor="middle">80 horas</text>
+  <rect x="570" y="162" width="76" height="24" rx="4" fill="#1f1800" stroke="#e3b341" stroke-width="1"/>
+  <text x="608" y="179" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="11" font-weight="600" fill="#e3b341" text-anchor="middle">80 horas</text>
 
-  <rect x="654" y="162" width="88"  height="24" rx="4" fill="#0d1525" stroke="#58a6ff" stroke-width="1"/>
-  <text x="698" y="179" font-family="system-ui,-apple-system,'Segoe UI',sans-serif"
-        font-size="11" font-weight="600" fill="#58a6ff" text-anchor="middle">curl 7.x / 8.x</text>
+  <rect x="654" y="162" width="88" height="24" rx="4" fill="#0d1525" stroke="#58a6ff" stroke-width="1"/>
+  <text x="698" y="179" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="11" font-weight="600" fill="#58a6ff" text-anchor="middle">curl 7.x / 8.x</text>
 
   <!-- ─── HTTP method pills ─── -->
   <rect x="466" y="198" width="40" height="20" rx="10" fill="#0d1f0d" stroke="#3fb950" stroke-width="1"/>
-  <text x="486" y="213" font-family="system-ui,-apple-system,'Segoe UI',sans-serif"
-        font-size="10" font-weight="700" fill="#3fb950" text-anchor="middle">GET</text>
+  <text x="486" y="213" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="10" font-weight="700" fill="#3fb950" text-anchor="middle">GET</text>
 
   <rect x="514" y="198" width="44" height="20" rx="10" fill="#2a0d0d" stroke="#f78166" stroke-width="1"/>
-  <text x="536" y="213" font-family="system-ui,-apple-system,'Segoe UI',sans-serif"
-        font-size="10" font-weight="700" fill="#f78166" text-anchor="middle">POST</text>
+  <text x="536" y="213" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="10" font-weight="700" fill="#f78166" text-anchor="middle">POST</text>
 
   <rect x="566" y="198" width="38" height="20" rx="10" fill="#0d1525" stroke="#58a6ff" stroke-width="1"/>
-  <text x="585" y="213" font-family="system-ui,-apple-system,'Segoe UI',sans-serif"
-        font-size="10" font-weight="700" fill="#58a6ff" text-anchor="middle">PUT</text>
+  <text x="585" y="213" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="10" font-weight="700" fill="#58a6ff" text-anchor="middle">PUT</text>
 
   <rect x="612" y="198" width="56" height="20" rx="10" fill="#1e0d2a" stroke="#bc8cff" stroke-width="1"/>
-  <text x="640" y="213" font-family="system-ui,-apple-system,'Segoe UI',sans-serif"
-        font-size="10" font-weight="700" fill="#bc8cff" text-anchor="middle">DELETE</text>
+  <text x="640" y="213" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="10" font-weight="700" fill="#bc8cff" text-anchor="middle">DELETE</text>
 
   <rect x="676" y="198" width="50" height="20" rx="10" fill="#1a1800" stroke="#e3b341" stroke-width="1"/>
-  <text x="701" y="213" font-family="system-ui,-apple-system,'Segoe UI',sans-serif"
-        font-size="10" font-weight="700" fill="#e3b341" text-anchor="middle">PATCH</text>
+  <text x="701" y="213" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="10" font-weight="700" fill="#e3b341" text-anchor="middle">PATCH</text>
 
   <!-- ─── Topic tags row ─── -->
-  <text x="466" y="238"
-        font-family="system-ui,-apple-system,'Segoe UI',sans-serif"
-        font-size="11" fill="#484f58">HTTP · TLS · Auth · Bash Scripting · OAuth2 · HTTP/2</text>
+  <text x="466" y="238" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="11" fill="#484f58">HTTP · TLS · Auth · Bash Scripting · OAuth2 · HTTP/2</text>
 
   <!-- ─── Bottom rule + credit ─── -->
   <line x1="32" y1="256" x2="868" y2="256" stroke="#21262d" stroke-width="1"/>
-  <text x="450" y="271"
-        font-family="system-ui,-apple-system,'Segoe UI',sans-serif"
-        font-size="11" fill="#484f58" text-anchor="middle">ergrato-dev / bc-curl · CC BY-NC-SA 4.0</text>
+  <text x="450" y="271" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="11" fill="#484f58" text-anchor="middle">ergrato-dev / bc-curl · CC BY-NC-SA 4.0</text>
 </svg>
