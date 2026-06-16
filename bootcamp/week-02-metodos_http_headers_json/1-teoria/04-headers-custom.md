@@ -1,5 +1,7 @@
 # Headers custom con curl
 
+![Headers Custom con curl](../0-assets/04-headers-custom.svg)
+
 ## Qué es un header HTTP
 
 Los headers son metadatos del request o la respuesta. Van antes del body, separados por una línea en blanco. Le dicen al servidor (o al cliente) cosas como: en qué formato vienen los datos, qué formatos acepta el cliente, quién está haciendo el request, si hay autenticación, etc.

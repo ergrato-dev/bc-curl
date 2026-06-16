@@ -1,5 +1,7 @@
 # Instalación y verificación de curl
 
+![Arquitectura de curl](../0-assets/03-instalacion-curl.svg)
+
 ## Verificar si ya está instalado
 
 ```bash

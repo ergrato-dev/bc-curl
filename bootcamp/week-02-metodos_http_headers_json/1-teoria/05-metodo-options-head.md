@@ -1,5 +1,7 @@
 # Métodos OPTIONS y HEAD
 
+![OPTIONS y HEAD](../0-assets/05-metodo-options-head.svg)
+
 ## HEAD: obtener metadatos sin descargar el body
 
 HEAD hace exactamente lo mismo que GET, pero el servidor solo devuelve los headers — el body no se transmite. Esto es útil cuando querés verificar si un recurso existe, ver su tamaño, o revisar sus metadatos sin descargarlo.

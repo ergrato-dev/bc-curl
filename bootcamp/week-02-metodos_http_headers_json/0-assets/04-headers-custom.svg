@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 390" font-family="Arial, Helvetica, sans-serif">
+  <rect width="800" height="390" fill="#0d1117"/>
+
+  <text x="400" y="32" text-anchor="middle" fill="#f0f6fc" font-size="22" font-weight="bold">Headers Custom con curl</text>
+  <text x="400" y="52" text-anchor="middle" fill="#8b949e" font-size="12">El flag -H permite enviar cualquier header HTTP</text>
+
+  <!-- curl command with -H -->
+  <rect x="40" y="72" width="720" height="70" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="60" y="98" fill="#f0883e" font-family="'Courier New', monospace" font-size="13">$ curl -H "Content-Type: application/json" \</text>
+  <text x="60" y="120" fill="#f0883e" font-family="'Courier New', monospace" font-size="13">       -H "Accept: application/json" \</text>
+  <text x="60" y="138" fill="#f0883e" font-family="'Courier New', monospace" font-size="13">       -H "X-App-Version: 2.1" \</text>
+
+  <!-- Request/response visualization -->
+  <text x="40" y="175" fill="#79c0ff" font-size="14" font-weight="bold">Headers en el Request (los que curl envía)</text>
+
+  <rect x="40" y="190" width="350" height="105" rx="6" fill="#161b22" stroke="#f0883e" stroke-width="1.5"/>
+  <text x="215" y="213" text-anchor="middle" fill="#f0883e" font-size="12" font-weight="bold">Headers que ponés con -H</text>
+  <rect x="56" y="226" width="318" height="20" rx="3" fill="#1f2937"/>
+  <text x="66" y="240" fill="#3fb950" font-family="'Courier New', monospace" font-size="10">Content-Type: application/json  ← formato del body</text>
+  <rect x="56" y="250" width="318" height="20" rx="3" fill="#1f2937"/>
+  <text x="66" y="264" fill="#3fb950" font-family="'Courier New', monospace" font-size="10">Accept: application/json        ← qué formato espero</text>
+  <rect x="56" y="274" width="318" height="20" rx="3" fill="#1f2937"/>
+  <text x="66" y="288" fill="#3fb950" font-family="'Courier New', monospace" font-size="10">X-App-Version: 2.1              ← header custom</text>
+
+  <text x="430" y="250" text-anchor="middle" fill="#8b949e" font-size="22">→</text>
+
+  <rect x="470" y="190" width="290" height="105" rx="6" fill="#161b22" stroke="#d2a8ff" stroke-width="1.5"/>
+  <text x="615" y="213" text-anchor="middle" fill="#d2a8ff" font-size="12" font-weight="bold">Headers automáticos</text>
+  <rect x="486" y="226" width="258" height="20" rx="3" fill="#1f2937"/>
+  <text x="496" y="240" fill="#8b949e" font-family="'Courier New', monospace" font-size="10">Host: api.ejemplo.com</text>
+  <rect x="486" y="250" width="258" height="20" rx="3" fill="#1f2937"/>
+  <text x="496" y="264" fill="#8b949e" font-family="'Courier New', monospace" font-size="10">User-Agent: curl/8.5.0</text>
+  <rect x="486" y="274" width="258" height="20" rx="3" fill="#1f2937"/>
+  <text x="496" y="288" fill="#8b949e" font-family="'Courier New', monospace" font-size="10">Accept: */*</text>
+
+  <!-- Response headers section -->
+  <text x="40" y="325" fill="#79c0ff" font-size="14" font-weight="bold">Headers en la Respuesta (los que devuelve el servidor)</text>
+
+  <rect x="40" y="340" width="720" height="40" rx="6" fill="#0d1117" stroke="#30363d" stroke-width="1"/>
+  <text x="60" y="358" fill="#8b949e" font-family="'Courier New', monospace" font-size="10">Content-Type: application/json; charset=utf-8    Content-Length: 234    Cache-Control: max-age=3600   X-RateLimit-Remaining: 59</text>
+  <text x="60" y="374" fill="#8b949e" font-size="9">Usá -I (solo headers), -i (headers + body), -v (todo), o -D dumpfile (headers a archivo)</text>
+</svg>

@@ -1,5 +1,7 @@
 # Anatomía de una URL
 
+![Anatomía de una URL](../0-assets/02-anatomia-url.svg)
+
 Una URL (Uniform Resource Locator) tiene hasta 6 partes. Conocerlas te permite construir requests correctos con curl.
 
 ---

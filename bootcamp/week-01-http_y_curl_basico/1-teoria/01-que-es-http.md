@@ -1,5 +1,7 @@
 # HTTP: Qué es y cómo funciona
 
+![Modelo Cliente-Servidor HTTP](../0-assets/01-cliente-servidor.svg)
+
 ## El modelo cliente-servidor
 
 HTTP (HyperText Transfer Protocol) es el protocolo de comunicación que usa la web. Funciona sobre un modelo simple:

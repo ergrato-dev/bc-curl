@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" font-family="Arial, Helvetica, sans-serif">
+  <rect width="800" height="420" fill="#0d1117"/>
+
+  <text x="400" y="32" text-anchor="middle" fill="#f0f6fc" font-size="22" font-weight="bold">JSON con curl</text>
+  <text x="400" y="52" text-anchor="middle" fill="#8b949e" font-size="12">Dos requisitos para que el servidor entienda tu JSON</text>
+
+  <!-- Two requirements -->
+  <rect x="40" y="72" width="350" height="140" rx="8" fill="#161b22" stroke="#f0883e" stroke-width="2"/>
+  <text x="215" y="100" text-anchor="middle" fill="#f0883e" font-size="14" font-weight="bold">① Content-Type correcto</text>
+  <text x="60" y="125" fill="#8b949e" font-family="'Courier New', monospace" font-size="11">-H "Content-Type: application/json"</text>
+  <text x="60" y="148" fill="#8b949e" font-size="10">Sin este header, muchos servidores rechazan el request</text>
+  <text x="60" y="170" fill="#8b949e" font-size="10">o interpretan el body como texto plano / form-urlencoded</text>
+  <text x="60" y="195" fill="#8b949e" font-size="10">curl lo pone automático con -d, pero es mejor ser explícito</text>
+
+  <rect x="410" y="72" width="350" height="140" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="585" y="100" text-anchor="middle" fill="#3fb950" font-size="14" font-weight="bold">② JSON válido</text>
+  <text x="430" y="125" fill="#8b949e" font-family="'Courier New', monospace" font-size="10">{"clave": "valor", "numero": 42}</text>
+  <text x="430" y="145" fill="#8b949e" font-size="10">✓ Comillas dobles (nunca simples) en claves y strings</text>
+  <text x="430" y="162" fill="#f85149" font-size="10">✗ {'clave': 'valor'}  ← comillas simples</text>
+  <text x="430" y="179" fill="#f85149" font-size="10">✗ {"clave": "valor",} ← coma al final (trailing comma)</text>
+  <text x="430" y="196" fill="#f85149" font-size="10">✗ {clave: "valor"}    ← claves sin comillas</text>
+
+  <!-- Quoting strategies -->
+  <text x="40" y="240" fill="#79c0ff" font-size="14" font-weight="bold">Estrategias de quoting en bash</text>
+
+  <rect x="40" y="255" width="230" height="80" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="155" y="278" text-anchor="middle" fill="#f0f6fc" font-size="12" font-weight="bold">Comillas simples fuera</text>
+  <text x="55" y="300" fill="#8b949e" font-family="'Courier New', monospace" font-size="10">curl -d '{"name":"Ana",</text>
+  <text x="55" y="316" fill="#8b949e" font-family="'Courier New', monospace" font-size="10">"age":25}' URL</text>
+  <text x="55" y="332" fill="#3fb950" font-size="9">✓ Simple, sin escapes</text>
+
+  <rect x="285" y="255" width="230" height="80" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="400" y="278" text-anchor="middle" fill="#f0f6fc" font-size="12" font-weight="bold">Heredoc</text>
+  <text x="300" y="300" fill="#8b949e" font-family="'Courier New', monospace" font-size="10">curl -d @- URL &lt;&lt;'EOF'</text>
+  <text x="300" y="316" fill="#8b949e" font-family="'Courier New', monospace" font-size="10">{"name":"Ana","age":25}</text>
+  <text x="300" y="332" fill="#8b949e" font-family="'Courier New', monospace" font-size="10">EOF</text>
+
+  <rect x="530" y="255" width="230" height="80" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="645" y="278" text-anchor="middle" fill="#f0f6fc" font-size="12" font-weight="bold">Desde archivo</text>
+  <text x="545" y="300" fill="#8b949e" font-family="'Courier New', monospace" font-size="10">curl -d @datos.json</text>
+  <text x="545" y="316" fill="#8b949e" font-family="'Courier New', monospace" font-size="10">-H "Content-Type:</text>
+  <text x="545" y="332" fill="#8b949e" font-family="'Courier New', monospace" font-size="10">application/json" URL</text>
+
+  <!-- Formatting responses -->
+  <text x="40" y="365" fill="#79c0ff" font-size="14" font-weight="bold">Formatear respuestas JSON</text>
+
+  <rect x="40" y="380" width="360" height="28" rx="4" fill="#1f2937"/>
+  <text x="55" y="399" fill="#f0f6fc" font-family="'Courier New', monospace" font-size="11">curl -s URL | python3 -m json.tool</text>
+
+  <rect x="415" y="380" width="170" height="28" rx="4" fill="#1f2937"/>
+  <text x="430" y="399" fill="#f0f6fc" font-family="'Courier New', monospace" font-size="11">curl -s URL | jq .</text>
+
+  <rect x="600" y="380" width="160" height="28" rx="4" fill="#1f2937"/>
+  <text x="615" y="399" fill="#f0f6fc" font-family="'Courier New', monospace" font-size="11">curl -s URL | tee resp.json</text>
+</svg>

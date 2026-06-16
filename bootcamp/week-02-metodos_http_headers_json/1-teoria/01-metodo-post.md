@@ -1,5 +1,7 @@
 # Método POST
 
+![Método POST con curl](../0-assets/01-metodo-post.svg)
+
 ## Qué hace POST
 
 GET pide datos. POST los envía. Cuando llenás un formulario en una web y hacés click en "Enviar", el browser realiza un POST. Cuando una app crea un usuario nuevo, hace un POST.

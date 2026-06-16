@@ -1,5 +1,7 @@
 # PUT, PATCH y DELETE
 
+![PUT vs PATCH vs DELETE](../0-assets/02-put-patch-delete.svg)
+
 ## Los verbos que modifican recursos
 
 HTTP tiene cuatro verbos principales para el ciclo de vida de un recurso:

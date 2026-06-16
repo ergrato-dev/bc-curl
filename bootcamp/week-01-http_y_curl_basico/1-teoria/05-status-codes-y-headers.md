@@ -1,5 +1,7 @@
 # Status Codes y Headers HTTP
 
+![Status Codes y Headers HTTP](../0-assets/05-status-codes-headers.svg)
+
 ## Status Codes
 
 La primera línea de toda respuesta HTTP incluye un código de 3 dígitos que indica el resultado.

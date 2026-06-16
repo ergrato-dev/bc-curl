@@ -1,5 +1,7 @@
 # Primer request GET con curl
 
+![Salida verbose de curl GET explicada](../0-assets/04-primer-request-get.svg)
+
 ## Sintaxis básica
 
 ```bash

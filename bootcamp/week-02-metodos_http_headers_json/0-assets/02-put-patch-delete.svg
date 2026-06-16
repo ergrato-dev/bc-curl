@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 470" font-family="Arial, Helvetica, sans-serif">
+  <rect width="800" height="470" fill="#0d1117"/>
+
+  <text x="400" y="32" text-anchor="middle" fill="#f0f6fc" font-size="22" font-weight="bold">PUT vs PATCH vs DELETE</text>
+  <text x="400" y="52" text-anchor="middle" fill="#8b949e" font-size="12">Tres verbos para modificar y eliminar recursos</text>
+
+  <!-- PUT column -->
+  <rect x="25" y="72" width="242" height="310" rx="8" fill="#161b22" stroke="#79c0ff" stroke-width="2"/>
+  <text x="146" y="100" text-anchor="middle" fill="#79c0ff" font-size="20" font-weight="bold">PUT</text>
+  <text x="146" y="118" text-anchor="middle" fill="#8b949e" font-size="11">Reemplazo completo</text>
+
+  <rect x="40" y="132" width="212" height="55" rx="5" fill="#0d1117" stroke="#30363d" stroke-width="1"/>
+  <text x="50" y="150" fill="#f0f6fc" font-size="10">Enviás</text>
+  <text x="50" y="168" fill="#f0f6fc" font-family="'Courier New', monospace" font-size="9">{"title":"Nuevo","body":"x"}</text>
+  <text x="50" y="182" fill="#8b949e" font-size="9">→ Todos los campos</text>
+
+  <rect x="40" y="198" width="212" height="55" rx="5" fill="#0d1117" stroke="#30363d" stroke-width="1"/>
+  <text x="50" y="216" fill="#f0f6fc" font-size="10">Recibís</text>
+  <text x="50" y="234" fill="#3fb950" font-family="'Courier New', monospace" font-size="9">{"id":1,"title":"Nuevo",</text>
+  <text x="50" y="248" fill="#3fb950" font-family="'Courier New', monospace" font-size="9"> "body":"x","userId":null}</text>
+
+  <rect x="40" y="264" width="212" height="50" rx="5" fill="#0d1117"/>
+  <text x="50" y="282" fill="#f0883e" font-size="10">Campos no enviados</text>
+  <text x="50" y="296" fill="#f0883e" font-size="10">se pierden (quedan en null)</text>
+  <text x="50" y="310" fill="#f0883e" font-size="10">o valor default del server</text>
+
+  <rect x="40" y="325" width="212" height="22" rx="4" fill="#0d2f1a" stroke="#3fb950" stroke-width="1"/>
+  <text x="146" y="340" text-anchor="middle" fill="#3fb950" font-size="10" font-weight="bold">Idempotente ✓</text>
+
+  <rect x="40" y="353" width="212" height="22" rx="4" fill="#162340"/>
+  <text x="146" y="368" text-anchor="middle" fill="#79c0ff" font-family="'Courier New', monospace" font-size="10">curl -X PUT -d '...' -H "Content-Type: json" URL</text>
+
+  <!-- PATCH column -->
+  <rect x="279" y="72" width="242" height="310" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="400" y="100" text-anchor="middle" fill="#3fb950" font-size="20" font-weight="bold">PATCH</text>
+  <text x="400" y="118" text-anchor="middle" fill="#8b949e" font-size="11">Modificación parcial</text>
+
+  <rect x="294" y="132" width="212" height="55" rx="5" fill="#0d1117" stroke="#30363d" stroke-width="1"/>
+  <text x="304" y="150" fill="#f0f6fc" font-size="10">Enviás</text>
+  <text x="304" y="168" fill="#f0f6fc" font-family="'Courier New', monospace" font-size="9">{"title":"Solo cambio esto"}</text>
+  <text x="304" y="182" fill="#8b949e" font-size="9">→ Solo lo que cambia</text>
+
+  <rect x="294" y="198" width="212" height="55" rx="5" fill="#0d1117" stroke="#30363d" stroke-width="1"/>
+  <text x="304" y="216" fill="#f0f6fc" font-size="10">Recibís</text>
+  <text x="304" y="234" fill="#3fb950" font-family="'Courier New', monospace" font-size="9">{"id":1,"title":"Solo cambio</text>
+  <text x="304" y="248" fill="#3fb950" font-family="'Courier New', monospace" font-size="9"> esto","body":"bar","userId":1}</text>
+
+  <rect x="294" y="264" width="212" height="50" rx="5" fill="#0d1117"/>
+  <text x="304" y="282" fill="#3fb950" font-size="10">Campos no enviados</text>
+  <text x="304" y="296" fill="#3fb950" font-size="10">se conservan intactos</text>
+
+  <rect x="294" y="325" width="212" height="22" rx="4" fill="#162440" stroke="#79c0ff" stroke-width="1"/>
+  <text x="400" y="340" text-anchor="middle" fill="#79c0ff" font-size="10" font-weight="bold">Idempotencia depende</text>
+
+  <rect x="294" y="353" width="212" height="22" rx="4" fill="#162340"/>
+  <text x="400" y="368" text-anchor="middle" fill="#79c0ff" font-family="'Courier New', monospace" font-size="10">curl -X PATCH -d '...' -H "Content-Type: json" URL</text>
+
+  <!-- DELETE column -->
+  <rect x="533" y="72" width="242" height="310" rx="8" fill="#161b22" stroke="#f85149" stroke-width="2"/>
+  <text x="654" y="100" text-anchor="middle" fill="#f85149" font-size="20" font-weight="bold">DELETE</text>
+  <text x="654" y="118" text-anchor="middle" fill="#8b949e" font-size="11">Eliminar recurso</text>
+
+  <rect x="548" y="132" width="212" height="55" rx="5" fill="#0d1117" stroke="#30363d" stroke-width="1"/>
+  <text x="558" y="150" fill="#f0f6fc" font-size="10">Enviás</text>
+  <text x="558" y="168" fill="#f0f6fc" font-family="'Courier New', monospace" font-size="9">(sin body, solo la URL)</text>
+  <text x="558" y="182" fill="#8b949e" font-size="9">DELETE /posts/1 HTTP/1.1</text>
+
+  <rect x="548" y="198" width="212" height="55" rx="5" fill="#0d1117" stroke="#30363d" stroke-width="1"/>
+  <text x="558" y="216" fill="#f0f6fc" font-size="10">Recibís</text>
+  <text x="558" y="234" fill="#3fb950" font-size="10" font-weight="bold">200 OK</text>
+  <text x="558" y="248" fill="#8b949e" font-family="'Courier New', monospace" font-size="9">o {} (body vacío)</text>
+
+  <rect x="548" y="264" width="212" height="50" rx="5" fill="#0d1117"/>
+  <text x="558" y="282" fill="#8b949e" font-size="10">POST/PUT al mismo ID</text>
+  <text x="558" y="296" fill="#8b949e" font-size="10">después de DELETE</text>
+  <text x="558" y="310" fill="#8b949e" font-size="10">crea un recurso nuevo</text>
+
+  <rect x="548" y="325" width="212" height="22" rx="4" fill="#0d2f1a" stroke="#3fb950" stroke-width="1"/>
+  <text x="654" y="340" text-anchor="middle" fill="#3fb950" font-size="10" font-weight="bold">Idempotente ✓</text>
+
+  <rect x="548" y="353" width="212" height="22" rx="4" fill="#162340"/>
+  <text x="654" y="368" text-anchor="middle" fill="#79c0ff" font-family="'Courier New', monospace" font-size="10">curl -X DELETE URL</text>
+
+  <!-- Bottom summary -->
+  <rect x="25" y="400" width="750" height="55" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="400" y="422" text-anchor="middle" fill="#d2a8ff" font-size="12" font-weight="bold">Regla práctica</text>
+  <text x="400" y="442" text-anchor="middle" fill="#8b949e" font-size="11">PUT: reemplazo total (enviá todo) · PATCH: cambio parcial (enviá solo lo que cambia) · DELETE: eliminación (sin body)</text>
+</svg>

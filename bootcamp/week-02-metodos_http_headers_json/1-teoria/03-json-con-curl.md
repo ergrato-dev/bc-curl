@@ -1,5 +1,7 @@
 # JSON con curl
 
+![JSON con curl](../0-assets/03-json-con-curl.svg)
+
 ## Por qué JSON es el formato estándar
 
 La mayoría de las APIs REST modernas hablan JSON. Es texto legible, tiene estructura jerárquica, y prácticamente todos los lenguajes lo soportan de forma nativa. Cuando trabajás con curl y APIs, el 90% de los bodies que vas a enviar y recibir son JSON.
