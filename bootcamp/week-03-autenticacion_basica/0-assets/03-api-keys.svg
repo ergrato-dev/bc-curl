@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 380" font-family="Arial, Helvetica, sans-serif">
+  <rect width="800" height="380" fill="#0d1117"/>
+
+  <text x="400" y="32" text-anchor="middle" fill="#f0f6fc" font-size="22" font-weight="bold">API Keys</text>
+  <text x="400" y="52" text-anchor="middle" fill="#8b949e" font-size="12">Token estático que identifica a una aplicación cliente</text>
+
+  <!-- Two ways -->
+  <text x="40" y="85" fill="#79c0ff" font-size="14" font-weight="bold">Dos formas de enviar una API Key</text>
+
+  <!-- Header (recommended) -->
+  <rect x="40" y="100" width="350" height="140" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="215" y="128" text-anchor="middle" fill="#3fb950" font-size="14" font-weight="bold">En el header ✓ Recomendado</text>
+  <text x="60" y="153" fill="#8b949e" font-family="'Courier New', monospace" font-size="11">curl -H "X-API-Key: sk-abc123" URL</text>
+  <text x="60" y="178" fill="#8b949e" font-size="10">✓ No visible en URL</text>
+  <text x="60" y="195" fill="#8b949e" font-size="10">✓ No queda en logs del servidor</text>
+  <text x="60" y="212" fill="#8b949e" font-size="10">✓ No se guarda en historial del browser</text>
+  <text x="60" y="229" fill="#8b949e" font-size="10">✓ No aparece en referrer headers</text>
+
+  <!-- Query string (avoid) -->
+  <rect x="410" y="100" width="350" height="140" rx="8" fill="#161b22" stroke="#f85149" stroke-width="2"/>
+  <text x="585" y="128" text-anchor="middle" fill="#f85149" font-size="14" font-weight="bold">En el query string ✗ Evitar</text>
+  <text x="430" y="153" fill="#8b949e" font-family="'Courier New', monospace" font-size="11">curl "URL?api_key=sk-abc123"</text>
+  <text x="430" y="178" fill="#8b949e" font-size="10">✗ Visible en la URL</text>
+  <text x="430" y="195" fill="#8b949e" font-size="10">✗ Queda en server logs</text>
+  <text x="430" y="212" fill="#8b949e" font-size="10">✗ Se filtra en browser history</text>
+  <text x="430" y="229" fill="#8b949e" font-size="10">✗ Se envía en header Referer</text>
+
+  <!-- Variable de entorno -->
+  <text x="40" y="275" fill="#79c0ff" font-size="14" font-weight="bold">Usar variable de entorno</text>
+
+  <rect x="40" y="290" width="350" height="55" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="215" y="313" text-anchor="middle" fill="#f0f6fc" font-size="12" font-weight="bold">Definir y usar</text>
+  <text x="55" y="337" fill="#8b949e" font-family="'Courier New', monospace" font-size="11">export API_KEY="sk-abc123"</text>
+
+  <rect x="410" y="290" width="350" height="55" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="585" y="313" text-anchor="middle" fill="#f0f6fc" font-size="12" font-weight="bold">En script</text>
+  <text x="425" y="337" fill="#8b949e" font-family="'Courier New', monospace" font-size="11">curl -H "X-API-Key: $API_KEY" URL</text>
+
+  <!-- Best practices -->
+  <rect x="40" y="358" width="720" height="16" rx="3" fill="#162340"/>
+  <text x="400" y="370" text-anchor="middle" fill="#79c0ff" font-size="10">Una key por entorno · Rotar periódicamente · Revocar si está comprometida · Nunca commitear en git</text>
+</svg>

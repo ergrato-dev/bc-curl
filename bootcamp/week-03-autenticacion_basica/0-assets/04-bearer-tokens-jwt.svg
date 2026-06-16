@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" font-family="Arial, Helvetica, sans-serif">
+  <rect width="800" height="450" fill="#0d1117"/>
+
+  <text x="400" y="32" text-anchor="middle" fill="#f0f6fc" font-size="22" font-weight="bold">Bearer Tokens y JWT</text>
+  <text x="400" y="52" text-anchor="middle" fill="#8b949e" font-size="12">Flujo login → token → request autenticado con token temporal</text>
+
+  <!-- Flow diagram -->
+  <text x="40" y="80" fill="#79c0ff" font-size="14" font-weight="bold">Flujo completo</text>
+
+  <!-- Step 1 -->
+  <rect x="40" y="95" width="155" height="50" rx="6" fill="#161b22" stroke="#f0883e" stroke-width="1.5"/>
+  <text x="117" y="116" text-anchor="middle" fill="#f0883e" font-size="11" font-weight="bold">① Login</text>
+  <text x="117" y="134" text-anchor="middle" fill="#8b949e" font-size="9">POST /api/login</text>
+  <text x="117" y="146" text-anchor="middle" fill="#8b949e" font-size="9">email + password</text>
+
+  <text x="205" y="122" fill="#8b949e" font-size="16">→</text>
+
+  <!-- Step 2 -->
+  <rect x="220" y="95" width="155" height="50" rx="6" fill="#161b22" stroke="#3fb950" stroke-width="1.5"/>
+  <text x="297" y="116" text-anchor="middle" fill="#3fb950" font-size="11" font-weight="bold">② Recibir token</text>
+  <text x="297" y="134" text-anchor="middle" fill="#3fb950" font-size="9">200 OK</text>
+  <text x="297" y="146" text-anchor="middle" fill="#3fb950" font-size="9">{"token":"eyJ..."}</text>
+
+  <text x="385" y="122" fill="#8b949e" font-size="16">→</text>
+
+  <!-- Step 3 -->
+  <rect x="400" y="95" width="165" height="50" rx="6" fill="#161b22" stroke="#79c0ff" stroke-width="1.5"/>
+  <text x="482" y="116" text-anchor="middle" fill="#79c0ff" font-size="11" font-weight="bold">③ Request con token</text>
+  <text x="482" y="134" text-anchor="middle" fill="#8b949e" font-size="9">GET /api/users</text>
+  <text x="482" y="146" text-anchor="middle" fill="#8b949e" font-size="9">Authorization: Bearer eyJ...</text>
+
+  <text x="575" y="122" fill="#8b949e" font-size="16">→</text>
+
+  <!-- Step 4 -->
+  <rect x="590" y="95" width="170" height="50" rx="6" fill="#161b22" stroke="#d2a8ff" stroke-width="1.5"/>
+  <text x="675" y="116" text-anchor="middle" fill="#d2a8ff" font-size="11" font-weight="bold">④ Datos protegidos</text>
+  <text x="675" y="134" text-anchor="middle" fill="#3fb950" font-size="9">200 OK</text>
+  <text x="675" y="146" text-anchor="middle" fill="#3fb950" font-size="9">{"users":[...]}</text>
+
+  <!-- JWT structure -->
+  <text x="40" y="180" fill="#79c0ff" font-size="14" font-weight="bold">Estructura de un JWT</text>
+
+  <rect x="40" y="195" width="720" height="45" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="55" y="215" font-family="'Courier New', monospace" font-size="11">
+    <tspan fill="#f0883e">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9</tspan><tspan fill="#8b949e">.</tspan><tspan fill="#3fb950">eyJ1c2VySWQiOjEsImVtYWlsIjoiZSIsImlhdCI6MTcw</tspan><tspan fill="#8b949e">.</tspan><tspan fill="#79c0ff">SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c</tspan>
+  </text>
+  <text x="55" y="234" fill="#8b949e" font-size="10">Parte 1: <tspan fill="#f0883e">Header</tspan> (algoritmo + tipo) · Parte 2: <tspan fill="#3fb950">Payload</tspan> (datos del usuario + expiración) · Parte 3: <tspan fill="#79c0ff">Signature</tspan> (firma criptográfica)</text>
+
+  <!-- Decoding -->
+  <text x="40" y="275" fill="#79c0ff" font-size="14" font-weight="bold">Decodificar el payload (sin clave secreta, es base64)</text>
+
+  <rect x="40" y="290" width="720" height="55" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="60" y="313" fill="#8b949e" font-family="'Courier New', monospace" font-size="11">TOKEN="eyJhbGciOiJIUzI1NiIs..."</text>
+  <text x="60" y="333" fill="#8b949e" font-family="'Courier New', monospace" font-size="11">echo "$TOKEN" | cut -d'.' -f2 | base64 -d | python3 -m json.tool</text>
+
+  <!-- Comparison -->
+  <text x="40" y="378" fill="#79c0ff" font-size="14" font-weight="bold">Comparación de mecanismos</text>
+
+  <rect x="40" y="393" width="228" height="45" rx="6" fill="#161b22" stroke="#f0883e" stroke-width="1"/>
+  <text x="154" y="410" text-anchor="middle" fill="#f0883e" font-size="10" font-weight="bold">Basic Auth</text>
+  <text x="154" y="428" text-anchor="middle" fill="#8b949e" font-size="9">Credenciales en cada request · Sin expiración · No revocable</text>
+
+  <rect x="282" y="393" width="228" height="45" rx="6" fill="#161b22" stroke="#3fb950" stroke-width="1"/>
+  <text x="396" y="410" text-anchor="middle" fill="#3fb950" font-size="10" font-weight="bold">API Key</text>
+  <text x="396" y="428" text-anchor="middle" fill="#8b949e" font-size="9">Identifica aplicación · Revocable · Sin sesión de usuario</text>
+
+  <rect x="524" y="393" width="236" height="45" rx="6" fill="#161b22" stroke="#79c0ff" stroke-width="1"/>
+  <text x="642" y="410" text-anchor="middle" fill="#79c0ff" font-size="10" font-weight="bold">Bearer Token / JWT</text>
+  <text x="642" y="428" text-anchor="middle" fill="#8b949e" font-size="9">Login único · Expiración · Estándar OAuth2 · Sesión de usuario</text>
+</svg>

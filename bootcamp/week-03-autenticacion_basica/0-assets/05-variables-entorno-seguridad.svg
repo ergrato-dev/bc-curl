@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 370" font-family="Arial, Helvetica, sans-serif">
+  <rect width="800" height="370" fill="#0d1117"/>
+
+  <text x="400" y="32" text-anchor="middle" fill="#f0f6fc" font-size="22" font-weight="bold">Variables de entorno y seguridad</text>
+  <text x="400" y="52" text-anchor="middle" fill="#8b949e" font-size="12">Nunca hardcodees credenciales. Usá variables de entorno, .env y .gitignore</text>
+
+  <!-- Regla principal -->
+  <rect x="40" y="72" width="720" height="45" rx="6" fill="#2d0a0a" stroke="#f85149" stroke-width="1.5"/>
+  <text x="400" y="92" text-anchor="middle" fill="#f85149" font-size="14" font-weight="bold">NUNCA hardcodees credenciales en scripts, código fuente o historial de comandos</text>
+  <text x="400" y="110" text-anchor="middle" fill="#8b949e" font-size="10">Si un token o contraseña aparece en git, asumilo comprometido y rotalo inmediatamente</text>
+
+  <!-- Variables de entorno -->
+  <text x="40" y="150" fill="#79c0ff" font-size="14" font-weight="bold">Variables de entorno</text>
+
+  <rect x="40" y="165" width="350" height="65" rx="6" fill="#161b22" stroke="#3fb950" stroke-width="1.5"/>
+  <text x="215" y="188" text-anchor="middle" fill="#3fb950" font-size="12" font-weight="bold">Definir</text>
+  <text x="55" y="212" fill="#8b949e" font-family="'Courier New', monospace" font-size="11">export API_KEY="sk-abc123"</text>
+  <text x="55" y="228" fill="#8b949e" font-family="'Courier New', monospace" font-size="11">export BEARER_TOKEN="eyJ..."</text>
+
+  <rect x="410" y="165" width="350" height="65" rx="6" fill="#161b22" stroke="#3fb950" stroke-width="1.5"/>
+  <text x="585" y="188" text-anchor="middle" fill="#3fb950" font-size="12" font-weight="bold">Usar en script</text>
+  <text x="425" y="212" fill="#8b949e" font-family="'Courier New', monospace" font-size="11">curl -H "X-API-Key: $API_KEY" URL</text>
+  <text x="425" y="228" fill="#8b949e" font-family="'Courier New', monospace" font-size="11">curl -H "Authorization: Bearer $BEARER_TOKEN" URL</text>
+
+  <!-- .env workflow -->
+  <text x="40" y="265" fill="#79c0ff" font-size="14" font-weight="bold">Flujo seguro con archivo .env</text>
+
+  <rect x="40" y="280" width="170" height="50" rx="5" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="125" y="300" text-anchor="middle" fill="#f0f6fc" font-size="11" font-weight="bold">.env</text>
+  <text x="125" y="318" text-anchor="middle" fill="#8b949e" font-size="9">valores reales</text>
+  <text x="125" y="330" text-anchor="middle" fill="#f85149" font-size="9">→ en .gitignore</text>
+
+  <text x="225" y="308" fill="#8b949e" font-size="16">→</text>
+
+  <rect x="240" y="280" width="170" height="50" rx="5" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="325" y="300" text-anchor="middle" fill="#f0f6fc" font-size="11" font-weight="bold">.env.example</text>
+  <text x="325" y="318" text-anchor="middle" fill="#8b949e" font-size="9">sin valores reales</text>
+  <text x="325" y="330" text-anchor="middle" fill="#3fb950" font-size="9">→ SÍ en git</text>
+
+  <text x="425" y="308" fill="#8b949e" font-size="16">→</text>
+
+  <rect x="440" y="280" width="170" height="50" rx="5" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="525" y="300" text-anchor="middle" fill="#f0f6fc" font-size="11" font-weight="bold">Validación</text>
+  <text x="525" y="318" text-anchor="middle" fill="#8b949e" font-size="9">verificar vars definidas</text>
+  <text x="525" y="330" text-anchor="middle" fill="#8b949e" font-size="9">if [ -z "$VAR" ]; then exit 1</text>
+
+  <text x="625" y="308" fill="#8b949e" font-size="16">→</text>
+
+  <rect x="640" y="280" width="120" height="50" rx="5" fill="#0d2f1a" stroke="#3fb950" stroke-width="1.5"/>
+  <text x="700" y="300" text-anchor="middle" fill="#3fb950" font-size="11" font-weight="bold">Script listo</text>
+  <text x="700" y="318" text-anchor="middle" fill="#3fb950" font-size="9">seguro</text>
+
+  <!-- .netrc -->
+  <rect x="40" y="345" width="720" height="20" rx="4" fill="#162340"/>
+  <text x="400" y="360" text-anchor="middle" fill="#79c0ff" font-size="10">Alternativa: archivo ~/.netrc (chmod 600) para credenciales persistentes de curl · Limpiar historial: history -d N, history -c</text>
+</svg>

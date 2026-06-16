@@ -1,5 +1,7 @@
 # Bearer Tokens y JWT
 
+![Bearer Tokens y JWT](../0-assets/04-bearer-tokens-jwt.svg)
+
 ## Qué es un Bearer Token
 
 Un Bearer Token es un token de acceso que obtenés después de autenticarte exitosamente. "Bearer" significa "portador" — cualquiera que tenga el token puede usarlo, de ahí la importancia de no compartirlo.

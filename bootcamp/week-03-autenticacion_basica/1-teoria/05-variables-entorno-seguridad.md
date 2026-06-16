@@ -1,5 +1,7 @@
 # Variables de entorno y seguridad de credenciales
 
+![Variables de entorno y seguridad](../0-assets/05-variables-entorno-seguridad.svg)
+
 ## La regla más importante
 
 **Nunca hardcodees credenciales en un script, en código fuente, o en la línea de comandos si vas a guardar el historial.**

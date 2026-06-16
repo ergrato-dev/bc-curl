@@ -1,5 +1,7 @@
 # API Keys
 
+![API Keys](../0-assets/03-api-keys.svg)
+
 ## Qué es una API Key
 
 Una API Key es un string único generado por el servicio que identifica a quien hace el request. No representa un usuario humano sino a una aplicación o cliente.

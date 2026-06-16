@@ -1,5 +1,7 @@
 # Por qué existe la autenticación en APIs
 
+![Autenticación en APIs](../0-assets/01-por-que-autenticacion.svg)
+
 ## El problema del request anónimo
 
 Sin autenticación, cualquier persona con acceso a internet puede hacer requests a una API. Eso es aceptable para datos públicos (clima, noticias, tipos de cambio), pero no para datos privados (cuentas bancarias, mensajes, información médica).

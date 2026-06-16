@@ -1,5 +1,7 @@
 # HTTP Basic Authentication
 
+![HTTP Basic Auth](../0-assets/02-basic-auth.svg)
+
 ## Cómo funciona
 
 Basic Auth envía las credenciales en el header `Authorization`. El formato es:

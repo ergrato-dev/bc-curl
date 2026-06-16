@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 430" font-family="Arial, Helvetica, sans-serif">
+  <rect width="800" height="430" fill="#0d1117"/>
+
+  <text x="400" y="32" text-anchor="middle" fill="#f0f6fc" font-size="22" font-weight="bold">HTTP Basic Authentication</text>
+  <text x="400" y="52" text-anchor="middle" fill="#8b949e" font-size="12">Usuario y contraseña codificados en base64 en el header Authorization</text>
+
+  <!-- The mechanism -->
+  <rect x="40" y="75" width="720" height="100" rx="8" fill="#161b22" stroke="#f0883e" stroke-width="2"/>
+  <text x="400" y="100" text-anchor="middle" fill="#f0883e" font-size="14" font-weight="bold">Cómo funciona</text>
+
+  <text x="60" y="125" fill="#8b949e" font-family="'Courier New', monospace" font-size="11">1. curl codifica "usuario:contraseña" en base64</text>
+  <text x="60" y="148" fill="#8b949e" font-family="'Courier New', monospace" font-size="11">2. Lo envía en el header:  Authorization: Basic dXNlcjpwYXNz</text>
+  <text x="60" y="170" fill="#8b949e" font-family="'Courier New', monospace" font-size="11">3. El servidor decodifica y verifica contra su base de usuarios</text>
+
+  <!-- curl usage -->
+  <text x="40" y="210" fill="#79c0ff" font-size="14" font-weight="bold">Con curl</text>
+
+  <rect x="40" y="225" width="340" height="60" rx="6" fill="#161b22" stroke="#3fb950" stroke-width="1.5"/>
+  <text x="210" y="248" text-anchor="middle" fill="#3fb950" font-size="12" font-weight="bold">Forma simple: flag -u</text>
+  <text x="55" y="272" fill="#8b949e" font-family="'Courier New', monospace" font-size="11">curl -u user:pass https://httpbin.org/basic-auth/user/pass</text>
+
+  <rect x="400" y="225" width="360" height="60" rx="6" fill="#161b22" stroke="#d2a8ff" stroke-width="1.5"/>
+  <text x="580" y="248" text-anchor="middle" fill="#d2a8ff" font-size="12" font-weight="bold">Forma manual: header explícito</text>
+  <text x="415" y="272" fill="#8b949e" font-family="'Courier New', monospace" font-size="11">curl -H "Authorization: Basic dXNlcjpwYXNz" URL</text>
+
+  <!-- Tips -->
+  <rect x="40" y="300" width="350" height="55" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="215" y="322" text-anchor="middle" fill="#f0f6fc" font-size="12" font-weight="bold">Pedir contraseña interactiva</text>
+  <text x="55" y="346" fill="#8b949e" font-family="'Courier New', monospace" font-size="11">curl -u user https://httpbin.org/basic-auth/user/pass</text>
+
+  <rect x="410" y="300" width="350" height="55" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="585" y="322" text-anchor="middle" fill="#f0f6fc" font-size="12" font-weight="bold">Ver header generado con -v</text>
+  <text x="425" y="346" fill="#8b949e" font-family="'Courier New', monospace" font-size="11">curl -v -u user:pass URL 2>&amp;1 | grep Authorization</text>
+
+  <!-- HTTPS warning -->
+  <rect x="40" y="370" width="720" height="45" rx="6" fill="#2d0a0a" stroke="#f85149" stroke-width="1.5"/>
+  <text x="400" y="392" text-anchor="middle" fill="#f85149" font-size="13" font-weight="bold">IMPORTANTE: Base64 NO es cifrado — siempre usar HTTPS con Basic Auth</text>
+  <text x="400" y="410" text-anchor="middle" fill="#8b949e" font-size="10">Sin HTTPS, cualquiera que intercepte el tráfico puede decodificar el base64 y leer usuario:contraseña</text>
+</svg>
