@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" font-family="Arial, Helvetica, sans-serif">
+  <rect width="800" height="400" fill="#0d1117"/>
+
+  <text x="400" y="32" text-anchor="middle" fill="#f0f6fc" font-size="22" font-weight="bold">Multipart Upload con curl</text>
+  <text x="400" y="52" text-anchor="middle" fill="#8b949e" font-size="12">El flag -F envía archivos binarios y texto en un solo request</text>
+
+  <!-- Structure -->
+  <text x="40" y="82" fill="#79c0ff" font-size="14" font-weight="bold">Estructura de un request multipart</text>
+
+  <rect x="40" y="97" width="720" height="95" rx="6" fill="#0d1117" stroke="#30363d" stroke-width="1"/>
+
+  <!-- Boundary line -->
+  <rect x="50" y="103" width="700" height="18" rx="2" fill="#1f2937"/>
+  <text x="60" y="116" fill="#d2a8ff" font-family="'Courier New', monospace" font-size="10">Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxk</text>
+
+  <rect x="50" y="126" width="700" height="18" rx="2" fill="#1f2937"/>
+  <text x="60" y="139" fill="#8b949e" font-family="'Courier New', monospace" font-size="10">------WebKitFormBoundary7MA4YWxk</text>
+
+  <rect x="50" y="149" width="700" height="18" rx="2" fill="#1f2937"/>
+  <text x="60" y="162" fill="#8b949e" font-family="'Courier New', monospace" font-size="10">Content-Disposition: form-data; name="nombre"  |  Ana</text>
+
+  <rect x="50" y="172" width="700" height="18" rx="2" fill="#1f2937"/>
+  <text x="60" y="185" fill="#8b949e" font-family="'Courier New', monospace" font-size="10">Content-Disposition: form-data; name="foto"; filename="perfil.png"  |  Content-Type: image/png</text>
+
+  <!-- -F flag -->
+  <text x="40" y="225" fill="#79c0ff" font-size="14" font-weight="bold">El flag -F</text>
+
+  <rect x="40" y="238" width="228" height="48" rx="5" fill="#161b22" stroke="#3fb950" stroke-width="1"/>
+  <text x="154" y="256" text-anchor="middle" fill="#3fb950" font-size="11" font-weight="bold">Subir archivo</text>
+  <text x="55" y="276" fill="#8b949e" font-family="'Courier New', monospace" font-size="10">-F "archivo=@foto.png"</text>
+
+  <rect x="282" y="238" width="228" height="48" rx="5" fill="#161b22" stroke="#79c0ff" stroke-width="1"/>
+  <text x="396" y="256" text-anchor="middle" fill="#79c0ff" font-size="11" font-weight="bold">MIME explícito</text>
+  <text x="297" y="276" fill="#8b949e" font-family="'Courier New', monospace" font-size="10">-F "doc=@reporte.pdf;type=application/pdf"</text>
+
+  <rect x="524" y="238" width="236" height="48" rx="5" fill="#161b22" stroke="#d2a8ff" stroke-width="1"/>
+  <text x="642" y="256" text-anchor="middle" fill="#d2a8ff" font-size="11" font-weight="bold">Nombre alternativo</text>
+  <text x="539" y="276" fill="#8b949e" font-family="'Courier New', monospace" font-size="10">-F "doc=@datos.csv;filename=export.csv"</text>
+
+  <!-- Example -->
+  <text x="40" y="315" fill="#79c0ff" font-size="14" font-weight="bold">Ejemplo: perfil de usuario con foto</text>
+
+  <rect x="40" y="330" width="720" height="30" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="60" y="350" fill="#8b949e" font-family="'Courier New', monospace" font-size="11">curl -F "nombre=Ana" -F "email=ana@mail.com" -F "foto=@perfil.png;type=image/png" https://httpbin.org/post</text>
+
+  <!-- inspect tip -->
+  <rect x="40" y="372" width="720" height="22" rx="4" fill="#162340"/>
+  <text x="60" y="388" fill="#79c0ff" font-size="10">Usá -v para inspeccionar el body multipart y ver la boundary generada por curl</text>
+</svg>

@@ -1,5 +1,7 @@
 # Form URL-encoded: formularios clásicos
 
+![Formularios URL-encoded](../0-assets/02-form-urlencoded.svg)
+
 ## Qué es application/x-www-form-urlencoded
 
 Cuando un formulario HTML clásico hace submit con método POST, el browser empaqueta los campos en un formato específico:

@@ -1,5 +1,7 @@
 # Cookies con curl
 
+![Cookies con curl](../0-assets/03-cookies.svg)
+
 ## Qué son las cookies HTTP
 
 Las cookies son pequeñas piezas de datos que el servidor le pide al cliente que guarde y reenvíe en requests futuros. Son el mecanismo principal para mantener estado en HTTP, que es un protocolo stateless por diseño.

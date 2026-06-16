@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" font-family="Arial, Helvetica, sans-serif">
+  <rect width="800" height="400" fill="#0d1117"/>
+
+  <text x="400" y="32" text-anchor="middle" fill="#f0f6fc" font-size="22" font-weight="bold">Transferencia avanzada</text>
+  <text x="400" y="52" text-anchor="middle" fill="#8b949e" font-size="12">Control de velocidad, timeouts, reintentos y descargas parciales</text>
+
+  <!-- Limit rate -->
+  <text x="40" y="82" fill="#79c0ff" font-size="14" font-weight="bold">--limit-rate: Limitar velocidad</text>
+  <rect x="40" y="97" width="350" height="48" rx="6" fill="#161b22" stroke="#f0883e" stroke-width="1.5"/>
+  <text x="55" y="118" fill="#8b949e" font-family="'Courier New', monospace" font-size="11">curl --limit-rate 500k -o archivo URL</text>
+  <text x="55" y="138" fill="#8b949e" font-size="10">Unidades: k/K=KB  m/M=MB  g/G=GB</text>
+
+  <rect x="410" y="97" width="350" height="48" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="425" y="118" fill="#8b949e" font-size="10">Ejemplo: simular descarga lenta</text>
+  <text x="425" y="136" fill="#8b949e" font-size="10">curl --limit-rate 100k --progress-bar -o file URL</text>
+
+  <!-- Timeouts -->
+  <text x="40" y="175" fill="#79c0ff" font-size="14" font-weight="bold">Timeouts</text>
+
+  <rect x="40" y="190" width="350" height="60" rx="6" fill="#161b22" stroke="#79c0ff" stroke-width="1.5"/>
+  <text x="215" y="212" text-anchor="middle" fill="#79c0ff" font-size="12" font-weight="bold">--connect-timeout</text>
+  <text x="55" y="233" fill="#8b949e" font-size="10">Tiempo máximo para establecer conexión TCP + TLS</text>
+  <text x="55" y="248" fill="#8b949e" font-size="10">Recomendado: 3-10 segundos</text>
+
+  <rect x="410" y="190" width="350" height="60" rx="6" fill="#161b22" stroke="#d2a8ff" stroke-width="1.5"/>
+  <text x="585" y="212" text-anchor="middle" fill="#d2a8ff" font-size="12" font-weight="bold">--max-time</text>
+  <text x="425" y="233" fill="#8b949e" font-size="10">Tiempo total máximo para toda la operación</text>
+  <text x="425" y="248" fill="#8b949e" font-size="10">Incluye conexión + transferencia completa</text>
+
+  <!-- Retries -->
+  <text x="40" y="280" fill="#79c0ff" font-size="14" font-weight="bold">Reintentos</text>
+
+  <rect x="40" y="295" width="228" height="40" rx="5" fill="#161b22" stroke="#3fb950" stroke-width="1"/>
+  <text x="154" y="313" text-anchor="middle" fill="#3fb950" font-size="11" font-weight="bold">--retry N</text>
+  <text x="154" y="330" text-anchor="middle" fill="#8b949e" font-size="9">Número de reintentos</text>
+
+  <rect x="282" y="295" width="228" height="40" rx="5" fill="#161b22" stroke="#79c0ff" stroke-width="1"/>
+  <text x="396" y="313" text-anchor="middle" fill="#79c0ff" font-size="11" font-weight="bold">--retry-delay S</text>
+  <text x="396" y="330" text-anchor="middle" fill="#8b949e" font-size="9">Espera entre reintentos (seg)</text>
+
+  <rect x="524" y="295" width="236" height="40" rx="5" fill="#161b22" stroke="#d2a8ff" stroke-width="1"/>
+  <text x="642" y="313" text-anchor="middle" fill="#d2a8ff" font-size="11" font-weight="bold">--retry-max-time S</text>
+  <text x="642" y="330" text-anchor="middle" fill="#8b949e" font-size="9">Tiempo total con reintentos</text>
+
+  <rect x="40" y="348" width="720" height="22" rx="4" fill="#1f2937"/>
+  <text x="60" y="363" fill="#8b949e" font-family="'Courier New', monospace" font-size="11">curl --retry 3 --retry-delay 5 --max-time 60 --connect-timeout 10 URL</text>
+
+  <!-- --range -->
+  <rect x="40" y="378" width="720" height="18" rx="3" fill="#162340"/>
+  <text x="60" y="391" fill="#79c0ff" font-size="10">--range 0-999: descargar solo los primeros 1000 bytes · --range 500-: desde el byte 500 hasta el final</text>
+</svg>

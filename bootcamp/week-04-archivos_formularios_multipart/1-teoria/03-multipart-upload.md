@@ -1,5 +1,7 @@
 # Multipart upload: subir archivos con curl
 
+![Multipart Upload con curl](../0-assets/03-multipart-upload.svg)
+
 ## Qué es multipart/form-data
 
 `multipart/form-data` es un formato de encoding diseñado para transmitir archivos binarios junto con datos de texto en un mismo request HTTP. A diferencia de URL-encoded, puede manejar datos arbitrarios (imágenes, PDFs, video) sin corromperlos.

@@ -1,5 +1,7 @@
 # Timeouts y reintentos: configuración para producción
 
+![Timeouts y reintentos](../0-assets/05-timeouts-y-reintentos.svg)
+
 ## Los dos tipos de timeout en curl
 
 curl distingue entre dos momentos distintos en el ciclo de vida de una request:

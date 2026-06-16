@@ -1,5 +1,7 @@
 # Transferencia avanzada: velocidad, timeouts y reintentos
 
+![Transferencia avanzada](../0-assets/05-transferencia-avanzada.svg)
+
 ## Limitar el ancho de banda con --limit-rate
 
 `--limit-rate` limita la velocidad de transferencia (upload y download). Útil para simular conexiones lentas o para no saturar la red:

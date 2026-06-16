@@ -1,5 +1,7 @@
 # JSON vs Multipart: cuándo usar cada formato
 
+![JSON vs Multipart](../0-assets/04-upload-json-vs-multipart.svg)
+
 ## El problema central
 
 Cuando necesitás enviar datos a una API tenés principalmente dos opciones para el body:

@@ -1,5 +1,7 @@
 # SSL/TLS con curl: verificación de certificados
 
+![SSL/TLS con curl](../0-assets/01-ssl-tls-curl.svg)
+
 ## Qué hace curl automáticamente
 
 Cuando hacés `curl https://...`, curl establece una conexión TLS antes de enviar cualquier dato. Como parte de ese proceso, realiza dos verificaciones automáticas:

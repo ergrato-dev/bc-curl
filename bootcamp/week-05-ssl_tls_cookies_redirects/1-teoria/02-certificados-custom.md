@@ -1,5 +1,7 @@
 # Certificados custom: escenarios del mundo real
 
+![Certificados custom](../0-assets/02-certificados-custom.svg)
+
 ## Los tres escenarios más comunes
 
 ### 1. Certificado auto-firmado en desarrollo

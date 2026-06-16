@@ -1,5 +1,7 @@
 # Redirects: controlar el seguimiento de redirecciones
 
+![Redirects HTTP](../0-assets/04-redirects.svg)
+
 ## Por qué existen los redirects
 
 Los redirects HTTP son respuestas con status codes 3xx que le indican al cliente que el recurso está en otra URL. Los usos más comunes:

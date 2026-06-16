@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 390" font-family="Arial, Helvetica, sans-serif">
+  <rect width="800" height="390" fill="#0d1117"/>
+
+  <text x="400" y="32" text-anchor="middle" fill="#f0f6fc" font-size="22" font-weight="bold">JSON vs Multipart</text>
+  <text x="400" y="52" text-anchor="middle" fill="#8b949e" font-size="12">Cuándo usar cada formato de body al enviar datos</text>
+
+  <!-- JSON column -->
+  <rect x="25" y="75" width="365" height="220" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="1.5"/>
+  <text x="207" y="103" text-anchor="middle" fill="#3fb950" font-size="16" font-weight="bold">application/json</text>
+
+  <rect x="45" y="118" width="325" height="30" rx="4" fill="#0d2f1a"/>
+  <text x="207" y="138" text-anchor="middle" fill="#3fb950" font-size="10">✓ Texto, números, booleanos</text>
+  <rect x="45" y="156" width="325" height="30" rx="4" fill="#0d2f1a"/>
+  <text x="207" y="176" text-anchor="middle" fill="#3fb950" font-size="10">✓ Estructura jerárquica (anidada)</text>
+  <rect x="45" y="194" width="325" height="30" rx="4" fill="#0d2f1a"/>
+  <text x="207" y="214" text-anchor="middle" fill="#3fb950" font-size="10">✓ APIs REST modernas</text>
+  <rect x="45" y="232" width="325" height="30" rx="4" fill="#2d0a0a"/>
+  <text x="207" y="252" text-anchor="middle" fill="#f85149" font-size="10">✗ No soporta archivos binarios</text>
+  <rect x="45" y="270" width="325" height="22" rx="3" fill="#1f2937"/>
+  <text x="60" y="285" fill="#8b949e" font-family="'Courier New', monospace" font-size="9">curl -d '{"nombre":"Ana","edad":30}'</text>
+  <text x="60" y="295" fill="#8b949e" font-family="'Courier New', monospace" font-size="9">  -H "Content-Type: application/json" URL</text>
+
+  <!-- Multipart column -->
+  <rect x="410" y="75" width="365" height="220" rx="8" fill="#161b22" stroke="#79c0ff" stroke-width="1.5"/>
+  <text x="592" y="103" text-anchor="middle" fill="#79c0ff" font-size="16" font-weight="bold">multipart/form-data</text>
+
+  <rect x="430" y="118" width="325" height="30" rx="4" fill="#162340"/>
+  <text x="592" y="138" text-anchor="middle" fill="#79c0ff" font-size="10">✓ Archivos binarios (imágenes, PDFs)</text>
+  <rect x="430" y="156" width="325" height="30" rx="4" fill="#162340"/>
+  <text x="592" y="176" text-anchor="middle" fill="#79c0ff" font-size="10">✓ Combinar texto + archivos en un request</text>
+  <rect x="430" y="194" width="325" height="30" rx="4" fill="#162340"/>
+  <text x="592" y="214" text-anchor="middle" fill="#79c0ff" font-size="10">✓ Uploads desde formularios HTML</text>
+  <rect x="430" y="232" width="325" height="30" rx="4" fill="#2d0a0a"/>
+  <text x="592" y="252" text-anchor="middle" fill="#f85149" font-size="10">✗ Más overhead que JSON (boundaries)</text>
+  <rect x="430" y="270" width="325" height="22" rx="3" fill="#1f2937"/>
+  <text x="445" y="285" fill="#8b949e" font-family="'Courier New', monospace" font-size="9">curl -F "nombre=Ana" -F "foto=@img.png" URL</text>
+
+  <!-- Decisions -->
+  <text x="40" y="325" fill="#79c0ff" font-size="14" font-weight="bold">¿Cuál usar?</text>
+
+  <rect x="40" y="338" width="228" height="40" rx="6" fill="#0d2f1a" stroke="#3fb950" stroke-width="1"/>
+  <text x="154" y="356" text-anchor="middle" fill="#3fb950" font-size="10" font-weight="bold">JSON</text>
+  <text x="154" y="372" text-anchor="middle" fill="#8b949e" font-size="9">Solo texto · APIs REST · CRUD</text>
+
+  <rect x="282" y="338" width="228" height="40" rx="6" fill="#162340" stroke="#79c0ff" stroke-width="1"/>
+  <text x="396" y="356" text-anchor="middle" fill="#79c0ff" font-size="10" font-weight="bold">Multipart</text>
+  <text x="396" y="372" text-anchor="middle" fill="#8b949e" font-size="9">Archivos · Formularios con upload</text>
+
+  <rect x="524" y="338" width="236" height="40" rx="6" fill="#161b22" stroke="#d2a8ff" stroke-width="1"/>
+  <text x="642" y="356" text-anchor="middle" fill="#d2a8ff" font-size="10" font-weight="bold">Mixto</text>
+  <text x="642" y="372" text-anchor="middle" fill="#8b949e" font-size="9">JSON como parte multipart;type=application/json</text>
+</svg>

@@ -1,5 +1,7 @@
 # Descargar archivos con curl
 
+![Descargar archivos con curl](../0-assets/01-descargar-archivos.svg)
+
 ## El flag -o: nombre que tú eliges
 
 Por defecto curl imprime la respuesta en stdout. Para guardar el contenido en un archivo usás `-o` seguido del nombre que querés darle:
