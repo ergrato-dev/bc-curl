@@ -1,10 +1,13 @@
-# Bootcamp curl: Zero to Hero
+<p align="center">
+  <img src="assets/bootcamp-header.svg" alt="Bootcamp curl: Zero to Hero" width="900">
+</p>
 
 <p align="center">
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-CC%20BY--NC--SA%204.0-lightgrey.svg" alt="License"></a>
   <img src="https://img.shields.io/badge/semanas-10-yellow.svg" alt="10 Semanas">
-  <img src="https://img.shields.io/badge/horas-80-orange.svg">
-  <img src="https://img.shields.io/badge/curl-7.x%2F8.x-blue.svg">
+  <img src="https://img.shields.io/badge/horas-80-orange.svg" alt="80 Horas">
+  <img src="https://img.shields.io/badge/curl-7.x%2F8.x-blue.svg" alt="curl 7.x/8.x">
+  <a href="README_EN.md"><img src="https://img.shields.io/badge/lang-English-blue.svg" alt="English Version"></a>
 </p>
 
 ---
