@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 385" font-family="Arial, Helvetica, sans-serif">
+  <rect width="800" height="385" fill="#0d1117"/>
+
+  <text x="400" y="32" text-anchor="middle" fill="#f0f6fc" font-size="22" font-weight="bold">Archivo de configuración .curlrc</text>
+  <text x="400" y="52" text-anchor="middle" fill="#8b949e" font-size="12">Defaults persistentes para no repetir flags en cada comando</text>
+
+  <!-- Locations -->
+  <text x="40" y="82" fill="#79c0ff" font-size="14" font-weight="bold">Dónde se busca</text>
+
+  <rect x="40" y="97" width="350" height="60" rx="6" fill="#161b22" stroke="#f0883e" stroke-width="1.5"/>
+  <text x="215" y="120" text-anchor="middle" fill="#f0883e" font-size="12" font-weight="bold">~/.curlrc (global)</text>
+  <text x="55" y="142" fill="#8b949e" font-family="'Courier New', monospace" font-size="10">/home/usuario/.curlrc</text>
+  <text x="55" y="156" fill="#8b949e" font-size="9">Aplica a todos los proyectos del usuario</text>
+
+  <rect x="410" y="97" width="350" height="60" rx="6" fill="#161b22" stroke="#3fb950" stroke-width="1.5"/>
+  <text x="585" y="120" text-anchor="middle" fill="#3fb950" font-size="12" font-weight="bold">./.curlrc (local)</text>
+  <text x="425" y="142" fill="#8b949e" font-family="'Courier New', monospace" font-size="10">/proyecto/.curlrc</text>
+  <text x="425" y="156" fill="#8b949e" font-size="9">Solo en el directorio de trabajo actual</text>
+
+  <!-- Example content -->
+  <text x="40" y="185" fill="#79c0ff" font-size="14" font-weight="bold">Ejemplo de ~/.curlrc</text>
+
+  <rect x="40" y="200" width="720" height="88" rx="6" fill="#0d1117" stroke="#30363d" stroke-width="1"/>
+  <text x="60" y="220" fill="#8b949e" font-family="'Courier New', monospace" font-size="10"># ~/.curlrc — Configuración global</text>
+  <text x="60" y="240" fill="#8b949e" font-family="'Courier New', monospace" font-size="10">location                           <tspan fill="#555"># seguir redirects siempre</tspan></text>
+  <text x="60" y="260" fill="#8b949e" font-family="'Courier New', monospace" font-size="10">connect-timeout = 10               <tspan fill="#555"># timeout de conexión</tspan></text>
+  <text x="60" y="278" fill="#8b949e" font-family="'Courier New', monospace" font-size="10">max-time = 30                      <tspan fill="#555"># timeout total</tspan></text>
+
+  <!-- Precedence -->
+  <text x="40" y="318" fill="#79c0ff" font-size="14" font-weight="bold">Precedencia (mayor a menor prioridad)</text>
+
+  <rect x="40" y="333" width="168" height="40" rx="5" fill="#0d2f1a" stroke="#3fb950" stroke-width="1.5"/>
+  <text x="124" y="350" text-anchor="middle" fill="#3fb950" font-size="10" font-weight="bold">① CLI flags</text>
+  <text x="124" y="367" text-anchor="middle" fill="#8b949e" font-size="9">--no-location</text>
+
+  <text x="218" y="358" fill="#8b949e" font-size="16">→</text>
+  <rect x="230" y="333" width="168" height="40" rx="5" fill="#161b22" stroke="#79c0ff" stroke-width="1"/>
+  <text x="314" y="350" text-anchor="middle" fill="#79c0ff" font-size="10" font-weight="bold">② --config file</text>
+  <text x="314" y="367" text-anchor="middle" fill="#8b949e" font-size="9">curl --config pro.curlrc</text>
+
+  <text x="408" y="358" fill="#8b949e" font-size="16">→</text>
+  <rect x="420" y="333" width="168" height="40" rx="5" fill="#161b22" stroke="#d2a8ff" stroke-width="1"/>
+  <text x="504" y="350" text-anchor="middle" fill="#d2a8ff" font-size="10" font-weight="bold">③ ./.curlrc local</text>
+  <text x="504" y="367" text-anchor="middle" fill="#8b949e" font-size="9">directorio actual</text>
+
+  <text x="598" y="358" fill="#8b949e" font-size="16">→</text>
+  <rect x="610" y="333" width="150" height="40" rx="5" fill="#161b22" stroke="#f0883e" stroke-width="1"/>
+  <text x="685" y="350" text-anchor="middle" fill="#f0883e" font-size="10" font-weight="bold">④ ~/.curlrc</text>
+  <text x="685" y="367" text-anchor="middle" fill="#8b949e" font-size="9">global del usuario</text>
+</svg>

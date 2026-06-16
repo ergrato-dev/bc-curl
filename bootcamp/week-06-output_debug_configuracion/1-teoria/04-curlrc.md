@@ -1,5 +1,7 @@
 # El archivo de configuracion .curlrc
 
+![.curlrc](../0-assets/04-curlrc.svg)
+
 ## Que es .curlrc
 
 `.curlrc` es un archivo de texto donde puedes especificar opciones de curl que se

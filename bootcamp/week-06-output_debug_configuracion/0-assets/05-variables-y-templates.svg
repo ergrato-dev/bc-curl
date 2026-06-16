@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 370" font-family="Arial, Helvetica, sans-serif">
+  <rect width="800" height="370" fill="#0d1117"/>
+
+  <text x="400" y="32" text-anchor="middle" fill="#f0f6fc" font-size="22" font-weight="bold">Variables Bash + Templates con curl</text>
+  <text x="400" y="52" text-anchor="middle" fill="#8b949e" font-size="12">Construir requests dinámicos con variables de entorno y heredocs</text>
+
+  <!-- Config file -->
+  <text x="40" y="82" fill="#79c0ff" font-size="14" font-weight="bold">Archivo de entorno (config.env)</text>
+
+  <rect x="40" y="97" width="350" height="65" rx="6" fill="#161b22" stroke="#3fb950" stroke-width="1.5"/>
+  <text x="215" y="118" text-anchor="middle" fill="#3fb950" font-size="11" font-weight="bold">config.env</text>
+  <text x="55" y="138" fill="#8b949e" font-family="'Courier New', monospace" font-size="10">BASE_URL=https://api.miservicio.com</text>
+  <text x="55" y="154" fill="#8b949e" font-family="'Courier New', monospace" font-size="10">API_KEY=sk-abc123</text>
+
+  <rect x="410" y="97" width="350" height="65" rx="6" fill="#161b22" stroke="#3fb950" stroke-width="1.5"/>
+  <text x="585" y="118" text-anchor="middle" fill="#3fb950" font-size="11" font-weight="bold">Cargar y usar</text>
+  <text x="425" y="138" fill="#8b949e" font-family="'Courier New', monospace" font-size="10">source config.env</text>
+  <text x="425" y="154" fill="#8b949e" font-family="'Courier New', monospace" font-size="10">curl -H "X-API-Key: $API_KEY" "$BASE_URL/users"</text>
+
+  <!-- Heredoc -->
+  <text x="40" y="192" fill="#79c0ff" font-size="14" font-weight="bold">Heredoc: JSON multilínea con variables</text>
+
+  <rect x="40" y="207" width="720" height="72" rx="6" fill="#0d1117" stroke="#30363d" stroke-width="1"/>
+  <text x="55" y="226" fill="#8b949e" font-family="'Courier New', monospace" font-size="10">NAME="Ana"</text>
+  <text x="55" y="243" fill="#8b949e" font-family="'Courier New', monospace" font-size="10">curl -s -X POST -H "Content-Type: application/json" -d @- URL &lt;&lt;'EOF'</text>
+  <text x="55" y="260" fill="#f0f6fc" font-family="'Courier New', monospace" font-size="10">{"name":"$NAME","timestamp":"$(date -Iseconds)"}</text>
+  <text x="55" y="277" fill="#8b949e" font-family="'Courier New', monospace" font-size="10">EOF</text>
+
+  <!-- Good practices -->
+  <text x="40" y="308" fill="#79c0ff" font-size="14" font-weight="bold">Buenas prácticas</text>
+
+  <rect x="40" y="323" width="228" height="35" rx="5" fill="#161b22" stroke="#3fb950" stroke-width="1"/>
+  <text x="154" y="340" text-anchor="middle" fill="#3fb950" font-size="10" font-weight="bold">Siempre entre comillas</text>
+  <text x="154" y="355" text-anchor="middle" fill="#8b949e" font-size="9">"$VAR" no $VAR</text>
+
+  <rect x="282" y="323" width="228" height="35" rx="5" fill="#161b22" stroke="#f0883e" stroke-width="1"/>
+  <text x="396" y="340" text-anchor="middle" fill="#f0883e" font-size="10" font-weight="bold">Valores por defecto</text>
+  <text x="396" y="355" text-anchor="middle" fill="#8b949e" font-size="9">${VAR:-default}</text>
+
+  <rect x="524" y="323" width="236" height="35" rx="5" fill="#161b22" stroke="#f85149" stroke-width="1"/>
+  <text x="642" y="340" text-anchor="middle" fill="#f85149" font-size="10" font-weight="bold">Validación obligatoria</text>
+  <text x="642" y="355" text-anchor="middle" fill="#8b949e" font-size="9">: "${VAR:?Requerida}"</text>
+</svg>

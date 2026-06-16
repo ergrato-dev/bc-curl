@@ -1,5 +1,7 @@
 # Control de Output: Silent, -o y separacion de streams
 
+![Control de Output](../0-assets/02-silent-y-output-control.svg)
+
 ## El problema del output por defecto
 
 Cuando ejecutas curl en una terminal interactiva, muestra una barra de progreso

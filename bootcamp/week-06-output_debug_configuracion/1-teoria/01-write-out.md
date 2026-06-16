@@ -1,5 +1,7 @@
 # El flag --write-out
 
+![--write-out](../0-assets/01-write-out.svg)
+
 ## Que es
 
 `--write-out` (forma corta: `-w`) le dice a curl que imprima informacion extra

@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 370" font-family="Arial, Helvetica, sans-serif">
+  <rect width="800" height="370" fill="#0d1117"/>
+
+  <text x="400" y="32" text-anchor="middle" fill="#f0f6fc" font-size="22" font-weight="bold">Depuración: -v, --trace y --trace-ascii</text>
+  <text x="400" y="52" text-anchor="middle" fill="#8b949e" font-size="12">Tres niveles de verbosidad para entender qué pasa en cada request</text>
+
+  <!-- Levels -->
+  <rect x="25" y="75" width="240" height="130" rx="8" fill="#161b22" stroke="#f0883e" stroke-width="1.5"/>
+  <text x="145" y="103" text-anchor="middle" fill="#f0883e" font-size="14" font-weight="bold">-v (verbose)</text>
+  <text x="145" y="122" text-anchor="middle" fill="#8b949e" font-size="10">Nivel: medio</text>
+  <rect x="40" y="135" width="210" height="28" rx="3" fill="#1f2937"/>
+  <text x="145" y="153" text-anchor="middle" fill="#8b949e" font-size="9">* DNS + TCP</text>
+  <rect x="40" y="168" width="210" height="28" rx="3" fill="#1f2937"/>
+  <text x="145" y="186" text-anchor="middle" fill="#8b949e" font-size="9">&gt; Headers enviados</text>
+  <rect x="40" y="200" width="210" height="22" rx="3" fill="#2d0a0a"/>
+  <text x="145" y="215" text-anchor="middle" fill="#f85149" font-size="9">NO muestra body binario</text>
+
+  <rect x="280" y="75" width="240" height="130" rx="8" fill="#161b22" stroke="#79c0ff" stroke-width="1.5"/>
+  <text x="400" y="103" text-anchor="middle" fill="#79c0ff" font-size="14" font-weight="bold">--trace-ascii</text>
+  <text x="400" y="122" text-anchor="middle" fill="#8b949e" font-size="10">Nivel: profundo</text>
+  <rect x="295" y="135" width="210" height="28" rx="3" fill="#1f2937"/>
+  <text x="400" y="153" text-anchor="middle" fill="#8b949e" font-size="9">hex + ASCII legible</text>
+  <rect x="295" y="168" width="210" height="28" rx="3" fill="#1f2937"/>
+  <text x="400" y="186" text-anchor="middle" fill="#8b949e" font-size="9">todos los bytes</text>
+  <rect x="295" y="200" width="210" height="22" rx="3" fill="#0d2f1a"/>
+  <text x="400" y="215" text-anchor="middle" fill="#3fb950" font-size="9">mejor para debugging</text>
+
+  <rect x="535" y="75" width="240" height="130" rx="8" fill="#161b22" stroke="#d2a8ff" stroke-width="1.5"/>
+  <text x="655" y="103" text-anchor="middle" fill="#d2a8ff" font-size="14" font-weight="bold">--trace</text>
+  <text x="655" y="122" text-anchor="middle" fill="#8b949e" font-size="10">Nivel: máximo</text>
+  <rect x="550" y="135" width="210" height="28" rx="3" fill="#1f2937"/>
+  <text x="655" y="153" text-anchor="middle" fill="#8b949e" font-size="9">dump binario completo</text>
+  <rect x="550" y="168" width="210" height="28" rx="3" fill="#1f2937"/>
+  <text x="655" y="186" text-anchor="middle" fill="#8b949e" font-size="9">no legible directo</text>
+  <rect x="550" y="200" width="210" height="22" rx="3" fill="#2d0a0a"/>
+  <text x="655" y="215" text-anchor="middle" fill="#f85149" font-size="9">rara vez necesario</text>
+
+  <!-- Phases -->
+  <text x="40" y="235" fill="#79c0ff" font-size="14" font-weight="bold">Fases visibles en un trace</text>
+
+  <rect x="40" y="250" width="120" height="28" rx="4" fill="#161b22" stroke="#f0883e" stroke-width="1"/>
+  <text x="100" y="269" text-anchor="middle" fill="#f0883e" font-size="10" font-weight="bold">① DNS/TCP</text>
+  <text x="175" y="267" fill="#8b949e" font-size="14">→</text>
+  <rect x="190" y="250" width="120" height="28" rx="4" fill="#161b22" stroke="#79c0ff" stroke-width="1"/>
+  <text x="250" y="269" text-anchor="middle" fill="#79c0ff" font-size="10" font-weight="bold">② TLS handshake</text>
+  <text x="325" y="267" fill="#8b949e" font-size="14">→</text>
+  <rect x="340" y="250" width="120" height="28" rx="4" fill="#161b22" stroke="#3fb950" stroke-width="1"/>
+  <text x="400" y="269" text-anchor="middle" fill="#3fb950" font-size="10" font-weight="bold">③ Send header</text>
+  <text x="475" y="267" fill="#8b949e" font-size="14">→</text>
+  <rect x="490" y="250" width="120" height="28" rx="4" fill="#161b22" stroke="#d2a8ff" stroke-width="1"/>
+  <text x="550" y="269" text-anchor="middle" fill="#d2a8ff" font-size="10" font-weight="bold">④ Recv header</text>
+  <text x="625" y="267" fill="#8b949e" font-size="14">→</text>
+  <rect x="640" y="250" width="120" height="28" rx="4" fill="#161b22" stroke="#f0f6fc" stroke-width="1"/>
+  <text x="700" y="269" text-anchor="middle" fill="#f0f6fc" font-size="10" font-weight="bold">⑤ Recv data</text>
+
+  <!-- Commands -->
+  <text x="40" y="310" fill="#79c0ff" font-size="14" font-weight="bold">Comandos útiles</text>
+
+  <rect x="40" y="325" width="350" height="22" rx="4" fill="#1f2937"/>
+  <text x="55" y="340" fill="#8b949e" font-family="'Courier New', monospace" font-size="10">curl -v URL 2>&amp;1 | grep -E "^&gt;|^&lt;"    (solo headers)</text>
+
+  <rect x="410" y="325" width="350" height="22" rx="4" fill="#1f2937"/>
+  <text x="425" y="340" fill="#8b949e" font-family="'Courier New', monospace" font-size="10">curl --trace-ascii trace.txt --trace-time URL   (con timestamps)</text>
+
+  <rect x="40" y="350" width="720" height="16" rx="3" fill="#162340"/>
+  <text x="60" y="362" fill="#79c0ff" font-size="9">Prefijos: * = info de curl · &gt; = datos enviados al servidor · &lt; = datos recibidos del servidor</text>
+</svg>

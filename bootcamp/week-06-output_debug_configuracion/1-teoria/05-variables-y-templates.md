@@ -1,5 +1,7 @@
 # Variables Bash y Templates con curl
 
+![Variables y Templates](../0-assets/05-variables-y-templates.svg)
+
 ## Por que usar variables
 
 Los comandos curl para uso real raramente tienen la URL y todos los parametros

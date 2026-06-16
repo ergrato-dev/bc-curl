@@ -1,5 +1,7 @@
 # Depuracion: -v, --trace y --trace-ascii
 
+![Depuración](../0-assets/03-verbose-y-trace.svg)
+
 ## Niveles de verbosidad
 
 curl ofrece tres niveles de informacion de depuracion, cada uno mas detallado
