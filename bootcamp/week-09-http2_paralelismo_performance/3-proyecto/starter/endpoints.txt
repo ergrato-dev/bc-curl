@@ -1,0 +1,8 @@
+# Endpoints para benchmark
+# Una URL por linea. Lineas con # son comentarios.
+
+https://api.github.com/users/octocat
+https://jsonplaceholder.typicode.com/posts/1
+https://httpbin.org/get
+https://httpbin.org/delay/1
+https://jsonplaceholder.typicode.com/users

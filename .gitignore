@@ -1,0 +1,8 @@
+.DS_Store
+*.log
+.env
+.env.local
+*.tmp
+node_modules/
+__pycache__/
+.vscode/settings.json
