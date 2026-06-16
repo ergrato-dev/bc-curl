@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" font-family="Arial, Helvetica, sans-serif">
-  <rect width="800" height="400" fill="#0d1117"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" font-family="Arial, Helvetica, sans-serif">
+  <rect width="800" height="500" fill="#0d1117"/>
 
   <!-- Title -->
   <text x="400" y="35" text-anchor="middle" fill="#f0f6fc" font-size="22" font-weight="bold">Arquitectura de curl</text>
@@ -40,51 +40,51 @@
   </defs>
 
   <!-- Bottom: key features -->
-  <rect x="20" y="210" width="370" height="55" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1"/>
-  <text x="40" y="233" fill="#79c0ff" font-size="12" font-weight="bold">Características clave</text>
-  <text x="40" y="252" fill="#8b949e" font-size="11">
+  <rect x="20" y="310" width="370" height="55" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="40" y="333" fill="#79c0ff" font-size="12" font-weight="bold">Características clave</text>
+  <text x="40" y="352" fill="#8b949e" font-size="11">
     <tspan fill="#3fb950">✓</tspan> Soporta HTTP/1.1, HTTP/2, HTTP/3
     <tspan dx="15" fill="#3fb950">✓</tspan> TLS/SSL transparente
     <tspan dx="15" fill="#3fb950">✓</tspan> Proxy, cookies, auth
   </text>
 
-  <rect x="410" y="210" width="370" height="55" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1"/>
-  <text x="430" y="233" fill="#79c0ff" font-size="12" font-weight="bold">Instalación</text>
-  <text x="430" y="252" fill="#8b949e" font-size="11">
+  <rect x="410" y="310" width="370" height="70" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="430" y="333" fill="#79c0ff" font-size="12" font-weight="bold">Instalación</text>
+  <text x="430" y="352" fill="#8b949e" font-size="11">
     <tspan fill="#f0883e">$</tspan> sudo apt install curl<tspan dx="30" fill="#f0883e">$</tspan> sudo dnf install curl
     <tspan x="430" dy="18" fill="#f0883e">$</tspan> brew install curl<tspan dx="29" fill="#f0883e">$</tspan> winget install curl.curl
   </text>
 
   <!-- Bottom: Flags -->
-  <rect x="20" y="285" width="760" height="100" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1"/>
-  <text x="40" y="308" fill="#79c0ff" font-size="12" font-weight="bold">Flags esenciales de esta semana</text>
+  <rect x="20" y="395" width="760" height="95" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="40" y="415" fill="#79c0ff" font-size="12" font-weight="bold">Flags esenciales de esta semana</text>
 
   <!-- Flag cards -->
-  <rect x="40" y="320" width="90" height="50" rx="5" fill="#0d1117" stroke="#f0883e" stroke-width="1"/>
-  <text x="85" y="342" text-anchor="middle" fill="#f0883e" font-family="'Courier New', monospace" font-size="15" font-weight="bold">-v</text>
-  <text x="85" y="360" text-anchor="middle" fill="#8b949e" font-size="9">verbose</text>
+  <rect x="40" y="428" width="90" height="50" rx="5" fill="#0d1117" stroke="#f0883e" stroke-width="1"/>
+  <text x="85" y="450" text-anchor="middle" fill="#f0883e" font-family="'Courier New', monospace" font-size="15" font-weight="bold">-v</text>
+  <text x="85" y="468" text-anchor="middle" fill="#8b949e" font-size="9">verbose</text>
 
-  <rect x="140" y="320" width="90" height="50" rx="5" fill="#0d1117" stroke="#79c0ff" stroke-width="1"/>
-  <text x="185" y="342" text-anchor="middle" fill="#79c0ff" font-family="'Courier New', monospace" font-size="15" font-weight="bold">-i</text>
-  <text x="185" y="360" text-anchor="middle" fill="#8b949e" font-size="9">include</text>
+  <rect x="140" y="428" width="90" height="50" rx="5" fill="#0d1117" stroke="#79c0ff" stroke-width="1"/>
+  <text x="185" y="450" text-anchor="middle" fill="#79c0ff" font-family="'Courier New', monospace" font-size="15" font-weight="bold">-i</text>
+  <text x="185" y="468" text-anchor="middle" fill="#8b949e" font-size="9">include</text>
 
-  <rect x="240" y="320" width="90" height="50" rx="5" fill="#0d1117" stroke="#3fb950" stroke-width="1"/>
-  <text x="285" y="342" text-anchor="middle" fill="#3fb950" font-family="'Courier New', monospace" font-size="15" font-weight="bold">-I</text>
-  <text x="285" y="360" text-anchor="middle" fill="#8b949e" font-size="9">head</text>
+  <rect x="240" y="428" width="90" height="50" rx="5" fill="#0d1117" stroke="#3fb950" stroke-width="1"/>
+  <text x="285" y="450" text-anchor="middle" fill="#3fb950" font-family="'Courier New', monospace" font-size="15" font-weight="bold">-I</text>
+  <text x="285" y="468" text-anchor="middle" fill="#8b949e" font-size="9">head</text>
 
-  <rect x="340" y="320" width="90" height="50" rx="5" fill="#0d1117" stroke="#d2a8ff" stroke-width="1"/>
-  <text x="385" y="342" text-anchor="middle" fill="#d2a8ff" font-family="'Courier New', monospace" font-size="15" font-weight="bold">-o</text>
-  <text x="385" y="360" text-anchor="middle" fill="#8b949e" font-size="9">output</text>
+  <rect x="340" y="428" width="90" height="50" rx="5" fill="#0d1117" stroke="#d2a8ff" stroke-width="1"/>
+  <text x="385" y="450" text-anchor="middle" fill="#d2a8ff" font-family="'Courier New', monospace" font-size="15" font-weight="bold">-o</text>
+  <text x="385" y="468" text-anchor="middle" fill="#8b949e" font-size="9">output</text>
 
-  <rect x="440" y="320" width="90" height="50" rx="5" fill="#0d1117" stroke="#f0883e" stroke-width="1"/>
-  <text x="485" y="342" text-anchor="middle" fill="#f0883e" font-family="'Courier New', monospace" font-size="15" font-weight="bold">-s</text>
-  <text x="485" y="360" text-anchor="middle" fill="#8b949e" font-size="9">silent</text>
+  <rect x="440" y="428" width="90" height="50" rx="5" fill="#0d1117" stroke="#f0883e" stroke-width="1"/>
+  <text x="485" y="450" text-anchor="middle" fill="#f0883e" font-family="'Courier New', monospace" font-size="15" font-weight="bold">-s</text>
+  <text x="485" y="468" text-anchor="middle" fill="#8b949e" font-size="9">silent</text>
 
-  <rect x="540" y="320" width="90" height="50" rx="5" fill="#0d1117" stroke="#79c0ff" stroke-width="1"/>
-  <text x="585" y="342" text-anchor="middle" fill="#79c0ff" font-family="'Courier New', monospace" font-size="15" font-weight="bold">-L</text>
-  <text x="585" y="360" text-anchor="middle" fill="#8b949e" font-size="9">location</text>
+  <rect x="540" y="428" width="90" height="50" rx="5" fill="#0d1117" stroke="#79c0ff" stroke-width="1"/>
+  <text x="585" y="450" text-anchor="middle" fill="#79c0ff" font-family="'Courier New', monospace" font-size="15" font-weight="bold">-L</text>
+  <text x="585" y="468" text-anchor="middle" fill="#8b949e" font-size="9">location</text>
 
-  <rect x="640" y="320" width="90" height="50" rx="5" fill="#0d1117" stroke="#3fb950" stroke-width="1"/>
-  <text x="685" y="342" text-anchor="middle" fill="#3fb950" font-family="'Courier New', monospace" font-size="15" font-weight="bold">-X</text>
-  <text x="685" y="360" text-anchor="middle" fill="#8b949e" font-size="9">request</text>
+  <rect x="640" y="428" width="90" height="50" rx="5" fill="#0d1117" stroke="#3fb950" stroke-width="1"/>
+  <text x="685" y="450" text-anchor="middle" fill="#3fb950" font-family="'Courier New', monospace" font-size="15" font-weight="bold">-X</text>
+  <text x="685" y="468" text-anchor="middle" fill="#8b949e" font-size="9">request</text>
 </svg>

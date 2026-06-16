@@ -1,94 +1,145 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" font-family="Arial, Helvetica, sans-serif">
-  <rect width="800" height="480" fill="#0d1117"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 490" font-family="Arial, Helvetica, sans-serif">
+  <rect width="900" height="490" fill="#0d1117"/>
 
-  <!-- Title -->
-  <text x="400" y="30" text-anchor="middle" fill="#f0f6fc" font-size="22" font-weight="bold">Primer Request GET — Salida verbose explicada</text>
-  <text x="400" y="50" text-anchor="middle" fill="#8b949e" font-size="12">curl -v https://httpbin.org/get</text>
+  <!-- ─── Title ─── -->
+  <text x="450" y="30" text-anchor="middle" fill="#f0f6fc" font-size="20" font-weight="bold">Primer Request GET — Salida verbose explicada</text>
+  <text x="450" y="50" text-anchor="middle" fill="#8b949e" font-size="12">curl -v https://httpbin.org/get</text>
 
-  <!-- Command line -->
-  <rect x="40" y="70" width="720" height="30" rx="4" fill="#161b22" stroke="#30363d" stroke-width="1"/>
-  <text x="60" y="90" fill="#f0883e" font-family="'Courier New', monospace" font-size="13">$ curl -v https://httpbin.org/get</text>
-
-  <!-- Output mockup -->
-  <rect x="40" y="110" width="720" height="350" rx="6" fill="#0d1117" stroke="#30363d" stroke-width="1.5"/>
-
-  <!-- Line 1: DNS -->
-  <rect x="45" y="118" width="710" height="24" rx="2" fill="#1f2937"/>
-  <text x="55" y="134" font-family="'Courier New', monospace" font-size="11">
-    <tspan fill="#f0883e">*</tspan><tspan fill="#8b949e"> Trying 54.175.219.8:443...</tspan>
-  </text>
-  <!-- Annotation -->
-  <line x1="560" y1="130" x2="590" y2="130" stroke="#f0883e" stroke-width="1"/>
-  <text x="595" y="134" fill="#f0883e" font-size="10">← Resolución DNS + conexión TCP</text>
-
-  <!-- Line 2: Connected -->
-  <rect x="45" y="146" width="710" height="24" rx="2" fill="#1f2937"/>
-  <text x="55" y="162" font-family="'Courier New', monospace" font-size="11">
-    <tspan fill="#f0883e">*</tspan><tspan fill="#3fb950"> Connected to httpbin.org (54.75.19.8) port 443</tspan>
-  </text>
-  <line x1="560" y1="158" x2="590" y2="158" stroke="#3fb950" stroke-width="1"/>
-  <text x="595" y="162" fill="#3fb950" font-size="10">← TCP establecida en puerto 443 (HTTPS)</text>
-
-  <!-- Line 3: TLS -->
-  <rect x="45" y="174" width="710" height="24" rx="2" fill="#1f2937"/>
-  <text x="55" y="190" font-family="'Courier New', monospace" font-size="11">
-    <tspan fill="#f0883e">*</tspan><tspan fill="#8b949e"> SSL/TLS handshake completed successfully</tspan>
-  </text>
-  <line x1="560" y1="186" x2="590" y2="186" stroke="#8b949e" stroke-width="1"/>
-  <text x="595" y="190" fill="#d2a8ff" font-size="10">← Handshake TLS (cifrado negociado)</text>
-
-  <!-- Line 4: Request headers sent -->
-  <rect x="45" y="202" width="710" height="24" rx="2" fill="#1f2937"/>
-  <text x="55" y="218" font-family="'Courier New', monospace" font-size="11">
-    <tspan fill="#79c0ff">&gt;</tspan><tspan fill="#f0f6fc"> GET /get HTTP/2</tspan>
-  </text>
-  <line x1="560" y1="214" x2="590" y2="214" stroke="#79c0ff" stroke-width="1"/>
-  <text x="595" y="218" fill="#79c0ff" font-size="10">← Request enviado (&gt; = cliente → servidor)</text>
-
-  <rect x="45" y="230" width="710" height="24" rx="2" fill="#1f2937"/>
-  <text x="55" y="246" font-family="'Courier New', monospace" font-size="11">
-    <tspan fill="#79c0ff">&gt;</tspan><tspan fill="#8b949e"> Host: httpbin.org</tspan>
+  <!-- ─── Command bar ─── -->
+  <rect x="20" y="60" width="860" height="32" rx="4" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text y="81" font-family="'Courier New',Courier,monospace" font-size="13">
+    <tspan x="40" fill="#3fb950">$</tspan>
+    <tspan fill="#f0883e"> curl</tspan>
+    <tspan fill="#e6edf3"> -v https://httpbin.org/get</tspan>
   </text>
 
-  <rect x="45" y="258" width="710" height="24" rx="2" fill="#1f2937"/>
-  <text x="55" y="274" font-family="'Courier New', monospace" font-size="11">
-    <tspan fill="#79c0ff">&gt;</tspan><tspan fill="#8b949e"> User-Agent: curl/8.5.0</tspan>
+  <!-- ─── Outer terminal frame ─── -->
+  <rect x="20" y="102" width="860" height="376" rx="6" fill="#0d1117" stroke="#30363d" stroke-width="1.5"/>
+
+  <!-- ═══════════════════════════════════════════════════
+       SECCIÓN 1 — CONEXIÓN  (barra naranja, y=108-212)
+       ═══════════════════════════════════════════════════ -->
+  <rect x="26" y="108" width="4" height="104" rx="2" fill="#f0883e" opacity="0.7"/>
+  <text x="38" y="121" fill="#f0883e" font-size="9.5" font-weight="bold">CONEXIÓN</text>
+
+  <!-- Fila 1 -->
+  <rect x="33" y="124" width="522" height="24" rx="2" fill="#161b22"/>
+  <text y="141" font-family="'Courier New',Courier,monospace" font-size="11">
+    <tspan x="47" fill="#f0883e">*</tspan>
+    <tspan fill="#8b949e"> Trying 54.175.219.8:443...</tspan>
+  </text>
+  <!-- Fila 2 -->
+  <rect x="33" y="151" width="522" height="24" rx="2" fill="#161b22"/>
+  <text y="168" font-family="'Courier New',Courier,monospace" font-size="11">
+    <tspan x="47" fill="#f0883e">*</tspan>
+    <tspan fill="#3fb950"> Connected to httpbin.org (54.75.19.8) port 443</tspan>
+  </text>
+  <!-- Fila 3 -->
+  <rect x="33" y="178" width="522" height="24" rx="2" fill="#161b22"/>
+  <text y="195" font-family="'Courier New',Courier,monospace" font-size="11">
+    <tspan x="47" fill="#f0883e">*</tspan>
+    <tspan fill="#8b949e"> SSL/TLS handshake completed successfully</tspan>
   </text>
 
-  <rect x="45" y="286" width="710" height="24" rx="2" fill="#1f2937"/>
-  <text x="55" y="302" font-family="'Courier New', monospace" font-size="11">
-    <tspan fill="#79c0ff">&gt;</tspan><tspan fill="#8b949e"> Accept: */*</tspan>
+  <!-- ═══════════════════════════════════════════════════
+       SECCIÓN 2 — REQUEST →  (barra azul, y=218-364)
+       ═══════════════════════════════════════════════════ -->
+  <rect x="26" y="218" width="4" height="146" rx="2" fill="#79c0ff" opacity="0.7"/>
+  <text x="38" y="231" fill="#79c0ff" font-size="9.5" font-weight="bold">REQUEST →</text>
+
+  <!-- Fila 4 -->
+  <rect x="33" y="234" width="522" height="24" rx="2" fill="#161b22"/>
+  <text y="251" font-family="'Courier New',Courier,monospace" font-size="11">
+    <tspan x="47" fill="#79c0ff">&gt;</tspan>
+    <tspan fill="#f0f6fc"> GET /get HTTP/2</tspan>
+  </text>
+  <!-- Fila 5 -->
+  <rect x="33" y="261" width="522" height="24" rx="2" fill="#161b22"/>
+  <text y="278" font-family="'Courier New',Courier,monospace" font-size="11">
+    <tspan x="47" fill="#79c0ff">&gt;</tspan>
+    <tspan fill="#8b949e"> Host: httpbin.org</tspan>
+  </text>
+  <!-- Fila 6 -->
+  <rect x="33" y="288" width="522" height="24" rx="2" fill="#161b22"/>
+  <text y="305" font-family="'Courier New',Courier,monospace" font-size="11">
+    <tspan x="47" fill="#79c0ff">&gt;</tspan>
+    <tspan fill="#8b949e"> User-Agent: curl/8.5.0</tspan>
+  </text>
+  <!-- Fila 7 -->
+  <rect x="33" y="315" width="522" height="24" rx="2" fill="#161b22"/>
+  <text y="332" font-family="'Courier New',Courier,monospace" font-size="11">
+    <tspan x="47" fill="#79c0ff">&gt;</tspan>
+    <tspan fill="#8b949e"> Accept: */*</tspan>
+  </text>
+  <!-- Fila 8 (línea vacía cierra headers) -->
+  <rect x="33" y="342" width="522" height="24" rx="2" fill="#161b22"/>
+  <text y="359" font-family="'Courier New',Courier,monospace" font-size="11">
+    <tspan x="47" fill="#79c0ff">&gt;</tspan>
   </text>
 
-  <rect x="45" y="314" width="710" height="24" rx="2" fill="#1f2937"/>
-  <text x="55" y="330" font-family="'Courier New', monospace" font-size="11">
-    <tspan fill="#79c0ff">&gt;</tspan>
+  <!-- ═══════════════════════════════════════════════════
+       SECCIÓN 3 — ← RESPONSE  (barra lila, y=372-474)
+       ═══════════════════════════════════════════════════ -->
+  <rect x="26" y="372" width="4" height="104" rx="2" fill="#d2a8ff" opacity="0.7"/>
+  <text x="38" y="385" fill="#d2a8ff" font-size="9.5" font-weight="bold">← RESPONSE</text>
+
+  <!-- Fila 9 -->
+  <rect x="33" y="388" width="522" height="24" rx="2" fill="#161b22"/>
+  <text y="405" font-family="'Courier New',Courier,monospace" font-size="11">
+    <tspan x="47" fill="#d2a8ff">&lt;</tspan>
+    <tspan fill="#f0f6fc"> HTTP/2 200</tspan>
+  </text>
+  <!-- Fila 10 -->
+  <rect x="33" y="415" width="522" height="24" rx="2" fill="#161b22"/>
+  <text y="432" font-family="'Courier New',Courier,monospace" font-size="11">
+    <tspan x="47" fill="#d2a8ff">&lt;</tspan>
+    <tspan fill="#8b949e"> content-type: application/json</tspan>
+  </text>
+  <!-- Fila 11 -->
+  <rect x="33" y="442" width="522" height="24" rx="2" fill="#161b22"/>
+  <text y="459" font-family="'Courier New',Courier,monospace" font-size="11">
+    <tspan x="47" fill="#d2a8ff">&lt;</tspan>
+    <tspan fill="#8b949e"> content-length: 252</tspan>
   </text>
 
-  <!-- Line 7: Response headers received -->
-  <rect x="45" y="342" width="710" height="24" rx="2" fill="#1f2937"/>
-  <text x="55" y="358" font-family="'Courier New', monospace" font-size="11">
-    <tspan fill="#d2a8ff">&lt;</tspan><tspan fill="#f0f6fc"> HTTP/2 200</tspan>
-  </text>
-  <line x1="560" y1="354" x2="590" y2="354" stroke="#d2a8ff" stroke-width="1"/>
-  <text x="595" y="358" fill="#d2a8ff" font-size="10">← Respuesta recibida (&lt; = servidor → cliente)</text>
+  <!-- ═══════════════════════════════════════════════════
+       COLUMNA DERECHA — Anotaciones (x=580 a x=875)
+       ═══════════════════════════════════════════════════ -->
 
-  <rect x="45" y="370" width="710" height="24" rx="2" fill="#1f2937"/>
-  <text x="55" y="386" font-family="'Courier New', monospace" font-size="11">
-    <tspan fill="#d2a8ff">&lt;</tspan><tspan fill="#8b949e"> content-type: application/json</tspan>
-  </text>
+  <!-- Líneas de conexión (terminal → tarjeta) -->
+  <line x1="557" y1="163" x2="578" y2="163" stroke="#f0883e" stroke-width="1" stroke-dasharray="3,2"/>
+  <line x1="557" y1="299" x2="578" y2="299" stroke="#79c0ff" stroke-width="1" stroke-dasharray="3,2"/>
+  <line x1="557" y1="428" x2="578" y2="428" stroke="#d2a8ff" stroke-width="1" stroke-dasharray="3,2"/>
 
-  <rect x="45" y="398" width="710" height="24" rx="2" fill="#1f2937"/>
-  <text x="55" y="414" font-family="'Courier New', monospace" font-size="11">
-    <tspan fill="#d2a8ff">&lt;</tspan><tspan fill="#8b949e"> content-length: 252</tspan>
-  </text>
+  <!-- ── Tarjeta 1: CONEXIÓN ── -->
+  <rect x="580" y="108" width="296" height="108" rx="5" fill="#161b22" stroke="#f0883e" stroke-width="1"/>
+  <text x="596" y="126" fill="#f0883e" font-size="11" font-weight="bold">CONEXIÓN</text>
+  <line x1="596" y1="131" x2="862" y2="131" stroke="#f0883e" stroke-width="0.5" opacity="0.4"/>
+  <text x="596" y="148" fill="#8b949e" font-size="10.5">
+    <tspan fill="#f0883e">*</tspan> = evento interno de libcurl</text>
+  <text x="596" y="165" fill="#8b949e" font-size="10.5">DNS: hostname → IP del servidor</text>
+  <text x="596" y="182" fill="#8b949e" font-size="10.5">TLS: handshake + cifrado activo</text>
+  <text x="596" y="199" fill="#8b949e" font-size="10.5">Puerto 443 = HTTPS siempre cifrado</text>
 
-  <rect x="45" y="426" width="710" height="24" rx="2" fill="#1f2937"/>
-  <text x="55" y="442" font-family="'Courier New', monospace" font-size="11">
-    <tspan fill="#d2a8ff">&lt;</tspan>
-  </text>
+  <!-- ── Tarjeta 2: REQUEST → ── -->
+  <rect x="580" y="224" width="296" height="144" rx="5" fill="#161b22" stroke="#79c0ff" stroke-width="1"/>
+  <text x="596" y="242" fill="#79c0ff" font-size="11" font-weight="bold">REQUEST →</text>
+  <line x1="596" y1="247" x2="862" y2="247" stroke="#79c0ff" stroke-width="0.5" opacity="0.4"/>
+  <text x="596" y="264" fill="#8b949e" font-size="10.5">
+    <tspan fill="#79c0ff">&gt;</tspan> = curl envía al servidor</text>
+  <text x="596" y="281" fill="#8b949e" font-size="10.5">Línea 1: MÉTODO  RUTA  PROTOCOLO</text>
+  <text x="596" y="298" fill="#8b949e" font-size="10.5">Host: a qué servidor se conecta</text>
+  <text x="596" y="315" fill="#8b949e" font-size="10.5">User-Agent: quién hace el request</text>
+  <text x="596" y="332" fill="#8b949e" font-size="10.5">Línea vacía <tspan fill="#79c0ff">&gt;</tspan> cierra headers</text>
+  <text x="596" y="349" fill="#8b949e" font-size="10.5">Accept: formato aceptado (*/*)</text>
 
-  <!-- Legend -->
-  <rect x="455" y="335" width="100" height="22" rx="3" fill="#162340"/>
-  <text x="505" y="350" text-anchor="middle" fill="#79c0ff" font-size="9" font-weight="bold">KEY</text>
+  <!-- ── Tarjeta 3: ← RESPONSE ── -->
+  <rect x="580" y="376" width="296" height="104" rx="5" fill="#161b22" stroke="#d2a8ff" stroke-width="1"/>
+  <text x="596" y="394" fill="#d2a8ff" font-size="11" font-weight="bold">← RESPONSE</text>
+  <line x1="596" y1="399" x2="862" y2="399" stroke="#d2a8ff" stroke-width="0.5" opacity="0.4"/>
+  <text x="596" y="416" fill="#8b949e" font-size="10.5">
+    <tspan fill="#d2a8ff">&lt;</tspan> = servidor responde a curl</text>
+  <text x="596" y="433" fill="#8b949e" font-size="10.5">HTTP/2 <tspan fill="#3fb950">200</tspan> = éxito ✓</text>
+  <text x="596" y="450" fill="#8b949e" font-size="10.5">content-type → formato del body</text>
+  <text x="596" y="467" fill="#8b949e" font-size="10.5">content-length → tamaño en bytes</text>
 </svg>
