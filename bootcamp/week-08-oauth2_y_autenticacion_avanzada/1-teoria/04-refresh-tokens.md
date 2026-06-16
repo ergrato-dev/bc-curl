@@ -1,5 +1,7 @@
 # Refresh Tokens
 
+![Refresh Tokens](../0-assets/04-refresh-tokens.svg)
+
 ## Por Que Expiran los Access Tokens
 
 Los access tokens tienen vida corta intencionalmente. Si un access token se filtra (en un log, en trafico interceptado, en un error de codigo), el dano es limitado: el atacante solo puede usarlo hasta que expire.

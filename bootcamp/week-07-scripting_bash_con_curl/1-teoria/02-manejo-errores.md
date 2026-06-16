@@ -1,5 +1,7 @@
 # Manejo de Errores en Scripts con curl
 
+![Manejo de Errores](../0-assets/02-manejo-errores.svg)
+
 ## El patron basico
 
 La forma mas simple de manejar errores de curl en un script es con `if`:

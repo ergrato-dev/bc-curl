@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 390" font-family="Arial, Helvetica, sans-serif">
+  <rect width="800" height="390" fill="#0d1117"/>
+
+  <text x="400" y="32" text-anchor="middle" fill="#f0f6fc" font-size="22" font-weight="bold">Procesamiento JSON con jq</text>
+  <text x="400" y="52" text-anchor="middle" fill="#8b949e" font-size="12">jq es para JSON lo que sed/awk son para texto: filtrar, transformar y crear</text>
+
+  <!-- Pipeline -->
+  <text x="40" y="82" fill="#79c0ff" font-size="14" font-weight="bold">Pipeline típico</text>
+  <rect x="40" y="95" width="140" height="35" rx="5" fill="#161b22" stroke="#f0883e" stroke-width="1"/>
+  <text x="110" y="118" text-anchor="middle" fill="#f0883e" font-size="11" font-weight="bold">curl API</text>
+  <text x="195" y="115" fill="#8b949e" font-size="18">→</text>
+  <rect x="210" y="95" width="140" height="35" rx="5" fill="#161b22" stroke="#3fb950" stroke-width="1.5"/>
+  <text x="280" y="118" text-anchor="middle" fill="#3fb950" font-size="11" font-weight="bold">jq filtro</text>
+  <text x="365" y="115" fill="#8b949e" font-size="18">→</text>
+  <rect x="380" y="95" width="140" height="35" rx="5" fill="#161b22" stroke="#d2a8ff" stroke-width="1"/>
+  <text x="450" y="118" text-anchor="middle" fill="#d2a8ff" font-size="11" font-weight="bold">resultado</text>
+
+  <!-- Filters grid -->
+  <text x="40" y="165" fill="#79c0ff" font-size="14" font-weight="bold">Filtros esenciales</text>
+
+  <rect x="40" y="178" width="228" height="45" rx="5" fill="#161b22" stroke="#3fb950" stroke-width="1"/>
+  <text x="154" y="196" text-anchor="middle" fill="#3fb950" font-family="'Courier New', monospace" font-size="11" font-weight="bold">.campo</text>
+  <text x="154" y="215" text-anchor="middle" fill="#8b949e" font-size="10">acceder a un campo</text>
+
+  <rect x="282" y="178" width="228" height="45" rx="5" fill="#161b22" stroke="#79c0ff" stroke-width="1"/>
+  <text x="396" y="196" text-anchor="middle" fill="#79c0ff" font-family="'Courier New', monospace" font-size="11" font-weight="bold">.[]</text>
+  <text x="396" y="215" text-anchor="middle" fill="#8b949e" font-size="10">iterar array</text>
+
+  <rect x="524" y="178" width="236" height="45" rx="5" fill="#161b22" stroke="#f0883e" stroke-width="1"/>
+  <text x="642" y="196" text-anchor="middle" fill="#f0883e" font-family="'Courier New', monospace" font-size="11" font-weight="bold">select(.x == 1)</text>
+  <text x="642" y="215" text-anchor="middle" fill="#8b949e" font-size="10">filtrar por condición</text>
+
+  <rect x="40" y="236" width="228" height="45" rx="5" fill="#161b22" stroke="#d2a8ff" stroke-width="1"/>
+  <text x="154" y="254" text-anchor="middle" fill="#d2a8ff" font-family="'Courier New', monospace" font-size="11" font-weight="bold">map(.x)</text>
+  <text x="154" y="273" text-anchor="middle" fill="#8b949e" font-size="10">transformar array</text>
+
+  <rect x="282" y="236" width="228" height="45" rx="5" fill="#161b22" stroke="#3fb950" stroke-width="1"/>
+  <text x="396" y="254" text-anchor="middle" fill="#3fb950" font-family="'Courier New', monospace" font-size="11" font-weight="bold">-r</text>
+  <text x="396" y="273" text-anchor="middle" fill="#8b949e" font-size="10">raw string (sin comillas)</text>
+
+  <rect x="524" y="236" width="236" height="45" rx="5" fill="#161b22" stroke="#79c0ff" stroke-width="1"/>
+  <text x="642" y="254" text-anchor="middle" fill="#79c0ff" font-family="'Courier New', monospace" font-size="11" font-weight="bold">jq -n --arg</text>
+  <text x="642" y="273" text-anchor="middle" fill="#8b949e" font-size="10">crear JSON desde cero</text>
+
+  <!-- Examples -->
+  <text x="40" y="310" fill="#79c0ff" font-size="14" font-weight="bold">Ejemplos con jsonplaceholder</text>
+
+  <rect x="40" y="325" width="720" height="26" rx="4" fill="#1f2937"/>
+  <text x="55" y="342" fill="#8b949e" font-family="'Courier New', monospace" font-size="10">curl -s URL/users | jq -r '.[].name'                              ← nombres de todos los usuarios</text>
+
+  <rect x="40" y="356" width="720" height="26" rx="4" fill="#1f2937"/>
+  <text x="55" y="373" fill="#8b949e" font-family="'Courier New', monospace" font-size="10">curl -s URL/users | jq '.[] | select(.id > 5) | .email'          ← emails de usuarios con id > 5</text>
+</svg>

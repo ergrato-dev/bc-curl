@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 390" font-family="Arial, Helvetica, sans-serif">
+  <rect width="800" height="390" fill="#0d1117"/>
+
+  <text x="400" y="32" text-anchor="middle" fill="#f0f6fc" font-size="22" font-weight="bold">Estructura de Scripts Bash para Producción</text>
+  <text x="400" y="52" text-anchor="middle" fill="#8b949e" font-size="12">Organización profesional: shebang, funciones, argparse, idempotencia</text>
+
+  <!-- Script anatomy -->
+  <text x="40" y="82" fill="#79c0ff" font-size="14" font-weight="bold">Anatomía de un script profesional</text>
+
+  <rect x="40" y="97" width="720" height="165" rx="6" fill="#0d1117" stroke="#30363d" stroke-width="1"/>
+  <rect x="50" y="105" width="700" height="22" rx="3" fill="#162340"/>
+  <text x="60" y="120" fill="#79c0ff" font-family="'Courier New', monospace" font-size="10">#!/bin/bash</text>
+
+  <rect x="50" y="132" width="700" height="22" rx="3" fill="#1f2937"/>
+  <text x="60" y="147" fill="#f0883e" font-family="'Courier New', monospace" font-size="10">set -uo pipefail       ← seguridad: variables no definidas, pipeline completo</text>
+
+  <rect x="50" y="159" width="700" height="22" rx="3" fill="#1f2937"/>
+  <text x="60" y="174" fill="#3fb950" font-family="'Courier New', monospace" font-size="10">readonly BASE_URL=...  ← constantes en MAYÚSCULAS</text>
+
+  <rect x="50" y="186" width="700" height="22" rx="3" fill="#1f2937"/>
+  <text x="60" y="201" fill="#d2a8ff" font-family="'Courier New', monospace" font-size="10">log() { echo "[$(date)] $*" >&2; }          die() { log "ERROR: $*"; exit 1; }</text>
+
+  <rect x="50" y="213" width="700" height="22" rx="3" fill="#1f2937"/>
+  <text x="60" y="228" fill="#79c0ff" font-family="'Courier New', monospace" font-size="10">api_get() { ... }      ← funciones reutilizables</text>
+
+  <rect x="50" y="240" width="700" height="22" rx="3" fill="#1f2937"/>
+  <text x="60" y="255" fill="#f0883e" font-family="'Courier New', monospace" font-size="10">main() { case "$cmd" in list|get|create|...) ... esac }  main "$@"</text>
+
+  <!-- Key principles -->
+  <text x="40" y="292" fill="#79c0ff" font-size="14" font-weight="bold">Principios clave</text>
+
+  <rect x="40" y="305" width="228" height="35" rx="5" fill="#161b22" stroke="#3fb950" stroke-width="1"/>
+  <text x="154" y="322" text-anchor="middle" fill="#3fb950" font-size="10" font-weight="bold">Secrets: nunca hardcodeados</text>
+  <text x="154" y="337" text-anchor="middle" fill="#8b949e" font-size="9">variables de entorno o archivo</text>
+
+  <rect x="282" y="305" width="228" height="35" rx="5" fill="#161b22" stroke="#79c0ff" stroke-width="1"/>
+  <text x="396" y="322" text-anchor="middle" fill="#79c0ff" font-size="10" font-weight="bold">Idempotencia</text>
+  <text x="396" y="337" text-anchor="middle" fill="#8b949e" font-size="9">verificar antes de crear</text>
+
+  <rect x="524" y="305" width="236" height="35" rx="5" fill="#161b22" stroke="#d2a8ff" stroke-width="1"/>
+  <text x="642" y="322" text-anchor="middle" fill="#d2a8ff" font-size="10" font-weight="bold">--dry-run mode</text>
+  <text x="642" y="337" text-anchor="middle" fill="#8b949e" font-size="9">mostrar sin ejecutar</text>
+
+  <rect x="40" y="352" width="228" height="35" rx="5" fill="#161b22" stroke="#f0883e" stroke-width="1"/>
+  <text x="154" y="369" text-anchor="middle" fill="#f0883e" font-size="10" font-weight="bold">Cleanup con trap</text>
+  <text x="154" y="384" text-anchor="middle" fill="#8b949e" font-size="9">trap 'rm -rf "$TMP"' EXIT</text>
+
+  <rect x="282" y="352" width="228" height="35" rx="5" fill="#161b22" stroke="#3fb950" stroke-width="1"/>
+  <text x="396" y="369" text-anchor="middle" fill="#3fb950" font-size="10" font-weight="bold">Argparse con case</text>
+  <text x="396" y="384" text-anchor="middle" fill="#8b949e" font-size="9">subcomandos limpios</text>
+
+  <rect x="524" y="352" width="236" height="35" rx="5" fill="#161b22" stroke="#79c0ff" stroke-width="1"/>
+  <text x="642" y="369" text-anchor="middle" fill="#79c0ff" font-size="10" font-weight="bold">Logging a stderr</text>
+  <text x="642" y="384" text-anchor="middle" fill="#8b949e" font-size="9">datos → stdout, logs → stderr</text>
+</svg>

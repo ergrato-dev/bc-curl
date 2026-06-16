@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 370" font-family="Arial, Helvetica, sans-serif">
+  <rect width="800" height="370" fill="#0d1117"/>
+
+  <text x="400" y="32" text-anchor="middle" fill="#f0f6fc" font-size="22" font-weight="bold">Exit Codes de curl</text>
+  <text x="400" y="52" text-anchor="middle" fill="#8b949e" font-size="12">curl retorna 0 en errores HTTP por defecto. Usar -f para exit code 22 en 4xx/5xx</text>
+
+  <!-- Key insight -->
+  <rect x="40" y="72" width="720" height="40" rx="6" fill="#2d0a0a" stroke="#f85149" stroke-width="1.5"/>
+  <text x="400" y="90" text-anchor="middle" fill="#f85149" font-size="12" font-weight="bold">Sin -f: curl retorna exit 0 aunque el servidor responda 404 o 500</text>
+  <text x="400" y="108" text-anchor="middle" fill="#8b949e" font-size="10">Motivo: curl completó la transferencia. Lo que el servidor responda es cosa del servidor.</text>
+
+  <!-- Exit codes grid -->
+  <text x="40" y="140" fill="#79c0ff" font-size="14" font-weight="bold">Exit codes comunes</text>
+
+  <rect x="40" y="153" width="168" height="45" rx="5" fill="#0d2f1a" stroke="#3fb950" stroke-width="1"/>
+  <text x="124" y="173" text-anchor="middle" fill="#3fb950" font-size="11" font-weight="bold">0</text>
+  <text x="124" y="192" text-anchor="middle" fill="#8b949e" font-size="9">Éxito</text>
+
+  <rect x="220" y="153" width="168" height="45" rx="5" fill="#2d0a0a" stroke="#f0883e" stroke-width="1"/>
+  <text x="304" y="173" text-anchor="middle" fill="#f0883e" font-size="11" font-weight="bold">6</text>
+  <text x="304" y="192" text-anchor="middle" fill="#8b949e" font-size="9">DNS falló</text>
+
+  <rect x="400" y="153" width="168" height="45" rx="5" fill="#2d0a0a" stroke="#f0883e" stroke-width="1"/>
+  <text x="484" y="173" text-anchor="middle" fill="#f0883e" font-size="11" font-weight="bold">7</text>
+  <text x="484" y="192" text-anchor="middle" fill="#8b949e" font-size="9">Sin conexión</text>
+
+  <rect x="580" y="153" width="180" height="45" rx="5" fill="#2d0a0a" stroke="#f85149" stroke-width="1"/>
+  <text x="670" y="173" text-anchor="middle" fill="#f85149" font-size="11" font-weight="bold">22</text>
+  <text x="670" y="192" text-anchor="middle" fill="#8b949e" font-size="9">HTTP error (con -f)</text>
+
+  <rect x="40" y="208" width="168" height="45" rx="5" fill="#2d0a0a" stroke="#f0883e" stroke-width="1"/>
+  <text x="124" y="228" text-anchor="middle" fill="#f0883e" font-size="11" font-weight="bold">28</text>
+  <text x="124" y="247" text-anchor="middle" fill="#8b949e" font-size="9">Timeout</text>
+
+  <rect x="220" y="208" width="168" height="45" rx="5" fill="#2d0a0a" stroke="#f0883e" stroke-width="1"/>
+  <text x="304" y="228" text-anchor="middle" fill="#f0883e" font-size="11" font-weight="bold">35</text>
+  <text x="304" y="247" text-anchor="middle" fill="#8b949e" font-size="9">Error SSL/TLS</text>
+
+  <rect x="400" y="208" width="168" height="45" rx="5" fill="#2d0a0a" stroke="#f0883e" stroke-width="1"/>
+  <text x="484" y="228" text-anchor="middle" fill="#f0883e" font-size="11" font-weight="bold">47</text>
+  <text x="484" y="247" text-anchor="middle" fill="#8b949e" font-size="9">Muchos redirects</text>
+
+  <rect x="580" y="208" width="180" height="45" rx="5" fill="#2d0a0a" stroke="#f0883e" stroke-width="1"/>
+  <text x="670" y="228" text-anchor="middle" fill="#f0883e" font-size="11" font-weight="bold">56</text>
+  <text x="670" y="247" text-anchor="middle" fill="#8b949e" font-size="9">Error de red</text>
+
+  <!-- -f vs --fail-with-body -->
+  <text x="40" y="285" fill="#79c0ff" font-size="14" font-weight="bold">Flags para controlar exit codes</text>
+
+  <rect x="40" y="300" width="350" height="38" rx="5" fill="#161b22" stroke="#f0883e" stroke-width="1"/>
+  <text x="215" y="318" text-anchor="middle" fill="#f0883e" font-size="11" font-weight="bold">-f (--fail)</text>
+  <text x="215" y="334" text-anchor="middle" fill="#8b949e" font-size="9">exit 22 en 4xx/5xx · suprime el body</text>
+
+  <rect x="410" y="300" width="350" height="38" rx="5" fill="#161b22" stroke="#3fb950" stroke-width="1"/>
+  <text x="585" y="318" text-anchor="middle" fill="#3fb950" font-size="11" font-weight="bold">--fail-with-body</text>
+  <text x="585" y="334" text-anchor="middle" fill="#8b949e" font-size="9">exit 22 pero conserva el body</text>
+
+  <rect x="40" y="348" width="720" height="18" rx="3" fill="#162340"/>
+  <text x="60" y="361" fill="#79c0ff" font-size="9">Capturar en script: CURL_EXIT=$? + HTTP_CODE con -w → dos capas de error distintas</text>
+</svg>

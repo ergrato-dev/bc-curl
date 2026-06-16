@@ -1,5 +1,7 @@
 # Exit Codes de curl
 
+![Exit Codes de curl](../0-assets/01-exit-codes-curl.svg)
+
 ## El malentendido mas comun
 
 curl retorna exit code 0 (exito) si pudo completar la transferencia, independientemente

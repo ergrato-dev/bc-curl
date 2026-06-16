@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 390" font-family="Arial, Helvetica, sans-serif">
+  <rect width="800" height="390" fill="#0d1117"/>
+
+  <text x="400" y="32" text-anchor="middle" fill="#f0f6fc" font-size="22" font-weight="bold">Refresh Tokens</text>
+  <text x="400" y="52" text-anchor="middle" fill="#8b949e" font-size="12">Access tokens expiran rápido. Refresh tokens permiten renovarlos sin re-login.</text>
+
+  <!-- Why -->
+  <text x="40" y="82" fill="#79c0ff" font-size="14" font-weight="bold">¿Por qué refresh tokens?</text>
+
+  <rect x="40" y="97" width="720" height="45" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="60" y="118" fill="#8b949e" font-size="10">Access token: vida corta (5-60 min) → reduce riesgo si es robado</text>
+  <text x="60" y="135" fill="#8b949e" font-size="10">Refresh token: vida larga (días/semanas) → permite renovar sin pedir credenciales de nuevo</text>
+
+  <!-- Refresh request -->
+  <text x="40" y="170" fill="#79c0ff" font-size="14" font-weight="bold">Renovar token con curl</text>
+  <rect x="40" y="185" width="720" height="38" rx="6" fill="#161b22" stroke="#3fb950" stroke-width="1"/>
+  <text x="55" y="202" fill="#8b949e" font-family="'Courier New', monospace" font-size="10">curl -s -X POST TOKEN_URL -d grant_type=refresh_token -d refresh_token=RT -d client_id=ID -d client_secret=SECRET | jq -r '.access_token'</text>
+
+  <!-- Two strategies -->
+  <text x="40" y="252" fill="#79c0ff" font-size="14" font-weight="bold">Dos estrategias de renovación</text>
+
+  <rect x="40" y="267" width="350" height="65" rx="6" fill="#161b22" stroke="#f0883e" stroke-width="1.5"/>
+  <text x="215" y="290" text-anchor="middle" fill="#f0883e" font-size="12" font-weight="bold">Reactiva (on 401)</text>
+  <text x="55" y="312" fill="#8b949e" font-size="10">1. Hacer request con token</text>
+  <text x="55" y="328" fill="#8b949e" font-size="10">2. Si 401, refrescar token</text>
+  <text x="55" y="344" fill="#8b949e" font-size="10">3. Reintentar request una vez</text>
+
+  <rect x="410" y="267" width="350" height="65" rx="6" fill="#161b22" stroke="#3fb950" stroke-width="1.5"/>
+  <text x="585" y="290" text-anchor="middle" fill="#3fb950" font-size="12" font-weight="bold">Proactiva (antes de usar)</text>
+  <text x="425" y="312" fill="#8b949e" font-size="10">1. Verificar exp del token</text>
+  <text x="425" y="328" fill="#8b949e" font-size="10">2. Si expira en &lt; 60s, refrescar antes</text>
+  <text x="425" y="344" fill="#8b949e" font-size="10">3. Hacer request con token fresco</text>
+
+  <!-- Token lifecycle -->
+  <rect x="40" y="348" width="720" height="30" rx="4" fill="#162340"/>
+  <text x="60" y="368" fill="#79c0ff" font-size="10">Ciclo: Login → Access Token (corto) → Refresh Token (largo) → Nuevo Access Token → ... → Refresh Token expira → Re-login</text>
+</svg>

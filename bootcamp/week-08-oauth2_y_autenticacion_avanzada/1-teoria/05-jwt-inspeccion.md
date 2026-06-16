@@ -1,5 +1,7 @@
 # JWT: Inspeccion y Decodificacion
 
+![JWT Inspección](../0-assets/05-jwt-inspeccion.svg)
+
 ## Que es un JWT
 
 JWT (JSON Web Token, pronunciado "yot") es un formato de token compacto y autocontenido. Un JWT lleva información dentro de sí mismo, lo que permite al Resource Server verificarlo sin consultar al Authorization Server en cada request.

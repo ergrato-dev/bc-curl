@@ -1,5 +1,7 @@
 # Loops, Iteracion y Paginacion
 
+![Loops y Paginación](../0-assets/04-loops-y-paginacion.svg)
+
 ## Iterar sobre una lista de IDs
 
 El caso mas simple: tienes una lista de IDs y quieres hacer un request por cada uno.

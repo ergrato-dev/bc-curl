@@ -1,5 +1,7 @@
 # Estructura de Scripts Bash para Produccion
 
+![Scripts para Producción](../0-assets/05-scripts-produccion.svg)
+
 ## El shebang y opciones de seguridad
 
 Todo script de produccion empieza con:

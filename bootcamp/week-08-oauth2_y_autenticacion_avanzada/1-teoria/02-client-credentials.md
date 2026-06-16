@@ -1,5 +1,7 @@
 # Client Credentials Flow
 
+![Client Credentials Flow](../0-assets/02-client-credentials.svg)
+
 ## El Flujo Mas Simple
 
 Client Credentials es el flujo OAuth2 para comunicacion maquina a maquina. No hay usuario, no hay browser, no hay intervencion humana. La aplicacion se autentica directamente con sus propias credenciales.

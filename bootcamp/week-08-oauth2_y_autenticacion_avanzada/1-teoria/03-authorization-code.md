@@ -1,5 +1,7 @@
 # Authorization Code Flow
 
+![Authorization Code Flow](../0-assets/03-authorization-code.svg)
+
 ## Cuando Usar Este Flujo
 
 Client Credentials es suficiente cuando la aplicacion actua con su propia identidad. Authorization Code se usa cuando la aplicacion necesita actuar **en nombre de un usuario**: leer sus emails, publicar en sus redes sociales, acceder a su almacenamiento en la nube.

@@ -1,5 +1,7 @@
 # OAuth2: Conceptos Fundamentales
 
+![OAuth2 Conceptos](../0-assets/01-oauth2-conceptos.svg)
+
 ## Que es OAuth2
 
 OAuth2 (RFC 6749) es un **protocolo de autorización**, no de autenticación. Esta distinción es importante y frecuentemente mal entendida:

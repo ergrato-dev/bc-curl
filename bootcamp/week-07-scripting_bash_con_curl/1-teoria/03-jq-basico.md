@@ -1,5 +1,7 @@
 # Procesamiento JSON con jq
 
+![Procesamiento JSON con jq](../0-assets/03-jq-basico.svg)
+
 ## Que es jq
 
 jq es un procesador JSON de linea de comandos. Lee JSON de stdin (o de un archivo),
