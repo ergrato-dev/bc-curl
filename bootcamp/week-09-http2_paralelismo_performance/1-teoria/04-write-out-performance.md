@@ -1,5 +1,7 @@
 # Write-Out: Profiling de Performance
 
+![Profiling de Performance](../0-assets/04-write-out-performance.svg)
+
 ## Variables de Tiempo en --write-out
 
 La opcion `--write-out` (o `-w`) permite imprimir variables internas de curl al finalizar un request. Las variables de tiempo miden cada fase del ciclo de vida del request.

@@ -1,5 +1,7 @@
 # Reutilizacion de Conexiones
 
+![Reutilización de Conexiones](../0-assets/03-connection-reuse.svg)
+
 ## Por Que Importa
 
 Establecer una conexion HTTP tiene un costo:

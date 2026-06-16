@@ -1,5 +1,7 @@
 # HTTP/2: Conceptos y Diferencias con HTTP/1.1
 
+![HTTP/2 Conceptos](../0-assets/01-http2-conceptos.svg)
+
 ## El Problema de HTTP/1.1
 
 HTTP/1.1, publicado en 1999, funciona con un modelo simple: un request por conexion TCP a la vez. Para cargar una pagina web con 30 recursos (HTML, CSS, JS, imagenes), el browser necesita:

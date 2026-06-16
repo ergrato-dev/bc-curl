@@ -1,5 +1,7 @@
 # Requests Paralelos con curl
 
+![Requests Paralelos](../0-assets/02-parallel-requests.svg)
+
 ## El Problema del Loop Secuencial
 
 El patron tipico de scripting para muchas URLs es un loop:

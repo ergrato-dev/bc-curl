@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 390" font-family="Arial, Helvetica, sans-serif">
+  <rect width="800" height="390" fill="#0d1117"/>
+
+  <text x="400" y="32" text-anchor="middle" fill="#f0f6fc" font-size="22" font-weight="bold">Requests Paralelos con curl</text>
+  <text x="400" y="52" text-anchor="middle" fill="#8b949e" font-size="12">--parallel (-Z) ejecuta múltiples transfers en simultáneo (curl 7.66+)</text>
+
+  <!-- Sequential vs Parallel -->
+  <text x="40" y="82" fill="#f85149" font-size="14" font-weight="bold">Secuencial (loop tradicional)</text>
+  <rect x="40" y="97" width="720" height="32" rx="4" fill="#2d0a0a" stroke="#f85149" stroke-width="1"/>
+  <text x="55" y="118" fill="#8b949e" font-family="'Courier New', monospace" font-size="10">for url in URL1 URL2 URL3; do curl -s "$url"; done    ← uno tras otro, lento</text>
+
+  <text x="40" y="155" fill="#3fb950" font-size="14" font-weight="bold">Paralelo (--parallel)</text>
+  <rect x="40" y="170" width="720" height="32" rx="4" fill="#0d2f1a" stroke="#3fb950" stroke-width="1"/>
+  <text x="55" y="191" fill="#8b949e" font-family="'Courier New', monospace" font-size="10">curl --parallel --parallel-max 5 -o out1 URL1 -o out2 URL2 -o out3 URL3    ← simultáneo, rápido</text>
+
+  <!-- Techniques -->
+  <text x="40" y="230" fill="#79c0ff" font-size="14" font-weight="bold">Técnicas para paralelismo con curl</text>
+
+  <rect x="40" y="245" width="228" height="55" rx="5" fill="#161b22" stroke="#3fb950" stroke-width="1"/>
+  <text x="154" y="265" text-anchor="middle" fill="#3fb950" font-size="11" font-weight="bold">--parallel (nativo)</text>
+  <text x="154" y="283" text-anchor="middle" fill="#8b949e" font-size="9">curl 7.66+ · -Z es alias</text>
+  <text x="154" y="298" text-anchor="middle" fill="#8b949e" font-size="9">Multiplexación HTTP/2</text>
+
+  <rect x="282" y="245" width="228" height="55" rx="5" fill="#161b22" stroke="#79c0ff" stroke-width="1"/>
+  <text x="396" y="265" text-anchor="middle" fill="#79c0ff" font-size="11" font-weight="bold">xargs -P N</text>
+  <text x="396" y="283" text-anchor="middle" fill="#8b949e" font-size="9">URLs desde stdin</text>
+  <text x="396" y="298" text-anchor="middle" fill="#8b949e" font-size="9">Múltiples procesos curl</text>
+
+  <rect x="524" y="245" width="236" height="55" rx="5" fill="#161b22" stroke="#d2a8ff" stroke-width="1"/>
+  <text x="642" y="265" text-anchor="middle" fill="#d2a8ff" font-size="11" font-weight="bold">bash &amp; (background)</text>
+  <text x="642" y="283" text-anchor="middle" fill="#8b949e" font-size="9">curl URL &amp; → wait</text>
+  <text x="642" y="298" text-anchor="middle" fill="#8b949e" font-size="9">Sin control de concurrencia</text>
+
+  <!-- --parallel-max -->
+  <text x="40" y="328" fill="#79c0ff" font-size="14" font-weight="bold">Control de concurrencia</text>
+  <rect x="40" y="343" width="720" height="35" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="55" y="363" fill="#8b949e" font-family="'Courier New', monospace" font-size="10">curl --parallel --parallel-max 5 --parallel-immediate URL1 URL2 ... URL20    (máx 5 simultáneos, sin esperar)</text>
+</svg>

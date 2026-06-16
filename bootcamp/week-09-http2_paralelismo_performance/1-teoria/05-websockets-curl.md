@@ -1,5 +1,7 @@
 # WebSockets con curl
 
+![WebSockets con curl](../0-assets/05-websockets-curl.svg)
+
 ## Que es WebSocket
 
 WebSocket es un protocolo de comunicacion full-duplex sobre TCP. A diferencia de HTTP (request → response → cierra/reutiliza), WebSocket establece un canal persistente donde ambas partes pueden enviar mensajes en cualquier momento sin necesidad de un request previo.
