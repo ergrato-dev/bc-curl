@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 370" font-family="Arial, Helvetica, sans-serif">
+  <rect width="800" height="370" fill="#0d1117"/>
+
+  <text x="400" y="32" text-anchor="middle" fill="#f0f6fc" font-size="22" font-weight="bold">Configuración Persistente en Bash</text>
+  <text x="400" y="52" text-anchor="middle" fill="#8b949e" font-size="12">Estado entre ejecuciones: directorio de config, token, logs y migración</text>
+
+  <!-- Directory structure -->
+  <text x="40" y="82" fill="#79c0ff" font-size="14" font-weight="bold">Directorio de configuración (~/.api-toolkit/)</text>
+
+  <rect x="40" y="97" width="330" height="85" rx="6" fill="#161b22" stroke="#f0883e" stroke-width="1.5"/>
+  <text x="205" y="118" text-anchor="middle" fill="#f0883e" font-size="12" font-weight="bold">config (KEY=VALUE)</text>
+  <text x="55" y="140" fill="#8b949e" font-family="'Courier New', monospace" font-size="10">BASE_URL=https://api.com</text>
+  <text x="55" y="158" fill="#8b949e" font-family="'Courier New', monospace" font-size="10">TIMEOUT=30</text>
+  <text x="55" y="176" fill="#8b949e" font-size="9">Source-able por bash (sin jq)</text>
+
+  <rect x="390" y="97" width="370" height="85" rx="6" fill="#161b22" stroke="#3fb950" stroke-width="1.5"/>
+  <text x="575" y="118" text-anchor="middle" fill="#3fb950" font-size="12" font-weight="bold">token.json</text>
+  <text x="405" y="140" fill="#8b949e" font-family="'Courier New', monospace" font-size="10">{"access_token":"eyJ...",</text>
+  <text x="405" y="158" fill="#8b949e" font-family="'Courier New', monospace" font-size="10">"expires_at":1700000000}</text>
+  <text x="405" y="176" fill="#8b949e" font-size="9">calcular expires_at = now + expires_in</text>
+
+  <!-- Precedence -->
+  <text x="40" y="212" fill="#79c0ff" font-size="14" font-weight="bold">Precedencia de configuración (menor a mayor)</text>
+
+  <rect x="40" y="227" width="168" height="35" rx="4" fill="#161b22" stroke="#8b949e" stroke-width="1"/>
+  <text x="124" y="249" text-anchor="middle" fill="#8b949e" font-size="10">1. Defaults en código</text>
+  <text x="218" y="248" fill="#8b949e" font-size="16">→</text>
+  <rect x="230" y="227" width="168" height="35" rx="4" fill="#161b22" stroke="#d2a8ff" stroke-width="1"/>
+  <text x="314" y="249" text-anchor="middle" fill="#d2a8ff" font-size="10">2. Archivo config</text>
+  <text x="408" y="248" fill="#8b949e" font-size="16">→</text>
+  <rect x="420" y="227" width="168" height="35" rx="4" fill="#161b22" stroke="#79c0ff" stroke-width="1"/>
+  <text x="504" y="249" text-anchor="middle" fill="#79c0ff" font-size="10">3. Variables de entorno</text>
+  <text x="598" y="248" fill="#8b949e" font-size="16">→</text>
+  <rect x="610" y="227" width="150" height="35" rx="4" fill="#0d2f1a" stroke="#3fb950" stroke-width="1"/>
+  <text x="685" y="249" text-anchor="middle" fill="#3fb950" font-size="10">4. CLI flags</text>
+
+  <!-- Token lifecycle -->
+  <text x="40" y="295" fill="#79c0ff" font-size="14" font-weight="bold">Ciclo de vida del token</text>
+  <rect x="40" y="310" width="720" height="28" rx="4" fill="#1f2937"/>
+  <text x="55" y="329" fill="#8b949e" font-family="'Courier New', monospace" font-size="10">save_token() → load_token() → is_token_valid() [ expires_at > now + 60s ] → do_refresh() → save_token() → ...</text>
+
+  <!-- Logging -->
+  <rect x="40" y="348" width="720" height="18" rx="3" fill="#162340"/>
+  <text x="60" y="361" fill="#79c0ff" font-size="10">log_request() escribe a requests.log (append-only) · Rotación cuando > 1MB · chmod 600 siempre</text>
+</svg>

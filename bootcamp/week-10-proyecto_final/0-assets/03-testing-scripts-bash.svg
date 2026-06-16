@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 380" font-family="Arial, Helvetica, sans-serif">
+  <rect width="800" height="380" fill="#0d1117"/>
+
+  <text x="400" y="32" text-anchor="middle" fill="#f0f6fc" font-size="22" font-weight="bold">Testing de Scripts Bash con bats-core</text>
+  <text x="400" y="52" text-anchor="middle" fill="#8b949e" font-size="12">Framework de testing para bash: assertions, mocks de curl, CI con GitHub Actions</text>
+
+  <!-- bats structure -->
+  <text x="40" y="82" fill="#79c0ff" font-size="14" font-weight="bold">Estructura de un test bats</text>
+
+  <rect x="40" y="97" width="720" height="80" rx="6" fill="#0d1117" stroke="#30363d" stroke-width="1"/>
+  <text x="55" y="118" fill="#8b949e" font-family="'Courier New', monospace" font-size="10">setup()  { ... }           ← se ejecuta antes de cada @test</text>
+  <text x="55" y="138" fill="#8b949e" font-family="'Courier New', monospace" font-size="10">teardown() { ... }          ← se ejecuta después de cada @test</text>
+  <text x="55" y="158" fill="#8b949e" font-family="'Courier New', monospace" font-size="10">@test "debe retornar 200" {</text>
+  <text x="55" y="175" fill="#8b949e" font-family="'Courier New', monospace" font-size="10">  run curl -s -o /dev/null -w "%{http_code}" https://httpbin.org/get</text>
+  <text x="55" y="195" fill="#8b949e" font-family="'Courier New', monospace" font-size="10">  [ "$status" -eq 0 ]  // [ "$output" = "200" ]  }</text>
+
+  <!-- Key concepts -->
+  <text x="40" y="212" fill="#79c0ff" font-size="14" font-weight="bold">Conceptos clave</text>
+
+  <rect x="40" y="227" width="228" height="45" rx="5" fill="#161b22" stroke="#3fb950" stroke-width="1"/>
+  <text x="154" y="247" text-anchor="middle" fill="#3fb950" font-size="11" font-weight="bold">$status</text>
+  <text x="154" y="265" text-anchor="middle" fill="#8b949e" font-size="9">exit code del comando run</text>
+
+  <rect x="282" y="227" width="228" height="45" rx="5" fill="#161b22" stroke="#79c0ff" stroke-width="1"/>
+  <text x="396" y="247" text-anchor="middle" fill="#79c0ff" font-size="11" font-weight="bold">$output</text>
+  <text x="396" y="265" text-anchor="middle" fill="#8b949e" font-size="9">stdout del comando run</text>
+
+  <rect x="524" y="227" width="236" height="45" rx="5" fill="#161b22" stroke="#d2a8ff" stroke-width="1"/>
+  <text x="642" y="247" text-anchor="middle" fill="#d2a8ff" font-size="11" font-weight="bold">$lines</text>
+  <text x="642" y="265" text-anchor="middle" fill="#8b949e" font-size="9">array con cada línea de output</text>
+
+  <!-- Mocking curl -->
+  <text x="40" y="302" fill="#79c0ff" font-size="14" font-weight="bold">Mock de curl para tests unitarios rápidos</text>
+  <rect x="40" y="317" width="720" height="35" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="55" y="335" fill="#8b949e" font-family="'Courier New', monospace" font-size="10"># Crear curl falso en el PATH de test: echo 'echo "200"' > /tmp/test-bin/curl && chmod +x</text>
+  <text x="55" y="351" fill="#8b949e" font-family="'Courier New', monospace" font-size="10"># En setup(): export PATH="/tmp/test-bin:$PATH"</text>
+
+  <!-- CI -->
+  <rect x="40" y="360" width="720" height="16" rx="3" fill="#162340"/>
+  <text x="60" y="372" fill="#79c0ff" font-size="9">Estrategia: Unit tests (bats + mock curl) → Integration tests (httpbin real) → Smoke test (post-deploy, GitHub Actions)</text>
+</svg>

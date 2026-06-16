@@ -1,5 +1,7 @@
 # Configuracion persistente en bash
 
+![Configuración Persistente](../0-assets/02-configuracion-persistente.svg)
+
 [← 01: Arquitectura CLI](01-arquitectura-cli.md) | [→ 03: Testing](03-testing-scripts-bash.md)
 
 ---

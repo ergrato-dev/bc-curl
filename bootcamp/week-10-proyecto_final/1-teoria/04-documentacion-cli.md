@@ -1,5 +1,7 @@
 # Documentar una herramienta CLI profesionalmente
 
+![Documentación CLI](../0-assets/04-documentacion-cli.svg)
+
 [← 03: Testing](03-testing-scripts-bash.md) | [→ 05: CI/CD con curl](05-ci-cd-curl.md)
 
 ---

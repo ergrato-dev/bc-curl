@@ -1,5 +1,7 @@
 # Testing de scripts bash con bats-core
 
+![Testing con bats](../0-assets/03-testing-scripts-bash.svg)
+
 [← 02: Configuracion persistente](02-configuracion-persistente.md) | [→ 04: Documentacion CLI](04-documentacion-cli.md)
 
 ---

@@ -1,5 +1,7 @@
 # Arquitectura de herramientas CLI profesionales con bash
 
+![Arquitectura CLI](../0-assets/01-arquitectura-cli.svg)
+
 [← Semana 10](../README.md) | [→ 02: Configuración persistente](02-configuracion-persistente.md)
 
 ---

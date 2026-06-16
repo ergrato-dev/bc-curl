@@ -1,5 +1,7 @@
 # curl en contextos CI/CD y automatizacion
 
+![curl en CI/CD](../0-assets/05-ci-cd-curl.svg)
+
 [← 04: Documentacion CLI](04-documentacion-cli.md) | [← Semana 10](../README.md)
 
 ---

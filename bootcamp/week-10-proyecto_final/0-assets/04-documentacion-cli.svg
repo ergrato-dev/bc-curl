@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 380" font-family="Arial, Helvetica, sans-serif">
+  <rect width="800" height="380" fill="#0d1117"/>
+
+  <text x="400" y="32" text-anchor="middle" fill="#f0f6fc" font-size="22" font-weight="bold">Documentación de CLI Profesional</text>
+  <text x="400" y="52" text-anchor="middle" fill="#8b949e" font-size="12">Tres pilares: --help (primer contacto), README.md (completo), CHANGELOG.md (historial)</text>
+
+  <!-- Three pillars -->
+  <text x="40" y="82" fill="#79c0ff" font-size="14" font-weight="bold">Los 3 pilares</text>
+
+  <rect x="40" y="97" width="228" height="100" rx="6" fill="#161b22" stroke="#f0883e" stroke-width="1.5"/>
+  <text x="154" y="120" text-anchor="middle" fill="#f0883e" font-size="13" font-weight="bold">--help</text>
+  <text x="55" y="143" fill="#8b949e" font-size="10">Primer contacto</text>
+  <text x="55" y="162" fill="#8b949e" font-size="10">USAGE + subcomandos</text>
+  <text x="55" y="181" fill="#8b949e" font-size="10">Ejemplos rápidos</text>
+  <text x="55" y="198" fill="#8b949e" font-size="10">$? exit codes</text>
+
+  <rect x="285" y="97" width="228" height="100" rx="6" fill="#161b22" stroke="#3fb950" stroke-width="1.5"/>
+  <text x="399" y="120" text-anchor="middle" fill="#3fb950" font-size="13" font-weight="bold">README.md</text>
+  <text x="300" y="143" fill="#8b949e" font-size="10">Documentación completa</text>
+  <text x="300" y="162" fill="#8b949e" font-size="10">Instalación + prereqs</text>
+  <text x="300" y="181" fill="#8b949e" font-size="10">Quick start + ejemplos</text>
+  <text x="300" y="198" fill="#8b949e" font-size="10">Referencia de comandos</text>
+
+  <rect x="530" y="97" width="230" height="100" rx="6" fill="#161b22" stroke="#79c0ff" stroke-width="1.5"/>
+  <text x="645" y="120" text-anchor="middle" fill="#79c0ff" font-size="13" font-weight="bold">CHANGELOG.md</text>
+  <text x="545" y="143" fill="#8b949e" font-size="10">Historial de cambios</text>
+  <text x="545" y="162" fill="#8b949e" font-size="10">Semantic Versioning</text>
+  <text x="545" y="181" fill="#8b949e" font-size="10">MAJOR.MINOR.PATCH</text>
+  <text x="545" y="198" fill="#8b949e" font-size="10">Formato Keep a Changelog</text>
+
+  <!-- --help conventions -->
+  <text x="40" y="228" fill="#79c0ff" font-size="14" font-weight="bold">Convenciones de --help</text>
+  <rect x="40" y="243" width="720" height="50" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="55" y="263" fill="#8b949e" font-size="10">Comandos en minúscula: <tspan fill="#f0f6fc">login</tspan> · Argumentos en MAYÚSCULA: <tspan fill="#f0f6fc">USER</tspan> · Opcionales entre [ ]: <tspan fill="#f0f6fc">[--output FILE]</tspan></text>
+  <text x="55" y="283" fill="#8b949e" font-size="10">Exit codes al final del help: 0=éxito, 1=error genera, 2=error de uso, 3=sin autenticación</text>
+
+  <!-- README sections -->
+  <rect x="40" y="318" width="340" height="25" rx="4" fill="#1f2937"/>
+  <text x="55" y="335" fill="#8b949e" font-size="10">README: Descripción → Install → Quick Start → Config → Comandos → Troubleshooting</text>
+
+  <rect x="400" y="318" width="360" height="25" rx="4" fill="#1f2937"/>
+  <text x="415" y="335" fill="#8b949e" font-size="10">Código: comentar el "por qué", NO el "qué" · Contratos de función arriba</text>
+
+  <!-- CHANGELOG -->
+  <rect x="40" y="352" width="720" height="22" rx="4" fill="#162340"/>
+  <text x="60" y="367" fill="#79c0ff" font-size="10">SemVer: MAJOR (breaking) . MINOR (feature) . PATCH (bugfix) + Keep a Changelog: Added / Changed / Deprecated / Removed / Fixed</text>
+</svg>
