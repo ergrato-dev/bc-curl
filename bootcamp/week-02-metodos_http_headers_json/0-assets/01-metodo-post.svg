@@ -1,62 +1,76 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" font-family="Arial, Helvetica, sans-serif">
-  <rect width="800" height="450" fill="#0d1117"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" font-family="Arial, Helvetica, sans-serif">
+  <rect width="800" height="480" fill="#0d1117"/>
 
+  <!-- ─── Title ─── -->
   <text x="400" y="32" text-anchor="middle" fill="#f0f6fc" font-size="22" font-weight="bold">Método POST — Enviar datos al servidor</text>
   <text x="400" y="52" text-anchor="middle" fill="#8b949e" font-size="12">POST crea recursos nuevos; envía datos en el body del request</text>
 
-  <!-- Flow diagram -->
-  <rect x="60" y="80" width="190" height="60" rx="8" fill="#161b22" stroke="#f0883e" stroke-width="2"/>
-  <text x="155" y="106" text-anchor="middle" fill="#f0883e" font-size="14" font-weight="bold">curl</text>
-  <text x="155" y="126" text-anchor="middle" fill="#8b949e" font-size="10">cliente HTTP</text>
+  <!-- ─── Flow: curl → servidor ─── -->
+  <rect x="20" y="78" width="180" height="60" rx="8" fill="#161b22" stroke="#f0883e" stroke-width="2"/>
+  <text x="110" y="104" text-anchor="middle" fill="#f0883e" font-size="14" font-weight="bold">curl</text>
+  <text x="110" y="122" text-anchor="middle" fill="#8b949e" font-size="10">cliente HTTP</text>
 
-  <text x="275" y="115" text-anchor="middle" fill="#8b949e" font-size="18">→</text>
+  <text x="218" y="113" text-anchor="middle" fill="#8b949e" font-size="18">→</text>
 
-  <!-- Request box -->
-  <rect x="310" y="70" width="430" height="80" rx="8" fill="#161b22" stroke="#79c0ff" stroke-width="1.5"/>
-  <text x="325" y="93" fill="#79c0ff" font-family="'Courier New', monospace" font-size="12" font-weight="bold">POST /posts HTTP/1.1</text>
-  <text x="325" y="113" fill="#8b949e" font-family="'Courier New', monospace" font-size="11">Host: jsonplaceholder.typicode.com</text>
-  <text x="325" y="133" fill="#3fb950" font-family="'Courier New', monospace" font-size="11">Content-Type: application/json</text>
-  <line x1="325" y1="138" x2="725" y2="138" stroke="#30363d" stroke-width="0.5"/>
-  <text x="525" y="110" fill="#8b949e" font-family="'Courier New', monospace" font-size="11">{"title":"foo","body":"bar","userId":1}</text>
+  <!-- Request box: x=238, w=542 → right edge x=780 -->
+  <rect x="238" y="68" width="542" height="94" rx="8" fill="#161b22" stroke="#79c0ff" stroke-width="1.5"/>
+  <text x="254" y="91" fill="#79c0ff" font-family="'Courier New', monospace" font-size="12" font-weight="bold">POST /posts HTTP/1.1</text>
+  <text x="254" y="111" fill="#8b949e" font-family="'Courier New', monospace" font-size="11">Host: jsonplaceholder.typicode.com</text>
+  <text x="254" y="130" fill="#3fb950" font-family="'Courier New', monospace" font-size="11">Content-Type: application/json</text>
+  <line x1="254" y1="137" x2="764" y2="137" stroke="#30363d" stroke-width="0.5"/>
+  <text x="254" y="153" fill="#8b949e" font-family="'Courier New', monospace" font-size="11">{"title":"foo","body":"bar","userId":1}</text>
 
-  <!-- Response -->
-  <text x="275" y="175" text-anchor="middle" fill="#8b949e" font-size="18">←</text>
-  <rect x="60" y="155" width="190" height="60" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
-  <text x="155" y="181" text-anchor="middle" fill="#3fb950" font-size="14" font-weight="bold">201 Created</text>
-  <text x="155" y="201" text-anchor="middle" fill="#8b949e" font-size="10">recurso creado</text>
+  <!-- ─── Flow: servidor → curl ─── -->
+  <text x="218" y="202" text-anchor="middle" fill="#8b949e" font-size="18">←</text>
 
-  <!-- Response body -->
-  <rect x="310" y="165" width="430" height="50" rx="6" fill="#0d2f1a" stroke="#3fb950" stroke-width="1"/>
-  <text x="325" y="188" fill="#3fb950" font-family="'Courier New', monospace" font-size="11">{"id":101,"title":"foo","body":"bar","userId":1}</text>
-  <text x="325" y="206" fill="#8b949e" font-size="10">El servidor asigna un ID</text>
+  <rect x="20" y="178" width="180" height="60" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="110" y="204" text-anchor="middle" fill="#3fb950" font-size="14" font-weight="bold">201 Created</text>
+  <text x="110" y="222" text-anchor="middle" fill="#8b949e" font-size="10">recurso creado</text>
 
-  <!-- Bottom sections -->
-  <text x="40" y="250" fill="#79c0ff" font-size="14" font-weight="bold">Formas de enviar el body</text>
+  <rect x="238" y="178" width="542" height="58" rx="6" fill="#0d2f1a" stroke="#3fb950" stroke-width="1"/>
+  <text x="254" y="202" fill="#3fb950" font-family="'Courier New', monospace" font-size="11">{"id":101,"title":"foo","body":"bar","userId":1}</text>
+  <text x="254" y="221" fill="#8b949e" font-size="10">El servidor asigna un ID incremental al nuevo recurso</text>
 
-  <rect x="40" y="265" width="230" height="100" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1"/>
-  <text x="155" y="288" text-anchor="middle" fill="#f0f6fc" font-size="12" font-weight="bold">Inline (literal)</text>
-  <text x="55" y="310" fill="#8b949e" font-family="'Courier New', monospace" font-size="10">curl -d '{"title":"Hola"}'</text>
-  <text x="55" y="328" fill="#8b949e" font-family="'Courier New', monospace" font-size="10">  -H "Content-Type: application/json"</text>
-  <text x="55" y="346" fill="#8b949e" font-family="'Courier New', monospace" font-size="10">  https://httpbin.org/post</text>
+  <!-- ─── Formas de enviar el body ─── -->
+  <text x="20" y="262" fill="#79c0ff" font-size="14" font-weight="bold">Formas de enviar el body</text>
 
-  <rect x="285" y="265" width="230" height="100" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1"/>
-  <text x="400" y="288" text-anchor="middle" fill="#f0f6fc" font-size="12" font-weight="bold">Desde archivo</text>
-  <text x="300" y="310" fill="#8b949e" font-family="'Courier New', monospace" font-size="10">curl -d @datos.json</text>
-  <text x="300" y="328" fill="#8b949e" font-family="'Courier New', monospace" font-size="10">  -H "Content-Type: application/json"</text>
-  <text x="300" y="346" fill="#8b949e" font-family="'Courier New', monospace" font-size="10">  https://httpbin.org/post</text>
+  <!-- Card 1: Inline — x=20, w=245, right edge=265 -->
+  <rect x="20" y="274" width="245" height="108" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="142" y="295" text-anchor="middle" fill="#f0f6fc" font-size="12" font-weight="bold">Inline (literal)</text>
+  <text x="36" y="315" fill="#8b949e" font-family="'Courier New', monospace" font-size="10">curl -d '{"title":"Hola"}'</text>
+  <text x="36" y="332" fill="#8b949e" font-family="'Courier New', monospace" font-size="10">-H "Content-Type: application/json"</text>
+  <text x="36" y="349" fill="#8b949e" font-family="'Courier New', monospace" font-size="10">https://httpbin.org/post</text>
+  <text x="36" y="369" fill="#484f58" font-size="9.5">útil para pruebas rápidas</text>
 
-  <rect x="530" y="265" width="230" height="100" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1"/>
-  <text x="645" y="288" text-anchor="middle" fill="#f0f6fc" font-size="12" font-weight="bold">Desde stdin</text>
-  <text x="545" y="310" fill="#8b949e" font-family="'Courier New', monospace" font-size="10">echo '{"x":1}' |</text>
-  <text x="545" y="328" fill="#8b949e" font-family="'Courier New', monospace" font-size="10">  curl -d @-</text>
-  <text x="545" y="346" fill="#8b949e" font-family="'Courier New', monospace" font-size="10">  -H "Content-Type: ..."</text>
+  <!-- Card 2: Desde archivo — x=278, w=245, right edge=523 -->
+  <rect x="278" y="274" width="245" height="108" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="400" y="295" text-anchor="middle" fill="#f0f6fc" font-size="12" font-weight="bold">Desde archivo</text>
+  <text x="294" y="315" fill="#8b949e" font-family="'Courier New', monospace" font-size="10">curl -d @datos.json</text>
+  <text x="294" y="332" fill="#8b949e" font-family="'Courier New', monospace" font-size="10">-H "Content-Type: application/json"</text>
+  <text x="294" y="349" fill="#8b949e" font-family="'Courier New', monospace" font-size="10">https://httpbin.org/post</text>
+  <text x="294" y="369" fill="#484f58" font-size="9.5">@ indica lectura desde fichero</text>
 
-  <!-- Content-Type reminder -->
-  <rect x="40" y="385" width="340" height="50" rx="6" fill="#1a1025" stroke="#d2a8ff" stroke-width="1"/>
-  <text x="210" y="408" text-anchor="middle" fill="#d2a8ff" font-size="12" font-weight="bold">Content-Type según formato del body</text>
-  <text x="210" y="426" text-anchor="middle" fill="#8b949e" font-size="10">JSON: application/json · Form: application/x-www-form-urlencoded · Multipart: multipart/form-data</text>
+  <!-- Card 3: Desde stdin — x=536, w=244, right edge=780 -->
+  <rect x="536" y="274" width="244" height="108" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="658" y="295" text-anchor="middle" fill="#f0f6fc" font-size="12" font-weight="bold">Desde stdin</text>
+  <text x="552" y="315" fill="#8b949e" font-family="'Courier New', monospace" font-size="10">echo '{"x":1}' |</text>
+  <text x="552" y="332" fill="#8b949e" font-family="'Courier New', monospace" font-size="10">curl -d @-</text>
+  <text x="552" y="349" fill="#8b949e" font-family="'Courier New', monospace" font-size="10">-H "Content-Type: application/json"</text>
+  <text x="552" y="369" fill="#484f58" font-size="9.5">@- lee desde stdin (pipe)</text>
 
-  <rect x="400" y="385" width="360" height="50" rx="6" fill="#162340" stroke="#79c0ff" stroke-width="1"/>
-  <text x="580" y="408" text-anchor="middle" fill="#79c0ff" font-size="12" font-weight="bold">Verificar con httpbin</text>
-  <text x="580" y="426" text-anchor="middle" fill="#8b949e" font-size="10">El campo "json" de httpbin muestra si tu JSON fue parseado correctamente</text>
+  <!-- ─── Bottom info bars ─── -->
+
+  <!-- Content-Type bar — x=20, w=365, right edge=385 -->
+  <rect x="20" y="396" width="365" height="76" rx="6" fill="#1a1025" stroke="#d2a8ff" stroke-width="1"/>
+  <text x="202" y="415" text-anchor="middle" fill="#d2a8ff" font-size="12" font-weight="bold">Content-Type según formato del body</text>
+  <text x="36" y="432" fill="#8b949e" font-size="10">· JSON: application/json</text>
+  <text x="36" y="449" fill="#8b949e" font-size="10">· Form: application/x-www-form-urlencoded</text>
+  <text x="36" y="464" fill="#8b949e" font-size="10">· Multipart: multipart/form-data</text>
+
+  <!-- Verificar bar — x=398, w=382, right edge=780 -->
+  <rect x="398" y="396" width="382" height="76" rx="6" fill="#162340" stroke="#79c0ff" stroke-width="1"/>
+  <text x="589" y="415" text-anchor="middle" fill="#79c0ff" font-size="12" font-weight="bold">Verificar con httpbin</text>
+  <text x="589" y="436" text-anchor="middle" fill="#8b949e" font-size="10">El campo "json" en la respuesta indica</text>
+  <text x="589" y="453" text-anchor="middle" fill="#8b949e" font-size="10">si el body JSON fue parseado correctamente</text>
+  <text x="589" y="464" text-anchor="middle" fill="#484f58" font-size="9.5">https://httpbin.org/post → campo "json"</text>
 </svg>
