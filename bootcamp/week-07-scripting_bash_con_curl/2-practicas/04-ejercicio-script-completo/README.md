@@ -10,7 +10,7 @@ usuarios usando la API de jsonplaceholder. El objetivo no es solo que funcione,
 sino que tenga estructura profesional: manejo de errores, logging, validacion
 de argumentos y salidas correctas a stdout y stderr.
 
-## Especificacion
+## Especificación
 
 El script debe aceptar los siguientes subcomandos:
 
@@ -24,7 +24,7 @@ El script debe aceptar los siguientes subcomandos:
 
 Sin argumentos, muestra la ayuda y sale con exit code 1.
 
-## Implementacion paso a paso
+## Implementación paso a paso
 
 ### Paso 1: estructura base y configuracion
 
@@ -222,7 +222,7 @@ echo "Exit: $?"   # debe ser 1
 
 Si terminas el script base y tienes tiempo:
 
-**Opcion A: formato de salida configurable**
+**Opción A: formato de salida configurable**
 
 Agrega una opcion `--format json|table` (default: table) que cambie el formato
 de la salida del subcomando `list`:
@@ -232,14 +232,14 @@ de la salida del subcomando `list`:
 ./user-manager.sh list --format table  # tabla id/nombre (default)
 ```
 
-**Opcion B: filtros adicionales en list**
+**Opción B: filtros adicionales en list**
 
 ```bash
 ./user-manager.sh list --sort-by name   # ordenar por nombre
 ./user-manager.sh list --limit 5        # solo los primeros 5
 ```
 
-**Opcion C: subcomando stats**
+**Opción C: subcomando stats**
 
 ```bash
 ./user-manager.sh stats   # muestra: total usuarios, total posts, promedio posts/usuario

@@ -4,7 +4,7 @@
 
 Implementar el flujo OAuth2 completo contra una API real de produccion usando curl. El ejercicio usa la GitHub API con OAuth Apps, que tiene una implementacion bien documentada y no requiere datos de pago.
 
-## Opcion A: GitHub API con Personal Access Token (mas simple)
+## Opción A: GitHub API con Personal Access Token (mas simple)
 
 GitHub permite usar Personal Access Tokens como Bearer tokens — tecnicamente no es OAuth2 completo pero usa el mismo patron de uso:
 
@@ -27,7 +27,7 @@ curl -sI "https://api.github.com/user" \
   -H "Authorization: Bearer $GITHUB_TOKEN" | grep -i "x-oauth-scopes"
 ```
 
-## Opcion B: GitHub OAuth App (flujo completo)
+## Opción B: GitHub OAuth App (flujo completo)
 
 Para el flujo Authorization Code real con GitHub:
 
@@ -123,11 +123,11 @@ curl -s "https://api.github.com/user/repos?type=private&per_page=3" \
   -H "Authorization: Bearer $ACCESS_TOKEN" | jq '.[].name'
 ```
 
-## Opcion C: Spotify (tiene refresh tokens de verdad)
+## Opción C: Spotify (tiene refresh tokens de verdad)
 
 Spotify tiene un excelente OAuth2 con refresh tokens si preferis practicar con eso. Ver: `https://developer.spotify.com/documentation/web-api/tutorials/getting-started`
 
-## Documentar Tu Implementacion
+## Documentar Tu Implementación
 
 En `respuestas.md` incluir:
 

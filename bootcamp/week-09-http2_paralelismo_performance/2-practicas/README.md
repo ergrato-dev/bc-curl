@@ -1,4 +1,4 @@
-# Practicas — Semana 9: HTTP/2, Paralelismo y Performance
+# Prácticas — Semana 9: HTTP/2, Paralelismo y Performance
 
 Cuatro ejercicios que van de conceptos de protocolo a scripting de performance. El ejercicio 03 produce el script `perf.sh` que se usa como base para el proyecto de la semana.
 
@@ -11,7 +11,7 @@ Cuatro ejercicios que van de conceptos de protocolo a scripting de performance. 
 | 03 | [03-ejercicio-benchmark](03-ejercicio-benchmark/) | 75 min | Script perf.sh con metricas por fase |
 | 04 | [04-ejercicio-websocket](04-ejercicio-websocket/) | 60 min | Handshake WebSocket y verificacion de endpoint |
 
-## Prerequisito de Entorno
+## Prerrequisito de Entorno
 
 Verificar antes de empezar:
 

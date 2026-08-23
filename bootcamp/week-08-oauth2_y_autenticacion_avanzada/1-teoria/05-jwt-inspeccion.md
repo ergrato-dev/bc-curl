@@ -1,4 +1,4 @@
-# JWT: Inspeccion y Decodificacion
+# JWT: Inspección y Decodificación
 
 ![JWT Inspección](../0-assets/05-jwt-inspeccion.svg)
 
@@ -100,7 +100,7 @@ decode_base64url "$PAYLOAD" | jq '.'
 
 ---
 
-## Verificar Expiracion
+## Verificar Expiración
 
 ```bash
 # Extraer el timestamp de expiracion
@@ -119,7 +119,7 @@ fi
 
 ---
 
-## Inspeccion Rapida (one-liner)
+## Inspección Rápida (one-liner)
 
 Para debugging rapido en la terminal:
 
@@ -155,7 +155,7 @@ jwt.io es una herramienta excelente para aprender, pero es un sitio web externo.
 
 ---
 
-## Resumen de Comandos Utiles
+## Resumen de Comandos Útiles
 
 ```bash
 # Ver el payload de un JWT

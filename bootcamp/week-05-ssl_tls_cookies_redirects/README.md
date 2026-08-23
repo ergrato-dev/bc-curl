@@ -53,7 +53,7 @@ week-05-ssl_tls_cookies_redirects/
 
 ## Contenidos
 
-### Teoria (2 horas)
+### Teoría (2 horas)
 
 | Tema | Duración | Descripción |
 |------|----------|-------------|
@@ -63,7 +63,7 @@ week-05-ssl_tls_cookies_redirects/
 | [04 - Redirects](1-teoria/04-redirects.md) | 20 min | `-L`, `--max-redirs`, cadena de redirects, métodos en redirect |
 | [05 - Timeouts y reintentos](1-teoria/05-timeouts-y-reintentos.md) | 25 min | `--connect-timeout`, `--max-time`, `--retry`, estrategias |
 
-### Practica (4 horas)
+### Práctica (4 horas)
 
 | Ejercicio | Duración | Descripción |
 |-----------|----------|-------------|
@@ -78,7 +78,7 @@ SSL & Session checker: script `session.sh` que simula login con cookies, mantien
 
 ---
 
-## Checklist de Verificacion
+## Checklist de Verificación
 
 Antes de pasar a la Semana 6:
 
@@ -96,7 +96,7 @@ Antes de pasar a la Semana 6:
 
 ---
 
-## APIs Publicas para Practicar
+## APIs Públicas para Practicar
 
 - `https://httpbin.org/cookies` — inspeccionar cookies que curl envía
 - `https://httpbin.org/cookies/set?nombre=valor` — que el servidor setee una cookie
@@ -105,7 +105,7 @@ Antes de pasar a la Semana 6:
 
 ---
 
-## Navegacion
+## Navegación
 
 Anterior: [Semana 4: Archivos, Formularios y Multipart](../week-04-archivos_formularios_multipart/README.md)
 

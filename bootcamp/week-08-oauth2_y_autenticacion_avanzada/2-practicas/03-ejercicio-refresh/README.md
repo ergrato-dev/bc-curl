@@ -143,7 +143,7 @@ API_URL="https://httpbin.org/bearer"  # verifica Bearer tokens
 api_call_with_retry GET "$API_URL" "$EXPIRED_ACCESS" "$VALID_REFRESH"
 ```
 
-## Reflexion
+## Reflexión
 
 Responder en `respuestas.md`:
 1. Por que el refresh token es mas largo-lived que el access token?
@@ -154,6 +154,6 @@ Responder en `respuestas.md`:
 
 Archivo `respuestas.md` con:
 1. Output de los comandos del paso 2 y 3
-2. Implementacion completa de `api_call_with_retry`
+2. Implementación completa de `api_call_with_retry`
 3. Output del flujo completo del paso 5
 4. Respuestas a las preguntas de reflexion

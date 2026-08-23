@@ -1,6 +1,6 @@
 # Proyecto Semana 6: API Monitor
 
-## Descripcion
+## Descripción
 
 Construiras `monitor.sh`, un script de monitoreo de URLs que:
 

@@ -39,7 +39,7 @@ printf '%s\n' "${resultados[@]}"
 
 ## exit code
 
-Numero entero (0-255) que un proceso retorna al sistema operativo al terminar. Por convencion,
+Número entero (0-255) que un proceso retorna al sistema operativo al terminar. Por convencion,
 0 indica exito y cualquier valor distinto de 0 indica algun tipo de fallo. En bash,
 `$?` contiene el exit code del ultimo comando ejecutado. curl retorna 0 si la
 transferencia completo sin errores de curl, independientemente del codigo HTTP.
@@ -143,7 +143,7 @@ readonly TIMEOUT=30
 
 ## set -e
 
-Opcion de bash (`set -e` o `set -o errexit`) que hace que el script termine
+Opción de bash (`set -e` o `set -o errexit`) que hace que el script termine
 inmediatamente si cualquier comando retorna un exit code distinto de cero.
 Util como red de seguridad en scripts simples, pero puede interferir con scripts
 que manejan errores de forma granular con estructuras `if` y `||`. Se puede
@@ -153,7 +153,7 @@ desactivar temporalmente con `set +e`.
 
 ## set -o pipefail
 
-Opcion de bash que hace que el exit code de un pipeline sea el del primer
+Opción de bash que hace que el exit code de un pipeline sea el del primer
 comando que falle, en lugar del exit code del ultimo comando. Sin esta opcion,
 `curl_fallido | jq '.'` retorna 0 (el exit code de jq, aunque curl haya fallado
 con exit code 6).
@@ -162,7 +162,7 @@ con exit code 6).
 
 ## set -u
 
-Opcion de bash (`set -u` o `set -o nounset`) que hace que el script termine con
+Opción de bash (`set -u` o `set -o nounset`) que hace que el script termine con
 un error si se intenta usar una variable no definida. Previene bugs silenciosos
 por typos en nombres de variables. Para dar un valor por defecto a una variable
 que puede no estar definida, usar `${VAR:-default}`.

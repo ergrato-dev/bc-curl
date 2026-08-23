@@ -6,7 +6,7 @@ Entender el handshake de WebSocket a nivel HTTP, verificarlo con curl, e identif
 
 **Duracion estimada:** 30 minutos
 
-## Prerequisitos
+## Prerrequisitos
 
 - curl instalado (se comprobara la version)
 - `openssl` instalado (para generar el key del handshake)
@@ -24,7 +24,7 @@ curl --version | grep -i features
 Si aparece `WebSockets` en Features, el build actual soporta WS nativo (curl >= 7.86). Si no aparece, se usara el metodo manual de handshake HTTP.
 
 Anotar en `respuestas.md`:
-- Version de curl instalada
+- Versión de curl instalada
 - Aparece WebSockets en las features? Si/No
 
 ---
@@ -116,7 +116,7 @@ Comparar la experiencia con el metodo manual de curl.
 ## Entrega
 
 - `respuestas.md` con:
-  - Version de curl y soporte WebSocket (Tarea 1)
+  - Versión de curl y soporte WebSocket (Tarea 1)
   - Output del handshake manual con los headers identificados (Tareas 2 y 3)
   - Resultado de soporte nativo si aplica (Tarea 4)
   - Respuestas de analisis (Tarea 5)

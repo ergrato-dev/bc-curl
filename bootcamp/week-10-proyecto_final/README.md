@@ -1,6 +1,6 @@
 # Semana 10: Proyecto Final — api-toolkit
 
-[← Semana 9](../week-09-automatizacion/) | [↑ Inicio](../../README.md)
+[← Semana 9](../week-09-http2_paralelismo_performance/) | [↑ Inicio](../../README.md)
 
 ---
 
@@ -14,14 +14,14 @@ Al terminar esta semana, el estudiante habrá construido `api-toolkit`: una CLI 
 
 | Semana | Tema | Cómo aparece en api-toolkit |
 |--------|------|------------------------------|
-| 1-2 | HTTP methods, curl básico | `cmd_get`, `cmd_post`, `cmd_put`, `cmd_delete` |
-| 3 | Auth: Basic, API Key, Bearer | `get_auth_header()`, `AUTH_TYPE` en config |
-| 4 | OAuth2, token lifecycle | `cmd_auth_login`, `ensure_auth`, refresh automático |
-| 5 | Manejo de errores, retry | Lógica de retry en `do_request` (401, 429) |
-| 6 | SSL, certificados | Flags `--cacert`, `--insecure` condicionales |
-| 7 | Scripting avanzado, jq | Output processing, `--output table/json/csv` |
-| 8 | Performance, benchmarking | `cmd_bench` con percentiles p50/p90/p99 |
-| 9 | Automatización, monitoring | `cmd_monitor` con `--parallel` |
+| 01-02 | HTTP, métodos, headers y JSON | `cmd_get`, `cmd_post`, `cmd_put`, `cmd_delete` |
+| 03 | Auth: Basic, API Key, Bearer | `get_auth_header()`, `AUTH_TYPE` en config |
+| 04 | Archivos, formularios y multipart | `cmd_download` con reanudación, subida con `-F` |
+| 05 | SSL/TLS, cookies y redirects | `--cacert`, cookie jar, `--max-time` y `--retry` |
+| 06 | Output, debug y configuración | `--verbose`, métricas con `--write-out`, `.curlrc` |
+| 07 | Scripting bash y jq | Manejo de errores, paginación, `--output table/json/csv` |
+| 08 | OAuth2 y autenticación avanzada | `cmd_auth_login`, `ensure_auth`, refresh automático |
+| 09 | HTTP/2, paralelismo y rendimiento | `cmd_bench` con percentiles y `cmd_monitor --parallel` |
 
 ---
 
@@ -164,4 +164,4 @@ Al terminar el bootcamp, el estudiante debe ser capaz de:
 
 ## Navegación
 
-[← Semana 9: Automatización y Monitoring](../week-09-automatizacion/) | [↑ Inicio del bootcamp](../../README.md)
+[← Semana 09: HTTP/2, paralelismo y rendimiento](../week-09-http2_paralelismo_performance/) | [↑ Inicio del bootcamp](../../README.md)

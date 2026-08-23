@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # api-explorer.sh — Proyecto Semana 1
 # Consulta 3 APIs públicas y muestra status, tiempo y preview del body.
 

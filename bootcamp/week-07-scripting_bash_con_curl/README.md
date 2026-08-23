@@ -1,6 +1,6 @@
 # Semana 7: Scripting bash con curl
 
-## Descripcion
+## Descripción
 
 Esta semana combinamos curl con bash para construir scripts reales: automatizacion
 de APIs, procesamiento de respuestas JSON, manejo de errores y estructura de codigo
@@ -46,7 +46,7 @@ week-07-scripting_bash_con_curl/
     └── README.md
 ```
 
-## Prerequisitos
+## Prerrequisitos
 
 - Semanas 1 a 6 completadas
 - jq instalado: `sudo apt install jq` (Debian/Ubuntu) o `brew install jq` (macOS)
@@ -54,6 +54,6 @@ week-07-scripting_bash_con_curl/
 
 ## Tiempo estimado
 
-- Teoria: 3-4 horas
-- Practicas: 4-5 horas
+- Teoría: 3-4 horas
+- Prácticas: 4-5 horas
 - Proyecto: 3-4 horas

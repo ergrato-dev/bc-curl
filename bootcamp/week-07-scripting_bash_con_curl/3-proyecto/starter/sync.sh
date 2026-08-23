@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # sync.sh — sincroniza usuarios desde un CSV hacia la API
 #
 # Uso: ./sync.sh [archivo.csv]

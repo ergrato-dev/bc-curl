@@ -77,11 +77,11 @@ curl -s --parallel --parallel-immediate \
 
 ---
 
-## Usar con URLs Dinamicas
+## Usar con URLs Dinámicas
 
 Para listas de URLs generadas dinamicamente, usar un archivo de config curl o xargs:
 
-### Opcion 1: Archivo de Config curl
+### Opción 1: Archivo de Config curl
 
 ```bash
 # Generar el archivo de config
@@ -94,7 +94,7 @@ done > urls.txt
 curl -s --parallel --config urls.txt
 ```
 
-### Opcion 2: xargs con Concurrencia
+### Opción 2: xargs con Concurrencia
 
 xargs puede ejecutar multiples instancias de curl en paralelo:
 
@@ -108,7 +108,7 @@ La diferencia: con `--parallel` hay un solo proceso curl gestionando todo. Con x
 
 ---
 
-## Comparacion: curl --parallel vs bash &
+## Comparación: curl --parallel vs bash &
 
 ### bash & (background jobs)
 

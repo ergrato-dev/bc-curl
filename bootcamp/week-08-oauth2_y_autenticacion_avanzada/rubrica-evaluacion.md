@@ -1,8 +1,8 @@
-# Rubrica de Evaluacion — Semana 8: OAuth2 y Autenticacion Avanzada
+# Rúbrica de Evaluación — Semana 8: OAuth2 y Autenticación Avanzada
 
 ## Competencias Evaluadas
 
-| Codigo | Competencia | Peso |
+| Código | Competencia | Peso |
 |--------|-------------|------|
 | C1 | Client Credentials flow correcto | 25% |
 | C2 | Token lifecycle management | 25% |
@@ -13,13 +13,13 @@
 
 ## C1 — Client Credentials Flow
 
-**Descripcion**: El estudiante demuestra capacidad para obtener un token de acceso usando el flujo Client Credentials y utilizarlo correctamente en requests subsiguientes.
+**Descripción**: El estudiante demuestra capacidad para obtener un token de acceso usando el flujo Client Credentials y utilizarlo correctamente en requests subsiguientes.
 
-| Nivel | Descripcion | Puntos |
+| Nivel | Descripción | Puntos |
 |-------|-------------|--------|
 | 4 - Avanzado | Obtiene token, lo usa como Bearer, verifica status code, extrae campos del token con jq, maneja el caso de error en credenciales incorrectas | 100 |
 | 3 - Competente | Obtiene token correctamente y lo usa como Bearer en al menos un request exitoso | 75 |
-| 2 - Basico | Construye el request de token correctamente pero falla al usarlo o no verifica el resultado | 50 |
+| 2 - Básico | Construye el request de token correctamente pero falla al usarlo o no verifica el resultado | 50 |
 | 1 - Inicial | Entiende el concepto pero no logra completar el flujo funcional | 25 |
 | 0 - No logrado | No entrega o el flujo no funciona | 0 |
 
@@ -34,33 +34,33 @@ Criterios especificos:
 
 ## C2 — Token Lifecycle Management
 
-**Descripcion**: El estudiante implementa un sistema que persiste el token entre ejecuciones y verifica su vigencia antes de cada uso.
+**Descripción**: El estudiante implementa un sistema que persiste el token entre ejecuciones y verifica su vigencia antes de cada uso.
 
-| Nivel | Descripcion | Puntos |
+| Nivel | Descripción | Puntos |
 |-------|-------------|--------|
 | 4 - Avanzado | Guarda token + expiracion, verifica antes de cada uso, renueva automaticamente, maneja errores de archivo | 100 |
 | 3 - Competente | Guarda token en archivo, lo lee en ejecuciones siguientes, verifica expiracion | 75 |
-| 2 - Basico | Guarda token en archivo pero no verifica expiracion | 50 |
+| 2 - Básico | Guarda token en archivo pero no verifica expiracion | 50 |
 | 1 - Inicial | Obtiene token en cada ejecucion sin persistencia | 25 |
 | 0 - No logrado | No implementa gestion de token | 0 |
 
 Criterios especificos:
 - Token guardado en archivo con permisos restrictivos (600)
-- Expiracion calculada y guardada junto al token
-- Comparacion `exp` vs `date +%s` implementada
-- Renovacion automatica al detectar expiracion proxima (margen de seguridad)
+- Expiración calculada y guardada junto al token
+- Comparación `exp` vs `date +%s` implementada
+- Renovación automatica al detectar expiracion proxima (margen de seguridad)
 
 ---
 
 ## C3 — Refresh Token
 
-**Descripcion**: El estudiante implementa el flujo de renovacion de token usando refresh_token.
+**Descripción**: El estudiante implementa el flujo de renovacion de token usando refresh_token.
 
-| Nivel | Descripcion | Puntos |
+| Nivel | Descripción | Puntos |
 |-------|-------------|--------|
 | 4 - Avanzado | Detecta 401 y renueva automaticamente, reintenta el request original, actualiza ambos tokens (access + refresh) | 100 |
 | 3 - Competente | Implementa la renovacion por refresh_token correctamente cuando se solicita explicitamente | 75 |
-| 2 - Basico | Construye el request de refresh correctamente pero no lo integra en un flujo automatico | 50 |
+| 2 - Básico | Construye el request de refresh correctamente pero no lo integra en un flujo automatico | 50 |
 | 1 - Inicial | Conoce el endpoint pero no puede construir el request correcto | 25 |
 | 0 - No logrado | No implementa refresh | 0 |
 
@@ -72,27 +72,27 @@ Criterios especificos:
 
 ---
 
-## C4 — JWT Inspeccion
+## C4 — JWT Inspección
 
-**Descripcion**: El estudiante decodifica e interpreta un JWT sin herramientas externas usando comandos bash.
+**Descripción**: El estudiante decodifica e interpreta un JWT sin herramientas externas usando comandos bash.
 
-| Nivel | Descripcion | Puntos |
+| Nivel | Descripción | Puntos |
 |-------|-------------|--------|
 | 4 - Avanzado | Decodifica header y payload, extrae campos con jq, verifica expiracion, explica la firma y sus implicaciones de seguridad | 100 |
 | 3 - Competente | Decodifica el payload correctamente e identifica campos `sub`, `iat`, `exp` | 75 |
-| 2 - Basico | Logra decodificar el JWT pero no puede extraer campos especificos | 50 |
+| 2 - Básico | Logra decodificar el JWT pero no puede extraer campos especificos | 50 |
 | 1 - Inicial | Identifica las tres partes del JWT pero no puede decodificar | 25 |
 | 0 - No logrado | No puede trabajar con JWT | 0 |
 
 Criterios especificos:
-- Separacion del JWT en sus tres partes (header.payload.signature)
-- Decodificacion base64url del payload
-- Extraccion de `exp` y comparacion con timestamp actual
+- Separación del JWT en sus tres partes (header.payload.signature)
+- Decodificación base64url del payload
+- Extracción de `exp` y comparacion con timestamp actual
 - Comprension de que la firma NO se verifica del lado del cliente sin la clave publica
 
 ---
 
-## Evaluacion del Proyecto
+## Evaluación del Proyecto
 
 El script `oauth-client.sh` se evalua sobre los cuatro criterios anteriores con peso igual.
 
@@ -103,11 +103,11 @@ Criterios adicionales para el proyecto:
 
 ---
 
-## Escala de Calificacion
+## Escala de Calificación
 
-| Puntaje | Calificacion |
+| Puntaje | Calificación |
 |---------|--------------|
 | 90-100 | Excelente — listo para produccion |
 | 75-89 | Competente — puede usar OAuth2 de forma autonoma |
-| 60-74 | Basico — necesita reforzar algun flujo |
+| 60-74 | Básico — necesita reforzar algun flujo |
 | < 60 | Insuficiente — requiere rehacer ejercicios fundamentales |

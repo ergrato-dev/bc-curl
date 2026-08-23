@@ -1,6 +1,6 @@
 # Proyecto: API Sync
 
-## Descripcion
+## Descripción
 
 `sync.sh` es un script de sincronizacion que lee un archivo CSV con registros
 de usuarios, verifica cuales ya existen en la API y crea los que no existen.
@@ -193,7 +193,7 @@ curl_with_retry() {
 | Reporte final: creados / existentes / errores | 15 |
 | Estructura profesional (set -euo, funciones, logging) | 10 |
 
-**Total: 100 puntos. Aprobacion: 60 puntos.**
+**Total: 100 puntos. Aprobación: 60 puntos.**
 
 ## Como empezar
 

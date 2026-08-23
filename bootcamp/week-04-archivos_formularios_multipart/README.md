@@ -53,7 +53,7 @@ week-04-archivos_formularios_multipart/
 
 ## Contenidos
 
-### Teoria (2 horas)
+### Teoría (2 horas)
 
 | Tema | Duración | Descripción |
 |------|----------|-------------|
@@ -63,7 +63,7 @@ week-04-archivos_formularios_multipart/
 | [04 - JSON vs multipart](1-teoria/04-upload-json-vs-multipart.md) | 20 min | Cuándo usar cada formato, casos mixtos |
 | [05 - Transferencia avanzada](1-teoria/05-transferencia-avanzada.md) | 25 min | `--limit-rate`, timeouts, `--retry`, rango de bytes |
 
-### Practica (4 horas)
+### Práctica (4 horas)
 
 | Ejercicio | Duración | Descripción |
 |-----------|----------|-------------|
@@ -78,7 +78,7 @@ File manager CLI: script `file-ops.sh` con subcomandos `download`, `upload` y `f
 
 ---
 
-## Checklist de Verificacion
+## Checklist de Verificación
 
 Antes de pasar a la Semana 5:
 
@@ -95,7 +95,7 @@ Antes de pasar a la Semana 5:
 
 ---
 
-## APIs Publicas para Practicar
+## APIs Públicas para Practicar
 
 - `https://httpbin.org/post` — refleja todo lo que envías, ideal para inspeccionar multipart
 - `https://httpbin.org/get` — para pruebas GET con descarga de respuesta
@@ -103,7 +103,7 @@ Antes de pasar a la Semana 5:
 
 ---
 
-## Navegacion
+## Navegación
 
 Anterior: [Semana 3: Autenticación básica](../week-03-autenticacion_basica/README.md)
 

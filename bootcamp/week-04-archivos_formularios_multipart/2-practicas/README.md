@@ -1,4 +1,4 @@
-# Practicas - Semana 4
+# Prácticas - Semana 4
 
 Cuatro ejercicios progresivos sobre descarga y upload de archivos. Completal en orden.
 

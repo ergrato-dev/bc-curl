@@ -1,6 +1,6 @@
 # Proyecto Semana 1: Explorador de APIs Públicas
 
-## Descripcion
+## Descripción
 
 Script bash `api-explorer.sh` que consulta 3 APIs públicas diferentes, muestra para cada una: status code, tiempo de respuesta y un preview del body.
 

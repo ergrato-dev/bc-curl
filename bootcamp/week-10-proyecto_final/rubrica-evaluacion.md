@@ -1,13 +1,13 @@
-# Rubrica de Evaluacion — Semana 10: Proyecto Final
+# Rúbrica de Evaluación — Semana 10: Proyecto Final
 
 Esta semana evalua el proyecto api-toolkit en su totalidad. La rubrica tiene mayor peso en el producto terminado que en componentes individuales, reflejando que el objetivo es una herramienta completa y funcional.
 
 ## Peso por Area
 
-| Area | Peso | Descripcion |
+| Area | Peso | Descripción |
 |------|------|-------------|
 | Conocimiento | 20% | Comprension de las decisiones de diseno tomadas |
-| Desempeno | 30% | Calidad del codigo (code review) |
+| Desempeño | 30% | Calidad del codigo (code review) |
 | Producto | 50% | Funcionalidad completa y documentacion |
 
 ---
@@ -16,7 +16,7 @@ Esta semana evalua el proyecto api-toolkit en su totalidad. La rubrica tiene may
 
 Evaluado mediante preguntas sobre el codigo entregado. El estudiante debe poder explicar:
 
-| Criterio | Descripcion | Puntos max |
+| Criterio | Descripción | Puntos max |
 |----------|-------------|------------|
 | K1 | Por que elegiste esa estructura de archivos/funciones? Cuales son los tradeoffs? | 25 |
 | K2 | Como funciona el token lifecycle en tu implementacion? Que pasa si el archivo de token se corrompe? | 25 |
@@ -25,11 +25,11 @@ Evaluado mediante preguntas sobre el codigo entregado. El estudiante debe poder 
 
 ---
 
-## Desempeno / Code Review (30%)
+## Desempeño / Code Review (30%)
 
-Evaluacion del codigo fuente de `api-toolkit.sh`:
+Evaluación del codigo fuente de `api-toolkit.sh`:
 
-| Criterio | Descripcion | Puntos max |
+| Criterio | Descripción | Puntos max |
 |----------|-------------|------------|
 | D1 - Correcto | El codigo hace lo que dice que hace, sin bugs obvios | 30 |
 | D2 - Seguro | No hay hardcoded secrets, permisos de archivo correctos, no se logean datos sensibles | 25 |
@@ -59,7 +59,7 @@ echo "Request: $METHOD $URL [auth: bearer]" >> requests.log
 
 ## Producto (50%)
 
-Evaluacion de la funcionalidad real. Se prueba el script contra el servidor de demo.
+Evaluación de la funcionalidad real. Se prueba el script contra el servidor de demo.
 
 ### Subcomandos (30 puntos)
 
@@ -77,7 +77,7 @@ Evaluacion de la funcionalidad real. Se prueba el script contra el servidor de d
 
 ### Features Transversales (20 puntos)
 
-| Feature | Descripcion | Puntos |
+| Feature | Descripción | Puntos |
 |---------|-------------|--------|
 | Token lifecycle | Token guardado, verificado y renovado automaticamente | 6 |
 | Retry | Retry con backoff en 429 y 5xx | 4 |
@@ -88,21 +88,21 @@ Evaluacion de la funcionalidad real. Se prueba el script contra el servidor de d
 
 ---
 
-## Escala de Calificacion Final
+## Escala de Calificación Final
 
-Puntaje total = 20% Conocimiento + 30% Desempeno + 50% Producto
+Puntaje total = 20% Conocimiento + 30% Desempeño + 50% Producto
 
-| Puntaje | Calificacion | Significado |
+| Puntaje | Calificación | Significado |
 |---------|--------------|-------------|
 | 90-100 | Excelente | La herramienta esta lista para uso en un equipo real |
 | 75-89 | Competente | Funciona bien, con algunas mejoras de calidad pendientes |
-| 60-74 | Basico | La mayoria de los subcomandos funcionan, falta robustez |
+| 60-74 | Básico | La mayoria de los subcomandos funcionan, falta robustez |
 | 45-59 | Insuficiente | Funcionalidad parcial, no cumple los requisitos del proyecto |
 | < 45 | No aprobado | Requiere rehacer el proyecto |
 
 ---
 
-## Criterios de Aprobacion del Bootcamp
+## Criterios de Aprobación del Bootcamp
 
 Para aprobar el bootcamp (semanas 1-10), se requiere:
 - Semana 10: puntaje >= 60

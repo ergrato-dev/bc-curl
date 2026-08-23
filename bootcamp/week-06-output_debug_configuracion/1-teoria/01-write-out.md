@@ -22,9 +22,9 @@ Resultado:
 
 Las variables se escriben como `%{nombre}`. Las mas utiles son:
 
-| Variable | Descripcion |
+| Variable | Descripción |
 |----------|-------------|
-| `%{http_code}` | Codigo de estado HTTP (200, 404, 500, etc.) |
+| `%{http_code}` | Código de estado HTTP (200, 404, 500, etc.) |
 | `%{time_total}` | Tiempo total de la transferencia en segundos |
 | `%{time_connect}` | Tiempo hasta establecer la conexion TCP |
 | `%{time_starttransfer}` | Tiempo hasta recibir el primer byte del body (TTFB) |

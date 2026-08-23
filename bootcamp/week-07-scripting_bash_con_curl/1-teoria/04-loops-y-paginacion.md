@@ -1,4 +1,4 @@
-# Loops, Iteracion y Paginacion
+# Loops, Iteración y Paginación
 
 ![Loops y Paginación](../0-assets/04-loops-y-paginacion.svg)
 
@@ -48,7 +48,7 @@ done < ids.txt
 `jq -r '.name // "no encontrado"'` usa el operador `//` de jq (alternative
 operator): si `.name` es null, retorna el string de la derecha.
 
-## Paginacion: loop while hasta agotar paginas
+## Paginación: loop while hasta agotar paginas
 
 Muchas APIs retornan datos paginados. El patron tipico es:
 - La respuesta incluye un campo `next` con la URL de la siguiente pagina

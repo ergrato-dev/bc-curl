@@ -51,7 +51,7 @@ week-02-metodos_http_headers_json/
 
 ## Contenidos
 
-### Teoria (2 horas)
+### Teoría (2 horas)
 
 | Tema | Duración | Descripción |
 |------|----------|-------------|
@@ -61,7 +61,7 @@ week-02-metodos_http_headers_json/
 | [04 - Headers custom](1-teoria/04-headers-custom.md) | 20 min | `-H`, headers comunes, observar con `-v` |
 | [05 - OPTIONS y HEAD](1-teoria/05-metodo-options-head.md) | 20 min | Verificar metadatos y métodos permitidos |
 
-### Practica (4 horas)
+### Práctica (4 horas)
 
 | Ejercicio | Duración | Descripción |
 |-----------|----------|-------------|
@@ -76,7 +76,7 @@ Mini cliente REST: script bash `crud.sh` que acepta argumentos (list, get, creat
 
 ---
 
-## Checklist de Verificacion
+## Checklist de Verificación
 
 Antes de pasar a la Semana 3:
 
@@ -93,7 +93,7 @@ Antes de pasar a la Semana 3:
 
 ---
 
-## APIs Publicas para Practicar
+## APIs Públicas para Practicar
 
 - `https://httpbin.org` — refleja tus requests, ideal para inspeccionar lo que curl envía
 - `https://jsonplaceholder.typicode.com` — datos de prueba, acepta POST/PUT/PATCH/DELETE
@@ -101,7 +101,7 @@ Antes de pasar a la Semana 3:
 
 ---
 
-## Navegacion
+## Navegación
 
 Anterior: [Semana 1: HTTP y curl básico](../week-01-http_y_curl_basico/README.md)
 

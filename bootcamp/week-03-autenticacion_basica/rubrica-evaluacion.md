@@ -1,4 +1,4 @@
-# Rubrica de Evaluacion - Semana 3
+# Rúbrica de Evaluación - Semana 3
 
 ## Distribución de puntaje
 
@@ -113,7 +113,7 @@
 
 ## Escala de calificacion
 
-| Porcentaje | Calificacion |
+| Porcentaje | Calificación |
 |-----------|-------------|
 | 90-100% | Sobresaliente |
 | 75-89% | Notable |

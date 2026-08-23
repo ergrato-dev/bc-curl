@@ -17,7 +17,7 @@ Implementar el flujo OAuth2 Client Credentials de punta a punta: obtener un acce
 ### 1. Obtener el token
 
 Construir el request de Client Credentials. Recordar:
-- Metodo: `POST`
+- Método: `POST`
 - Content-Type: `application/x-www-form-urlencoded`
 - Body: `grant_type=client_credentials`, `client_id`, `client_secret`, `scope`
 
@@ -81,7 +81,7 @@ Escribir un script `client-credentials.sh` que:
 
 El script debe funcionar sin modificaciones si se cambia la URL de la API al inicio.
 
-## Desafio Adicional
+## Desafío Adicional
 
 Intentar el mismo flujo con Basic Auth para enviar las credenciales:
 
@@ -102,4 +102,4 @@ Archivo `respuestas.md` con:
 2. Payload del JWT decodificado
 3. Respuestas a las preguntas del paso 2
 4. Output del request protegido (paso 3)
-5. Codigo del script `client-credentials.sh`
+5. Código del script `client-credentials.sh`

@@ -52,7 +52,7 @@ week-01-http_y_curl_basico/
 
 ## Contenidos
 
-### Teoria (2 horas)
+### Teoría (2 horas)
 
 | Tema | Duración | Descripción |
 |------|----------|-------------|
@@ -62,7 +62,7 @@ week-01-http_y_curl_basico/
 | [04 - Primer request GET](1-teoria/04-primer-request-get.md) | 30 min | Sintaxis curl, flags esenciales `-v -i -o -s -L` |
 | [05 - Status codes y headers](1-teoria/05-status-codes-y-headers.md) | 30 min | 1xx/2xx/3xx/4xx/5xx, headers comunes |
 
-### Practica (4 horas)
+### Práctica (4 horas)
 
 | Ejercicio | Duración | Descripción |
 |-----------|----------|-------------|
@@ -77,7 +77,7 @@ Explorador de APIs públicas: script que consulta 3 APIs públicas diferentes, m
 
 ---
 
-## Checklist de Verificacion
+## Checklist de Verificación
 
 Antes de pasar a la Semana 2:
 
@@ -93,7 +93,7 @@ Antes de pasar a la Semana 2:
 
 ---
 
-## APIs Publicas para Practicar
+## APIs Públicas para Practicar
 
 - `https://httpbin.org` — refleja tus requests, ideal para aprender
 - `https://api.github.com` — API REST real, sin auth para endpoints públicos
@@ -101,6 +101,6 @@ Antes de pasar a la Semana 2:
 
 ---
 
-## Navegacion
+## Navegación
 
 Siguiente: [Semana 2: Métodos HTTP, Headers y JSON](../week-02-metodos_http_headers_json/README.md)

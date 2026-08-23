@@ -1,6 +1,6 @@
 # Proyecto Semana 4: File Manager CLI
 
-## Descripcion
+## Descripción
 
 Crear un script `file-ops.sh` que funciona como un gestor de archivos de línea de comandos. El script acepta subcomandos para descargar archivos, subir archivos y enviar formularios. Usa `https://httpbin.org` como backend de prueba.
 

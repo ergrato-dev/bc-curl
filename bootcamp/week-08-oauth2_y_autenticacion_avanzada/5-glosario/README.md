@@ -1,6 +1,6 @@
-# Glosario — Semana 8: OAuth2 y Autenticacion Avanzada
+# Glosario — Semana 8: OAuth2 y Autenticación Avanzada
 
-## Terminos Principales
+## Términos Principales
 
 **OAuth2**
 Protocolo de autorizacion (RFC 6749) que permite que aplicaciones accedan a recursos en nombre de un usuario o con identidad propia, sin compartir contraseñas. Define flujos estandarizados para distintos escenarios.

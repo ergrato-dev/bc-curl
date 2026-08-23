@@ -17,7 +17,7 @@ OAuth2 resuelve un problema concreto: permitir que una aplicación acceda a recu
 
 OAuth2 define cuatro actores:
 
-| Rol | Descripcion | Ejemplo |
+| Rol | Descripción | Ejemplo |
 |-----|-------------|---------|
 | **Resource Owner** | El usuario dueno de los datos | La persona que tiene cuenta en GitHub |
 | **Client** | La aplicacion que quiere acceder a los datos | Tu script o app |

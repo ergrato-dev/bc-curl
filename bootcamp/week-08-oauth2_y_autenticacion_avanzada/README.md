@@ -1,4 +1,4 @@
-# Semana 8: OAuth2 y Autenticacion Avanzada
+# Semana 8: OAuth2 y Autenticación Avanzada
 
 ## Objetivos de Aprendizaje
 
@@ -49,19 +49,19 @@ week-08-oauth2_y_autenticacion_avanzada/
 
 ## Contenidos
 
-### Teoria (2.5 horas)
+### Teoría (2.5 horas)
 
-| Tema | Duracion | Descripcion |
+| Tema | Duracion | Descripción |
 |------|----------|-------------|
 | [01 - OAuth2: conceptos](1-teoria/01-oauth2-conceptos.md) | 30 min | Protocolo, roles, flujos, tokens |
 | [02 - Client Credentials](1-teoria/02-client-credentials.md) | 30 min | Flujo app-a-app, obtener y usar token |
 | [03 - Authorization Code](1-teoria/03-authorization-code.md) | 30 min | Flujo con usuario, PKCE |
-| [04 - Refresh tokens](1-teoria/04-refresh-tokens.md) | 30 min | Renovacion automatica de tokens |
+| [04 - Refresh tokens](1-teoria/04-refresh-tokens.md) | 30 min | Renovación automatica de tokens |
 | [05 - JWT: inspeccion](1-teoria/05-jwt-inspeccion.md) | 30 min | Decodificar y verificar JWT con bash |
 
-### Practica (4 horas)
+### Práctica (4 horas)
 
-| Ejercicio | Duracion | Descripcion |
+| Ejercicio | Duracion | Descripción |
 |-----------|----------|-------------|
 | [01 - Client Credentials](2-practicas/01-ejercicio-client-credentials/) | 60 min | Obtener token y acceder a recurso protegido |
 | [02 - Token lifecycle](2-practicas/02-ejercicio-token-lifecycle/) | 60 min | Script que gestiona token de forma transparente |
@@ -74,7 +74,7 @@ Script `oauth-client.sh`: cliente OAuth2 completo con subcomandos `login`, `logo
 
 ---
 
-## Checklist de Verificacion
+## Checklist de Verificación
 
 Antes de pasar a la Semana 9:
 
@@ -99,7 +99,7 @@ Antes de pasar a la Semana 9:
 
 ---
 
-## Navegacion
+## Navegación
 
 Anterior: [Semana 7: Scripting bash con curl](../week-07-scripting_bash_con_curl/README.md)
 Siguiente: [Semana 9: HTTP/2, Paralelismo y Performance](../week-09-http2_paralelismo_performance/README.md)

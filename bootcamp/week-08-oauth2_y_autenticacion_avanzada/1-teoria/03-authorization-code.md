@@ -30,7 +30,7 @@ Usuario    Client (tu app)         Auth Server         Resource Server
 
 ---
 
-## Paso 1: La URL de Autorizacion
+## Paso 1: La URL de Autorización
 
 El cliente construye una URL para que el usuario la abra en el browser. curl puede ayudarte a construirla o verificarla, pero es el **browser** quien la abre:
 

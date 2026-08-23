@@ -1,4 +1,4 @@
-# Practicas — Semana 8: OAuth2 y Autenticacion Avanzada
+# Prácticas — Semana 8: OAuth2 y Autenticación Avanzada
 
 Cuatro ejercicios progresivos que cubren los flujos OAuth2 de mayor uso en scripting. Completal en orden — cada uno introduce conceptos que el siguiente usa.
 

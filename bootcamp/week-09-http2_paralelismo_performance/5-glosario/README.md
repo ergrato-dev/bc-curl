@@ -1,12 +1,12 @@
 # Glosario — Semana 9: HTTP/2, Paralelismo y Performance
 
-## Terminos Principales
+## Términos Principales
 
 **HTTP/2**
-Version 2 del protocolo HTTP (RFC 7540). Introduce multiplexing, compresion de headers HPACK y transmision binaria. Permite multiples requests simultaneos sobre una sola conexion TCP. Requiere soporte en el servidor y en el cliente (curl compilado con nghttp2).
+Versión 2 del protocolo HTTP (RFC 7540). Introduce multiplexing, compresion de headers HPACK y transmision binaria. Permite multiples requests simultaneos sobre una sola conexion TCP. Requiere soporte en el servidor y en el cliente (curl compilado con nghttp2).
 
 **HTTP/3**
-Version 3 del protocolo HTTP (RFC 9114). Usa QUIC (sobre UDP) en lugar de TCP, eliminando el head-of-line blocking a nivel de transporte. curl tiene soporte experimental con `--http3`.
+Versión 3 del protocolo HTTP (RFC 9114). Usa QUIC (sobre UDP) en lugar de TCP, eliminando el head-of-line blocking a nivel de transporte. curl tiene soporte experimental con `--http3`.
 
 **QUIC**
 Protocolo de transporte desarrollado por Google, estandarizado en RFC 9000. Implementa control de congestión, corrección de errores y multiplexing sobre UDP. Base de HTTP/3.
@@ -39,7 +39,7 @@ Protocolo de comunicacion full-duplex sobre una conexion TCP persistente. Comien
 Header HTTP que solicita cambiar el protocolo de la conexion actual. En WebSockets: `Upgrade: websocket`. El servidor responde con `101 Switching Protocols` si acepta.
 
 **101 Switching Protocols**
-Codigo de estado HTTP que indica que el servidor acepto cambiar el protocolo segun lo solicitado en el header `Upgrade`. Unico uso comun: handshake de WebSocket.
+Código de estado HTTP que indica que el servidor acepto cambiar el protocolo segun lo solicitado en el header `Upgrade`. Unico uso comun: handshake de WebSocket.
 
 **ALPN**
 Application-Layer Protocol Negotiation. Extension de TLS que permite al cliente y servidor negociar que protocolo de capa de aplicacion usar (HTTP/1.1, HTTP/2) durante el TLS handshake, sin necesidad de un round-trip adicional.

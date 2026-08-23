@@ -127,13 +127,13 @@ Para scripting con curl, HTTP/2 es especialmente util cuando se combinan con `--
 
 ---
 
-## Comparacion Rapida
+## Comparación Rápida
 
 | Caracteristica | HTTP/1.1 | HTTP/2 | HTTP/3 |
 |----------------|----------|--------|--------|
 | Protocolo base | TCP | TCP | QUIC (UDP) |
 | Formato | Texto | Binario | Binario |
 | Multiplexing | No | Si | Si |
-| Compresion headers | No | HPACK | QPACK |
+| Compresión headers | No | HPACK | QPACK |
 | Head-of-line blocking | Si | Si (a nivel TCP) | No |
 | Soporte curl | Siempre | Si (con nghttp2) | Experimental |

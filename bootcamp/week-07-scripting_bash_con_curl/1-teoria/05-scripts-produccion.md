@@ -1,4 +1,4 @@
-# Estructura de Scripts Bash para Produccion
+# Estructura de Scripts Bash para Producción
 
 ![Scripts para Producción](../0-assets/05-scripts-produccion.svg)
 

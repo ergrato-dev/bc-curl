@@ -101,7 +101,7 @@ La man page de curl tiene más de 4000 líneas. No la memorices — úsala como 
 
 ---
 
-## Verificacion final
+## Verificación final
 
 Ejecutá estos tres comandos. Si todos responden, estás listo:
 

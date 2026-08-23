@@ -1,4 +1,4 @@
-# Practicas - Semana 7
+# Prácticas - Semana 7
 
 Las practicas de esta semana requieren bash y jq. Antes de empezar, verifica:
 

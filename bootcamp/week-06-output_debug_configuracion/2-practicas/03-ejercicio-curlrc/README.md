@@ -1,4 +1,4 @@
-# Ejercicio 3: Configuracion con .curlrc
+# Ejercicio 3: Configuración con .curlrc
 
 ## Objetivo
 
@@ -53,7 +53,7 @@ Prueba que `location` funciona (httpbin redirige de HTTP a HTTPS):
 curl http://httpbin.org/redirect/2
 ```
 
-Deberia ver el JSON de respuesta sin necesidad de pasar `-L`.
+Debería ver el JSON de respuesta sin necesidad de pasar `-L`.
 
 Prueba que `max-time` funciona:
 
@@ -117,7 +117,7 @@ Ahora ejecuta curl desde ese directorio y verifica que los headers se agregan:
 curl -s https://httpbin.org/headers | python3 -m json.tool
 ```
 
-Deberia aparecer `X-Client: bc-curl-bootcamp` y `Accept: application/json` en
+Debería aparecer `X-Client: bc-curl-bootcamp` y `Accept: application/json` en
 la seccion de headers.
 
 Compara con ejecutar el mismo comando desde tu directorio home (donde no hay

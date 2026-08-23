@@ -1,4 +1,4 @@
-# Rubrica de Evaluacion - Semana 1
+# Rúbrica de Evaluación - Semana 1
 
 ## HTTP y curl básico
 
@@ -85,7 +85,7 @@
 
 ---
 
-## Escala de Calificacion
+## Escala de Calificación
 
 | Calificación | Rango | Descripción |
 |--------------|-------|-------------|
@@ -96,7 +96,7 @@
 
 ---
 
-## Criterios de No Aprobacion Automatica
+## Criterios de No Aprobación Automática
 
 - Script no ejecuta en bash sin modificaciones
 - Evidencia de copy-paste sin comprensión

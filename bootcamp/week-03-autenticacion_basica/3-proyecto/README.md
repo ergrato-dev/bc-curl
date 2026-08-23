@@ -1,6 +1,6 @@
 # Proyecto Semana 3: Auth Explorer
 
-## Descripcion
+## Descripción
 
 Vas a crear un script `auth-check.sh` que prueba los tres mecanismos de autenticación (Basic Auth, API Key y Bearer Token) contra endpoints reales y reporta el resultado de cada uno. El output debe ser claro: cada prueba indica si tuvo éxito o falla, el status code obtenido, y un mensaje descriptivo.
 

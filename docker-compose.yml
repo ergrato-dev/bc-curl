@@ -1,0 +1,70 @@
+# Laboratorio del Bootcamp curl
+#
+# Tres servicios que cubren todo lo que el bootcamp necesita sin depender de
+# internet ni de httpbin.org, que se cae y limita por IP.
+#
+#   scripts/start.sh    levanta el laboratorio y exporta la CA
+#   scripts/stop.sh     lo para
+#
+# Ninguna imagen usa `latest`: ver .env.example.
+
+name: bc-curl-lab
+
+services:
+  # --- go-httpbin ---------------------------------------------------------
+  # El reflector de peticiones. Cubre metodos, status, headers, basic-auth,
+  # bearer, digest, cookies, redirects, gzip/brotli/deflate, delay, drip,
+  # range, multipart y cache condicional con ETag.
+  httpbin:
+    image: mccutchen/go-httpbin:${HTTPBIN_VERSION:-2.25.0}
+    container_name: bc-curl-httpbin
+    restart: unless-stopped
+    ports:
+      - "${HTTPBIN_PORT:-8080}:8080"
+    environment:
+      MAX_DURATION: ${HTTPBIN_MAX_DURATION:-10s}
+    healthcheck:
+      # La imagen no trae curl: se usa el healthcheck nativo de go-httpbin.
+      test: ["CMD", "/bin/go-httpbin", "-help"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+      start_period: 5s
+
+  # --- Caddy: TLS, HTTP/2 y HTTP/3 ----------------------------------------
+  # Frontal HTTPS con CA interna. La raiz se exporta con scripts/start.sh a
+  # docs/lab-ca.pem para usarla con --cacert.
+  tls:
+    image: caddy:${CADDY_VERSION:-2.11.4-alpine}
+    container_name: bc-curl-tls
+    restart: unless-stopped
+    depends_on:
+      - httpbin
+    ports:
+      - "${TLS_PORT:-8443}:8443"
+      - "${TLS_PORT:-8443}:8443/udp"   # HTTP/3 va sobre QUIC, que es UDP
+      - "${MTLS_PORT:-8444}:8444"
+    environment:
+      TLS_PORT: 8443
+      MTLS_PORT: 8444
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy-data:/data
+      - caddy-config:/config
+
+  # --- Servidor OAuth2 de laboratorio -------------------------------------
+  # Emite tokens de verdad (firmados, con exp) para client credentials,
+  # authorization code + PKCE, device code y refresh. Semana 08.
+  oauth:
+    image: ghcr.io/navikt/mock-oauth2-server:${OAUTH_VERSION:-6.0.2}
+    container_name: bc-curl-oauth
+    restart: unless-stopped
+    ports:
+      - "${OAUTH_PORT:-8081}:8080"
+    environment:
+      SERVER_PORT: 8080
+      LOG_LEVEL: WARN
+
+volumes:
+  caddy-data:
+  caddy-config:

@@ -40,7 +40,7 @@ Todas las variables miden tiempo en **segundos desde el inicio del request**.
 
 ---
 
-## Uso Basico
+## Uso Básico
 
 ```bash
 curl -s -w "\nTiempo total: %{time_total}s\n" -o /dev/null https://httpbin.org/get
@@ -88,15 +88,15 @@ curl -s -o /dev/null -w '%{time_namelookup} %{time_connect} %{time_appconnect} %
 
 ---
 
-## Otras Variables Utiles
+## Otras Variables Útiles
 
-| Variable | Descripcion |
+| Variable | Descripción |
 |----------|-------------|
-| `%{http_code}` | Codigo de estado HTTP (200, 404, etc.) |
+| `%{http_code}` | Código de estado HTTP (200, 404, etc.) |
 | `%{remote_ip}` | IP del servidor al que se conecto |
 | `%{remote_port}` | Puerto del servidor |
-| `%{num_connects}` | Numero de conexiones TCP nuevas abiertas |
-| `%{num_redirects}` | Numero de redirects seguidos |
+| `%{num_connects}` | Número de conexiones TCP nuevas abiertas |
+| `%{num_redirects}` | Número de redirects seguidos |
 | `%{size_download}` | Bytes descargados en el body |
 | `%{size_header}` | Bytes de headers recibidos |
 | `%{speed_download}` | Velocidad de descarga en bytes/segundo |

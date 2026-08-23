@@ -1,6 +1,6 @@
 # Glosario - Semana 4
 
-## Terminos
+## Términos
 
 **Multipart**
 Formato de encoding HTTP que divide el body de un request en varias partes separadas por un delimitador (boundary). Diseñado para transmitir archivos binarios y datos de texto en un mismo request.

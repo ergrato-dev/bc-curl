@@ -14,7 +14,7 @@ El script debe:
 4. Calcular minimo, maximo y promedio
 5. Mostrar el resultado de forma legible
 
-## Version 1: esqueleto basico
+## Versión 1: esqueleto basico
 
 Crea `benchmark.sh`:
 
@@ -74,7 +74,7 @@ chmod +x benchmark.sh
 ./benchmark.sh https://jsonplaceholder.typicode.com/posts/1
 ```
 
-## Version 2: agregar codigo HTTP y manejo de errores
+## Versión 2: agregar codigo HTTP y manejo de errores
 
 Modifica el script para que tambien capture el codigo HTTP y marque los requests
 fallidos sin detener el benchmark:
@@ -161,7 +161,7 @@ Responde en `respuestas.md`:
 3. Que informacion adicional incluirias en el reporte para hacerlo mas util?
 4. Si quisieras comparar dos URLs distintas, como modificarias el script?
 
-## Desafio: agregar percentil 95
+## Desafío: agregar percentil 95
 
 El percentil 95 es una metrica mas robusta que el promedio porque ignora los
 outliers. Para calcularlo con awk necesitas ordenar los tiempos:

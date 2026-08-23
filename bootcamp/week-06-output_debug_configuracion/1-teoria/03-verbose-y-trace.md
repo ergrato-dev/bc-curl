@@ -1,4 +1,4 @@
-# Depuracion: -v, --trace y --trace-ascii
+# Depuración: -v, --trace y --trace-ascii
 
 ![Depuración](../0-assets/03-verbose-y-trace.svg)
 

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # oauth-client.sh — OAuth2 client generico con gestion automatica de token lifecycle
 
 set -euo pipefail

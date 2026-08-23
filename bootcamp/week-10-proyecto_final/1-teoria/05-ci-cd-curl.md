@@ -2,7 +2,7 @@
 
 ![curl en CI/CD](../0-assets/05-ci-cd-curl.svg)
 
-[← 04: Documentacion CLI](04-documentacion-cli.md) | [← Semana 10](../README.md)
+[← 04: Documentación CLI](04-documentacion-cli.md) | [← Semana 10](../README.md)
 
 ---
 
@@ -115,7 +115,7 @@ jobs:
         run: echo "Deploying ${{ github.event.client_payload.sha }}"
 ```
 
-### Notificacion a Slack
+### Notificación a Slack
 
 ```bash
 notify_slack() {
@@ -300,4 +300,4 @@ Si el script retorna exit code 1 (hubo failures), el pipeline falla y el deploy 
 
 Has completado la teoria de la semana 10. Ahora viene lo mas importante: construir `api-toolkit`.
 
-[→ Practicas: las 4 etapas del proyecto](../2-practicas/README.md)
+[→ Prácticas: las 4 etapas del proyecto](../2-practicas/README.md)

@@ -1,0 +1,42 @@
+# Caddyfile del laboratorio bc-curl
+#
+# Caddy hace de frontal TLS delante de go-httpbin. Con un solo contenedor el
+# alumno tiene HTTPS, HTTP/2, HTTP/3 y una CA propia con la que practicar
+# --cacert, en vez de aprender a desactivar la verificacion con -k.
+
+{
+	# El laboratorio es local: sin ACME, sin redirecciones automaticas.
+	auto_https disable_redirects
+	admin off
+
+	servers {
+		# h3 necesita ademas el puerto UDP publicado en el compose.
+		protocols h1 h2 h3
+	}
+}
+
+# --- Endpoint TLS normal ---------------------------------------------------
+# Certificado emitido por la CA interna de Caddy. Sin --cacert, curl falla con
+# el codigo 60 y ese fallo es el punto pedagogico de la Semana 05.
+# Se declaran los dos nombres para que el mismo certificado valga desde el
+# host (localhost) y desde otro contenedor de la red del laboratorio (tls).
+https://localhost:{$TLS_PORT:8443}, https://tls:{$TLS_PORT:8443} {
+	tls internal
+
+	header X-Lab-Endpoint "tls"
+	reverse_proxy httpbin:8080
+}
+
+# --- Endpoint mTLS ---------------------------------------------------------
+# Exige que el cliente presente un certificado. Sirve para practicar
+# --cert / --key sin montar una PKI completa.
+https://localhost:{$MTLS_PORT:8444}, https://tls:{$MTLS_PORT:8444} {
+	tls internal {
+		client_auth {
+			mode require
+		}
+	}
+
+	header X-Lab-Endpoint "mtls"
+	respond "mTLS OK: has presentado un certificado de cliente" 200
+}

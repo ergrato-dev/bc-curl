@@ -1,6 +1,6 @@
 # Proyecto Semana 2: Mini cliente REST
 
-## Descripcion
+## Descripción
 
 Vas a crear un script bash `crud.sh` que funciona como un cliente REST para la API de todos de jsonplaceholder. El script acepta argumentos por línea de comandos y ejecuta el curl correspondiente.
 

@@ -1,4 +1,4 @@
-# Ejercicio 1: Extraccion de metricas con --write-out
+# Ejercicio 1: Extracción de metricas con --write-out
 
 ## Objetivo
 
@@ -82,7 +82,7 @@ Responde en `respuestas.md`:
 4. `size_download` para `/users` es mucho mayor que para `/posts/1`. Cuanto
    mayor, en porcentaje?
 
-## Desafio opcional
+## Desafío opcional
 
 Modifica el script para hacer **3 requests a cada URL** y mostrar el **promedio**
 del `time_total`. Pista: acumula los tiempos en una variable y divide con `awk`:

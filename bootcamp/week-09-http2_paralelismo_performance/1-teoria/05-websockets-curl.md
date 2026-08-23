@@ -139,7 +139,7 @@ check_websocket "https://ws.postman-echo.com/raw"
 
 ---
 
-## Inspeccion del Handshake
+## Inspección del Handshake
 
 Para debugging, ver el handshake completo con `-v`:
 
@@ -174,9 +174,9 @@ echo -n "${WS_KEY}258EAFA5-E914-47DA-95CA-C5AB0DC85B11" | \
 |---------|------|-----------------|
 | Handshake WS | Si | Si |
 | Mensajes interactivos | Limitado (7.86+) | Si |
-| Verificacion de endpoint | Excelente | Parcial |
+| Verificación de endpoint | Excelente | Parcial |
 | Uso en scripts | Si | Si |
-| Facil de usar | Si | Si |
+| Fácil de usar | Si | Si |
 
 Para **verificar que un endpoint WS existe y responde**: curl es suficiente.
 Para **enviar y recibir mensajes**: usar websocat o wscat.

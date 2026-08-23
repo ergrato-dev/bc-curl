@@ -50,9 +50,9 @@ week-09-http2_paralelismo_performance/
 
 ## Contenidos
 
-### Teoria (2.5 horas)
+### Teoría (2.5 horas)
 
-| Tema | Duracion | Descripcion |
+| Tema | Duracion | Descripción |
 |------|----------|-------------|
 | [01 - HTTP/2 conceptos](1-teoria/01-http2-conceptos.md) | 30 min | Multiplexing, compresion de headers, HTTP/3 |
 | [02 - Requests paralelos](1-teoria/02-parallel-requests.md) | 30 min | `--parallel`, `--parallel-max`, comparacion vs bash & |
@@ -60,9 +60,9 @@ week-09-http2_paralelismo_performance/
 | [04 - Write-out performance](1-teoria/04-write-out-performance.md) | 30 min | Variables de tiempo, profiling de fases del request |
 | [05 - WebSockets con curl](1-teoria/05-websockets-curl.md) | 30 min | Upgrade de HTTP a WS, handshake, limitaciones |
 
-### Practica (4 horas)
+### Práctica (4 horas)
 
-| Ejercicio | Duracion | Descripcion |
+| Ejercicio | Duracion | Descripción |
 |-----------|----------|-------------|
 | [01 - HTTP/2](2-practicas/01-ejercicio-http2/) | 45 min | Verificar soporte, comparar HTTP/1.1 vs HTTP/2 |
 | [02 - Parallel](2-practicas/02-ejercicio-parallel/) | 60 min | Descargas paralelas, medir speedup |
@@ -75,7 +75,7 @@ Script `perf-test.sh`: toma una lista de endpoints, hace N requests a cada uno, 
 
 ---
 
-## Verificacion Rapida del Entorno
+## Verificación Rápida del Entorno
 
 Antes de empezar, verificar que curl tiene soporte HTTP/2:
 
@@ -95,7 +95,7 @@ curl -sI --http2 https://www.google.com | head -5
 
 ---
 
-## Checklist de Verificacion
+## Checklist de Verificación
 
 Antes de pasar a la Semana 10:
 
@@ -110,7 +110,7 @@ Antes de pasar a la Semana 10:
 
 ---
 
-## APIs Publicas para Esta Semana
+## APIs Públicas para Esta Semana
 
 - `https://jsonplaceholder.typicode.com` — 100 posts, ideal para descargas paralelas
 - `https://www.google.com`, `https://cloudflare.com` — soportan HTTP/2 y HTTP/3
@@ -119,7 +119,7 @@ Antes de pasar a la Semana 10:
 
 ---
 
-## Navegacion
+## Navegación
 
-Anterior: [Semana 8: OAuth2 y Autenticacion Avanzada](../week-08-oauth2_y_autenticacion_avanzada/README.md)
+Anterior: [Semana 8: OAuth2 y Autenticación Avanzada](../week-08-oauth2_y_autenticacion_avanzada/README.md)
 Siguiente: [Semana 10: Proyecto Final](../week-10-proyecto_final/README.md)

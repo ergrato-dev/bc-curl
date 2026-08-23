@@ -1,4 +1,4 @@
-# Practicas - Semana 6
+# Prácticas - Semana 6
 
 Esta semana las practicas se enfocan en medir, depurar y configurar curl de forma
 sistematica. Cada ejercicio construye sobre el anterior.

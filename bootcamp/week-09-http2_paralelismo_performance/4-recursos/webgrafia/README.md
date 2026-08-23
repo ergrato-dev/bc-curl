@@ -57,7 +57,7 @@
 | **cloudflare.com** | [https://cloudflare.com/](https://cloudflare.com/) | HTTP/2 y HTTP/3 |
 | **jsonplaceholder** | [https://jsonplaceholder.typicode.com/](https://jsonplaceholder.typicode.com/) | API REST de prueba |
 | **httpbin.org** | [https://httpbin.org/](https://httpbin.org/) | HTTP tests |
-| **Postman Echo WS** | [wss://ws.postman-echo.com/raw](wss://ws.postman-echo.com/raw) | WebSocket público |
+| **Postman Echo WS** | `wss://ws.postman-echo.com/raw` | WebSocket público |
 
 ---
 

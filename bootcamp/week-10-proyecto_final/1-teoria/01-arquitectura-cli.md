@@ -251,7 +251,7 @@ EOF
 
 ---
 
-## Separacion en modulos
+## Separación en modulos
 
 Para scripts muy largos (mas de 300 lineas), bash permite separar el codigo en archivos y cargarlos con `source`:
 
@@ -305,4 +305,4 @@ echo "Hecho"       # nunca llega aqui si hubo error
 
 ## Siguiente
 
-[→ 02: Configuracion persistente](02-configuracion-persistente.md) — como guardar y cargar configuracion entre sesiones.
+[→ 02: Configuración persistente](02-configuracion-persistente.md) — como guardar y cargar configuracion entre sesiones.

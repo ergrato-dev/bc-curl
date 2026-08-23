@@ -1,8 +1,151 @@
-.DS_Store
-*.log
+# ============================================
+# LABORATORIO DOCKER
+# ============================================
+
+lab-data/
+caddy-data/
+caddy-config/
+httpbin-data/
+
+# ============================================
+# VARIABLES DE ENTORNO Y SECRETOS
+# ============================================
+
 .env
-.env.local
-*.tmp
+.env.*
+!.env.example
+!.env.template
+
+# Configuracion local del alumno para el autograding
+.bc-curl
+
+# Certificados y llaves. La CA del laboratorio se exporta, nunca se comitea
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+secrets/
+*.secret
+credentials.yml
+
+# Tokens y sesiones que generan las practicas
+token.json
+tokens/
+cookies.txt
+*.cookies
+.netrc
+
+# ============================================
+# LOGS Y CACHE
+# ============================================
+
+logs/
+*.log
+log/
+.cache/
+*.cache
+
+# ============================================
+# IDEs Y EDITORES
+# ============================================
+
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
+*.code-workspace
+
+.idea/
+*.iml
+*.ipr
+*.iws
+
+*.sublime-project
+*.sublime-workspace
+
+*.swp
+*.swo
+*~
+
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+
+# ============================================
+# SISTEMA OPERATIVO
+# ============================================
+
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
+
+# ============================================
+# DOCUMENTACION
+# ============================================
+
+docs/_build/
+site/
+*_pdf
+
+# ============================================
+# BOOTCAMP ESPECIFICO
+# ============================================
+
+# Trabajo del alumno: se entrega en su repositorio, no en este
+temp/
+tmp/
+scratch/
+notas-personales/
+respuestas.md
+**/respuestas.md
+
+# Soluciones y material de instructor
+bootcamp/**/3-proyecto/**/solution/
+**/3-proyecto/solution/
+**/solution/
+**/_instructor-only/
+**/6-instructor/
+**/_apprentices-only/
+
+# Descargas que generan las practicas de la Semana 04
+descargas/
+*.download
+
+# Logs de los scripts de automatizacion
+scripts/logs/
+
+# ============================================
+# MISCELANEOS
+# ============================================
+
+*.bak
+*.backup
+*.old
+
+*.zip
+*.tar.gz
+*.rar
+
 node_modules/
+package-lock.json
+
 __pycache__/
-.vscode/settings.json
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/

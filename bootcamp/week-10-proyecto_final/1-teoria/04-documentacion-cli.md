@@ -128,7 +128,7 @@ EOF
 
 El README es para quienes ven el proyecto por primera vez. Secciones minimas:
 
-### 1. Titulo y descripcion (1-2 lineas)
+### 1. Título y descripcion (1-2 lineas)
 
 ```markdown
 # api-toolkit
@@ -136,7 +136,7 @@ El README es para quienes ven el proyecto por primera vez. Secciones minimas:
 Cliente REST configurable para la terminal. Soporta autenticacion Bearer, API Key y Basic.
 ```
 
-### 2. Instalacion
+### 2. Instalación
 
 ```markdown
 ## Instalacion
@@ -183,7 +183,7 @@ api-toolkit post /users --data '{"name": "Ana"}'
 ```
 ```
 
-### 4. Configuracion detallada
+### 4. Configuración detallada
 
 ```markdown
 ## Configuracion

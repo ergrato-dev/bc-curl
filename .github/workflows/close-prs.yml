@@ -1,0 +1,31 @@
+name: Auto-close PRs
+
+on:
+  pull_request_target:
+    types: [opened, reopened]
+
+# Principio de minimo privilegio: solo los permisos estrictamente necesarios
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  close-pr:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Cerrar PR automaticamente
+        uses: actions/github-script@f28e40c7f34bde8b3046d885e986cb6290c5673b
+        with:
+          script: |
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: 'Este repositorio no acepta pull requests externos.\n\nSi tienes una sugerencia o encontraste un error, por favor abre un **Issue**.\n\n_This repository does not accept external pull requests. Please open an Issue instead._'
+            });
+            await github.rest.pulls.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.issue.number,
+              state: 'closed'
+            });

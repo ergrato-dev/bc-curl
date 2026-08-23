@@ -8,7 +8,7 @@ jq es un procesador JSON de linea de comandos. Lee JSON de stdin (o de un archiv
 aplica un filtro y escribe el resultado en stdout. Es para JSON lo que `sed` o `awk`
 son para texto plano.
 
-Instalacion:
+Instalación:
 ```bash
 # Debian/Ubuntu
 sudo apt install jq

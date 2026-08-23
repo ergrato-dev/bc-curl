@@ -68,7 +68,7 @@ log "Completado: $EXITOSOS exitosos, $FALLIDOS fallidos"
 log "Titulos guardados en: $OUTPUT_FILE"
 ```
 
-## Ejecucion y verificacion
+## Ejecución y verificacion
 
 ```bash
 chmod +x descargar-titulos.sh

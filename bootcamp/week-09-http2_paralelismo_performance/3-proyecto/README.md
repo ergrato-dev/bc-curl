@@ -1,6 +1,6 @@
 # Proyecto Semana 9: perf-test.sh
 
-## Descripcion
+## Descripción
 
 Construir `perf-test.sh`, un script de testing de performance que toma una lista de endpoints, hace N requests a cada uno, y reporta percentiles de tiempo de respuesta con estadisticas de errores.
 
@@ -47,16 +47,16 @@ https://jsonplaceholder.typicode.com/users        0.102    0.167    0.189    0/1
 - Calcular p50, p90, p99 del tiempo de respuesta (usando los datos reales de `time_total`)
 - Contar errores: requests con status >= 400 o que fallaron (conexion rechazada)
 - Mostrar ranking al final ordenado por p50 ascendente
-- Opcion `--csv FILE`: exportar resultados en formato CSV
+- Opción `--csv FILE`: exportar resultados en formato CSV
 
-### Tecnicos
+### Técnicos
 
 - Usar `--write-out` para capturar `time_total` y `http_code` sin parsear headers
 - Los requests de cada endpoint deben poder hacerse con `--parallel` para reducir el tiempo total del benchmark
 - El script debe manejar endpoints no disponibles sin abortar todo el benchmark
 - Compatibilidad: bash 4+, curl 7.66+, awk (para calcular percentiles)
 
-### Calculo de percentiles
+### Cálculo de percentiles
 
 Para calcular p50/p90/p99 con awk dado un array de tiempos:
 
@@ -85,11 +85,11 @@ END {
 
 ## Criterios de evaluacion
 
-| Criterio | Peso | Descripcion |
+| Criterio | Peso | Descripción |
 |---------|------|-------------|
 | Lectura de endpoints | 10% | Lee archivo, ignora comentarios y lineas vacias |
 | Medicion correcta | 25% | Usa `--write-out` para capturar tiempos reales |
-| Calculo de percentiles | 25% | p50/p90/p99 calculados correctamente |
+| Cálculo de percentiles | 25% | p50/p90/p99 calculados correctamente |
 | Conteo de errores | 15% | Detecta status >= 400 y fallos de conexion |
 | Ranking final | 10% | Ordenado por p50 ascendente |
 | CSV export | 10% | Formato correcto con cabecera |

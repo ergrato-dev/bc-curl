@@ -2,7 +2,7 @@
 
 ![Testing con bats](../0-assets/03-testing-scripts-bash.svg)
 
-[← 02: Configuracion persistente](02-configuracion-persistente.md) | [→ 04: Documentacion CLI](04-documentacion-cli.md)
+[← 02: Configuración persistente](02-configuracion-persistente.md) | [→ 04: Documentación CLI](04-documentacion-cli.md)
 
 ---
 
@@ -216,7 +216,7 @@ EOF
 
 ---
 
-## Organizacion de tests
+## Organización de tests
 
 ```
 test/
@@ -300,8 +300,8 @@ Esto es rapido (no ejecuta nada) y atrapa errores basicos como parentesis sin ce
 
 | Tipo | Velocidad | Usa internet | Cuando usarlo |
 |------|-----------|--------------|---------------|
-| Unitario (mock curl) | Rapido | No | Cada push, en CI siempre |
-| Integracion (API real) | Lento | Si | En CI, pero puede fallar por razones externas |
+| Unitario (mock curl) | Rápido | No | Cada push, en CI siempre |
+| Integración (API real) | Lento | Si | En CI, pero puede fallar por razones externas |
 | Smoke test post-deploy | Muy rapido | Si | Despues de cada deploy |
 
 Para `api-toolkit`, la estrategia recomendada:
@@ -313,4 +313,4 @@ Para `api-toolkit`, la estrategia recomendada:
 
 ## Siguiente
 
-[→ 04: Documentacion CLI](04-documentacion-cli.md) — como documentar tu herramienta para que otros (y tu del futuro) la puedan usar.
+[→ 04: Documentación CLI](04-documentacion-cli.md) — como documentar tu herramienta para que otros (y tu del futuro) la puedan usar.

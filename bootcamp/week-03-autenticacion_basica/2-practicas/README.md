@@ -1,4 +1,4 @@
-# Practicas - Semana 3
+# Prácticas - Semana 3
 
 Cuatro ejercicios que cubren los principales mecanismos de autenticación. Completal en orden.
 

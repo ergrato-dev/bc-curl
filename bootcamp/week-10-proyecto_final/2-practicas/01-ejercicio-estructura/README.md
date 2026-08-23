@@ -1,6 +1,6 @@
 # Etapa 1: Estructura base de api-toolkit
 
-[← Practicas](../README.md) | [→ Etapa 2: Modulo auth](../02-ejercicio-auth-module/README.md)
+[← Prácticas](../README.md) | [→ Etapa 2: Módulo auth](../02-ejercicio-auth-module/README.md)
 
 **Tiempo estimado:** 45 minutos
 
@@ -16,7 +16,7 @@ Un buen esqueleto es la base de una herramienta mantenible. Una vez que esta est
 
 ## Tareas
 
-### Tarea 1: Configuracion inicial del script
+### Tarea 1: Configuración inicial del script
 
 El script empieza con tres elementos fundamentales:
 
@@ -32,7 +32,7 @@ set -euo pipefail
 - `set -euo pipefail` activa el modo seguro (ver teoria 01)
 - El comentario de version es opcional pero profesional
 
-Tambien define las constantes globales:
+También define las constantes globales:
 
 ```bash
 readonly VERSION="1.0.0"
@@ -62,7 +62,7 @@ Escribe el `--help` completo antes de implementar nada mas. Debe incluir:
 - Seccion "Comandos:" con todos los subcomandos y su descripcion
 - Seccion "Opciones globales:" con `--dry-run`, `--verbose`, `--base-url`, `--output`, `--version`, `--help`
 - Seccion "Ejemplos:" con al menos 5 comandos reales ejecutables
-- Seccion "Configuracion:" con la ruta al config file
+- Seccion "Configuración:" con la ruta al config file
 
 Usa `cat <<EOF ... EOF` para el heredoc.
 
@@ -183,7 +183,7 @@ main "$@"
 
 ---
 
-## Verificacion
+## Verificación
 
 Al terminar esta etapa, los siguientes comandos deben funcionar:
 
@@ -242,4 +242,4 @@ bash api-toolkit.sh
 
 ## Siguiente etapa
 
-[→ Etapa 2: Modulo de autenticacion](../02-ejercicio-auth-module/README.md)
+[→ Etapa 2: Módulo de autenticacion](../02-ejercicio-auth-module/README.md)

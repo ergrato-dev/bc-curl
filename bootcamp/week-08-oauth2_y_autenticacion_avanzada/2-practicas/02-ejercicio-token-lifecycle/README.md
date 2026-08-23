@@ -156,7 +156,7 @@ El archivo `token-manager.sh` debe:
 ## Entrega
 
 Archivo `respuestas.md` con:
-1. Codigo completo de `token-manager.sh`
+1. Código completo de `token-manager.sh`
 2. Output de la primera ejecucion (con mensaje de "Obteniendo token")
 3. Output de la segunda ejecucion (sin mensaje, token reutilizado)
 4. Output despues de simular expiracion (nuevo token obtenido)

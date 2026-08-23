@@ -145,7 +145,7 @@ curl --netrc https://httpbin.org/basic-auth/user/pass
 
 ## Resumen: buenas prácticas
 
-| Practica | Por qué |
+| Práctica | Por qué |
 |----------|---------|
 | Usar variables de entorno | No quedan en el código fuente |
 | Archivo `.env` + `.gitignore` | Persisten en el proyecto sin llegar a git |

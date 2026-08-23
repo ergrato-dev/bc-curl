@@ -1,6 +1,6 @@
 # Proyecto Semana 8: oauth-client.sh
 
-## Descripcion
+## Descripción
 
 Construir `oauth-client.sh`, un cliente OAuth2 reutilizable que gestiona el token lifecycle de forma transparente y expone una interfaz simple para interactuar con cualquier API protegida.
 
@@ -73,7 +73,7 @@ $ ./oauth-client.sh call POST /api/items '{"name":"test"}'
 
 ## Requisitos
 
-### Configuracion
+### Configuración
 
 El script lee su configuracion de `~/.oauth-client/config` o de variables de entorno:
 
@@ -104,7 +104,7 @@ Variables de entorno tienen prioridad sobre el archivo de config.
 
 ### Exit Codes
 
-| Codigo | Significado |
+| Código | Significado |
 |--------|-------------|
 | 0 | Exito |
 | 1 | Error de autenticacion / configuracion |
@@ -151,12 +151,12 @@ main() {
 main "$@"
 ```
 
-## Criterios de Evaluacion
+## Criterios de Evaluación
 
 - **Funcionalidad** (40%): los 4 subcomandos funcionan correctamente
 - **Token lifecycle** (25%): el token se persiste, verifica y renueva correctamente
 - **Manejo de errores** (20%): mensajes claros, exit codes correctos
-- **Codigo** (15%): legible, funciones bien nombradas, sin repeticion
+- **Código** (15%): legible, funciones bien nombradas, sin repeticion
 
 ## Entrega
 

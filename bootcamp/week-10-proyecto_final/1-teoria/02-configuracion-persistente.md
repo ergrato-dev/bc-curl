@@ -1,4 +1,4 @@
-# Configuracion persistente en bash
+# Configuración persistente en bash
 
 ![Configuración Persistente](../0-assets/02-configuracion-persistente.svg)
 
@@ -76,7 +76,7 @@ Para `api-toolkit` usaremos el formato KEY=VALUE por simplicidad.
 
 ---
 
-## Jerarquia de precedencia
+## Jerarquía de precedencia
 
 Una buena CLI respeta esta jerarquia, de menor a mayor prioridad:
 
@@ -89,7 +89,7 @@ Una buena CLI respeta esta jerarquia, de menor a mayor prioridad:
 
 Ejemplo: si `BASE_URL` esta en el config como `https://api.dev.com`, pero el usuario lo llama con `--base-url https://api.prod.com`, el flag gana.
 
-Implementacion:
+Implementación:
 
 ```bash
 load_config() {
@@ -298,7 +298,7 @@ fi
 
 ---
 
-## Migracion de config entre versiones
+## Migración de config entre versiones
 
 Si en el futuro cambias la estructura del config, necesitas migrar los archivos existentes:
 

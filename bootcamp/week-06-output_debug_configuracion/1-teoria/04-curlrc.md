@@ -94,7 +94,7 @@ header = "X-API-Version: 2024-01"
 header = "Accept: application/json"
 ```
 
-Tambien puedes desactivar completamente el curlrc global para un comando:
+También puedes desactivar completamente el curlrc global para un comando:
 
 ```bash
 # Ignora completamente el ~/.curlrc

@@ -1,4 +1,4 @@
-# Practicas — Semana 10
+# Prácticas — Semana 10
 
 Las 4 practicas de esta semana son las etapas de construccion del proyecto final. No son ejercicios independientes: cada una extiende el trabajo de la anterior. Al completar la etapa 4, el proyecto final esta listo para entregar.
 
@@ -11,8 +11,8 @@ Las 4 practicas de esta semana son las etapas de construccion del proyecto final
 | # | Etapa | Tiempo estimado | Que construyes |
 |---|-------|-----------------|----------------|
 | 01 | [Estructura base](01-ejercicio-estructura/README.md) | 45 min | Scaffolding, `--help`, dispatcher, `load_config` |
-| 02 | [Modulo auth](02-ejercicio-auth-module/README.md) | 60 min | `auth login/logout/status`, token lifecycle |
-| 03 | [Modulo requests](03-ejercicio-request-module/README.md) | 75 min | `get/post/put/delete`, retry, logging |
+| 02 | [Módulo auth](02-ejercicio-auth-module/README.md) | 60 min | `auth login/logout/status`, token lifecycle |
+| 03 | [Módulo requests](03-ejercicio-request-module/README.md) | 75 min | `get/post/put/delete`, retry, logging |
 | 04 | [Features avanzadas](04-ejercicio-features-avanzadas/README.md) | 60 min | `monitor`, `bench`, `--output`, mejoras de UX |
 
 **Total:** ~4 horas de implementacion
@@ -42,7 +42,7 @@ Si ya tienes una cuenta en GitHub, puedes usar la GitHub API con tu token person
 
 ---
 
-## Verificacion antes de empezar
+## Verificación antes de empezar
 
 ```bash
 # Verifica que tienes las dependencias

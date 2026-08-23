@@ -1,4 +1,4 @@
-# Ejercicio 2: Depuracion con -v y --trace-ascii
+# Ejercicio 2: Depuración con -v y --trace-ascii
 
 ## Objetivo
 
@@ -19,7 +19,7 @@ archivo (con un comentario o anotacion) donde comienza y termina cada una:
 
 - [ ] Resolucion DNS y conexion TCP (lineas con `Trying` y `Connected`)
 - [ ] Inicio del TLS handshake (`TLS handshake` o `SSL connection`)
-- [ ] Version TLS negociada y cipher suite elegido
+- [ ] Versión TLS negociada y cipher suite elegido
 - [ ] Nombre del servidor en el certificado (CN=)
 - [ ] Headers enviados por curl (lineas con `>`)
 - [ ] Primera linea de respuesta del servidor (linea con `< HTTP/`)

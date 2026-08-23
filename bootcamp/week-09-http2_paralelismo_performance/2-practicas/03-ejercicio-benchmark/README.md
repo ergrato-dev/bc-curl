@@ -6,7 +6,7 @@ Construir un script de benchmark que mida el tiempo de respuesta de un endpoint 
 
 **Duracion estimada:** 60 minutos
 
-## Prerequisitos
+## Prerrequisitos
 
 - curl con soporte HTTP/2 (verificado en ejercicio 01)
 - `jq` y `awk` instalados

@@ -1,4 +1,4 @@
-# Rubrica de Evaluacion - Semana 4
+# Rúbrica de Evaluación - Semana 4
 
 ## Competencias evaluadas
 

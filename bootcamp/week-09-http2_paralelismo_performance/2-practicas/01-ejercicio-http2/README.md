@@ -1,4 +1,4 @@
-# Ejercicio 01: HTTP/2 en la Practica
+# Ejercicio 01: HTTP/2 en la Práctica
 
 ## Objetivo
 
@@ -38,7 +38,7 @@ curl -sI --http2 https://www.google.com | head -3
 
 Observar la primera linea de cada respuesta. Debe decir `HTTP/1.1 200 OK` o `HTTP/2 200` respectivamente.
 
-## Parte 3: Ver la Negociacion ALPN
+## Parte 3: Ver la Negociación ALPN
 
 ALPN (Application-Layer Protocol Negotiation) es el mecanismo TLS por el que el cliente y servidor acuerdan usar HTTP/2 en lugar de HTTP/1.1:
 
@@ -104,7 +104,7 @@ curl --http2-prior-knowledge http://localhost:8080/
 ## Entrega
 
 Archivo `respuestas.md` con:
-1. Version de curl y si tiene soporte HTTP/2 (output de `curl --version`)
+1. Versión de curl y si tiene soporte HTTP/2 (output de `curl --version`)
 2. Diferencia en la primera linea de respuesta entre HTTP/1.1 y HTTP/2
 3. Output del grep de ALPN (con la negociacion visible)
 4. Resultado del test de performance (tiempos para HTTP/1.1 vs HTTP/2)

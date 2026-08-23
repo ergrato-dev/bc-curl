@@ -51,7 +51,7 @@ week-03-autenticacion_basica/
 
 ## Contenidos
 
-### Teoria (2 horas)
+### Teoría (2 horas)
 
 | Tema | Duración | Descripción |
 |------|----------|-------------|
@@ -61,7 +61,7 @@ week-03-autenticacion_basica/
 | [04 - Bearer tokens y JWT](1-teoria/04-bearer-tokens-jwt.md) | 30 min | Flujo de login, estructura JWT, decodificar |
 | [05 - Variables de entorno y seguridad](1-teoria/05-variables-entorno-seguridad.md) | 20 min | No hardcodear, .env, .gitignore, .netrc |
 
-### Practica (4 horas)
+### Práctica (4 horas)
 
 | Ejercicio | Duración | Descripción |
 |-----------|----------|-------------|
@@ -76,7 +76,7 @@ Auth explorer: script `auth-check.sh` que prueba los tres mecanismos de autentic
 
 ---
 
-## Checklist de Verificacion
+## Checklist de Verificación
 
 Antes de pasar a la Semana 4:
 
@@ -92,7 +92,7 @@ Antes de pasar a la Semana 4:
 
 ---
 
-## APIs Publicas para Practicar
+## APIs Públicas para Practicar
 
 - `https://httpbin.org/basic-auth/user/passwd` — prueba Basic Auth
 - `https://httpbin.org/bearer` — prueba Bearer token
@@ -101,7 +101,7 @@ Antes de pasar a la Semana 4:
 
 ---
 
-## Navegacion
+## Navegación
 
 Anterior: [Semana 2: Métodos HTTP, Headers y JSON](../week-02-metodos_http_headers_json/README.md)
 

@@ -4,7 +4,7 @@
 
 Comparar la performance de requests secuenciales vs paralelos, entender los parametros de control de concurrencia, y medir el speedup real en distintos escenarios.
 
-## Preparacion
+## Preparación
 
 Se usa `jsonplaceholder.typicode.com` que tiene 100 posts. Cada request es liviano (~1KB) — ideal para ver el efecto del paralelismo.
 
@@ -137,6 +137,6 @@ ls /tmp/parallel-test/config_*.json | wc -l
 Archivo `respuestas.md` con:
 1. Tabla comparativa secuencial vs paralelo (tiempo y speedup)
 2. Tabla de `--parallel-max` con tiempos
-3. Numero de conexiones observadas en la parte 3 y explicacion
-4. Comparacion `--parallel` vs `bash &` (tiempo y observaciones)
-5. Reflexion: cuando usarias `--parallel-max` bajo (5 o menos)?
+3. Número de conexiones observadas en la parte 3 y explicacion
+4. Comparación `--parallel` vs `bash &` (tiempo y observaciones)
+5. Reflexión: cuando usarias `--parallel-max` bajo (5 o menos)?

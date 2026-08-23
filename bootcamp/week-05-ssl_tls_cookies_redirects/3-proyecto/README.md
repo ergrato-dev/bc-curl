@@ -1,6 +1,6 @@
 # Proyecto Semana 5: SSL & Session Checker
 
-## Descripcion
+## Descripción
 
 Crear un script `session.sh` que implementa un cliente con sesión persistente. El script simula el flujo completo de una aplicación que:
 

@@ -20,7 +20,7 @@ El refresh token es una credencial de larga duracion que permite obtener nuevos 
 
 ---
 
-## El Request de Renovacion
+## El Request de Renovación
 
 ```bash
 REFRESH_TOKEN="1//0gLd-refreshtoken..."
@@ -196,7 +196,7 @@ get_token() {
 
 ---
 
-## Cuando el Refresh Token Tambien Expira
+## Cuando el Refresh Token También Expira
 
 Si el refresh token vence, la unica salida es volver al flujo inicial (Authorization Code o Client Credentials). Esto es intencional: fuerza al usuario a reautorizar periodicamente.
 

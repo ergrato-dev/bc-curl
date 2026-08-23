@@ -1,6 +1,6 @@
-# Semana 6: Output, Debug y Configuracion
+# Semana 6: Output, Debug y Configuración
 
-## Descripcion
+## Descripción
 
 En las semanas anteriores aprendiste a construir requests HTTP con curl. Esta semana
 el foco cambia: aprenderemos a controlar lo que curl muestra, extraer metricas del
@@ -44,7 +44,7 @@ week-06-output_debug_configuracion/
     └── README.md
 ```
 
-## Prerequisitos
+## Prerrequisitos
 
 - Semanas 1 a 5 completadas
 - Bash funcional (Linux, macOS o WSL)
@@ -52,6 +52,6 @@ week-06-output_debug_configuracion/
 
 ## Tiempo estimado
 
-- Teoria: 2-3 horas
-- Practicas: 3-4 horas
+- Teoría: 2-3 horas
+- Prácticas: 3-4 horas
 - Proyecto: 2-3 horas

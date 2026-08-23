@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # perf-test.sh — Performance tester de endpoints HTTP
 # Uso: bash perf-test.sh [--times N] [--max-parallel N] [--csv FILE] endpoints.txt
 

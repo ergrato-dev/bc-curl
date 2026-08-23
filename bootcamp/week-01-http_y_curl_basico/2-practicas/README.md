@@ -1,4 +1,4 @@
-# Practicas - Semana 1
+# Prácticas - Semana 1
 
 Cuatro ejercicios progresivos. Completal en orden — cada uno construye sobre el anterior.
 

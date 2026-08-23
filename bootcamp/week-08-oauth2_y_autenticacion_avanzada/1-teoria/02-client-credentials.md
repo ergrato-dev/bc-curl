@@ -80,7 +80,7 @@ Este patron — obtener token, usar token — se repite en todos los flujos OAut
 
 ---
 
-## Verificar la Expiracion
+## Verificar la Expiración
 
 La respuesta incluye `expires_in` (segundos hasta que expira). Para calcular el timestamp de expiracion:
 
