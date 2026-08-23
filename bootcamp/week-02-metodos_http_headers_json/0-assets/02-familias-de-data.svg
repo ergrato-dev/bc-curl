@@ -1,0 +1,74 @@
+<svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 520" font-family="Arial, Helvetica, sans-serif">
+  <title>Las cuatro familias de --data y que hace cada una con el contenido</title>
+  <rect width="820" height="520" fill="#0d1117"/>
+
+  <text x="410" y="34" text-anchor="middle" fill="#f0f6fc" font-size="22" font-weight="bold">Las cuatro familias de <tspan fill="#f0883e">--data</tspan></text>
+  <text x="410" y="56" text-anchor="middle" fill="#8b949e" font-size="12">Todas envían un cuerpo. Se diferencian en qué le hacen antes de enviarlo</text>
+
+  <!-- Entrada comun -->
+  <rect x="285" y="76" width="250" height="46" rx="8" fill="#161b22" stroke="#30363d" stroke-width="1.5"/>
+  <text x="410" y="97" text-anchor="middle" fill="#8b949e" font-size="11">contenido de entrada</text>
+  <text x="410" y="114" text-anchor="middle" fill="#f0f6fc" font-size="13" font-family="monospace">{ "n": "ada" }\n</text>
+
+  <path d="M410 122 L410 148" stroke="#30363d" stroke-width="2"/>
+  <path d="M120 148 L700 148" stroke="#30363d" stroke-width="2"/>
+  <path d="M120 148 L120 168 M313 148 L313 168 M507 148 L507 168 M700 148 L700 168" stroke="#30363d" stroke-width="2"/>
+
+  <!-- d -->
+  <rect x="24" y="168" width="192" height="230" rx="8" fill="#161b22" stroke="#f0883e" stroke-width="2"/>
+  <text x="120" y="194" text-anchor="middle" fill="#f0883e" font-size="15" font-weight="bold" font-family="monospace">-d / --data</text>
+  <text x="120" y="216" text-anchor="middle" fill="#8b949e" font-size="10">el atajo de todos los días</text>
+  <line x1="40" y1="228" x2="200" y2="228" stroke="#30363d"/>
+  <text x="40" y="250" fill="#f0f6fc" font-size="11">Con <tspan font-family="monospace" fill="#79c0ff">@archivo</tspan>:</text>
+  <text x="40" y="270" fill="#f85149" font-size="11">quita los saltos de línea</text>
+  <text x="40" y="292" fill="#f0f6fc" font-size="11">Content-Type por defecto:</text>
+  <text x="40" y="312" fill="#d2a8ff" font-size="10" font-family="monospace">x-www-form-urlencoded</text>
+  <text x="40" y="338" fill="#f0f6fc" font-size="11">Implica <tspan font-family="monospace" fill="#79c0ff">POST</tspan></text>
+  <text x="40" y="366" fill="#8b949e" font-size="10">Para formularios y para</text>
+  <text x="40" y="382" fill="#8b949e" font-size="10">JSON escrito en la línea</text>
+
+  <!-- data-raw -->
+  <rect x="228" y="168" width="170" height="230" rx="8" fill="#161b22" stroke="#58a6ff" stroke-width="2"/>
+  <text x="313" y="194" text-anchor="middle" fill="#58a6ff" font-size="14" font-weight="bold" font-family="monospace">--data-raw</text>
+  <text x="313" y="216" text-anchor="middle" fill="#8b949e" font-size="10">literal, sin sorpresas</text>
+  <line x1="242" y1="228" x2="384" y2="228" stroke="#30363d"/>
+  <text x="242" y="250" fill="#f0f6fc" font-size="11">La <tspan font-family="monospace" fill="#79c0ff">@</tspan> inicial</text>
+  <text x="242" y="270" fill="#3fb950" font-size="11">NO abre un archivo</text>
+  <text x="242" y="296" fill="#8b949e" font-size="10">Es lo que quieres si el</text>
+  <text x="242" y="312" fill="#8b949e" font-size="10">dato empieza por @ y</text>
+  <text x="242" y="328" fill="#8b949e" font-size="10">viene de una variable</text>
+  <text x="242" y="356" fill="#f0f6fc" font-size="10" font-family="monospace">--data-raw "$CUERPO"</text>
+  <text x="242" y="382" fill="#8b949e" font-size="10">Desde curl 7.43</text>
+
+  <!-- data-binary -->
+  <rect x="410" y="168" width="188" height="230" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="504" y="194" text-anchor="middle" fill="#3fb950" font-size="14" font-weight="bold" font-family="monospace">--data-binary</text>
+  <text x="504" y="216" text-anchor="middle" fill="#8b949e" font-size="10">byte a byte</text>
+  <line x1="424" y1="228" x2="584" y2="228" stroke="#30363d"/>
+  <text x="424" y="250" fill="#f0f6fc" font-size="11">Con <tspan font-family="monospace" fill="#79c0ff">@archivo</tspan>:</text>
+  <text x="424" y="270" fill="#3fb950" font-size="11">conserva los saltos</text>
+  <text x="424" y="296" fill="#8b949e" font-size="10">El único correcto para</text>
+  <text x="424" y="312" fill="#8b949e" font-size="10">un JSON en disco, un PNG</text>
+  <text x="424" y="328" fill="#8b949e" font-size="10">o cualquier binario</text>
+  <text x="424" y="358" fill="#f0f6fc" font-size="10" font-family="monospace">--data-binary @u.json</text>
+  <text x="424" y="382" fill="#8b949e" font-size="10">Tampoco codifica nada</text>
+
+  <!-- data-urlencode -->
+  <rect x="610" y="168" width="186" height="230" rx="8" fill="#161b22" stroke="#d2a8ff" stroke-width="2"/>
+  <text x="703" y="194" text-anchor="middle" fill="#d2a8ff" font-size="13" font-weight="bold" font-family="monospace">--data-urlencode</text>
+  <text x="703" y="216" text-anchor="middle" fill="#8b949e" font-size="10">codifica por ti</text>
+  <line x1="624" y1="228" x2="782" y2="228" stroke="#30363d"/>
+  <text x="624" y="250" fill="#f0f6fc" font-size="11">Escapa espacios, <tspan font-family="monospace">&amp;</tspan>,</text>
+  <text x="624" y="268" fill="#f0f6fc" font-size="11">acentos y <tspan font-family="monospace">=</tspan></text>
+  <text x="624" y="294" fill="#f0f6fc" font-size="11">Con <tspan font-family="monospace" fill="#79c0ff">-G</tspan> lo manda en la</text>
+  <text x="624" y="312" fill="#f0f6fc" font-size="11">query, no en el cuerpo</text>
+  <text x="624" y="340" fill="#8b949e" font-size="10">La forma correcta de</text>
+  <text x="624" y="356" fill="#8b949e" font-size="10">construir un query string</text>
+  <text x="624" y="382" fill="#8b949e" font-size="10">Desde curl 7.18</text>
+
+  <!-- Regla de decision -->
+  <rect x="24" y="420" width="772" height="76" rx="8" fill="#161b22" stroke="#e3b341" stroke-width="1.5"/>
+  <text x="44" y="444" fill="#e3b341" font-size="13" font-weight="bold">La regla, en una línea</text>
+  <text x="44" y="466" fill="#f0f6fc" font-size="12">JSON en la línea de comandos → <tspan font-family="monospace" fill="#f0883e">-d</tspan>   ·   JSON en un archivo → <tspan font-family="monospace" fill="#3fb950">--data-binary @archivo</tspan></text>
+  <text x="44" y="486" fill="#f0f6fc" font-size="12">Query string con espacios → <tspan font-family="monospace" fill="#d2a8ff">-G --data-urlencode</tspan>   ·   El dato empieza por <tspan font-family="monospace">@</tspan> → <tspan font-family="monospace" fill="#58a6ff">--data-raw</tspan></text>
+</svg>

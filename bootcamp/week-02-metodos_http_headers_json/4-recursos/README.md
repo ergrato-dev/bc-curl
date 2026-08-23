@@ -1,29 +1,22 @@
-# 📚 Recursos - Semana 02
+# Recursos — Semana 02
 
-## 📖 Contenido
+Tres carpetas, y en cada recurso una línea de por qué vale la pena. Nada aquí es
+relleno: si no aporta algo que el material no cubra, no está.
 
-Esta carpeta contiene recursos adicionales para complementar tu aprendizaje sobre métodos HTTP, headers y JSON:
+| Carpeta | Qué hay |
+|---|---|
+| [ebooks-free/](ebooks-free/README.md) | Libros y especificaciones, gratis y legales |
+| [videografia/](videografia/README.md) | Vídeo, para lo que se entiende mejor viéndolo |
+| [webgrafia/](webgrafia/README.md) | Referencia, artículos y herramientas |
 
-| Carpeta | Contenido |
-|---------|-----------|
-| [ebooks-free/](./ebooks-free) | Libros electrónicos gratuitos |
-| [videografia/](./videografia) | Videos y tutoriales recomendados |
-| [webgrafia/](./webgrafia) | Enlaces a documentación y artículos |
-
----
-
-## 🎯 Cómo Usar Estos Recursos
-
-1. **Teoría primero**: Completa el material de [1-teoria/](../1-teoria) antes de explorar estos recursos
-2. **Complementa**: Usa estos recursos para profundizar en temas específicos
-3. **Práctica**: Aplica lo aprendido en las [prácticas](../2-practicas) y el [proyecto](../3-proyecto)
+_Enlaces comprobados en **agosto de 2026**._
 
 ---
 
-## 💡 Recomendación
+## 🔗 Navegación
 
-No intentes consumir todo el contenido de una vez. Usa estos recursos como referencia cuando necesites profundizar en un tema específico.
+| Anterior | Actual | Siguiente |
+|---|---|---|
+| [Recursos Semana 01](../../week-01-http_y_curl_basico/4-recursos/README.md) | **Recursos Semana 02** | [Recursos Semana 03](../../week-03-autenticacion_basica/4-recursos/README.md) |
 
----
-
-[← Volver a Semana 02](../README.md)
+[← Volver a la Semana 02](../README.md)

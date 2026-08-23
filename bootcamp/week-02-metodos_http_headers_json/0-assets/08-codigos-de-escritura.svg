@@ -1,0 +1,52 @@
+<svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 520" font-family="Arial, Helvetica, sans-serif">
+  <title>Los codigos de estado que solo aparecen cuando se escribe: 201, 204, 409, 415 y 422</title>
+  <rect width="820" height="520" fill="#0d1117"/>
+
+  <text x="410" y="34" text-anchor="middle" fill="#f0f6fc" font-size="22" font-weight="bold">Los códigos que solo salen al <tspan fill="#f0883e">escribir</tspan></text>
+  <text x="410" y="56" text-anchor="middle" fill="#8b949e" font-size="12">Un GET nunca te devuelve un 201 ni un 422. Estos cinco son de POST, PUT, PATCH y DELETE</text>
+
+  <!-- 201 -->
+  <rect x="24" y="82" width="380" height="118" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="44" y="110" fill="#3fb950" font-size="20" font-weight="bold" font-family="monospace">201</text>
+  <text x="96" y="110" fill="#f0f6fc" font-size="15" font-weight="bold">Created</text>
+  <text x="44" y="134" fill="#8b949e" font-size="11">El recurso existe ahora y no existía antes.</text>
+  <text x="44" y="154" fill="#f0f6fc" font-size="11">Trae <tspan font-family="monospace" fill="#79c0ff">Location:</tspan> con la URL del recurso nuevo.</text>
+  <text x="44" y="180" fill="#d2a8ff" font-size="10" font-family="monospace">curl -sD - -o /dev/null ... | grep -i ^location</text>
+
+  <!-- 204 -->
+  <rect x="424" y="82" width="372" height="118" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="444" y="110" fill="#3fb950" font-size="20" font-weight="bold" font-family="monospace">204</text>
+  <text x="496" y="110" fill="#f0f6fc" font-size="15" font-weight="bold">No Content</text>
+  <text x="444" y="134" fill="#8b949e" font-size="11">Salió bien y no hay nada que devolver.</text>
+  <text x="444" y="154" fill="#f85149" font-size="11">El cuerpo está vacío <tspan fill="#8b949e">a propósito</tspan>: no es un fallo.</text>
+  <text x="444" y="180" fill="#8b949e" font-size="10">Típico de DELETE y de PUT sin representación.</text>
+
+  <!-- 409 -->
+  <rect x="24" y="216" width="380" height="118" rx="8" fill="#161b22" stroke="#e3b341" stroke-width="2"/>
+  <text x="44" y="244" fill="#e3b341" font-size="20" font-weight="bold" font-family="monospace">409</text>
+  <text x="96" y="244" fill="#f0f6fc" font-size="15" font-weight="bold">Conflict</text>
+  <text x="44" y="268" fill="#8b949e" font-size="11">La petición es válida, el estado del servidor no la admite.</text>
+  <text x="44" y="288" fill="#f0f6fc" font-size="11">Ese email ya está registrado. Reintentar no arregla nada.</text>
+  <text x="44" y="314" fill="#8b949e" font-size="10">No lo reintentes con <tspan font-family="monospace">--retry</tspan>: va a fallar igual.</text>
+
+  <!-- 415 -->
+  <rect x="424" y="216" width="372" height="118" rx="8" fill="#161b22" stroke="#f85149" stroke-width="2"/>
+  <text x="444" y="244" fill="#f85149" font-size="20" font-weight="bold" font-family="monospace">415</text>
+  <text x="496" y="244" fill="#f0f6fc" font-size="15" font-weight="bold">Unsupported Media Type</text>
+  <text x="444" y="268" fill="#8b949e" font-size="11">Mandaste JSON sin decir que era JSON.</text>
+  <text x="444" y="288" fill="#f0f6fc" font-size="11">Es el 415 de <tspan font-family="monospace" fill="#e3b341">-d</tspan> a secas: el <tspan font-family="monospace">Content-Type</tspan></text>
+  <text x="444" y="306" fill="#f0f6fc" font-size="11">por defecto es <tspan font-family="monospace" fill="#e3b341">x-www-form-urlencoded</tspan>.</text>
+  <text x="444" y="328" fill="#3fb950" font-size="10" font-family="monospace">-H 'Content-Type: application/json'</text>
+
+  <!-- 422 -->
+  <rect x="24" y="350" width="772" height="106" rx="8" fill="#161b22" stroke="#e3b341" stroke-width="2"/>
+  <text x="44" y="378" fill="#e3b341" font-size="20" font-weight="bold" font-family="monospace">422</text>
+  <text x="96" y="378" fill="#f0f6fc" font-size="15" font-weight="bold">Unprocessable Content</text>
+  <text x="44" y="402" fill="#8b949e" font-size="11">El JSON es JSON válido, pero los datos no pasan la validación de negocio: falta un campo, la edad es negativa.</text>
+  <text x="44" y="424" fill="#f0f6fc" font-size="11">La diferencia con el <tspan font-family="monospace" fill="#f85149">400</tspan>: el 400 es "no te entiendo"; el 422 es "te entiendo y no me vale".</text>
+  <text x="44" y="446" fill="#79c0ff" font-size="11">El motivo viene <tspan font-weight="bold">en el cuerpo</tspan> — por eso se usa <tspan font-family="monospace">--fail-with-body</tspan> y no <tspan font-family="monospace">--fail</tspan> a secas.</text>
+
+  <!-- Nota final -->
+  <rect x="24" y="472" width="772" height="34" rx="8" fill="#161b22" stroke="#30363d" stroke-width="1.5"/>
+  <text x="410" y="494" text-anchor="middle" fill="#8b949e" font-size="11">Ante todos ellos curl sale con <tspan fill="#f0f6fc" font-family="monospace">0</tspan>: para curl la transferencia fue un éxito. El que decide si es un error eres tú.</text>
+</svg>

@@ -1,0 +1,104 @@
+{
+  "semana": "02",
+  "titulo": "Metodos HTTP, headers y JSON",
+  "checks": [
+    {
+      "id": "laboratorio-arriba",
+      "descripcion": "El laboratorio acepta POST en /post",
+      "cmd": "curl -sf -o /dev/null --max-time 5 -X POST -d 'ping=1' {lab}/post",
+      "assert": "exit0",
+      "pista": "ejecuta ./scripts/start.sh antes de nada"
+    },
+    {
+      "id": "toolkit-ejecutable",
+      "descripcion": "api-toolkit.sh existe, es ejecutable y arranca con set -euo pipefail",
+      "cmd": "test -x {semana}/3-proyecto/starter/api-toolkit.sh && grep -q 'set -euo pipefail' {semana}/3-proyecto/starter/api-toolkit.sh",
+      "assert": "exit0",
+      "pista": "3-proyecto/README.md, paso 1"
+    },
+    {
+      "id": "toolkit-sin-todos",
+      "descripcion": "No quedan marcadores TODO sin resolver en el script",
+      "cmd": "grep -c 'TODO' {semana}/3-proyecto/starter/api-toolkit.sh",
+      "assert": "stdout~^0$",
+      "pista": "3-proyecto/README.md: cada TODO numerado es un hueco que tienes que rellenar"
+    },
+    {
+      "id": "toolkit-get",
+      "descripcion": "El subcomando get imprime el cuerpo de la respuesta",
+      "cmd": "BASE_URL={lab} bash {semana}/3-proyecto/starter/api-toolkit.sh get /get 2>/dev/null",
+      "assert": "stdout~\"url\"",
+      "pista": "3-proyecto/README.md, requisito 2"
+    },
+    {
+      "id": "toolkit-post-envia-cuerpo",
+      "descripcion": "El subcomando post envia el cuerpo JSON que se le pasa",
+      "cmd": "BASE_URL={lab} bash {semana}/3-proyecto/starter/api-toolkit.sh post /post '{\"curso\":\"bc-curl\"}' 2>/dev/null",
+      "assert": "stdout~bc-curl",
+      "pista": "2-practicas/01-enviar-el-primer-cuerpo.md, paso 4"
+    },
+    {
+      "id": "toolkit-post-content-type",
+      "descripcion": "El subcomando post declara Content-Type: application/json",
+      "cmd": "BASE_URL={lab} bash {semana}/3-proyecto/starter/api-toolkit.sh post /post '{\"a\":1}' 2>/dev/null | tr -d '[:space:]'",
+      "assert": "stdout~\"Content-Type\":.\"application/json",
+      "pista": "1-teoria/05-json-con-curl.md: -d no pone ese header, lo pone application/x-www-form-urlencoded"
+    },
+    {
+      "id": "toolkit-put",
+      "descripcion": "El subcomando put usa el metodo PUT",
+      "cmd": "BASE_URL={lab} bash {semana}/3-proyecto/starter/api-toolkit.sh put /anything/42 '{\"n\":1}' 2>/dev/null",
+      "assert": "stdout~\"method\": ?\"PUT\"",
+      "pista": "2-practicas/02-el-crud-completo.md, paso 3"
+    },
+    {
+      "id": "toolkit-delete",
+      "descripcion": "El subcomando delete usa el metodo DELETE",
+      "cmd": "BASE_URL={lab} bash {semana}/3-proyecto/starter/api-toolkit.sh delete /anything/42 2>/dev/null",
+      "assert": "stdout~\"method\": ?\"DELETE\"",
+      "pista": "2-practicas/02-el-crud-completo.md, paso 6"
+    },
+    {
+      "id": "toolkit-dry-run-imprime",
+      "descripcion": "--dry-run imprime el comando curl que se habria ejecutado",
+      "cmd": "BASE_URL={lab} bash {semana}/3-proyecto/starter/api-toolkit.sh --dry-run delete /anything/42 2>/dev/null",
+      "assert": "stdout~curl",
+      "pista": "3-proyecto/README.md, requisito 6"
+    },
+    {
+      "id": "toolkit-dry-run-no-ejecuta",
+      "descripcion": "--dry-run no llega a hacer la peticion",
+      "cmd": "BASE_URL={lab} bash {semana}/3-proyecto/starter/api-toolkit.sh --dry-run delete /anything/42 2>/dev/null",
+      "assert": "stdout!~\"method\"",
+      "pista": "3-proyecto/README.md: --dry-run imprime y termina, no envia nada"
+    },
+    {
+      "id": "toolkit-detecta-error-http",
+      "descripcion": "El script sale distinto de 0 cuando la API responde 404",
+      "cmd": "BASE_URL={lab} bash {semana}/3-proyecto/starter/api-toolkit.sh get /status/404",
+      "assert": "exit!=0",
+      "pista": "1-teoria/08-los-codigos-de-la-escritura.md, seccion 5"
+    },
+    {
+      "id": "toolkit-no-se-cuelga",
+      "descripcion": "El script no se queda colgado cuando el servidor tarda demasiado",
+      "cmd": "BASE_URL={lab} timeout 25 bash {semana}/3-proyecto/starter/api-toolkit.sh get /delay/10; test $? -ne 124",
+      "assert": "exit0",
+      "pista": "3-proyecto/README.md, criterios de calidad: --max-time"
+    },
+    {
+      "id": "toolkit-sin-insecure",
+      "descripcion": "El script no desactiva la verificacion del certificado con -k",
+      "cmd": "grep -nE '(^|[[:space:]])(-k|--insecure)([[:space:]]|$)' {semana}/3-proyecto/starter/api-toolkit.sh",
+      "assert": "exit!=0",
+      "pista": "1-teoria/06-headers-custom.md, seccion de antipatrones"
+    },
+    {
+      "id": "toolkit-shellcheck",
+      "descripcion": "El script pasa shellcheck sin avisos",
+      "cmd": "shellcheck -S warning {semana}/3-proyecto/starter/api-toolkit.sh",
+      "assert": "exit0",
+      "pista": "3-proyecto/README.md, criterios de calidad"
+    }
+  ]
+}

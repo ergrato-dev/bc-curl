@@ -1,0 +1,59 @@
+<svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 500" font-family="Arial, Helvetica, sans-serif">
+  <title>Por que -X POST sobra cuando ya hay -d, y por que -X con redirecciones muerde</title>
+  <rect width="820" height="500" fill="#0d1117"/>
+
+  <text x="410" y="34" text-anchor="middle" fill="#f0f6fc" font-size="22" font-weight="bold"><tspan fill="#f0883e">-X</tspan> no envía nada: solo cambia la etiqueta</text>
+  <text x="410" y="56" text-anchor="middle" fill="#8b949e" font-size="12">El método lo eligen los otros flags. <tspan font-family="monospace">-X</tspan> lo sobrescribe, y ahí empiezan los problemas</text>
+
+  <!-- Caso 1: redundante -->
+  <rect x="24" y="80" width="380" height="164" rx="8" fill="#161b22" stroke="#e3b341" stroke-width="2"/>
+  <text x="44" y="106" fill="#e3b341" font-size="14" font-weight="bold">1 · Redundante</text>
+  <text x="44" y="132" fill="#f0f6fc" font-size="12" font-family="monospace">curl <tspan fill="#e3b341">-X POST</tspan> -d '{"a":1}' URL</text>
+  <text x="44" y="158" fill="#8b949e" font-size="11"><tspan font-family="monospace" fill="#79c0ff">-d</tspan> ya implica POST por sí solo.</text>
+  <text x="44" y="176" fill="#8b949e" font-size="11">El <tspan font-family="monospace">-X</tspan> no añade nada: es ruido</text>
+  <text x="44" y="194" fill="#8b949e" font-size="11">que el lector tiene que descartar.</text>
+  <text x="44" y="222" fill="#3fb950" font-size="12" font-family="monospace">curl -d '{"a":1}' URL</text>
+
+  <!-- Caso 2: enganoso -->
+  <rect x="424" y="80" width="372" height="164" rx="8" fill="#161b22" stroke="#f85149" stroke-width="2"/>
+  <text x="444" y="106" fill="#f85149" font-size="14" font-weight="bold">2 · Engañoso</text>
+  <text x="444" y="132" fill="#f0f6fc" font-size="12" font-family="monospace">curl <tspan fill="#f85149">-X POST</tspan> URL</text>
+  <text x="444" y="158" fill="#8b949e" font-size="11">Sin <tspan font-family="monospace" fill="#79c0ff">-d</tspan> no hay cuerpo. Sale un POST</text>
+  <text x="444" y="176" fill="#8b949e" font-size="11">vacío, sin <tspan font-family="monospace">Content-Length</tspan> útil,</text>
+  <text x="444" y="194" fill="#8b949e" font-size="11">y la API contesta <tspan fill="#f85149">400</tspan> o <tspan fill="#f85149">411</tspan>.</text>
+  <text x="444" y="222" fill="#3fb950" font-size="12" font-family="monospace">curl -d '' URL</text>
+
+  <!-- Caso 3: la trampa de la redireccion -->
+  <rect x="24" y="264" width="772" height="216" rx="8" fill="#161b22" stroke="#f85149" stroke-width="2"/>
+  <text x="44" y="290" fill="#f85149" font-size="14" font-weight="bold">3 · La trampa: <tspan font-family="monospace">-X</tspan> sobrevive a la redirección</text>
+
+  <!-- fila sin -X -->
+  <text x="44" y="322" fill="#3fb950" font-size="12" font-weight="bold">Sin -X, con -L</text>
+  <rect x="44" y="332" width="150" height="40" rx="6" fill="#0d1117" stroke="#3fb950"/>
+  <text x="119" y="357" text-anchor="middle" fill="#f0f6fc" font-size="12" font-family="monospace">POST /crear</text>
+  <path d="M200 352 L246 352" stroke="#3fb950" stroke-width="2" marker-end="url(#v)"/>
+  <text x="223" y="344" text-anchor="middle" fill="#e3b341" font-size="10">303</text>
+  <rect x="252" y="332" width="176" height="40" rx="6" fill="#0d1117" stroke="#3fb950"/>
+  <text x="340" y="357" text-anchor="middle" fill="#f0f6fc" font-size="12" font-family="monospace">GET /recurso/42</text>
+  <text x="444" y="357" fill="#3fb950" font-size="11">curl convierte el método. Correcto.</text>
+
+  <!-- fila con -X -->
+  <text x="44" y="404" fill="#f85149" font-size="12" font-weight="bold">Con -X POST, con -L</text>
+  <rect x="44" y="414" width="150" height="40" rx="6" fill="#0d1117" stroke="#f85149"/>
+  <text x="119" y="439" text-anchor="middle" fill="#f0f6fc" font-size="12" font-family="monospace">POST /crear</text>
+  <path d="M200 434 L246 434" stroke="#f85149" stroke-width="2" marker-end="url(#r)"/>
+  <text x="223" y="426" text-anchor="middle" fill="#e3b341" font-size="10">303</text>
+  <rect x="252" y="414" width="176" height="40" rx="6" fill="#0d1117" stroke="#f85149"/>
+  <text x="340" y="439" text-anchor="middle" fill="#f85149" font-size="12" font-family="monospace">POST /recurso/42</text>
+  <text x="444" y="433" fill="#f85149" font-size="11"><tspan font-family="monospace">-X</tspan> fuerza el método en <tspan font-weight="bold">todos</tspan> los saltos.</text>
+  <text x="444" y="451" fill="#8b949e" font-size="11">Segundo POST no previsto: el recurso se crea dos veces.</text>
+
+  <defs>
+    <marker id="v" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0 0 L8 4 L0 8 z" fill="#3fb950"/>
+    </marker>
+    <marker id="r" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0 0 L8 4 L0 8 z" fill="#f85149"/>
+    </marker>
+  </defs>
+</svg>

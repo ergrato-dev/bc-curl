@@ -1,42 +1,46 @@
-# 🎥 Videografía - Semana 2
+# Videografía — Semana 02
 
-## Videos Recomendados
+_Comprobado en agosto de 2026._
 
-### Métodos HTTP
+### [curl 25 años: la charla de Daniel Stenberg](https://www.youtube.com/results?search_query=daniel+stenberg+curl+talk) — varias ediciones
 
-| Título | Canal | Duración | Enlace | Idioma |
-|--------|-------|----------|--------|--------|
-| HTTP Methods (GET, POST, PUT, DELETE) | Traversy Media | 25min | [YouTube](https://www.youtube.com/watch?v=guYMSP7aTa0) | 🇬🇧 EN |
-| REST API - Métodos HTTP | Fazt Code | 15min | [YouTube](https://www.youtube.com/watch?v=QHNO2lYf6uA) | 🇪🇸 ES |
-| PUT vs PATCH | Web Dev Simplified | 10min | [YouTube](https://www.youtube.com/watch?v=EFeTqRd5Gx8) | 🇬🇧 EN |
-| CRUD con REST API | HolaMundo | 20min | [YouTube](https://www.youtube.com/watch?v=bK3qYk8KN0w) | 🇪🇸 ES |
+El autor de curl explicando decisiones de diseño, incluida la de por qué `-d`
+implica POST y por qué `-X` sigue existiendo aunque casi nunca haga falta.
 
-### JSON
+**Por qué vale la pena**: escuchar a quien lo escribió explicar un flag cambia
+cómo lo recuerdas. Busca la edición de FOSDEM, que suele ser la más técnica.
 
-| Título | Canal | Duración | Enlace | Idioma |
-|--------|-------|----------|--------|--------|
-| JSON Crash Course | Traversy Media | 25min | [YouTube](https://www.youtube.com/watch?v=wI1CWzNtE-M) | 🇬🇧 EN |
-| JSON desde Cero | Fazt Code | 10min | [YouTube](https://www.youtube.com/watch?v=u7C7G4DpiNM) | 🇪🇸 ES |
-| JSON Schema Validation | Programming with Mosh | 15min | [YouTube](https://www.youtube.com/watch?v=t6XK-2l4eG4) | 🇬🇧 EN |
+### [HTTP verbs y REST — Fireship, "REST API in 100 seconds"](https://www.youtube.com/watch?v=-MTSQjw5DrM)
 
-### curl Avanzado
+Cien segundos. No enseña curl, enseña el modelo mental de los verbos sobre
+recursos.
 
-| Título | Canal | Duración | Enlace | Idioma |
-|--------|-------|----------|--------|--------|
-| curl POST requests | Academind | 15min | [YouTube](https://www.youtube.com/watch?v=WxZvFEld0gE) | 🇬🇧 EN |
-| curl: Enviar datos y headers | Pelado Nerd | 12min | [YouTube](https://www.youtube.com/watch?v=BsSm4pW7c2o) | 🇪🇸 ES |
-| How to test REST APIs with curl | ProgrammingKnowledge | 20min | [YouTube](https://www.youtube.com/watch?v=BHt9mn3mNyg) | 🇬🇧 EN |
+**Por qué vale la pena**: si PUT y PATCH se te siguen mezclando, esto lo arregla
+en menos de lo que tardas en leer un párrafo.
+
+### [jq tutorial — "jq is awesome"](https://www.youtube.com/results?search_query=jq+json+tutorial+command+line)
+
+Cualquiera de los tutoriales de veinte minutos. Busca uno que cubra `--arg`,
+`-r` y `@tsv`, que son los tres que se usan esta semana.
+
+**Por qué vale la pena**: `jq` deja de ser opcional a partir de la Semana 02, y
+las tres opciones anteriores cubren el 90% de lo que vas a necesitar en diez
+semanas.
+
+### [Curso de HTTP — MDN Web Docs (documentación con demos)](https://developer.mozilla.org/es/docs/Web/HTTP/Methods)
+
+No es vídeo, pero cada método tiene su ejemplo interactivo y está en español.
+
+**Por qué vale la pena**: es la referencia rápida a la que volverás cuando dudes
+si un verbo lleva cuerpo o si es idempotente.
+
+> [!NOTE]
+> Los enlaces de búsqueda son deliberados: los vídeos concretos se borran y se
+> reeditan, y un enlace roto es peor que una búsqueda. Los criterios de qué
+> buscar están en cada entrada.
 
 ---
 
-## 📺 Canales Recomendados
+## 🔗 Navegación
 
-- **Fazt Code** - Tutoriales prácticos en español
-- **Traversy Media** - Desarrollo web y APIs
-- **Pelado Nerd** - DevOps y terminal en español
-- **Academind** - Tutoriales detallados de web
-- **Web Dev Simplified** - Conceptos claros y concisos
-
----
-
-> 💡 **Tip**: Activa subtítulos en español si el video está en inglés.
+[← Volver a Recursos](../README.md) · [← Volver a la Semana 02](../../README.md)

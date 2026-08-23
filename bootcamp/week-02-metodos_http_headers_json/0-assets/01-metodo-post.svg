@@ -1,4 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" font-family="Arial, Helvetica, sans-serif">
+<svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" font-family="Arial, Helvetica, sans-serif">
+  <title>POST: el cuerpo de la peticion viaja despues de los headers</title>
   <rect width="800" height="480" fill="#0d1117"/>
 
   <!-- ─── Title ─── -->
@@ -15,7 +16,7 @@
   <!-- Request box: x=238, w=542 → right edge x=780 -->
   <rect x="238" y="68" width="542" height="94" rx="8" fill="#161b22" stroke="#79c0ff" stroke-width="1.5"/>
   <text x="254" y="91" fill="#79c0ff" font-family="'Courier New', monospace" font-size="12" font-weight="bold">POST /posts HTTP/1.1</text>
-  <text x="254" y="111" fill="#8b949e" font-family="'Courier New', monospace" font-size="11">Host: jsonplaceholder.typicode.com</text>
+  <text x="254" y="111" fill="#8b949e" font-family="'Courier New', monospace" font-size="11">Host: localhost:8080</text>
   <text x="254" y="130" fill="#3fb950" font-family="'Courier New', monospace" font-size="11">Content-Type: application/json</text>
   <line x1="254" y1="137" x2="764" y2="137" stroke="#30363d" stroke-width="0.5"/>
   <text x="254" y="153" fill="#8b949e" font-family="'Courier New', monospace" font-size="11">{"title":"foo","body":"bar","userId":1}</text>
@@ -39,7 +40,7 @@
   <text x="142" y="295" text-anchor="middle" fill="#f0f6fc" font-size="12" font-weight="bold">Inline (literal)</text>
   <text x="36" y="315" fill="#8b949e" font-family="'Courier New', monospace" font-size="10">curl -d '{"title":"Hola"}'</text>
   <text x="36" y="332" fill="#8b949e" font-family="'Courier New', monospace" font-size="10">-H "Content-Type: application/json"</text>
-  <text x="36" y="349" fill="#8b949e" font-family="'Courier New', monospace" font-size="10">https://httpbin.org/post</text>
+  <text x="36" y="349" fill="#8b949e" font-family="'Courier New', monospace" font-size="10">http://localhost:8080/post</text>
   <text x="36" y="369" fill="#484f58" font-size="9.5">útil para pruebas rápidas</text>
 
   <!-- Card 2: Desde archivo — x=278, w=245, right edge=523 -->
@@ -47,7 +48,7 @@
   <text x="400" y="295" text-anchor="middle" fill="#f0f6fc" font-size="12" font-weight="bold">Desde archivo</text>
   <text x="294" y="315" fill="#8b949e" font-family="'Courier New', monospace" font-size="10">curl -d @datos.json</text>
   <text x="294" y="332" fill="#8b949e" font-family="'Courier New', monospace" font-size="10">-H "Content-Type: application/json"</text>
-  <text x="294" y="349" fill="#8b949e" font-family="'Courier New', monospace" font-size="10">https://httpbin.org/post</text>
+  <text x="294" y="349" fill="#8b949e" font-family="'Courier New', monospace" font-size="10">http://localhost:8080/post</text>
   <text x="294" y="369" fill="#484f58" font-size="9.5">@ indica lectura desde fichero</text>
 
   <!-- Card 3: Desde stdin — x=536, w=244, right edge=780 -->
@@ -72,5 +73,5 @@
   <text x="589" y="415" text-anchor="middle" fill="#79c0ff" font-size="12" font-weight="bold">Verificar con httpbin</text>
   <text x="589" y="436" text-anchor="middle" fill="#8b949e" font-size="10">El campo "json" en la respuesta indica</text>
   <text x="589" y="453" text-anchor="middle" fill="#8b949e" font-size="10">si el body JSON fue parseado correctamente</text>
-  <text x="589" y="464" text-anchor="middle" fill="#484f58" font-size="9.5">https://httpbin.org/post → campo "json"</text>
+  <text x="589" y="464" text-anchor="middle" fill="#484f58" font-size="9.5">http://localhost:8080/post → campo "json"</text>
 </svg>

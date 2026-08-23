@@ -17,7 +17,7 @@ orden, una semana por entrega.
 | Semana | Tema | Estado |
 |:--:|---|:--:|
 | [01](week-01-http_y_curl_basico/README.md) | HTTP y curl básico | ✅ |
-| [02](week-02-metodos_http_headers_json/README.md) | Métodos HTTP, headers y JSON | ⬜ |
+| [02](week-02-metodos_http_headers_json/README.md) | Métodos HTTP, headers y JSON | ✅ |
 | [03](week-03-autenticacion_basica/README.md) | Autenticación básica | ⬜ |
 
 ### Fase 2 — Intermedio (S04-06, 24 h)
