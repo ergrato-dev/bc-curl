@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 520" role="img" aria-labelledby="t06" font-family="Arial, Helvetica, sans-serif">
+  <title id="t06">Cada flag esencial de curl junto al problema concreto que resuelve</title>
+  <rect width="800" height="520" fill="#0d1117"/>
+
+  <text x="400" y="34" text-anchor="middle" fill="#f0f6fc" font-size="22" font-weight="bold">Los flags esenciales: un problema, un flag</text>
+  <text x="400" y="56" text-anchor="middle" fill="#8b949e" font-size="12">Ninguno se aprende de memoria: se aprende por el problema que quita de en medio</text>
+
+  <line x1="40" y1="72" x2="760" y2="72" stroke="#30363d" stroke-width="1"/>
+
+  <!-- Columnas -->
+  <text x="52" y="96" fill="#8b949e" font-size="11" font-weight="bold">EL PROBLEMA</text>
+  <text x="360" y="96" fill="#8b949e" font-size="11" font-weight="bold">EL FLAG</text>
+  <text x="470" y="96" fill="#8b949e" font-size="11" font-weight="bold">LO QUE HACE</text>
+
+  <!-- 1: -v -->
+  <rect x="40" y="106" width="720" height="44" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="52" y="126" fill="#f0f6fc" font-size="12">«No sé qué está mandando curl»</text>
+  <text x="52" y="142" fill="#8b949e" font-size="10">La petición es invisible</text>
+  <text x="360" y="134" fill="#f0883e" font-size="15" font-weight="bold">-v</text>
+  <text x="470" y="134" fill="#f0f6fc" font-size="11">Traza completa: DNS, conexión, headers enviados y recibidos</text>
+
+  <!-- 2: -i -->
+  <rect x="40" y="156" width="720" height="44" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="52" y="176" fill="#f0f6fc" font-size="12">«Quiero los headers y el cuerpo»</text>
+  <text x="52" y="192" fill="#8b949e" font-size="10">curl solo imprime el cuerpo</text>
+  <text x="360" y="184" fill="#f0883e" font-size="15" font-weight="bold">-i</text>
+  <text x="470" y="184" fill="#f0f6fc" font-size="11">Añade los headers de respuesta delante del cuerpo</text>
+
+  <!-- 3: -I -->
+  <rect x="40" y="206" width="720" height="44" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="52" y="226" fill="#f0f6fc" font-size="12">«Solo quiero los headers»</text>
+  <text x="52" y="242" fill="#8b949e" font-size="10">El cuerpo son 40 MB</text>
+  <text x="360" y="234" fill="#f0883e" font-size="15" font-weight="bold">-I</text>
+  <text x="470" y="234" fill="#f0f6fc" font-size="11">Hace un HEAD: el servidor no envía cuerpo</text>
+
+  <!-- 4: -o / -O -->
+  <rect x="40" y="256" width="720" height="44" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="52" y="276" fill="#f0f6fc" font-size="12">«Se me llenó la terminal de binario»</text>
+  <text x="52" y="292" fill="#8b949e" font-size="10">El cuerpo va a stdout</text>
+  <text x="360" y="284" fill="#f0883e" font-size="15" font-weight="bold">-o / -O</text>
+  <text x="470" y="284" fill="#f0f6fc" font-size="11">Guarda en el archivo que digas, o en el nombre remoto</text>
+
+  <!-- 5: -s -S -->
+  <rect x="40" y="306" width="720" height="44" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="52" y="326" fill="#f0f6fc" font-size="12">«La barra de progreso ensucia el log»</text>
+  <text x="52" y="342" fill="#8b949e" font-size="10">Pero -s también calla los errores</text>
+  <text x="360" y="334" fill="#f0883e" font-size="15" font-weight="bold">-sS</text>
+  <text x="470" y="334" fill="#f0f6fc" font-size="11">-s calla el progreso; -S deja pasar los errores. Van juntos</text>
+
+  <!-- 6: -L -->
+  <rect x="40" y="356" width="720" height="44" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="52" y="376" fill="#f0f6fc" font-size="12">«Me devuelve un 301 vacío»</text>
+  <text x="52" y="392" fill="#8b949e" font-size="10">curl no sigue redirecciones solo</text>
+  <text x="360" y="384" fill="#f0883e" font-size="15" font-weight="bold">-L</text>
+  <text x="470" y="384" fill="#f0f6fc" font-size="11">Sigue la cabecera Location hasta el destino final</text>
+
+  <!-- 7: -w -->
+  <rect x="40" y="406" width="720" height="44" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="52" y="426" fill="#f0f6fc" font-size="12">«Necesito el código y el tiempo»</text>
+  <text x="52" y="442" fill="#8b949e" font-size="10">Y no quiero parsear el cuerpo</text>
+  <text x="360" y="434" fill="#f0883e" font-size="15" font-weight="bold">-w</text>
+  <text x="470" y="434" fill="#f0f6fc" font-size="11">Imprime variables: %{http_code}, %{time_total}, %{json}…</text>
+
+  <!-- 8: max-time -->
+  <rect x="40" y="456" width="720" height="44" rx="6" fill="#161b22" stroke="#f85149" stroke-width="1.5"/>
+  <text x="52" y="476" fill="#f0f6fc" font-size="12">«El cron lleva colgado desde el martes»</text>
+  <text x="52" y="492" fill="#8b949e" font-size="10">No hay límite de tiempo por defecto</text>
+  <text x="360" y="484" fill="#f85149" font-size="15" font-weight="bold">--max-time</text>
+  <text x="470" y="484" fill="#f0f6fc" font-size="11">Aborta la transferencia entera pasados N segundos (exit 28)</text>
+</svg>

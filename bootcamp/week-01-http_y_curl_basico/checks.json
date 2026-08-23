@@ -47,8 +47,8 @@
     {
       "id": "explorer-no-se-cuelga",
       "descripcion": "El script no se queda colgado cuando el servidor tarda demasiado",
-      "cmd": "timeout 25 bash {semana}/3-proyecto/starter/api-explorer.sh {lab}/delay/10",
-      "assert": "exit!=124",
+      "cmd": "timeout 25 bash {semana}/3-proyecto/starter/api-explorer.sh {lab}/delay/10; test $? -ne 124",
+      "assert": "exit0",
       "pista": "1-teoria/05-los-flags-esenciales.md: --max-time"
     },
     {

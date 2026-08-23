@@ -1,51 +1,35 @@
-# 🎥 Videografía - Semana 1
+# 🎥 Videografía — Semana 01
 
-## Videos Recomendados
+Comprobados el **23 de agosto de 2026**. Ningún vídeo sustituye a ejecutar los
+comandos: úsalos para lo que se explica mejor viéndolo.
 
-### HTTP Fundamentals
+## HTTP, los fundamentos
 
-| Título | Canal | Duración | Enlace | Idioma |
-|--------|-------|----------|--------|--------|
-| HTTP Crash Course | Traversy Media | 40min | [YouTube](https://www.youtube.com/watch?v=iYM2zFP3Zn0) | 🇬🇧 EN |
-| What is HTTP? | Fireship | 5min | [YouTube](https://www.youtube.com/watch?v=eesqK59rhGA) | 🇬🇧 EN |
-| HTTP Status Codes Explained | Web Dev Simplified | 10min | [YouTube](https://www.youtube.com/watch?v=wJaYnCTEKVE) | 🇬🇧 EN |
+| Vídeo | Canal | Duración | Idioma | Por qué vale la pena |
+|---|---|:--:|:--:|---|
+| [HTTP Crash Course & Exploration](https://www.youtube.com/watch?v=iYM2zFP3Zn0) | Traversy Media | 40 min | EN | Recorre request, response, headers y métodos con las herramientas de desarrollo abiertas. Ver la petición dibujada ayuda antes de leerla en `-v` |
+| [HTTP Status Codes Explained](https://www.youtube.com/watch?v=wJaYnCTEKVE) | Web Dev Simplified | 10 min | EN | Diez minutos para las cinco familias. Complementa la teoría 06 sin repetirla |
+| [REST API concepts and examples](https://www.youtube.com/watch?v=7YcW25PHnAA) | WebConcepts | 8 min | EN | Explica por qué una API REST se parece a una URL con verbos. Contexto para el proyecto |
 
-### curl
+## curl
 
-| Título | Canal | Duración | Enlace | Idioma |
-|--------|-------|----------|--------|--------|
-| curl Tutorial | freeCodeCamp | 1.5h | [YouTube](https://www.youtube.com/watch?v=5yQBKGBAQGA) | 🇬🇧 EN |
-| Master curl in 20 Minutes | Academind | 20min | [YouTube](https://www.youtube.com/watch?v=NBknjE4LJZk) | 🇬🇧 EN |
-| curl: Como usar y ejemplos | Pelado Nerd | 15min | [YouTube](https://www.youtube.com/watch?v=AK9l5TzN3AY) | 🇪🇸 ES |
-| cURL desde Cero | Fazt Code | 20min | [YouTube](https://www.youtube.com/watch?v=IiRpgEjEhgM) | 🇪🇸 ES |
+| Vídeo | Canal | Duración | Idioma | Por qué vale la pena |
+|---|---|:--:|:--:|---|
+| [curl: cómo usarlo y ejemplos](https://www.youtube.com/watch?v=AK9l5TzN3AY) | Pelado Nerd | 15 min | ES | En español y orientado a sysadmin. Los ejemplos son de trabajo real, no de tutorial |
+| [cURL desde cero](https://www.youtube.com/watch?v=IiRpgEjEhgM) | Fazt Code | 20 min | ES | En español, muy pausado. Si es tu primera semana en una terminal, este antes que el anterior |
 
-### APIs REST y HTTP
+## bash, lo justo para el proyecto
 
-| Título | Canal | Duración | Enlace | Idioma |
-|--------|-------|----------|--------|--------|
-| REST API concepts and examples | WebConcepts | 8min | [YouTube](https://www.youtube.com/watch?v=7YcW25PHnAA) | 🇬🇧 EN |
-| APIs for Beginners | freeCodeCamp | 2h | [YouTube](https://www.youtube.com/watch?v=GZvSYJDk-xQ) | 🇬🇧 EN |
-| REST API con HTTP | midulive | 15min | [YouTube](https://www.youtube.com/watch?v=6B203H0Bk8E) | 🇪🇸 ES |
+| Vídeo | Canal | Duración | Idioma | Por qué vale la pena |
+|---|---|:--:|:--:|---|
+| [Bash Scripting Full Course](https://www.youtube.com/watch?v=tK9Oc6AEnR4) | freeCodeCamp | 3 h | EN | No lo veas entero. Ve la primera hora: variables, condicionales y códigos de salida es todo lo que pide `api-explorer.sh` |
+| [Terminal Linux desde cero](https://www.youtube.com/watch?v=BUOqXhEIMs4) | Pelado Nerd | 1 h | ES | En español. Solo si `cd`, pipes y redirecciones todavía no son automáticos |
 
-### Terminal y Bash
-
-| Título | Canal | Duración | Enlace | Idioma |
-|--------|-------|----------|--------|--------|
-| Bash Scripting Full Course | freeCodeCamp | 3h | [YouTube](https://www.youtube.com/watch?v=tK9Oc6AEnR4) | 🇬🇧 EN |
-| Terminal Linux desde Cero | Pelado Nerd | 1h | [YouTube](https://www.youtube.com/watch?v=BUOqXhEIMs4) | 🇪🇸 ES |
-| La Terminal: Básico | Platzi | 30min | [YouTube](https://www.youtube.com/watch?v=nyT_ssE6GYg) | 🇪🇸 ES |
+> [!TIP]
+> Los vídeos de curl envejecen mal: casi todos usan `httpbin.org`, que se cae y
+> limita por IP. Cuando un ejemplo del vídeo falle, prueba el mismo comando
+> contra `http://localhost:8080` y sigue.
 
 ---
 
-## 📺 Canales Recomendados
-
-- **Pelado Nerd** - DevOps y sysadmin en español
-- **Fazt Code** - Tutoriales prácticos en español
-- **Traversy Media** - Desarrollo web y herramientas
-- **freeCodeCamp** - Cursos completos gratuitos
-- **Fireship** - Explicaciones rápidas y concisas
-- **Academind** - Tutoriales detallados
-
----
-
-> 💡 **Tip**: Activa subtítulos en español si el video está en inglés.
+[← Volver a Recursos](../README.md)

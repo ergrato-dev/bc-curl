@@ -1,28 +1,32 @@
-# 📖 Recursos de Ebooks Gratuitos - Semana 1
+# 📖 Libros gratuitos — Semana 01
 
-## HTTP y Protocolos Web
+Todos son gratuitos y de acceso legal. Comprobados el **23 de agosto de 2026**.
 
-| Título | Autor | Enlace | Descripción |
-|--------|-------|--------|-------------|
-| HTTP: The Definitive Guide | David Gourley, Brian Totty | [Link](https://www.oreilly.com/library/view/http-the-definitive/1565925092/) | Referencia exhaustiva sobre HTTP 1.1 |
-| High Performance Browser Networking | Ilya Grigorik | [Link](https://hpbn.co/) | Rendimiento de red, HTTP/1.1, HTTP/2 |
-| HTTP/2 in Action | Barry Pollard | [Link](https://www.manning.com/books/http2-in-action) | Todo sobre HTTP/2 (early access) |
+## curl
 
-## curl y Herramientas CLI
+| Libro | Autor | Por qué vale la pena |
+|---|---|---|
+| [Everything curl](https://everything.curl.dev/) | Daniel Stenberg | Lo escribe quien mantiene curl desde 1998. Es el único sitio donde se explica *por qué* curl se comporta como lo hace, no solo qué flag usar. Para esta semana: los capítulos *Command line basics* y *HTTP* |
+| [The curl manual](https://curl.se/docs/manual.html) | Daniel Stenberg | El mismo texto que te devuelve `curl --manual`, con buscador. Útil para leerlo en pantalla grande mientras practicas en la terminal |
 
-| Título | Autor | Enlace | Descripción |
-|--------|-------|--------|-------------|
-| Everything curl | Daniel Stenberg | [Link](https://everything.curl.dev/) | Libro oficial gratuito del creador de curl |
-| The curl manual | Daniel Stenberg | [Link](https://curl.se/docs/manual.html) | Tutorial oficial de curl |
-| Data Science at the Command Line | Jeroen Janssens | [Link](https://datascienceatthecommandline.com/) | curl en pipelines de datos |
+## HTTP
 
-## Bash y Scripting
+| Libro | Autor | Por qué vale la pena |
+|---|---|---|
+| [High Performance Browser Networking](https://hpbn.co/) | Ilya Grigorik | Gratis y completo en la web. El capítulo *Brief History of HTTP* explica en veinte minutos por qué HTTP/1.1 necesita el header `Host` y por qué HTTP/2 comprime los headers: las dos cosas aparecen esta semana |
+| [MDN — Visión general de HTTP](https://developer.mozilla.org/es/docs/Web/HTTP/Overview) | Mozilla | No es un libro, pero es la mejor introducción en español y está mantenida. Léela si el archivo 01 de teoría se te hizo denso |
 
-| Título | Autor | Enlace | Descripción |
-|--------|-------|--------|-------------|
-| The Linux Command Line | William Shotts | [Link](https://linuxcommand.org/tlcl.php) | Fundamentos de terminal y bash |
-| Bash Guide for Beginners | Machtelt Garrels | [Link](https://tldp.org/LDP/Bash-Beginners-Guide/html/) | Guía introductoria de bash scripting |
+## bash
+
+| Libro | Autor | Por qué vale la pena |
+|---|---|---|
+| [The Linux Command Line](https://linuxcommand.org/tlcl.php) | William Shotts | Gratis en PDF. Si los `$(...)`, las comillas y los códigos de salida te suenan a chino, los capítulos 24-27 son exactamente lo que falta para el proyecto |
+| [Bash Guide for Beginners](https://tldp.org/LDP/Bash-Beginners-Guide/html/) | Machtelt Garrels | Viejo pero correcto. Consúltalo puntualmente: la sección de *conditional statements* cubre el `[ "$codigo" -ge 400 ]` de la práctica 04 |
+
+> [!NOTE]
+> *HTTP: The Definitive Guide* aparece en muchas listas. Es de 2002, de pago, y
+> anterior a HTTP/2: no lo compres para este bootcamp.
 
 ---
 
-> 💡 **Nota**: Todos los recursos listados son gratuitos y legales.
+[← Volver a Recursos](../README.md)

@@ -1,75 +1,47 @@
-# 🔗 Webgrafía - Semana 1
+# 🔗 Webgrafía — Semana 01
 
-## Documentación Oficial
+Comprobados el **23 de agosto de 2026**.
 
-| Recurso | URL | Descripción |
-|---------|-----|-------------|
-| **curl Manual** | [https://curl.se/docs/manpage.html](https://curl.se/docs/manpage.html) | Documentación oficial de todos los flags de curl |
-| **Everything curl** | [https://everything.curl.dev/](https://everything.curl.dev/) | Libro oficial del proyecto curl |
-| **MDN HTTP** | [https://developer.mozilla.org/es/docs/Web/HTTP](https://developer.mozilla.org/es/docs/Web/HTTP) | Documentación de HTTP por Mozilla (español) |
-| **RFC 7230-7235** | [https://httpwg.org/specs/](https://httpwg.org/specs/) | Especificaciones oficiales de HTTP/1.1 |
-| **HTTP/2 RFC 7540** | [https://httpwg.org/specs/rfc7540.html](https://httpwg.org/specs/rfc7540.html) | Especificación oficial de HTTP/2 |
+## Referencia de curl
 
----
+| Recurso | Por qué vale la pena |
+|---|---|
+| [curl — manpage](https://curl.se/docs/manpage.html) | La referencia completa, con buscador. Es el mismo texto que `curl --manual`, pero enlazado. Consúltalo cuando dudes de si una opción existe |
+| [Variables de `--write-out`](https://curl.se/docs/manpage.html#-w) | La lista entera de variables de `-w`, con lo que devuelve cada una. La usarás en el proyecto y en la Semana 06 |
+| [Códigos de salida de libcurl](https://curl.se/libcurl/c/libcurl-errors.html) | Los ~100 códigos de salida con su nombre interno. El sitio donde mirar cuando te salga uno que no reconoces |
+| [Changelog de curl](https://curl.se/changes.html) | Qué versión trajo qué. Es la forma de confirmar desde cuándo existe una opción antes de usarla en un ejemplo |
+| [Vulnerabilidades de curl](https://curl.se/docs/vulnerabilities.html) | Lista completa por versión. Sirve para argumentar por qué hay que actualizar |
 
-## Tutoriales y Guías
+## HTTP
 
-| Recurso | URL | Descripción |
-|---------|-----|-------------|
-| curl Tutorial (oficial) | [https://curl.se/docs/tutorial.html](https://curl.se/docs/tutorial.html) | Tutorial paso a paso del equipo curl |
-| MDN: Visión general de HTTP | [https://developer.mozilla.org/es/docs/Web/HTTP/Overview](https://developer.mozilla.org/es/docs/Web/HTTP/Overview) | Excelente introducción a HTTP |
-| HTTP Status Codes | [https://httpstatuses.io/](https://httpstatuses.io/) | Lista visual de todos los códigos HTTP |
-| RequestBin | [https://requestbin.com/](https://requestbin.com/) | Inspecciona peticiones HTTP en tiempo real |
-| curl Cheat Sheet | [https://curl.se/docs/cheatsheet.html](https://curl.se/docs/cheatsheet.html) | Chuleta rápida de comandos curl |
-| DigitalOcean curl Guide | [https://www.digitalocean.com/community/tutorials/workflow-downloading-files-curl](https://www.digitalocean.com/community/tutorials/workflow-downloading-files-curl) | Guía práctica de curl |
+| Recurso | Por qué vale la pena |
+|---|---|
+| [MDN — HTTP](https://developer.mozilla.org/es/docs/Web/HTTP) | En español y mantenido. Una página por header y por código de estado; el mejor sitio para consultas puntuales |
+| [RFC 9110 — HTTP Semantics](https://datatracker.ietf.org/doc/html/rfc9110) | La norma vigente, de 2022. Sustituye a los RFC 7230-7235 que aún citan muchos tutoriales. La sección 15 define cada código de estado |
+| [RFC 9112 — HTTP/1.1](https://datatracker.ietf.org/doc/html/rfc9112) | El formato de los mensajes: la línea de petición, los headers, el CRLF. Lo que ves en una traza `-v` está definido aquí |
 
----
+## Para practicar
 
-## APIs para Practicar
+| Recurso | Por qué vale la pena |
+|---|---|
+| [go-httpbin](https://github.com/mccutchen/go-httpbin) | El servicio que corre en tu `localhost:8080`. Su README lista **todos** los endpoints disponibles: los vas a necesitar las diez semanas |
+| [GitHub REST API](https://docs.github.com/es/rest) | API real, documentada en español, con rate limit visible en los headers. Es el dominio recomendado para `api-toolkit` |
+| [JSONPlaceholder](https://jsonplaceholder.typicode.com/) | API de prueba que acepta escrituras falsas. Útil en la Semana 02, cuando toque POST y PUT |
 
-| API | URL | Descripción |
-|-----|-----|-------------|
-| **httpbin.org** | [https://httpbin.org/](https://httpbin.org/) | API para testear peticiones HTTP |
-| **JSONPlaceholder** | [https://jsonplaceholder.typicode.com/](https://jsonplaceholder.typicode.com/) | API REST falsa para pruebas |
-| **GitHub API** | [https://docs.github.com/es/rest](https://docs.github.com/es/rest) | API real con buena documentación |
-| **Postman Echo** | [https://learning.postman.com/docs/developer/echo-api/](https://learning.postman.com/docs/developer/echo-api/) | Servicio echo para testing HTTP |
-| **Reqres** | [https://reqres.in/](https://reqres.in/) | API REST de prueba con respuestas reales |
+> [!WARNING]
+> `httpbin.org` aparece en casi todos los tutoriales de curl. Este bootcamp **no**
+> lo usa: se cae, limita por IP y cambia sin avisar. El laboratorio local hace lo
+> mismo y es tuyo. Si un tutorial externo lo usa, sustituye el host por
+> `http://localhost:8080` y el ejemplo funciona igual.
 
----
+## Herramientas que acompañan
 
-## Artículos Recomendados
-
-| Artículo | URL | Tema |
-|----------|-----|------|
-| Anatomy of a URL | [https://www.cloudflare.com/learning/dns/glossary/what-is-a-url/](https://www.cloudflare.com/learning/dns/glossary/what-is-a-url/) | Componentes de una URL |
-| HTTP Headers explicados | [https://developer.mozilla.org/es/docs/Web/HTTP/Headers](https://developer.mozilla.org/es/docs/Web/HTTP/Headers) | Lista completa de headers HTTP |
-| curl flags más usados | [https://dev.to/dev_neil_a/curl-flags-that-you-will-want-to-use-again-and-again-4bim](https://dev.to/dev_neil_a/curl-flags-that-you-will-want-to-use-again-and-again-4bim) | Resumen práctico de flags curl |
-| HTTP vs HTTPS | [https://www.cloudflare.com/learning/ssl/why-is-http-not-secure/](https://www.cloudflare.com/learning/ssl/why-is-http-not-secure/) | Diferencias entre HTTP y HTTPS |
+| Recurso | Por qué vale la pena |
+|---|---|
+| [jq](https://jqlang.github.io/jq/manual/) | Filtra JSON en la terminal. A partir de la Semana 02 es tan habitual como curl |
+| [ShellCheck](https://www.shellcheck.net/) | Analiza scripts bash y encuentra los fallos de comillas antes que tú. El autograding lo exige limpio |
+| [explainshell](https://explainshell.com/) | Pega un comando largo de curl y te desglosa qué hace cada flag. Muy útil al copiar un comando de un blog |
 
 ---
 
-## Herramientas
-
-| Herramienta | URL | Uso |
-|-------------|-----|-----|
-| **curl** | [https://curl.se/](https://curl.se/) | Cliente HTTP por línea de comandos |
-| **jq** | [https://jqlang.github.io/jq/](https://jqlang.github.io/jq/) | Procesar JSON en terminal |
-| **HTTPie** | [https://httpie.io/cli](https://httpie.io/cli) | Alternativa moderna a curl |
-| **Postman** | [https://www.postman.com/](https://www.postman.com/) | GUI para explorar APIs |
-| **Insomnia** | [https://insomnia.rest/](https://insomnia.rest/) | Cliente REST open source |
-| **Wireshark** | [https://www.wireshark.org/](https://www.wireshark.org/) | Analizador de tráfico de red |
-
----
-
-## Comunidad
-
-| Recurso | URL | Descripción |
-|---------|-----|-------------|
-| curl Mailing List | [https://curl.se/mail/](https://curl.se/mail/) | Lista de correo oficial de curl |
-| curl GitHub | [https://github.com/curl/curl](https://github.com/curl/curl) | Repositorio oficial de curl |
-| StackOverflow curl | [https://stackoverflow.com/questions/tagged/curl](https://stackoverflow.com/questions/tagged/curl) | Preguntas frecuentes etiquetadas curl |
-| r/curl | [https://reddit.com/r/curl](https://reddit.com/r/curl) | Comunidad de curl en Reddit |
-
----
-
-> 💡 **Tip**: Guarda estos enlaces en tus favoritos para referencia rápida.
+[← Volver a Recursos](../README.md)

@@ -1,29 +1,27 @@
-# 📚 Recursos - Semana 01
+# 📚 Recursos — Semana 01
 
-## 📖 Contenido
+Material complementario, no obligatorio. Todo lo que hace falta para completar
+la semana está en `1-teoria/` y `2-practicas/`; esto es para cuando quieras
+profundizar en algo concreto.
 
-Esta carpeta contiene recursos adicionales para complementar tu aprendizaje sobre HTTP y curl:
+| Carpeta | Qué hay |
+|---|---|
+| [ebooks-free/](ebooks-free/README.md) | Libros gratuitos y legales sobre HTTP, curl y bash |
+| [videografia/](videografia/README.md) | Vídeos, en español y en inglés |
+| [webgrafia/](webgrafia/README.md) | Documentación oficial, referencias y APIs para practicar |
 
-| Carpeta | Contenido |
-|---------|-----------|
-| [ebooks-free/](./ebooks-free) | Libros electrónicos gratuitos |
-| [videografia/](./videografia) | Videos y tutoriales recomendados |
-| [webgrafia/](./webgrafia) | Enlaces a documentación y artículos |
+## Cómo usarlos
 
----
+1. **Primero la teoría de la semana.** Estos recursos cubren lo mismo desde otro
+   ángulo; leerlos antes te deja con dos explicaciones y ninguna asentada.
+2. **Uno cada vez, cuando algo no te cuadre.** No hay que consumirlos enteros.
+3. **La fuente de verdad es tu binario.** Cuando un recurso y `curl --help all`
+   digan cosas distintas, gana `curl --help all`: el recurso no sabe qué versión
+   tienes.
 
-## 🎯 Cómo Usar Estos Recursos
-
-1. **Teoría primero**: Completa el material de [1-teoria/](../1-teoria) antes de explorar estos recursos
-2. **Complementa**: Usa estos recursos para profundizar en temas específicos
-3. **Práctica**: Aplica lo aprendido en las [prácticas](../2-practicas) y el [proyecto](../3-proyecto)
-
----
-
-## 💡 Recomendación
-
-No intentes consumir todo el contenido de una vez. Usa estos recursos como referencia cuando necesites profundizar en un tema específico.
+> Todos los enlaces se comprobaron el **23 de agosto de 2026**. Si alguno se ha
+> caído, dilo en un issue.
 
 ---
 
-[← Volver a Semana 01](../README.md)
+[← Volver a la Semana 01](../README.md)

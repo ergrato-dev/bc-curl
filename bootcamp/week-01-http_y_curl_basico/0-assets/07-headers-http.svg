@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 470" role="img" aria-labelledby="t07" font-family="Arial, Helvetica, sans-serif">
+  <title id="t07">Los headers que curl envía por su cuenta y los que devuelve el servidor, y cómo se modifican con -H</title>
+  <rect width="800" height="470" fill="#0d1117"/>
+
+  <text x="400" y="32" text-anchor="middle" fill="#f0f6fc" font-size="22" font-weight="bold">Headers: los que mandas y los que recibes</text>
+
+  <!-- Peticion -->
+  <rect x="30" y="56" width="330" height="212" rx="8" fill="#161b22" stroke="#f0883e" stroke-width="2"/>
+  <text x="46" y="80" fill="#f0883e" font-size="13" font-weight="bold">PETICIÓN &#8212; los pone el cliente</text>
+
+  <text x="46" y="106" fill="#8b949e" font-size="11" font-family="monospace">&gt; GET /get HTTP/1.1</text>
+  <text x="200" y="106" fill="#8b949e" font-size="9">línea de petición</text>
+
+  <text x="46" y="130" fill="#f0f6fc" font-size="11" font-family="monospace">&gt; Host: localhost:8080</text>
+  <text x="46" y="150" fill="#f0f6fc" font-size="11" font-family="monospace">&gt; User-Agent: curl/7.81.0</text>
+  <text x="46" y="170" fill="#f0f6fc" font-size="11" font-family="monospace">&gt; Accept: */*</text>
+
+  <rect x="240" y="118" width="110" height="58" rx="5" fill="#0d1117" stroke="#d2a8ff" stroke-width="1.5"/>
+  <text x="295" y="140" text-anchor="middle" fill="#d2a8ff" font-size="10" font-weight="bold">los pone curl</text>
+  <text x="295" y="156" text-anchor="middle" fill="#8b949e" font-size="10">sin pedírselo</text>
+
+  <line x1="46" y1="186" x2="344" y2="186" stroke="#30363d" stroke-width="1" stroke-dasharray="4 3"/>
+
+  <text x="46" y="206" fill="#79c0ff" font-size="11" font-family="monospace">&gt; X-Request-Id: 7f3a</text>
+  <text x="240" y="206" fill="#8b949e" font-size="9">-H 'X-Request-Id: 7f3a'</text>
+
+  <text x="46" y="230" fill="#8b949e" font-size="11" font-family="monospace">&gt;</text>
+  <text x="70" y="230" fill="#8b949e" font-size="10">línea vacía: aquí acaban los headers</text>
+
+  <text x="46" y="254" fill="#8b949e" font-size="10">Debajo iría el cuerpo, si lo hubiera</text>
+
+  <!-- Flecha -->
+  <line x1="368" y1="120" x2="428" y2="120" stroke="#f0883e" stroke-width="2.5" marker-end="url(#flechaNaranja)"/>
+  <line x1="428" y1="200" x2="368" y2="200" stroke="#58a6ff" stroke-width="2.5" marker-end="url(#flechaAzul)"/>
+  <defs>
+    <marker id="flechaNaranja" markerWidth="9" markerHeight="9" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#f0883e"/>
+    </marker>
+    <marker id="flechaAzul" markerWidth="9" markerHeight="9" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#58a6ff"/>
+    </marker>
+  </defs>
+
+  <!-- Respuesta -->
+  <rect x="440" y="56" width="330" height="212" rx="8" fill="#161b22" stroke="#58a6ff" stroke-width="2"/>
+  <text x="456" y="80" fill="#58a6ff" font-size="13" font-weight="bold">RESPUESTA &#8212; los pone el servidor</text>
+
+  <text x="456" y="106" fill="#8b949e" font-size="11" font-family="monospace">&lt; HTTP/1.1 200 OK</text>
+  <text x="610" y="106" fill="#8b949e" font-size="9">status line</text>
+
+  <text x="456" y="130" fill="#f0f6fc" font-size="11" font-family="monospace">&lt; Content-Type: application/json</text>
+  <text x="456" y="150" fill="#f0f6fc" font-size="11" font-family="monospace">&lt; Content-Length: 245</text>
+  <text x="456" y="170" fill="#f0f6fc" font-size="11" font-family="monospace">&lt; Content-Encoding: gzip</text>
+  <text x="456" y="190" fill="#e3b341" font-size="11" font-family="monospace">&lt; Location: /otro-sitio</text>
+  <text x="456" y="210" fill="#8b949e" font-size="9">solo en las respuestas 3xx</text>
+
+  <text x="456" y="234" fill="#8b949e" font-size="11" font-family="monospace">&lt;</text>
+  <text x="480" y="234" fill="#8b949e" font-size="10">línea vacía: empieza el cuerpo</text>
+
+  <text x="456" y="256" fill="#8b949e" font-size="10">Se leen con -i, con -D o dentro de -v</text>
+
+  <!-- Las tres sintaxis de -H -->
+  <line x1="30" y1="292" x2="770" y2="292" stroke="#30363d" stroke-width="1"/>
+  <text x="30" y="316" fill="#79c0ff" font-size="14" font-weight="bold">Las tres sintaxis de -H, y las tres cosas distintas que hacen</text>
+
+  <rect x="30" y="330" width="240" height="106" rx="6" fill="#161b22" stroke="#3fb950" stroke-width="1.5"/>
+  <text x="46" y="354" fill="#3fb950" font-size="12" font-family="monospace" font-weight="bold">-H 'Accept: text/html'</text>
+  <text x="46" y="378" fill="#f0f6fc" font-size="11">Manda el header con ese valor.</text>
+  <text x="46" y="396" fill="#8b949e" font-size="11">Si el nombre coincide con uno</text>
+  <text x="46" y="412" fill="#8b949e" font-size="11">automático, lo sustituye:</text>
+  <text x="46" y="428" fill="#8b949e" font-size="11">no se duplica.</text>
+
+  <rect x="282" y="330" width="240" height="106" rx="6" fill="#161b22" stroke="#f85149" stroke-width="1.5"/>
+  <text x="298" y="354" fill="#f85149" font-size="12" font-family="monospace" font-weight="bold">-H 'Accept:'</text>
+  <text x="298" y="378" fill="#f0f6fc" font-size="11">Valor vacío con dos puntos:</text>
+  <text x="298" y="396" fill="#f0f6fc" font-size="11">SUPRIME el header.</text>
+  <text x="298" y="418" fill="#8b949e" font-size="11">Es la única forma de quitar</text>
+  <text x="298" y="434" fill="#8b949e" font-size="11">uno de los que pone curl.</text>
+
+  <rect x="534" y="330" width="236" height="106" rx="6" fill="#161b22" stroke="#d2a8ff" stroke-width="1.5"/>
+  <text x="550" y="354" fill="#d2a8ff" font-size="12" font-family="monospace" font-weight="bold">-H 'X-Vacio;'</text>
+  <text x="550" y="378" fill="#f0f6fc" font-size="11">Punto y coma: manda el</text>
+  <text x="550" y="396" fill="#f0f6fc" font-size="11">header CON valor vacío.</text>
+  <text x="550" y="418" fill="#8b949e" font-size="11">Viaja por la red; el caso de</text>
+  <text x="550" y="434" fill="#8b949e" font-size="11">al lado no viaja.</text>
+
+  <text x="400" y="458" text-anchor="middle" fill="#8b949e" font-size="10">Compruébalo siempre contra http://localhost:8080/headers &#8212; devuelve lo que de verdad llegó</text>
+</svg>

@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-labelledby="t08" font-family="Arial, Helvetica, sans-serif">
+  <title id="t08">Una traza verbose de curl anotada fase por fase, con el punto en que se corta según el tipo de fallo</title>
+  <rect width="800" height="500" fill="#0d1117"/>
+
+  <text x="400" y="32" text-anchor="middle" fill="#f0f6fc" font-size="22" font-weight="bold">Leer una traza: dónde se corta es el diagnóstico</text>
+
+  <!-- Leyenda de simbolos -->
+  <rect x="30" y="52" width="740" height="52" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="46" y="72" fill="#d2a8ff" font-size="15" font-family="monospace" font-weight="bold">*</text>
+  <text x="62" y="72" fill="#8b949e" font-size="11">curl te habla: DNS, conexión, TLS. No viaja por la red</text>
+  <text x="430" y="72" fill="#f0883e" font-size="15" font-family="monospace" font-weight="bold">&gt;</text>
+  <text x="446" y="72" fill="#8b949e" font-size="11">lo que curl envía</text>
+  <text x="600" y="72" fill="#58a6ff" font-size="15" font-family="monospace" font-weight="bold">&lt;</text>
+  <text x="616" y="72" fill="#8b949e" font-size="11">lo que el servidor devuelve</text>
+  <text x="46" y="94" fill="#3fb950" font-size="15" font-family="monospace" font-weight="bold">{ }</text>
+  <text x="76" y="94" fill="#8b949e" font-size="11">el cuerpo, resumido como [N bytes data]</text>
+  <text x="430" y="94" fill="#e3b341" font-size="11" font-weight="bold">Todo esto sale por stderr:</text>
+  <text x="600" y="94" fill="#8b949e" font-size="11" font-family="monospace">2&gt;&amp;1 | grep</text>
+
+  <!-- Traza -->
+  <rect x="30" y="118" width="490" height="330" rx="8" fill="#161b22" stroke="#30363d" stroke-width="1.5"/>
+  <text x="46" y="140" fill="#8b949e" font-size="11" font-family="monospace">$ curl -sv http://localhost:8080/get</text>
+
+  <text x="46" y="170" fill="#d2a8ff" font-size="11" font-family="monospace">*   Trying 127.0.0.1:8080...</text>
+  <text x="46" y="192" fill="#d2a8ff" font-size="11" font-family="monospace">* Connected to localhost port 8080</text>
+
+  <text x="46" y="222" fill="#f0883e" font-size="11" font-family="monospace">&gt; GET /get HTTP/1.1</text>
+  <text x="46" y="242" fill="#f0883e" font-size="11" font-family="monospace">&gt; Host: localhost:8080</text>
+  <text x="46" y="262" fill="#f0883e" font-size="11" font-family="monospace">&gt; User-Agent: curl/7.81.0</text>
+  <text x="46" y="282" fill="#f0883e" font-size="11" font-family="monospace">&gt; Accept: */*</text>
+  <text x="46" y="302" fill="#f0883e" font-size="11" font-family="monospace">&gt;</text>
+
+  <text x="46" y="332" fill="#58a6ff" font-size="11" font-family="monospace">&lt; HTTP/1.1 200 OK</text>
+  <text x="46" y="352" fill="#58a6ff" font-size="11" font-family="monospace">&lt; Content-Type: application/json</text>
+  <text x="46" y="372" fill="#58a6ff" font-size="11" font-family="monospace">&lt; Content-Length: 245</text>
+  <text x="46" y="392" fill="#58a6ff" font-size="11" font-family="monospace">&lt;</text>
+
+  <text x="46" y="418" fill="#3fb950" font-size="11" font-family="monospace">{ [245 bytes data]</text>
+  <text x="46" y="438" fill="#d2a8ff" font-size="11" font-family="monospace">* Connection #0 left intact</text>
+
+  <!-- Fases a la derecha de la traza -->
+  <line x1="330" y1="158" x2="330" y2="200" stroke="#d2a8ff" stroke-width="2"/>
+  <text x="342" y="176" fill="#d2a8ff" font-size="10">1. DNS y TCP</text>
+  <line x1="330" y1="210" x2="330" y2="308" stroke="#f0883e" stroke-width="2"/>
+  <text x="342" y="262" fill="#f0883e" font-size="10">2. la petición</text>
+  <line x1="330" y1="320" x2="330" y2="398" stroke="#58a6ff" stroke-width="2"/>
+  <text x="342" y="362" fill="#58a6ff" font-size="10">3. la respuesta</text>
+  <line x1="330" y1="408" x2="330" y2="444" stroke="#3fb950" stroke-width="2"/>
+  <text x="342" y="428" fill="#3fb950" font-size="10">4. el cuerpo</text>
+
+  <!-- Diagnostico -->
+  <text x="544" y="140" fill="#79c0ff" font-size="13" font-weight="bold">Si la traza se corta en…</text>
+
+  <rect x="544" y="152" width="226" height="66" rx="6" fill="#161b22" stroke="#f85149" stroke-width="1.5"/>
+  <text x="558" y="172" fill="#f85149" font-size="11" font-weight="bold">antes de Trying</text>
+  <text x="558" y="190" fill="#f0f6fc" font-size="11">No resolvió el nombre</text>
+  <text x="558" y="208" fill="#8b949e" font-size="11">DNS &#183; exit 6</text>
+
+  <rect x="544" y="228" width="226" height="66" rx="6" fill="#161b22" stroke="#f85149" stroke-width="1.5"/>
+  <text x="558" y="248" fill="#f85149" font-size="11" font-weight="bold">Trying, sin Connected</text>
+  <text x="558" y="266" fill="#f0f6fc" font-size="11">El puerto no acepta</text>
+  <text x="558" y="284" fill="#8b949e" font-size="11">red o firewall &#183; exit 7</text>
+
+  <rect x="544" y="304" width="226" height="66" rx="6" fill="#161b22" stroke="#e3b341" stroke-width="1.5"/>
+  <text x="558" y="324" fill="#e3b341" font-size="11" font-weight="bold">Connected, y líneas TLS</text>
+  <text x="558" y="342" fill="#f0f6fc" font-size="11">Certificado o cifrado</text>
+  <text x="558" y="360" fill="#8b949e" font-size="11">Semana 05 &#183; exit 60</text>
+
+  <rect x="544" y="380" width="226" height="68" rx="6" fill="#161b22" stroke="#3fb950" stroke-width="1.5"/>
+  <text x="558" y="400" fill="#3fb950" font-size="11" font-weight="bold">llega al &lt; con 4xx o 5xx</text>
+  <text x="558" y="418" fill="#f0f6fc" font-size="11">El transporte fue bien</text>
+  <text x="558" y="436" fill="#8b949e" font-size="11">es la aplicación &#183; exit 0</text>
+
+  <text x="400" y="474" text-anchor="middle" fill="#8b949e" font-size="11">Un exit 0 con un 503 en la última línea no es un éxito: es un fallo que tu script todavía no mira</text>
+  <text x="400" y="492" text-anchor="middle" fill="#8b949e" font-size="10">¿Necesitas más detalle que esto? --trace-ascii vuelca cada byte, incluida la credencial. Revísalo antes de compartirlo</text>
+</svg>

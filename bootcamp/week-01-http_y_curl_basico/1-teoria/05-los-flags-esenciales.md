@@ -4,6 +4,8 @@
 > próximos diez años, y cada una existe porque el comportamiento por defecto
 > muerde de una forma distinta.
 
+![Cada flag esencial junto al problema concreto que resuelve](../0-assets/06-flags-esenciales.svg)
+
 ## 🎯 Objetivos
 
 - Usar `-v`, `-i`, `-I`, `-s`, `-S`, `-L`, `-o`, `-w` y `--max-time` sabiendo qué problema resuelve cada uno
