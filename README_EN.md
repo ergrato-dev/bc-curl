@@ -103,7 +103,7 @@ week-XX-topic/
 | Tool | Version | Used for |
 |---|---|---|
 | `curl` | 7.81 or newer | The subject of the bootcamp |
-| `jq` | any | Processing JSON from Week 07 onwards |
+| `jq` | any | Processing JSON from Week 02 onwards |
 | `shellcheck` | any | Auditing the project scripts |
 | Docker + Compose v2 | Compose **v2** | Running the lab |
 

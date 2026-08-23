@@ -35,6 +35,8 @@ tokens/
 cookies.txt
 *.cookies
 .netrc
+cabeceras.txt
+**/cabeceras.txt
 
 # ============================================
 # LOGS Y CACHE

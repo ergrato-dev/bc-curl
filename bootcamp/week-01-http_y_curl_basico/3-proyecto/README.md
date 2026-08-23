@@ -105,20 +105,22 @@ si es tu script o la API de fuera te ahorra media hora.
 ## 🚦 Cómo entregarlo
 
 ```bash
-# 1. Copia el starter a TU repositorio de trabajo, fuera de este.
-cp starter/api-explorer.sh ~/api-toolkit/api-explorer.sh
-chmod +x ~/api-toolkit/api-explorer.sh
+# 1. Copia el starter a TU repositorio de trabajo, fuera de este. El nombre de
+#    destino es api-toolkit.sh: es el archivo unico que crece las diez semanas,
+#    y api-explorer.sh es solo el nombre del starter de esta.
+cp starter/api-explorer.sh ~/api-toolkit.sh
+chmod +x ~/api-toolkit.sh
 
 # 2. Rellena los seis TODO.
 
 # 3. Compruebalo a mano antes que con el autograding.
-./api-explorer.sh http://localhost:8080/get http://localhost:8080/status/503
+~/api-toolkit.sh http://localhost:8080/get http://localhost:8080/status/503
 echo "exit=$?"     # tiene que ser distinto de 0
 
 # 4. Pasa shellcheck.
-shellcheck -S warning api-explorer.sh
-# Si no lo tienes instalado:
-# docker run --rm -v "$PWD:/mnt" koalaman/shellcheck:stable -S warning api-explorer.sh
+shellcheck -S warning ~/api-toolkit.sh
+# Si no lo tienes instalado, el contenedor con la version fijada:
+# docker run --rm -v "$HOME:/mnt" koalaman/shellcheck:v0.10.0 -S warning /mnt/api-toolkit.sh
 
 # 5. Y ahora si, el autograding.
 ./scripts/verificar-semana.sh 01

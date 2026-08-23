@@ -100,7 +100,7 @@ week-XX-tema/
 | Herramienta | Versión | Uso |
 |---|---|---|
 | `curl` | 7.81 o superior | La herramienta del bootcamp |
-| `jq` | cualquiera | Procesar JSON desde la Semana 07 |
+| `jq` | cualquiera | Procesar JSON desde la Semana 02 |
 | `shellcheck` | cualquiera | Auditar los scripts del proyecto |
 | Docker + Compose v2 | Compose **v2** | Levantar el laboratorio |
 

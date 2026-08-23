@@ -5,7 +5,7 @@
     {
       "id": "laboratorio-arriba",
       "descripcion": "El laboratorio acepta POST en /post",
-      "cmd": "curl -sf -o /dev/null --max-time 5 -X POST -d 'ping=1' {lab}/post",
+      "cmd": "curl -sf -o /dev/null --max-time 5 -d 'ping=1' {lab}/post",
       "assert": "exit0",
       "pista": "ejecuta ./scripts/start.sh antes de nada"
     },
@@ -28,7 +28,7 @@
       "descripcion": "El subcomando get imprime el cuerpo de la respuesta",
       "cmd": "BASE_URL={lab} bash {semana}/3-proyecto/starter/api-toolkit.sh get /get 2>/dev/null",
       "assert": "stdout~\"url\"",
-      "pista": "3-proyecto/README.md, requisito 2"
+      "pista": "3-proyecto/README.md, requisito 4"
     },
     {
       "id": "toolkit-post-envia-cuerpo",
@@ -63,7 +63,7 @@
       "descripcion": "--dry-run imprime el comando curl que se habria ejecutado",
       "cmd": "BASE_URL={lab} bash {semana}/3-proyecto/starter/api-toolkit.sh --dry-run delete /anything/42 2>/dev/null",
       "assert": "stdout~curl",
-      "pista": "3-proyecto/README.md, requisito 6"
+      "pista": "3-proyecto/README.md, requisito 9"
     },
     {
       "id": "toolkit-dry-run-no-ejecuta",

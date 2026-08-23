@@ -146,7 +146,9 @@ curl -sS --max-time 10 -H @cabeceras.txt https://api.ejemplo.com/datos
 
 > [!WARNING]
 > `cabeceras.txt` **no se comitea**. Ni ese, ni ningún archivo con un token
-> dentro. Si vive en el repositorio, va al `.gitignore` antes de escribirlo.
+> dentro. El `.gitignore` de este repositorio ya lo cubre; en el tuyo, la línea
+> va **antes** de crear el archivo. Comitear un token y borrarlo después no
+> sirve de nada: sigue en el historial, y la única salida es rotarlo.
 
 ---
 
@@ -223,7 +225,7 @@ curl -s http://localhost:8080/headers -H 'Accept:' | jq -c '.headers | keys'
 | Antipatrón | Por qué duele | Qué hacer en su lugar |
 |---|---|---|
 | Token en la línea de comandos | Visible en `ps`, en `~/.bash_history` y en los logs de CI. Y los logs de CI se guardan años | `-H @archivo` con `chmod 600`, o `--netrc` |
-| `-k` para "que el header llegue" | No tiene nada que ver: `-k` apaga la verificación del certificado y deja pasar a cualquiera que se meta en medio | Si el certificado no valida, `--cacert`. Nunca `-k` |
+| `-k` para "que el header llegue" | No tiene nada que ver: `-k` apaga la verificación del certificado y deja pasar a cualquiera que se meta en medio | Si el certificado no valida, `--cacert` (Semana 05). Nunca `-k` |
 | Añadir un `Content-Type` sin comprobar si ya había otro | Se mandan los dos y el servidor elige. 400 intermitente y difícil de reproducir | Comprueba con `-v` que solo sale uno |
 | Confundir `-H 'Accept;'` con `-H 'Accept:'` | Uno manda el header vacío, el otro lo quita. Son escenarios distintos | Punto y coma = vacío. Dos puntos = suprimido |
 | Comitear `cabeceras.txt` | El token queda en el historial de git para siempre, aunque lo borres después | `.gitignore` antes de crearlo, y rota el token si ya pasó |

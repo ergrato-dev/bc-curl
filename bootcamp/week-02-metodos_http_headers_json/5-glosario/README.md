@@ -186,7 +186,8 @@ necesario para PATCH, DELETE, OPTIONS y los verbos que ningún flag implica.
 ### `--upload-file` / `-T`
 
 Sube un archivo **implicando PUT**, sin tocar el contenido. Es el atajo de PUT
-que evita un `--request`. Universal (curl 4.0).
+que evita un `--request`. Aquí se usa solo por eso; las transferencias de
+archivo en serio son la Semana 04. Universal (curl 4.0).
 
 ### 201 Created
 

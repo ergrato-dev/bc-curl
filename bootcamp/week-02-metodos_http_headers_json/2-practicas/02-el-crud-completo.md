@@ -120,30 +120,7 @@ Anota en `respuestas.md` qué verbo debería haberse usado.
 
 ---
 
-## Paso 4: PUT sin `--request`, con `-T`
-
-**Por qué**: `-T` (`--upload-file`) implica PUT y sube el archivo tal cual, sin
-tocarlo. Es el atajo que casi nadie conoce y que evita un `--request`.
-
-**Comando**:
-
-```bash
-printf '{"nombre":"Ada","rol":"admin"}' > usuario-completo.json
-curl -sS --fail-with-body --max-time 10 -T usuario-completo.json \
-  -H 'Content-Type: application/json' "$RECURSO" | jq -c '{method, json}'
-# {"method":"PUT","json":{"nombre":"Ada","rol":"admin"}}
-```
-
-**Verifica**: sin `--request` en ningún sitio, el método es PUT.
-
-```bash
-curl -s -o /dev/null -w '%{method}\n' -T usuario-completo.json "$RECURSO"
-# PUT
-```
-
----
-
-## Paso 5: Modificar un campo con PATCH
+## Paso 4: Modificar un campo con PATCH
 
 **Por qué**: PATCH es "aplícale este cambio". Los campos que no mandas se quedan
 como están. Es lo que querías en el paso 3.
@@ -168,7 +145,7 @@ curl -s -o /dev/null -w '%{method}\n' --request PATCH -d '{"tel":"611"}' "$RECUR
 
 ---
 
-## Paso 6: Borrar con DELETE
+## Paso 5: Borrar con DELETE
 
 > [!WARNING]
 > Este paso va contra el laboratorio, que no borra nada. **No lo repitas contra
@@ -207,7 +184,7 @@ Anota en `respuestas.md`: ¿en qué línea del script se manifestaría ese fallo
 
 ---
 
-## Paso 7: Idempotencia, comprobada
+## Paso 6: Idempotencia, comprobada
 
 **Por qué**: si el DELETE es idempotente, un timeout se puede reintentar sin
 miedo. Si el POST no lo es, no. De eso depende si `--retry` es seguro.
@@ -243,7 +220,7 @@ pondrías `--retry` y por qué.
 
 ---
 
-## Paso 8: `-X` y la redirección que duplica
+## Paso 7: `-X` y la redirección que duplica
 
 **Por qué**: es el fallo de `-X` que no da error, no aparece en ningún log del
 cliente y solo se ve contando registros en la base de datos del servidor.
@@ -281,7 +258,7 @@ curl -s -L -d 'a=1' \
 
 ---
 
-## Paso 9: Los códigos de error, uno a uno
+## Paso 8: Los códigos de error, uno a uno
 
 **Por qué**: un script que escribe tiene que decidir si reintenta. Reintentar un
 409 cuatro veces es tardar cuatro veces más en fallar igual.
@@ -309,7 +286,7 @@ anota en `respuestas.md` cuáles de esos cuatro reintentarías automáticamente.
 
 ---
 
-## Paso 10: El ciclo entero en una invocación
+## Paso 9: El ciclo entero en una invocación
 
 **Por qué**: `--next` encadena peticiones reutilizando la conexión. Sirve para
 dejar constancia del ciclo completo en un archivo.
@@ -348,7 +325,6 @@ DELETE DELETE 200
 - [ ] Sacas un `Location` a una variable y sabes qué hace el `tr -d '\r'`
 - [ ] Mandas los cinco verbos y compruebas `%{method}` en cada uno
 - [ ] Explicas qué le pasa a los campos ausentes en PUT y en PATCH
-- [ ] Consigues un PUT sin `--request`, usando `-T`
 - [ ] Compruebas que `jq` sobre un cuerpo vacío sale con 0 y no avisa
 - [ ] Reproduces el 303 con y sin `-X` y ves el método distinto en el destino
 - [ ] Provocas los seis códigos y anotas cuáles reintentarías

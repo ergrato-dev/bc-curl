@@ -277,8 +277,11 @@ curl -s -H @cabeceras.txt http://localhost:8080/headers \
 # 1
 ```
 
-`cabeceras.txt` es el entregable de esta práctica. **No lo comitees**: si vive
-dentro de un repositorio, va al `.gitignore` antes de crearlo.
+`cabeceras.txt` es el entregable de esta práctica. **No lo comitees.** El
+`.gitignore` de este repositorio ya lo ignora, pero tu copia de trabajo vive
+fuera: comprueba que el `.gitignore` de tu repo lo cubre **antes** de crear el
+archivo, no después. Un token comiteado se queda en el historial de git aunque
+lo borres en el commit siguiente, y entonces lo único que sirve es rotarlo.
 
 ---
 

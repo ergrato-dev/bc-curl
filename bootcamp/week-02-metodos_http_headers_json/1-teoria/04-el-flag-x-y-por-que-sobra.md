@@ -162,7 +162,8 @@ curl -sS --max-time 10 -d '{"a":1}' -H 'Content-Type: application/json' \
 ```
 
 ```bash
-# ❌ -X PUT -d       →  ✅ -T (sube el archivo y ademas implica PUT)
+# ❌ -X PUT -d       →  ✅ -T (sube el archivo y ademas implica PUT).
+#                       Lo que -T sabe hacer de verdad es la Semana 04.
 printf '{"a":1}' > cuerpo.json
 curl -sS --max-time 10 -T cuerpo.json -H 'Content-Type: application/json' \
   http://localhost:8080/anything/x -o /dev/null -w '%{method}\n'

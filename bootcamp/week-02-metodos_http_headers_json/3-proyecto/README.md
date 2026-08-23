@@ -34,11 +34,31 @@ añadir un `Authorization` a cada petición. Con `construir_args()` centralizand
 la construcción de la petición, eso es una línea en un sitio. Sin esa función,
 son cuatro sitios y uno se olvida.
 
+### Qué se conserva de la capa 1 y qué se retira
+
+Esta capa **reestructura** el script: la 1 era un explorador que recorría una
+lista de URLs, y la 2 es un CLI que ejecuta un verbo sobre un endpoint. No es
+código que se añade al final, es la misma herramienta con otra forma. Conviene
+saber qué pasa con cada pieza:
+
+| De la capa 1 | Qué le pasa | Por qué |
+|---|---|---|
+| `set -euo pipefail`, `MAX_TIME`, la disciplina de `shellcheck` | **Se conserva** tal cual | Son la base de las diez semanas |
+| El código de salida distinto de 0 ante un error HTTP | **Se conserva**, ahora en `ejecutar()` | Es el requisito 8, el mismo de la Semana 01 |
+| La lista `URLS_POR_DEFECTO` y el bucle sobre varias URLs | **Se retira** | Un CLI de verbos actúa sobre **un** endpoint. La iteración vuelve en la Semana 07, con `fetch-all` y la paginación |
+| `%{time_total}` y la línea de resumen | **Se retiran de la salida por defecto** | Volverán en la Semana 06, como instrumentación de verdad con `--write-out`, y en la 09 para el `bench` |
+
+Si tu `api-explorer.sh` de la Semana 01 hacía todo eso, no lo tires: guárdalo
+como referencia. Lo que se entrega esta semana es el archivo nuevo.
+
 > [!IMPORTANT]
-> Tu copia de trabajo vive **fuera** de este repositorio. El material es este
-> repo; la entrega es tuya:
+> **Un solo archivo, `api-toolkit.sh`**, y vive **fuera** de este repositorio:
+> el material es este repo, la entrega es tuya. Esta semana el starter ya trae
+> ese nombre, así que sobrescribe la copia de la Semana 01 — que es lo que se
+> espera, porque es la misma herramienta.
 >
 > ```bash
+> cp ~/api-toolkit.sh ~/api-toolkit.s01.sh   # respaldo de la capa 1, por si acaso
 > cp starter/api-toolkit.sh ~/api-toolkit.sh
 > chmod +x ~/api-toolkit.sh
 > ```
@@ -92,19 +112,26 @@ Lo que el autograding no ve y la rúbrica sí:
 ## 💡 Adaptación a tu dominio
 
 `BASE_URL` es lo único que cambia. Los cuatro verbos son los mismos en cualquier
-API REST:
+API REST.
 
-| Dominio | `BASE_URL` | Prueba de escritura segura |
+> [!IMPORTANT]
+> **Esta capa todavía no sabe autenticarse**: la credencial llega en la
+> [Semana 03](../../week-03-autenticacion_basica/README.md). Hasta entonces, los
+> verbos de escritura contra tu dominio se prueban **solo con `--dry-run`**. No
+> pegues un `-H "Authorization: Bearer ..."` a mano para que funcione hoy: eso
+> deja el token en `ps`, en `~/.bash_history` y en los logs, que es justo el
+> antipatrón de [1-teoria/06](../1-teoria/06-headers-custom.md#4-antipatrones).
+
+| Dominio | `BASE_URL` | Qué puedes probar esta semana |
 |---|---|---|
-| GitHub | `https://api.github.com` | `post /gists` con un gist privado, y `delete` después |
-| Open-Meteo | `https://api.open-meteo.com` | Es de solo lectura: usa `--dry-run` para los verbos de escritura |
-| TfL | `https://api.tfl.gov.uk` | Solo lectura también: `get /Line/Mode/tube/Status` |
-| The Movie DB | `https://api.themoviedb.org` | `post /3/list` con una lista de prueba tuya |
+| GitHub | `https://api.github.com` | `get /rate_limit` de verdad (no necesita token). Los verbos de escritura, con `--dry-run` |
+| Open-Meteo | `https://api.open-meteo.com` | `get /v1/forecast?...` de verdad: no tiene autenticación. Escritura, `--dry-run` |
+| TfL | `https://api.tfl.gov.uk` | `get /Line/Mode/tube/Status` de verdad. Escritura, `--dry-run` |
+| The Movie DB | `https://api.themoviedb.org` | Todo con `--dry-run`: hasta la lectura necesita clave |
 
 > [!WARNING]
-> Contra tu API real, **usa `--dry-run` antes de cada `delete`**. Es literalmente
-> para lo que existe. Y si tu dominio es de solo lectura, es la única forma de
-> probar los verbos de escritura sin inventarte otro servidor.
+> Contra cualquier API real, **`--dry-run` antes de cada `delete`**. Es
+> literalmente para lo que existe.
 
 ```bash
 # El endpoint de tu dominio, sin ejecutar nada.
@@ -117,15 +144,17 @@ BASE_URL=https://api.ejemplo.com ./api-toolkit.sh --dry-run delete /v1/usuarios/
 
 ## 🚦 Cómo entregarlo
 
-1. Copia el starter fuera del repositorio y hazlo ejecutable
+1. Respalda tu capa 1, copia el starter fuera del repositorio y hazlo ejecutable
 2. Resuelve los cinco `TODO`, en orden: el 1 y el 2 construyen la petición, el 3 es el `--dry-run`, el 4 el código de salida y el 5 la validación de argumentos
 3. Elimina **todos** los marcadores `TODO`, incluidos los de la cabecera
 4. Comprueba que pasa `shellcheck -S warning`
 5. Ejecuta `./scripts/verificar-semana.sh 02` y que las catorce estén en verde
-6. Entrega el script, `respuestas.md`, `crud.log` y `cabeceras.txt` sin el token real dentro
+6. Entrega el script junto a `respuestas.md`, `crud.log`, `construir-cuerpo.sh` y `cabeceras.txt` — este último sin el token real dentro
 
 ```bash
 shellcheck -S warning ~/api-toolkit.sh
+# Si no lo tienes instalado, el contenedor con la version fijada:
+# docker run --rm -v "$HOME:/mnt" koalaman/shellcheck:v0.10.0 -S warning /mnt/api-toolkit.sh
 ./scripts/verificar-semana.sh 02
 ```
 
@@ -152,6 +181,6 @@ shellcheck -S warning ~/api-toolkit.sh
 
 | Anterior | Actual | Siguiente |
 |---|---|---|
-| [Proyecto Semana 01](../../week-01-http_y_curl_basico/3-proyecto/README.md) | **Proyecto Semana 02 — La capa de los verbos** | [Proyecto Semana 03](../../week-03-autenticacion_basica/3-proyecto/README.md) |
+| [Práctica 04 — JSON que no cabe en la línea](../2-practicas/04-json-desde-archivo.md) | **Proyecto — La capa de los verbos** | [Rúbrica de evaluación](../rubrica-evaluacion.md) |
 
 [← Volver a la Semana 02](../README.md)

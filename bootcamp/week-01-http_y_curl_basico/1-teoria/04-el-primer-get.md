@@ -178,7 +178,8 @@ curl -s http://localhost:8080/json | jq '.slideshow.title'
 # "Sample Slide Show"
 ```
 
-`jq` llega en serio en la Semana 07. Hasta entonces se usa solo para mirar.
+`jq` deja de ser opcional en la Semana 02, donde se usa para construir el cuerpo
+de una petición además de para leerlo. Aquí todavía se usa solo para mirar.
 
 ---
 

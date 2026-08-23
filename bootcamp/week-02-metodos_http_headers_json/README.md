@@ -125,7 +125,7 @@ vacío, y la API contesta 400 cuando tú creías haber mandado los datos.
 | JSON desde un archivo **sin corromperlo** | `--data-binary @cuerpo.json`. Con `-d @cuerpo.json` curl **quita los saltos de línea** |
 | Los tres flags de JSON en uno | `--json '{"a":1}'` (7.82+) = `-d` + `-H 'Content-Type: application/json'` + `-H 'Accept: application/json'` |
 | Query string con espacios y `&` bien codificados | `curl -G --data-urlencode 'q=hola mundo&x' URL`. El `-G` lo mueve del cuerpo a la query |
-| Saber qué método salió de verdad | `curl -s -o /dev/null -w '%{method}\n' -T archivo URL` (7.72+). Delata el método que pusieron los flags |
+| Saber qué método salió de verdad | `curl -s -o /dev/null -w '%{method}\n' -d '' URL` (7.72+). Delata el método que pusieron los flags, antes de lanzar el comando de verdad |
 | Ver qué headers llegaron al servidor, no cuáles creías mandar | `curl -s http://localhost:8080/headers \| jq .headers` |
 | Meter los headers en un archivo y sacar el token de `ps` | `curl -H @cabeceras.txt URL` (7.55+). Un header por línea, y `chmod 600` |
 | Mandar un header **vacío** frente a **suprimirlo** | `-H 'Accept;'` lo manda vacío; `-H 'Accept:'` lo quita del todo. Punto y coma frente a dos puntos |
@@ -140,14 +140,16 @@ vacío, y la API contesta 400 cuando tú creías haber mandado los datos.
 ## 📌 Entregables
 
 1. `respuestas.md` con la comparación de `-d @archivo` frente a `--data-binary @archivo` sobre el mismo JSON
-2. Los cuatro archivos de la práctica completados
-3. `api-toolkit.sh` con los cuatro verbos funcionando, sin ningún `TODO` pendiente
-4. `post`, `put` y `delete` declaran `Content-Type: application/json` cuando llevan cuerpo
-5. `--dry-run` imprime el comando y **no** lo ejecuta
-6. El script sale distinto de 0 ante un 4xx o un 5xx
-7. Ningún secreto en la línea de comandos ni en el script
-8. `shellcheck -S warning api-toolkit.sh` limpio
-9. Ningún `-k` en el script
+2. `crud.log` con los cuatro verbos y su código, de la práctica 02
+3. `cabeceras.txt` con permisos 600 y **sin el token real dentro**, de la práctica 03
+4. `construir-cuerpo.sh` funcionando y limpio de `shellcheck`, de la práctica 04
+5. `api-toolkit.sh` con los cuatro verbos funcionando, sin ningún `TODO` pendiente
+6. `post`, `put` y `delete` declaran `Content-Type: application/json` cuando llevan cuerpo
+7. `--dry-run` imprime el comando y **no** lo ejecuta
+8. El script sale distinto de 0 ante un 4xx o un 5xx
+9. Ningún secreto en la línea de comandos ni en el script
+10. `shellcheck -S warning api-toolkit.sh` limpio
+11. Ningún `-k` en el script
 
 ---
 

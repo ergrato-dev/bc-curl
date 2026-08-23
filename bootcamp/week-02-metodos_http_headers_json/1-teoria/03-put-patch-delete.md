@@ -197,7 +197,8 @@ done
 
 ```bash
 # -T (--upload-file) implica PUT sin necesidad de --request, y sube el archivo
-# tal cual, sin tocarlo. Es el atajo de PUT que casi nadie conoce.
+# tal cual, sin tocarlo. Aqui interesa solo por el metodo que elige; como
+# herramienta de transferencia se ve en la Semana 04.
 printf '{"nombre":"Ada","rol":"admin"}' > usuario.json
 curl -s -T usuario.json -H 'Content-Type: application/json' \
   http://localhost:8080/anything/usuarios/42 | jq -c '{method, json}'
