@@ -1,0 +1,76 @@
+{
+  "semana": "01",
+  "titulo": "HTTP y curl basico",
+  "checks": [
+    {
+      "id": "laboratorio-arriba",
+      "descripcion": "El laboratorio responde en /get",
+      "cmd": "curl -sf -o /dev/null --max-time 5 {lab}/get",
+      "assert": "exit0",
+      "pista": "ejecuta ./scripts/start.sh antes de nada"
+    },
+    {
+      "id": "explorer-ejecutable",
+      "descripcion": "api-explorer.sh existe, es ejecutable y arranca con set -euo pipefail",
+      "cmd": "test -x {semana}/3-proyecto/starter/api-explorer.sh && grep -q 'set -euo pipefail' {semana}/3-proyecto/starter/api-explorer.sh",
+      "assert": "exit0",
+      "pista": "3-proyecto/README.md, paso 1"
+    },
+    {
+      "id": "explorer-sin-todos",
+      "descripcion": "No quedan marcadores TODO sin resolver en el script",
+      "cmd": "grep -c 'TODO' {semana}/3-proyecto/starter/api-explorer.sh",
+      "assert": "stdout~^0$",
+      "pista": "3-proyecto/README.md: cada TODO numerado es un hueco que tienes que rellenar"
+    },
+    {
+      "id": "explorer-imprime-status",
+      "descripcion": "El script imprime el codigo de estado de cada URL que consulta",
+      "cmd": "bash {semana}/3-proyecto/starter/api-explorer.sh {lab}/status/200 2>/dev/null",
+      "assert": "stdout~\\b200\\b",
+      "pista": "1-teoria/05-los-flags-esenciales.md, seccion de --write-out"
+    },
+    {
+      "id": "explorer-imprime-tiempo",
+      "descripcion": "El script imprime el tiempo de respuesta en segundos",
+      "cmd": "bash {semana}/3-proyecto/starter/api-explorer.sh {lab}/get 2>/dev/null",
+      "assert": "stdout~[0-9]+[.,][0-9]+",
+      "pista": "1-teoria/05-los-flags-esenciales.md: la variable es %{time_total}"
+    },
+    {
+      "id": "explorer-detecta-error-http",
+      "descripcion": "El script sale distinto de 0 cuando el servidor responde 503",
+      "cmd": "bash {semana}/3-proyecto/starter/api-explorer.sh {lab}/status/503",
+      "assert": "exit!=0",
+      "pista": "2-practicas/04-provocar-y-leer-status-codes.md, paso 6"
+    },
+    {
+      "id": "explorer-no-se-cuelga",
+      "descripcion": "El script no se queda colgado cuando el servidor tarda demasiado",
+      "cmd": "timeout 25 bash {semana}/3-proyecto/starter/api-explorer.sh {lab}/delay/10",
+      "assert": "exit!=124",
+      "pista": "1-teoria/05-los-flags-esenciales.md: --max-time"
+    },
+    {
+      "id": "explorer-sin-insecure",
+      "descripcion": "El script no desactiva la verificacion del certificado con -k",
+      "cmd": "grep -nE '(^|[[:space:]])(-k|--insecure)([[:space:]]|$)' {semana}/3-proyecto/starter/api-explorer.sh",
+      "assert": "exit!=0",
+      "pista": "1-teoria/08-leer-la-traza-y-el-manual.md, seccion de antipatrones"
+    },
+    {
+      "id": "explorer-shellcheck",
+      "descripcion": "El script pasa shellcheck sin avisos",
+      "cmd": "shellcheck -S warning {semana}/3-proyecto/starter/api-explorer.sh",
+      "assert": "exit0",
+      "pista": "3-proyecto/README.md, criterios de calidad"
+    },
+    {
+      "id": "explorer-resumen",
+      "descripcion": "El script termina con una linea de resumen que cuenta cuantas URLs respondieron 2xx",
+      "cmd": "bash {semana}/3-proyecto/starter/api-explorer.sh {lab}/get {lab}/status/404 2>/dev/null | tail -1",
+      "assert": "stdout~[0-9]",
+      "pista": "3-proyecto/README.md, requisito 5"
+    }
+  ]
+}
