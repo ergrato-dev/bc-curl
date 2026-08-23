@@ -1,0 +1,60 @@
+<svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 440" font-family="Arial, Helvetica, sans-serif">
+  <title>El flujo login-token-peticion: la credencial se usa una vez y el token con caducidad viaja en las peticiones siguientes</title>
+  <rect width="800" height="440" fill="#0d1117"/>
+
+  <text x="400" y="32" text-anchor="middle" fill="#f0f6fc" font-size="22" font-weight="bold">Bearer — la credencial se usa una vez</text>
+  <text x="400" y="52" text-anchor="middle" fill="#8b949e" font-size="12">El token que viaja después caduca solo y se puede revocar sin tocar la credencial</text>
+
+  <!-- Paso 1: login -->
+  <text x="30" y="88" fill="#8b949e" font-size="11" font-weight="bold">1 · una sola vez: la credencial a cambio de un token</text>
+  <rect x="20" y="96" width="150" height="56" rx="8" fill="#161b22" stroke="#f0883e" stroke-width="2"/>
+  <text x="95" y="120" text-anchor="middle" fill="#f0883e" font-size="14" font-weight="bold">curl</text>
+  <text x="95" y="138" text-anchor="middle" fill="#8b949e" font-size="10">client_id + secret</text>
+
+  <line x1="176" y1="124" x2="256" y2="124" stroke="#f0883e" stroke-width="2"/>
+  <polygon points="256,124 248,120 248,128" fill="#f0883e"/>
+  <text x="216" y="116" text-anchor="middle" fill="#8b949e" font-size="10">POST</text>
+
+  <rect x="262" y="96" width="180" height="56" rx="8" fill="#161b22" stroke="#d2a8ff" stroke-width="2"/>
+  <text x="352" y="120" text-anchor="middle" fill="#d2a8ff" font-size="13" font-weight="bold">/token</text>
+  <text x="352" y="138" text-anchor="middle" fill="#8b949e" font-size="10">localhost:8081</text>
+
+  <line x1="448" y1="124" x2="498" y2="124" stroke="#79c0ff" stroke-width="2"/>
+  <polygon points="498,124 490,120 490,128" fill="#79c0ff"/>
+
+  <rect x="504" y="90" width="276" height="68" rx="8" fill="#161b22" stroke="#79c0ff" stroke-width="1.5"/>
+  <text x="520" y="112" fill="#79c0ff" font-family="'Courier New', monospace" font-size="11">"access_token": "eyJraWQi..."</text>
+  <text x="520" y="130" fill="#8b949e" font-family="'Courier New', monospace" font-size="11">"token_type": "Bearer"</text>
+  <text x="520" y="148" fill="#e3b341" font-family="'Courier New', monospace" font-size="11">"expires_in": 3599</text>
+
+  <!-- Nota expires_in -->
+  <rect x="504" y="168" width="276" height="42" rx="6" fill="#161b22" stroke="#e3b341" stroke-width="1"/>
+  <text x="520" y="188" fill="#e3b341" font-size="10" font-weight="bold">expires_in es RELATIVO</text>
+  <text x="520" y="203" fill="#8b949e" font-size="10">se guarda ahora + expires_in</text>
+
+  <line x1="20" y1="232" x2="780" y2="232" stroke="#30363d" stroke-width="1"/>
+
+  <!-- Paso 2: uso repetido -->
+  <text x="30" y="258" fill="#8b949e" font-size="11" font-weight="bold">2 · mil veces: solo el token</text>
+
+  <rect x="20" y="268" width="150" height="56" rx="8" fill="#161b22" stroke="#f0883e" stroke-width="2"/>
+  <text x="95" y="292" text-anchor="middle" fill="#f0883e" font-size="14" font-weight="bold">curl --config</text>
+  <text x="95" y="310" text-anchor="middle" fill="#8b949e" font-size="10">token, no credencial</text>
+
+  <line x1="176" y1="296" x2="256" y2="296" stroke="#f0883e" stroke-width="2"/>
+  <polygon points="256,296 248,292 248,300" fill="#f0883e"/>
+
+  <rect x="262" y="268" width="518" height="56" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="1.5"/>
+  <text x="278" y="292" fill="#3fb950" font-family="'Courier New', monospace" font-size="12" font-weight="bold">Authorization: Bearer eyJraWQiOiJkZWZhdWx0In0...</text>
+  <text x="278" y="312" fill="#8b949e" font-size="10">Sin base64, sin hash, sin reto que resolver. Vale por tenerlo.</text>
+
+  <!-- Las tres formas -->
+  <rect x="20" y="342" width="760" height="82" rx="8" fill="#161b22" stroke="#30363d" stroke-width="1.5"/>
+  <text x="40" y="366" fill="#f0f6fc" font-size="13" font-weight="bold">Las tres formas de mandarlo, y qué hace cada una con el argv</text>
+  <text x="40" y="390" fill="#f85149" font-family="'Courier New', monospace" font-size="11">-H "Authorization: Bearer $T"</text>
+  <text x="330" y="390" fill="#f85149" font-size="11">token en el argv</text>
+  <text x="490" y="390" fill="#f85149" font-family="'Courier New', monospace" font-size="11">--oauth2-bearer "$T"</text>
+  <text x="690" y="390" fill="#f85149" font-size="11">también (7.61+)</text>
+  <text x="40" y="412" fill="#3fb950" font-family="'Courier New', monospace" font-size="11">--config archivo</text>
+  <text x="330" y="412" fill="#3fb950" font-size="11">token FUERA del argv · el correcto en un script</text>
+</svg>

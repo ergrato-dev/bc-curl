@@ -193,12 +193,12 @@ cd bootcamp/week-01-http_y_curl_basico/
 ```
 Semana 03 — Autenticación básica
 
-  ✅ auth-check.sh existe y es ejecutable
-  ✅ El script sale distinto de 0 cuando la API responde 401
-  ❌ El token no aparece en la línea de comandos de ningún curl
-     pista: 2-practicas/04-no-filtrar-la-credencial.md, paso 3
+  ✅ api-toolkit.sh existe, es ejecutable y arranca con set -euo pipefail
+  ✅ Una password incorrecta hace salir al script con el codigo 77
+  ❌ El token no aparece en la linea de comandos de ningun proceso curl
+     pista: 2-practicas/02-sacar-la-credencial-de-la-linea.md, paso 6
 
-  8/9 comprobaciones superadas.
+  16/17 comprobaciones superadas.
 ```
 
 Cada pista dice **en qué práctica y en qué paso** se arregla. Cómo funciona:

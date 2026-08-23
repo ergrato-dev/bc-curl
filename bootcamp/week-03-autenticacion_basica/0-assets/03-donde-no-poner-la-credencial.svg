@@ -1,0 +1,66 @@
+<svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" font-family="Arial, Helvetica, sans-serif">
+  <title>Los cuatro destinos de una credencial escrita en la linea de comandos, frente a las tres formas de pasarla por archivo</title>
+  <rect width="800" height="480" fill="#0d1117"/>
+
+  <text x="400" y="32" text-anchor="middle" fill="#f0f6fc" font-size="22" font-weight="bold">Dónde no poner la credencial</text>
+  <text x="400" y="52" text-anchor="middle" fill="#8b949e" font-size="12">La variable de entorno se expande ANTES de lanzar curl: el valor acaba en el argv</text>
+
+  <!-- El caso malo -->
+  <rect x="20" y="78" width="760" height="46" rx="8" fill="#161b22" stroke="#f85149" stroke-width="2"/>
+  <text x="40" y="98" fill="#f85149" font-size="12" font-weight="bold">✗ por valor</text>
+  <text x="130" y="106" fill="#8b949e" font-family="'Courier New', monospace" font-size="12">curl -H "Authorization: Bearer $API_TOKEN" https://api.ejemplo.com/datos</text>
+
+  <!-- Los cuatro destinos -->
+  <line x1="200" y1="124" x2="200" y2="152" stroke="#f85149" stroke-width="1.5"/>
+  <line x1="400" y1="124" x2="400" y2="152" stroke="#f85149" stroke-width="1.5"/>
+  <line x1="600" y1="124" x2="600" y2="152" stroke="#f85149" stroke-width="1.5"/>
+  <line x1="700" y1="124" x2="700" y2="152" stroke="#f85149" stroke-width="1.5"/>
+
+  <rect x="20" y="152" width="180" height="76" rx="8" fill="#161b22" stroke="#f85149" stroke-width="1"/>
+  <text x="110" y="176" text-anchor="middle" fill="#f85149" font-size="12" font-weight="bold">ps · /proc</text>
+  <text x="110" y="196" text-anchor="middle" fill="#8b949e" font-size="10">cualquier usuario</text>
+  <text x="110" y="214" text-anchor="middle" fill="#8b949e" font-size="10">de la máquina</text>
+
+  <rect x="212" y="152" width="180" height="76" rx="8" fill="#161b22" stroke="#f85149" stroke-width="1"/>
+  <text x="302" y="176" text-anchor="middle" fill="#f85149" font-size="12" font-weight="bold">~/.bash_history</text>
+  <text x="302" y="196" text-anchor="middle" fill="#8b949e" font-size="10">y las copias de</text>
+  <text x="302" y="214" text-anchor="middle" fill="#8b949e" font-size="10">seguridad. Meses</text>
+
+  <rect x="404" y="152" width="180" height="76" rx="8" fill="#161b22" stroke="#f85149" stroke-width="1"/>
+  <text x="494" y="176" text-anchor="middle" fill="#f85149" font-size="12" font-weight="bold">log del CI</text>
+  <text x="494" y="196" text-anchor="middle" fill="#8b949e" font-size="10">todo el repositorio,</text>
+  <text x="494" y="214" text-anchor="middle" fill="#8b949e" font-size="10">para siempre</text>
+
+  <rect x="596" y="152" width="184" height="76" rx="8" fill="#161b22" stroke="#f85149" stroke-width="1"/>
+  <text x="688" y="176" text-anchor="middle" fill="#f85149" font-size="12" font-weight="bold">log del proxy</text>
+  <text x="688" y="196" text-anchor="middle" fill="#8b949e" font-size="10">el equipo de red,</text>
+  <text x="688" y="214" text-anchor="middle" fill="#8b949e" font-size="10">según retención</text>
+
+  <line x1="20" y1="252" x2="780" y2="252" stroke="#30363d" stroke-width="1"/>
+
+  <!-- El caso bueno -->
+  <text x="400" y="280" text-anchor="middle" fill="#3fb950" font-size="15" font-weight="bold">✓ por referencia: al proceso le pasas una RUTA, no un valor</text>
+
+  <rect x="20" y="296" width="245" height="120" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="1.5"/>
+  <text x="40" y="320" fill="#3fb950" font-family="'Courier New', monospace" font-size="13" font-weight="bold">--config f</text>
+  <text x="40" y="342" fill="#8b949e" font-size="10">opciones de curl, una por línea</text>
+  <text x="40" y="364" fill="#79c0ff" font-family="'Courier New', monospace" font-size="10">header = "Authorization:</text>
+  <text x="40" y="379" fill="#79c0ff" font-family="'Courier New', monospace" font-size="10">  Bearer el-token"</text>
+  <text x="40" y="404" fill="#f0f6fc" font-size="10">Cualquier esquema · siempre</text>
+
+  <rect x="277" y="296" width="245" height="120" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="1.5"/>
+  <text x="297" y="320" fill="#3fb950" font-family="'Courier New', monospace" font-size="13" font-weight="bold">--netrc-file f</text>
+  <text x="297" y="342" fill="#8b949e" font-size="10">máquina, login y password</text>
+  <text x="297" y="364" fill="#79c0ff" font-family="'Courier New', monospace" font-size="10">machine localhost login</text>
+  <text x="297" y="379" fill="#79c0ff" font-family="'Courier New', monospace" font-size="10">  user password secreto</text>
+  <text x="297" y="404" fill="#f0f6fc" font-size="10">Basic · atado a un host</text>
+
+  <rect x="534" y="296" width="246" height="120" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="1.5"/>
+  <text x="554" y="320" fill="#3fb950" font-family="'Courier New', monospace" font-size="13" font-weight="bold">-H @f</text>
+  <text x="554" y="342" fill="#8b949e" font-size="10">headers, uno por línea</text>
+  <text x="554" y="364" fill="#79c0ff" font-family="'Courier New', monospace" font-size="10">X-API-Key: la-clave</text>
+  <text x="554" y="404" fill="#f0f6fc" font-size="10">API key, Bearer · 7.55+</text>
+
+  <rect x="20" y="428" width="760" height="38" rx="8" fill="#161b22" stroke="#e3b341" stroke-width="1.5"/>
+  <text x="40" y="452" fill="#e3b341" font-size="12" font-weight="bold">Los tres archivos, chmod 600. Y creados con (umask 077; ...), no con un chmod después.</text>
+</svg>

@@ -19,7 +19,7 @@
     {
       "id": "toolkit-sin-todos",
       "descripcion": "No quedan marcadores TODO sin resolver en el script",
-      "cmd": "grep -c 'TODO' {semana}/3-proyecto/starter/api-toolkit.sh",
+      "cmd": "grep -cE '^[[:space:]]*#[[:space:]]*TODO' {semana}/3-proyecto/starter/api-toolkit.sh",
       "assert": "stdout~^0$",
       "pista": "3-proyecto/README.md: cada TODO numerado es un hueco que tienes que rellenar"
     },

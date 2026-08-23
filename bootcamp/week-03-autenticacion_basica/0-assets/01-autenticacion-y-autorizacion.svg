@@ -1,0 +1,53 @@
+<svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" font-family="Arial, Helvetica, sans-serif">
+  <title>El ciclo reto-respuesta: 401 con WWW-Authenticate, repeticion con Authorization, y el 403 aparte</title>
+  <rect width="800" height="480" fill="#0d1117"/>
+
+  <text x="400" y="32" text-anchor="middle" fill="#f0f6fc" font-size="22" font-weight="bold">Autenticación y autorización</text>
+  <text x="400" y="52" text-anchor="middle" fill="#8b949e" font-size="12">401 = no sé quién eres · 403 = sé quién eres y no puedes</text>
+
+  <!-- Paso 1 -->
+  <text x="30" y="88" fill="#8b949e" font-size="11" font-weight="bold">1 · petición sin credencial</text>
+  <rect x="20" y="96" width="150" height="52" rx="8" fill="#161b22" stroke="#f0883e" stroke-width="2"/>
+  <text x="95" y="120" text-anchor="middle" fill="#f0883e" font-size="14" font-weight="bold">curl</text>
+  <text x="95" y="137" text-anchor="middle" fill="#8b949e" font-size="10">sin Authorization</text>
+  <line x1="176" y1="122" x2="256" y2="122" stroke="#f0883e" stroke-width="2"/>
+  <polygon points="256,122 248,118 248,126" fill="#f0883e"/>
+  <rect x="262" y="96" width="150" height="52" rx="8" fill="#161b22" stroke="#30363d" stroke-width="1.5"/>
+  <text x="337" y="127" text-anchor="middle" fill="#f0f6fc" font-size="13">servidor</text>
+
+  <!-- Paso 2: el reto -->
+  <text x="430" y="88" fill="#8b949e" font-size="11" font-weight="bold">2 · el reto</text>
+  <rect x="424" y="96" width="356" height="52" rx="8" fill="#161b22" stroke="#f85149" stroke-width="1.5"/>
+  <text x="440" y="118" fill="#f85149" font-family="'Courier New', monospace" font-size="12" font-weight="bold">HTTP/1.1 401 Unauthorized</text>
+  <text x="440" y="137" fill="#79c0ff" font-family="'Courier New', monospace" font-size="11">WWW-Authenticate: Basic realm="Fake Realm"</text>
+
+  <!-- Paso 3 -->
+  <text x="30" y="196" fill="#8b949e" font-size="11" font-weight="bold">3 · la respuesta</text>
+  <rect x="20" y="204" width="150" height="52" rx="8" fill="#161b22" stroke="#f0883e" stroke-width="2"/>
+  <text x="95" y="228" text-anchor="middle" fill="#f0883e" font-size="14" font-weight="bold">curl -u</text>
+  <text x="95" y="245" text-anchor="middle" fill="#8b949e" font-size="10">con Authorization</text>
+  <line x1="176" y1="230" x2="256" y2="230" stroke="#f0883e" stroke-width="2"/>
+  <polygon points="256,230 248,226 248,234" fill="#f0883e"/>
+  <rect x="262" y="204" width="518" height="52" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="1.5"/>
+  <text x="278" y="226" fill="#3fb950" font-family="'Courier New', monospace" font-size="12" font-weight="bold">HTTP/1.1 200 OK</text>
+  <text x="278" y="245" fill="#8b949e" font-family="'Courier New', monospace" font-size="11">Authorization: Basic dXNlcjpwYXNzd29yZA==</text>
+
+  <line x1="20" y1="284" x2="780" y2="284" stroke="#30363d" stroke-width="1"/>
+
+  <!-- Comparativa 401 vs 403 -->
+  <text x="400" y="312" text-anchor="middle" fill="#f0f6fc" font-size="15" font-weight="bold">Los dos «no», y por qué se tratan distinto</text>
+
+  <rect x="20" y="330" width="370" height="130" rx="8" fill="#161b22" stroke="#e3b341" stroke-width="1.5"/>
+  <text x="40" y="356" fill="#e3b341" font-size="14" font-weight="bold">401 Unauthorized</text>
+  <text x="40" y="378" fill="#f0f6fc" font-size="12">«No sé quién eres»</text>
+  <text x="40" y="400" fill="#8b949e" font-size="11">Trae WWW-Authenticate · falta o caducó</text>
+  <text x="40" y="420" fill="#8b949e" font-size="11">Otra credencial SÍ lo arregla</text>
+  <text x="40" y="443" fill="#3fb950" font-size="11" font-weight="bold">→ renovar y reintentar UNA vez</text>
+
+  <rect x="410" y="330" width="370" height="130" rx="8" fill="#161b22" stroke="#f85149" stroke-width="1.5"/>
+  <text x="430" y="356" fill="#f85149" font-size="14" font-weight="bold">403 Forbidden</text>
+  <text x="430" y="378" fill="#f0f6fc" font-size="12">«Sé quién eres y no puedes»</text>
+  <text x="430" y="400" fill="#8b949e" font-size="11">Sin WWW-Authenticate · falta permiso</text>
+  <text x="430" y="420" fill="#8b949e" font-size="11">Otra credencial igual NO lo arregla</text>
+  <text x="430" y="443" fill="#f85149" font-size="11" font-weight="bold">→ abortar y avisar a un humano</text>
+</svg>

@@ -18,12 +18,12 @@ Salida:
 ```
 Semana 03 — Autenticación básica
 
-  ✅ auth-check.sh existe y es ejecutable
-  ✅ El script sale distinto de 0 cuando la API responde 401
-  ❌ El token no aparece en la línea de comandos de ningún curl
-     pista: 2-practicas/04-no-filtrar-la-credencial.md, paso 3
+  ✅ api-toolkit.sh existe, es ejecutable y arranca con set -euo pipefail
+  ✅ Una password incorrecta hace salir al script con el codigo 77
+  ❌ El token no aparece en la linea de comandos de ningun proceso curl
+     pista: 2-practicas/02-sacar-la-credencial-de-la-linea.md, paso 6
 
-  8/9 comprobaciones superadas.
+  16/17 comprobaciones superadas.
 ```
 
 Sale con 0 si pasan todas, con 1 si falla alguna. **Cada pista dice en qué
@@ -42,18 +42,18 @@ Un archivo por semana, en la raíz de la carpeta de la semana.
   "titulo": "Autenticacion basica",
   "checks": [
     {
-      "id": "auth-check-ejecutable",
-      "descripcion": "auth-check.sh existe y es ejecutable",
-      "cmd": "test -x {semana}/3-proyecto/starter/auth-check.sh",
+      "id": "toolkit-ejecutable",
+      "descripcion": "api-toolkit.sh existe, es ejecutable y arranca con set -euo pipefail",
+      "cmd": "test -x {semana}/3-proyecto/starter/api-toolkit.sh",
       "assert": "exit0",
       "pista": "3-proyecto/README.md, paso 1"
     },
     {
-      "id": "auth-check-detecta-401",
-      "descripcion": "El script sale distinto de 0 cuando la API responde 401",
-      "cmd": "bash {semana}/3-proyecto/starter/auth-check.sh {lab}/basic-auth/user/pass",
-      "assert": "exit!=0",
-      "pista": "2-practicas/03-bearer-y-api-keys.md, paso 4"
+      "id": "toolkit-basic-auth-credencial-mala",
+      "descripcion": "Una password incorrecta hace salir al script con el codigo 77",
+      "cmd": "AUTH_MODE=basic API_USER=user API_PASSWORD=incorrecta bash {semana}/3-proyecto/starter/api-toolkit.sh get /basic-auth/user/password",
+      "assert": "exit=77",
+      "pista": "2-practicas/04-cuando-la-credencial-falla.md, paso 5"
     }
   ]
 }
@@ -81,6 +81,12 @@ Un archivo por semana, en la raíz de la carpeta de la semana.
 
 Cualquier otra cosa se reporta como aserción desconocida y la comprobación
 cuenta como fallida. No falla en silencio.
+
+> [!IMPORTANT]
+> **Las expresiones regulares no pueden llevar `\`.** El verificador lee los
+> campos con `jq @tsv`, que escapa la barra invertida, así que `\b200\b` llega
+> a `grep -E` como `\\b200\\b` y no casa nunca. En su lugar: `.` para un
+> carácter cualquiera y `(^|[^0-9])200([^0-9]|$)` para lo que sería `\b`.
 
 ### Marcadores
 

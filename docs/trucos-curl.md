@@ -64,7 +64,23 @@ Tres cosas que sirven las diez semanas:
 
 ## Semana 03 — Autenticación básica
 
-_Pendiente._
+| Truco | Cómo |
+|---|---|
+| Que curl **pregunte** la password en vez de escribirla | `curl -u usuario URL`. Sin los `:pass`, curl la pide por terminal y no queda en `ps` ni en el historial |
+| Ver el header `Authorization` que curl genera de verdad | `curl -u user:password -o /dev/null -v URL 2>&1 \| grep -i '^> authorization'` |
+| Saber qué esquema pide un servidor antes de intentar nada | `curl -s -o /dev/null -D - URL \| grep -i '^www-authenticate'` |
+| Meter la credencial en un archivo de opciones de curl | `printf 'header = "Authorization: Bearer %s"\n' "$TOKEN" > f; chmod 600 f; curl --config f URL` |
+| Mandar un Bearer sin construir el header a mano | `curl --oauth2-bearer "$TOKEN" URL` (**7.61+**). Sigue yendo en el argv: en un script, `--config` |
+| Que curl elija el esquema que pida el servidor | `curl --anyauth -u user:password URL`. Cuesta una petición extra: la primera se manda sin credencial, solo para leer el reto |
+| Evitar esa petición extra cuando ya sabes el esquema | `curl --basic -u user:password URL`. Manda la credencial de entrada, sin esperar el 401 |
+| Decodificar el payload de un JWT sin instalar nada | `cut -d. -f2 <<<"$JWT" \| tr '_-' '/+' \| base64 -d 2>/dev/null \| jq` — y si se queja, es el relleno: `(4 - len % 4) % 4` signos `=` |
+| Saber si un JWT ya caducó, en una línea | `[ "$(date +%s)" -lt "$exp" ] && echo vigente \|\| echo caducado` |
+| Comprobar que un secreto **no** está en la línea de comandos | Lanza la petición contra `/delay/3` en segundo plano y mira: `ps -eo args \| grep '^curl '` |
+| Que un archivo de credenciales nazca ya con permisos 600 | `(umask 077; printf '...' > cred.txt)`. `chmod` después deja una ventana en la que es legible |
+| Diferenciar "no me conozco" de "no me dejas" en un script | Código de salida propio para el 401/403. `77` es `EX_NOPERM` en `sysexits.h`, y no colisiona con los de curl |
+| Descartar el `.curlrc` como causa de un fallo raro | `curl -q ...`. Un `--digest` olvidado ahí convierte todos tus comandos Basic en Digest |
+| Contar las peticiones que gasta de verdad un esquema | `curl -s FLAG -u u:p -o /dev/null -v URL 2>&1 \| grep -c '^> GET'`. `--basic` da 1, `--anyauth` da 2 |
+| Distinguir un JWT de un token opaco sin decodificar nada | `[ "$(tr -cd '.' <<<"$TOKEN" \| wc -c)" -eq 2 ] && echo JWT \|\| echo opaco` |
 
 ## Semana 04 — Archivos, formularios y multipart
 

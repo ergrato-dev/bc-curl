@@ -1,39 +1,53 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 430" font-family="Arial, Helvetica, sans-serif">
-  <rect width="800" height="430" fill="#0d1117"/>
+<svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 440" font-family="Arial, Helvetica, sans-serif">
+  <title>Basic Auth: usuario y password unidos por dos puntos, codificados en base64, y la operacion inversa sin ninguna clave</title>
+  <rect width="800" height="440" fill="#0d1117"/>
 
-  <text x="400" y="32" text-anchor="middle" fill="#f0f6fc" font-size="22" font-weight="bold">HTTP Basic Authentication</text>
-  <text x="400" y="52" text-anchor="middle" fill="#8b949e" font-size="12">Usuario y contraseña codificados en base64 en el header Authorization</text>
+  <text x="400" y="32" text-anchor="middle" fill="#f0f6fc" font-size="22" font-weight="bold">Basic Auth — codificar no es cifrar</text>
+  <text x="400" y="52" text-anchor="middle" fill="#8b949e" font-size="12">base64 es reversible sin ninguna clave: lo que protege es TLS</text>
 
-  <!-- The mechanism -->
-  <rect x="40" y="75" width="720" height="100" rx="8" fill="#161b22" stroke="#f0883e" stroke-width="2"/>
-  <text x="400" y="100" text-anchor="middle" fill="#f0883e" font-size="14" font-weight="bold">Cómo funciona</text>
+  <!-- Cadena de transformacion -->
+  <rect x="20" y="82" width="230" height="56" rx="8" fill="#161b22" stroke="#30363d" stroke-width="1.5"/>
+  <text x="135" y="106" text-anchor="middle" fill="#8b949e" font-size="10">usuario y password</text>
+  <text x="135" y="126" text-anchor="middle" fill="#f0f6fc" font-family="'Courier New', monospace" font-size="13">user:password</text>
 
-  <text x="60" y="125" fill="#8b949e" font-family="'Courier New', monospace" font-size="11">1. curl codifica "usuario:contraseña" en base64</text>
-  <text x="60" y="148" fill="#8b949e" font-family="'Courier New', monospace" font-size="11">2. Lo envía en el header:  Authorization: Basic dXNlcjpwYXNz</text>
-  <text x="60" y="170" fill="#8b949e" font-family="'Courier New', monospace" font-size="11">3. El servidor decodifica y verifica contra su base de usuarios</text>
+  <line x1="256" y1="110" x2="306" y2="110" stroke="#f0883e" stroke-width="2"/>
+  <polygon points="306,110 298,106 298,114" fill="#f0883e"/>
+  <text x="281" y="100" text-anchor="middle" fill="#f0883e" font-size="10">base64</text>
 
-  <!-- curl usage -->
-  <text x="40" y="210" fill="#79c0ff" font-size="14" font-weight="bold">Con curl</text>
+  <rect x="312" y="82" width="270" height="56" rx="8" fill="#161b22" stroke="#d2a8ff" stroke-width="1.5"/>
+  <text x="447" y="106" text-anchor="middle" fill="#8b949e" font-size="10">codificado, NO cifrado</text>
+  <text x="447" y="126" text-anchor="middle" fill="#d2a8ff" font-family="'Courier New', monospace" font-size="13">dXNlcjpwYXNzd29yZA==</text>
 
-  <rect x="40" y="225" width="340" height="60" rx="6" fill="#161b22" stroke="#3fb950" stroke-width="1.5"/>
-  <text x="210" y="248" text-anchor="middle" fill="#3fb950" font-size="12" font-weight="bold">Forma simple: flag -u</text>
-  <text x="55" y="272" fill="#8b949e" font-family="'Courier New', monospace" font-size="11">curl -u user:pass https://httpbin.org/basic-auth/user/pass</text>
+  <line x1="588" y1="110" x2="638" y2="110" stroke="#f0883e" stroke-width="2"/>
+  <polygon points="638,110 630,106 630,114" fill="#f0883e"/>
 
-  <rect x="400" y="225" width="360" height="60" rx="6" fill="#161b22" stroke="#d2a8ff" stroke-width="1.5"/>
-  <text x="580" y="248" text-anchor="middle" fill="#d2a8ff" font-size="12" font-weight="bold">Forma manual: header explícito</text>
-  <text x="415" y="272" fill="#8b949e" font-family="'Courier New', monospace" font-size="11">curl -H "Authorization: Basic dXNlcjpwYXNz" URL</text>
+  <rect x="644" y="82" width="136" height="56" rx="8" fill="#161b22" stroke="#79c0ff" stroke-width="1.5"/>
+  <text x="712" y="106" text-anchor="middle" fill="#8b949e" font-size="10">header</text>
+  <text x="712" y="126" text-anchor="middle" fill="#79c0ff" font-family="'Courier New', monospace" font-size="12">Authorization</text>
 
-  <!-- Tips -->
-  <rect x="40" y="300" width="350" height="55" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1"/>
-  <text x="215" y="322" text-anchor="middle" fill="#f0f6fc" font-size="12" font-weight="bold">Pedir contraseña interactiva</text>
-  <text x="55" y="346" fill="#8b949e" font-family="'Courier New', monospace" font-size="11">curl -u user https://httpbin.org/basic-auth/user/pass</text>
+  <!-- La vuelta -->
+  <path d="M 447 148 L 447 176 L 135 176 L 135 196" fill="none" stroke="#f85149" stroke-width="2" stroke-dasharray="5,4"/>
+  <polygon points="135,196 131,188 139,188" fill="#f85149"/>
+  <text x="291" y="170" text-anchor="middle" fill="#f85149" font-size="11" font-weight="bold">base64 -d · sin ninguna clave, en dos segundos</text>
 
-  <rect x="410" y="300" width="350" height="55" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1"/>
-  <text x="585" y="322" text-anchor="middle" fill="#f0f6fc" font-size="12" font-weight="bold">Ver header generado con -v</text>
-  <text x="425" y="346" fill="#8b949e" font-family="'Courier New', monospace" font-size="11">curl -v -u user:pass URL 2>&amp;1 | grep Authorization</text>
+  <rect x="20" y="202" width="760" height="52" rx="8" fill="#161b22" stroke="#f85149" stroke-width="1.5"/>
+  <text x="40" y="226" fill="#f85149" font-size="13" font-weight="bold">Por eso un Authorization: Basic en un log es la password en claro</text>
+  <text x="40" y="244" fill="#8b949e" font-size="11">Un ticket, una captura de pantalla o un log de CI valen igual que la credencial</text>
 
-  <!-- HTTPS warning -->
-  <rect x="40" y="370" width="720" height="45" rx="6" fill="#2d0a0a" stroke="#f85149" stroke-width="1.5"/>
-  <text x="400" y="392" text-anchor="middle" fill="#f85149" font-size="13" font-weight="bold">IMPORTANTE: Base64 NO es cifrado — siempre usar HTTPS con Basic Auth</text>
-  <text x="400" y="410" text-anchor="middle" fill="#8b949e" font-size="10">Sin HTTPS, cualquiera que intercepte el tráfico puede decodificar el base64 y leer usuario:contraseña</text>
+  <line x1="20" y1="278" x2="780" y2="278" stroke="#30363d" stroke-width="1"/>
+
+  <!-- Bien / mal -->
+  <rect x="20" y="298" width="370" height="122" rx="8" fill="#161b22" stroke="#f85149" stroke-width="1.5"/>
+  <text x="40" y="322" fill="#f85149" font-size="14" font-weight="bold">✗ Sin verificar el certificado</text>
+  <text x="40" y="346" fill="#8b949e" font-family="'Courier New', monospace" font-size="11">curl -k -u usuario:password \</text>
+  <text x="40" y="363" fill="#8b949e" font-family="'Courier New', monospace" font-size="11">  https://api.ejemplo.com/datos</text>
+  <text x="40" y="390" fill="#f0f6fc" font-size="11">No sabes con quién hablas, y le mandas</text>
+  <text x="40" y="407" fill="#f0f6fc" font-size="11">la password. Quien esté en medio la lee.</text>
+
+  <rect x="410" y="298" width="370" height="122" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="1.5"/>
+  <text x="430" y="322" fill="#3fb950" font-size="14" font-weight="bold">✓ Con la CA correcta</text>
+  <text x="430" y="346" fill="#8b949e" font-family="'Courier New', monospace" font-size="11">curl --cacert docs/lab-ca.pem \</text>
+  <text x="430" y="363" fill="#8b949e" font-family="'Courier New', monospace" font-size="11">  -u user https://localhost:8443/...</text>
+  <text x="430" y="390" fill="#f0f6fc" font-size="11">Si el certificado no valida, se le da la</text>
+  <text x="430" y="407" fill="#f0f6fc" font-size="11">CA. Nunca se apaga la comprobación.</text>
 </svg>

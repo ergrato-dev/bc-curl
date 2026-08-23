@@ -1,0 +1,84 @@
+<svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 460" font-family="Arial, Helvetica, sans-serif">
+  <title>Arbol de decision ante un fallo: 401 renovar y reintentar una vez, 403 abortar, 429 esperar, 5xx reintentar con backoff, sin respuesta reintentar</title>
+  <rect width="800" height="460" fill="#0d1117"/>
+
+  <text x="400" y="32" text-anchor="middle" fill="#f0f6fc" font-size="22" font-weight="bold">Cuando la credencial falla</text>
+  <text x="400" y="52" text-anchor="middle" fill="#8b949e" font-size="12">curl sale con 0 ante un 401: para él, pedir y que le contesten fue un éxito</text>
+
+  <!-- Nodo raiz -->
+  <rect x="290" y="76" width="220" height="46" rx="8" fill="#161b22" stroke="#f0883e" stroke-width="2"/>
+  <text x="400" y="96" text-anchor="middle" fill="#f0883e" font-size="13" font-weight="bold">respuesta de la API</text>
+  <text x="400" y="113" text-anchor="middle" fill="#8b949e" font-family="'Courier New', monospace" font-size="10">-w '\n%{http_code}'</text>
+
+  <line x1="400" y1="122" x2="400" y2="140" stroke="#8b949e" stroke-width="1.5"/>
+  <line x1="93" y1="140" x2="707" y2="140" stroke="#8b949e" stroke-width="1.5"/>
+  <line x1="93" y1="140" x2="93" y2="160" stroke="#8b949e" stroke-width="1.5"/>
+  <line x1="246" y1="140" x2="246" y2="160" stroke="#8b949e" stroke-width="1.5"/>
+  <line x1="400" y1="140" x2="400" y2="160" stroke="#8b949e" stroke-width="1.5"/>
+  <line x1="554" y1="140" x2="554" y2="160" stroke="#8b949e" stroke-width="1.5"/>
+  <line x1="707" y1="140" x2="707" y2="160" stroke="#8b949e" stroke-width="1.5"/>
+
+  <!-- 401 -->
+  <rect x="20" y="160" width="146" height="150" rx="8" fill="#161b22" stroke="#e3b341" stroke-width="2"/>
+  <text x="93" y="184" text-anchor="middle" fill="#e3b341" font-size="15" font-weight="bold">401</text>
+  <text x="93" y="204" text-anchor="middle" fill="#f0f6fc" font-size="10">credencial mala</text>
+  <text x="93" y="219" text-anchor="middle" fill="#f0f6fc" font-size="10">o caducada</text>
+  <line x1="36" y1="230" x2="150" y2="230" stroke="#30363d" stroke-width="0.5"/>
+  <text x="93" y="250" text-anchor="middle" fill="#3fb950" font-size="10" font-weight="bold">renovar y</text>
+  <text x="93" y="265" text-anchor="middle" fill="#3fb950" font-size="10" font-weight="bold">reintentar 1 vez</text>
+  <text x="93" y="288" text-anchor="middle" fill="#d2a8ff" font-family="'Courier New', monospace" font-size="13" font-weight="bold">exit 77</text>
+
+  <!-- 403 -->
+  <rect x="173" y="160" width="146" height="150" rx="8" fill="#161b22" stroke="#f85149" stroke-width="2"/>
+  <text x="246" y="184" text-anchor="middle" fill="#f85149" font-size="15" font-weight="bold">403</text>
+  <text x="246" y="204" text-anchor="middle" fill="#f0f6fc" font-size="10">sin permiso</text>
+  <text x="246" y="219" text-anchor="middle" fill="#f0f6fc" font-size="10">para eso</text>
+  <line x1="189" y1="230" x2="303" y2="230" stroke="#30363d" stroke-width="0.5"/>
+  <text x="246" y="250" text-anchor="middle" fill="#f85149" font-size="10" font-weight="bold">abortar</text>
+  <text x="246" y="265" text-anchor="middle" fill="#f85149" font-size="10" font-weight="bold">NO reintentar</text>
+  <text x="246" y="288" text-anchor="middle" fill="#d2a8ff" font-family="'Courier New', monospace" font-size="13" font-weight="bold">exit 77</text>
+
+  <!-- 429 -->
+  <rect x="326" y="160" width="146" height="150" rx="8" fill="#161b22" stroke="#e3b341" stroke-width="2"/>
+  <text x="399" y="184" text-anchor="middle" fill="#e3b341" font-size="15" font-weight="bold">429</text>
+  <text x="399" y="204" text-anchor="middle" fill="#f0f6fc" font-size="10">demasiadas</text>
+  <text x="399" y="219" text-anchor="middle" fill="#f0f6fc" font-size="10">peticiones</text>
+  <line x1="342" y1="230" x2="456" y2="230" stroke="#30363d" stroke-width="0.5"/>
+  <text x="399" y="250" text-anchor="middle" fill="#3fb950" font-size="10" font-weight="bold">esperar el</text>
+  <text x="399" y="265" text-anchor="middle" fill="#3fb950" font-size="10" font-weight="bold">Retry-After</text>
+  <text x="399" y="288" text-anchor="middle" fill="#8b949e" font-size="10">--retry lo hace solo</text>
+
+  <!-- 5xx -->
+  <rect x="479" y="160" width="146" height="150" rx="8" fill="#161b22" stroke="#f85149" stroke-width="2"/>
+  <text x="552" y="184" text-anchor="middle" fill="#f85149" font-size="15" font-weight="bold">5xx</text>
+  <text x="552" y="204" text-anchor="middle" fill="#f0f6fc" font-size="10">error del</text>
+  <text x="552" y="219" text-anchor="middle" fill="#f0f6fc" font-size="10">servidor</text>
+  <line x1="495" y1="230" x2="609" y2="230" stroke="#30363d" stroke-width="0.5"/>
+  <text x="552" y="250" text-anchor="middle" fill="#3fb950" font-size="10" font-weight="bold">reintentar</text>
+  <text x="552" y="265" text-anchor="middle" fill="#3fb950" font-size="10" font-weight="bold">con backoff</text>
+  <text x="552" y="288" text-anchor="middle" fill="#d2a8ff" font-family="'Courier New', monospace" font-size="13" font-weight="bold">exit 1</text>
+
+  <!-- sin respuesta -->
+  <rect x="632" y="160" width="148" height="150" rx="8" fill="#161b22" stroke="#8b949e" stroke-width="2"/>
+  <text x="706" y="184" text-anchor="middle" fill="#8b949e" font-size="15" font-weight="bold">000</text>
+  <text x="706" y="204" text-anchor="middle" fill="#f0f6fc" font-size="10">no hubo</text>
+  <text x="706" y="219" text-anchor="middle" fill="#f0f6fc" font-size="10">respuesta</text>
+  <line x1="648" y1="230" x2="764" y2="230" stroke="#30363d" stroke-width="0.5"/>
+  <text x="706" y="250" text-anchor="middle" fill="#3fb950" font-size="10" font-weight="bold">reintentar</text>
+  <text x="706" y="265" text-anchor="middle" fill="#8b949e" font-size="10">NO es un número</text>
+  <text x="706" y="288" text-anchor="middle" fill="#d2a8ff" font-family="'Courier New', monospace" font-size="13" font-weight="bold">exit 1</text>
+
+  <line x1="20" y1="332" x2="780" y2="332" stroke="#30363d" stroke-width="1"/>
+
+  <rect x="20" y="350" width="370" height="96" rx="8" fill="#161b22" stroke="#f85149" stroke-width="1.5"/>
+  <text x="40" y="374" fill="#f85149" font-size="13" font-weight="bold">✗ sin --fail</text>
+  <text x="40" y="396" fill="#8b949e" font-family="'Courier New', monospace" font-size="11">curl -s "$URL"   →  exit 0 con un 401</text>
+  <text x="40" y="418" fill="#f0f6fc" font-size="11">El `if` se cumple y el script procesa el</text>
+  <text x="40" y="435" fill="#f0f6fc" font-size="11">cuerpo del error como si fueran datos.</text>
+
+  <rect x="410" y="350" width="370" height="96" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="1.5"/>
+  <text x="430" y="374" fill="#3fb950" font-size="13" font-weight="bold">✓ --fail-with-body (7.76+)</text>
+  <text x="430" y="396" fill="#8b949e" font-family="'Courier New', monospace" font-size="11">exit 22, y CONSERVA el cuerpo</text>
+  <text x="430" y="418" fill="#f0f6fc" font-size="11">En un 401 el cuerpo es donde la API dice</text>
+  <text x="430" y="435" fill="#f0f6fc" font-size="11">si el token caducó o nunca fue válido.</text>
+</svg>

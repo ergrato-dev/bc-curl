@@ -1,0 +1,56 @@
+<svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 440" font-family="Arial, Helvetica, sans-serif">
+  <title>API key en header frente a query string, con los cuatro sitios donde la query deja rastro aunque vaya por HTTPS</title>
+  <rect width="800" height="440" fill="#0d1117"/>
+
+  <text x="400" y="32" text-anchor="middle" fill="#f0f6fc" font-size="22" font-weight="bold">API keys — header o query string</text>
+  <text x="400" y="52" text-anchor="middle" fill="#8b949e" font-size="12">TLS cifra el tránsito; el log lo escribe el servidor DESPUÉS de descifrar</text>
+
+  <!-- Header: bien -->
+  <rect x="20" y="80" width="370" height="150" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="40" y="106" fill="#3fb950" font-size="15" font-weight="bold">✓ En un header</text>
+  <text x="40" y="132" fill="#8b949e" font-family="'Courier New', monospace" font-size="11">curl -H 'X-API-Key: la-clave' \</text>
+  <text x="40" y="149" fill="#8b949e" font-family="'Courier New', monospace" font-size="11">  https://api.ejemplo.com/v1/datos</text>
+  <line x1="40" y1="162" x2="370" y2="162" stroke="#30363d" stroke-width="0.5"/>
+  <text x="40" y="184" fill="#f0f6fc" font-size="11">Los logs de acceso NO registran los</text>
+  <text x="40" y="201" fill="#f0f6fc" font-size="11">headers de petición por defecto.</text>
+  <text x="40" y="220" fill="#3fb950" font-size="11" font-weight="bold">Solo la ve el servidor.</text>
+
+  <!-- Query: mal -->
+  <rect x="410" y="80" width="370" height="150" rx="8" fill="#161b22" stroke="#f85149" stroke-width="2"/>
+  <text x="430" y="106" fill="#f85149" font-size="15" font-weight="bold">✗ En la query string</text>
+  <text x="430" y="132" fill="#8b949e" font-family="'Courier New', monospace" font-size="11">curl 'https://api.ejemplo.com/v1/</text>
+  <text x="430" y="149" fill="#8b949e" font-family="'Courier New', monospace" font-size="11">  datos?api_key=la-clave'</text>
+  <line x1="430" y1="162" x2="760" y2="162" stroke="#30363d" stroke-width="0.5"/>
+  <text x="430" y="184" fill="#f0f6fc" font-size="11">La ruta completa se registra siempre,</text>
+  <text x="430" y="201" fill="#f0f6fc" font-size="11">con su query. Y se copia y se pega.</text>
+  <text x="430" y="220" fill="#f85149" font-size="11" font-weight="bold">Acaba en cuatro sitios más:</text>
+
+  <line x1="500" y1="230" x2="500" y2="262" stroke="#f85149" stroke-width="1.5"/>
+  <line x1="600" y1="230" x2="600" y2="262" stroke="#f85149" stroke-width="1.5"/>
+  <line x1="690" y1="230" x2="690" y2="262" stroke="#f85149" stroke-width="1.5"/>
+
+  <rect x="20" y="262" width="185" height="72" rx="8" fill="#161b22" stroke="#f85149" stroke-width="1"/>
+  <text x="112" y="288" text-anchor="middle" fill="#f85149" font-size="12" font-weight="bold">log del servidor</text>
+  <text x="112" y="309" text-anchor="middle" fill="#8b949e" font-size="10">la ruta con su query,</text>
+  <text x="112" y="325" text-anchor="middle" fill="#8b949e" font-size="10">siempre</text>
+
+  <rect x="215" y="262" width="185" height="72" rx="8" fill="#161b22" stroke="#f85149" stroke-width="1"/>
+  <text x="307" y="288" text-anchor="middle" fill="#f85149" font-size="12" font-weight="bold">log del proxy</text>
+  <text x="307" y="309" text-anchor="middle" fill="#8b949e" font-size="10">y del balanceador,</text>
+  <text x="307" y="325" text-anchor="middle" fill="#8b949e" font-size="10">con más retención</text>
+
+  <rect x="410" y="262" width="185" height="72" rx="8" fill="#161b22" stroke="#f85149" stroke-width="1"/>
+  <text x="502" y="288" text-anchor="middle" fill="#f85149" font-size="12" font-weight="bold">header Referer</text>
+  <text x="502" y="309" text-anchor="middle" fill="#8b949e" font-size="10">la URL entera va</text>
+  <text x="502" y="325" text-anchor="middle" fill="#8b949e" font-size="10">a un tercero</text>
+
+  <rect x="605" y="262" width="175" height="72" rx="8" fill="#161b22" stroke="#f85149" stroke-width="1"/>
+  <text x="692" y="288" text-anchor="middle" fill="#f85149" font-size="12" font-weight="bold">historial</text>
+  <text x="692" y="309" text-anchor="middle" fill="#8b949e" font-size="10">marcadores y sus</text>
+  <text x="692" y="325" text-anchor="middle" fill="#8b949e" font-size="10">copias de seguridad</text>
+
+  <rect x="20" y="352" width="760" height="70" rx="8" fill="#161b22" stroke="#d2a8ff" stroke-width="1.5"/>
+  <text x="40" y="378" fill="#d2a8ff" font-size="14" font-weight="bold">Rotar sin cortar el servicio</text>
+  <text x="40" y="402" fill="#f0f6fc" font-size="12">1. generar la nueva  →  2. desplegarla  →  3. comprobar que nadie usa la vieja  →  4. revocar</text>
+  <text x="40" y="418" fill="#8b949e" font-size="10">Al revés —revocar y luego desplegar— es una interrupción con el reloj corriendo</text>
+</svg>

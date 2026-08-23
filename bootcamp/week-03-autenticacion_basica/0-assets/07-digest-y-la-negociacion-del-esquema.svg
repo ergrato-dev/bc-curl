@@ -1,0 +1,73 @@
+<svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" font-family="Arial, Helvetica, sans-serif">
+  <title>Basic manda la credencial de entrada en una peticion; Digest necesita el nonce del servidor y por eso gasta dos</title>
+  <rect width="800" height="420" fill="#0d1117"/>
+
+  <text x="400" y="32" text-anchor="middle" fill="#f0f6fc" font-size="22" font-weight="bold">Digest y la negociación del esquema</text>
+  <text x="400" y="52" text-anchor="middle" fill="#8b949e" font-size="12">La respuesta se calcula con el nonce, y el nonce lo pone el servidor</text>
+
+  <!-- Basic -->
+  <rect x="20" y="78" width="370" height="150" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="40" y="102" fill="#3fb950" font-size="15" font-weight="bold">--basic · 1 petición</text>
+
+  <rect x="40" y="118" width="90" height="38" rx="6" fill="#0d1117" stroke="#f0883e" stroke-width="1.5"/>
+  <text x="85" y="142" text-anchor="middle" fill="#f0883e" font-size="12">curl</text>
+  <line x1="136" y1="137" x2="196" y2="137" stroke="#f0883e" stroke-width="2"/>
+  <polygon points="196,137 188,133 188,141" fill="#f0883e"/>
+  <text x="166" y="130" text-anchor="middle" fill="#8b949e" font-size="9">+ credencial</text>
+  <rect x="202" y="118" width="90" height="38" rx="6" fill="#0d1117" stroke="#30363d" stroke-width="1.5"/>
+  <text x="247" y="142" text-anchor="middle" fill="#f0f6fc" font-size="12">servidor</text>
+  <line x1="298" y1="137" x2="358" y2="137" stroke="#3fb950" stroke-width="2"/>
+  <polygon points="358,137 350,133 350,141" fill="#3fb950"/>
+  <text x="328" y="130" text-anchor="middle" fill="#3fb950" font-size="9">200</text>
+
+  <text x="40" y="184" fill="#f0f6fc" font-size="11">El header es base64(usuario:password):</text>
+  <text x="40" y="201" fill="#f0f6fc" font-size="11">curl no necesita nada del servidor y lo</text>
+  <text x="40" y="218" fill="#f0f6fc" font-size="11">manda de entrada.</text>
+
+  <!-- Digest -->
+  <rect x="410" y="78" width="370" height="150" rx="8" fill="#161b22" stroke="#e3b341" stroke-width="2"/>
+  <text x="430" y="102" fill="#e3b341" font-size="15" font-weight="bold">--digest · 2 peticiones</text>
+
+  <rect x="430" y="112" width="80" height="30" rx="6" fill="#0d1117" stroke="#f0883e" stroke-width="1.5"/>
+  <text x="470" y="132" text-anchor="middle" fill="#f0883e" font-size="11">curl</text>
+  <line x1="516" y1="127" x2="566" y2="127" stroke="#8b949e" stroke-width="1.5"/>
+  <polygon points="566,127 558,123 558,131" fill="#8b949e"/>
+  <text x="541" y="120" text-anchor="middle" fill="#8b949e" font-size="9">sin credencial</text>
+  <rect x="572" y="112" width="80" height="30" rx="6" fill="#0d1117" stroke="#30363d" stroke-width="1.5"/>
+  <text x="612" y="132" text-anchor="middle" fill="#f0f6fc" font-size="11">servidor</text>
+  <line x1="658" y1="127" x2="708" y2="127" stroke="#f85149" stroke-width="1.5"/>
+  <polygon points="708,127 700,123 700,131" fill="#f85149"/>
+  <text x="683" y="120" text-anchor="middle" fill="#f85149" font-size="9">401</text>
+  <text x="740" y="131" fill="#e3b341" font-size="10" font-weight="bold">+nonce</text>
+
+  <line x1="516" y1="164" x2="566" y2="164" stroke="#f0883e" stroke-width="2"/>
+  <polygon points="566,164 558,160 558,168" fill="#f0883e"/>
+  <text x="541" y="157" text-anchor="middle" fill="#8b949e" font-size="9">hash(nonce)</text>
+  <rect x="430" y="149" width="80" height="30" rx="6" fill="#0d1117" stroke="#f0883e" stroke-width="1.5"/>
+  <text x="470" y="169" text-anchor="middle" fill="#f0883e" font-size="11">curl</text>
+  <rect x="572" y="149" width="80" height="30" rx="6" fill="#0d1117" stroke="#30363d" stroke-width="1.5"/>
+  <text x="612" y="169" text-anchor="middle" fill="#f0f6fc" font-size="11">servidor</text>
+  <line x1="658" y1="164" x2="708" y2="164" stroke="#3fb950" stroke-width="1.5"/>
+  <polygon points="708,164 700,160 700,168" fill="#3fb950"/>
+  <text x="683" y="157" text-anchor="middle" fill="#3fb950" font-size="9">200</text>
+
+  <text x="430" y="201" fill="#f0f6fc" font-size="11">La password NO viaja: viaja un hash de</text>
+  <text x="430" y="218" fill="#f0f6fc" font-size="11">la password, el nonce, el método y la URI.</text>
+
+  <!-- El reto de digest -->
+  <rect x="20" y="248" width="760" height="66" rx="8" fill="#161b22" stroke="#79c0ff" stroke-width="1.5"/>
+  <text x="40" y="270" fill="#79c0ff" font-size="12" font-weight="bold">El reto de Digest trae trabajo, no solo el nombre del esquema</text>
+  <text x="40" y="292" fill="#8b949e" font-family="'Courier New', monospace" font-size="11">WWW-Authenticate: Digest qop=auth, realm="go-httpbin", algorithm=MD5, nonce=7aaa9f10..., opaque=a253...</text>
+  <text x="40" y="308" fill="#8b949e" font-size="10">nonce = número de un solo uso · cambia en cada petición · sin él no se puede calcular la respuesta</text>
+
+  <!-- Cuando -->
+  <rect x="20" y="330" width="370" height="76" rx="8" fill="#161b22" stroke="#f85149" stroke-width="1.5"/>
+  <text x="40" y="354" fill="#f85149" font-size="13" font-weight="bold">✗ --anyauth en un bucle</text>
+  <text x="40" y="376" fill="#8b949e" font-size="11">Gasta la petición extra SIEMPRE, incluso</text>
+  <text x="40" y="393" fill="#8b949e" font-size="11">cuando el servidor pide Basic.</text>
+
+  <rect x="410" y="330" width="370" height="76" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="1.5"/>
+  <text x="430" y="354" fill="#3fb950" font-size="13" font-weight="bold">✓ averiguar una vez y fijarlo</text>
+  <text x="430" y="376" fill="#8b949e" font-size="11">Lee el WWW-Authenticate al configurar el</text>
+  <text x="430" y="393" fill="#8b949e" font-size="11">script, y usa --basic o --digest después.</text>
+</svg>

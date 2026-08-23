@@ -1,0 +1,125 @@
+{
+  "semana": "03",
+  "titulo": "Autenticacion basica",
+  "checks": [
+    {
+      "id": "laboratorio-arriba",
+      "descripcion": "El laboratorio responde en el endpoint protegido con Basic Auth",
+      "cmd": "curl -sf -o /dev/null --max-time 5 -u user:password {lab}/basic-auth/user/password",
+      "assert": "exit0",
+      "pista": "ejecuta ./scripts/start.sh antes de nada"
+    },
+    {
+      "id": "toolkit-ejecutable",
+      "descripcion": "api-toolkit.sh existe, es ejecutable y arranca con set -euo pipefail",
+      "cmd": "test -x {semana}/3-proyecto/starter/api-toolkit.sh && grep -q 'set -euo pipefail' {semana}/3-proyecto/starter/api-toolkit.sh",
+      "assert": "exit0",
+      "pista": "3-proyecto/README.md, paso 1"
+    },
+    {
+      "id": "toolkit-sin-todos",
+      "descripcion": "No quedan marcadores TODO sin resolver en el script",
+      "cmd": "grep -cE '^[[:space:]]*#[[:space:]]*TODO' {semana}/3-proyecto/starter/api-toolkit.sh",
+      "assert": "stdout~^0$",
+      "pista": "3-proyecto/README.md: cada TODO numerado es un hueco que tienes que rellenar"
+    },
+    {
+      "id": "toolkit-basic-auth",
+      "descripcion": "Con AUTH_MODE=basic el script autentica contra un endpoint Basic Auth",
+      "cmd": "BASE_URL={lab} AUTH_MODE=basic API_USER=user API_PASSWORD=password bash {semana}/3-proyecto/starter/api-toolkit.sh get /basic-auth/user/password 2>/dev/null",
+      "assert": "stdout~\"authenticated\": ?true",
+      "pista": "2-practicas/01-basic-auth-y-el-reto.md, paso 3"
+    },
+    {
+      "id": "toolkit-basic-auth-credencial-mala",
+      "descripcion": "Una password incorrecta hace salir al script con el codigo 77",
+      "cmd": "BASE_URL={lab} AUTH_MODE=basic API_USER=user API_PASSWORD=incorrecta bash {semana}/3-proyecto/starter/api-toolkit.sh get /basic-auth/user/password 2>/dev/null",
+      "assert": "exit=77",
+      "pista": "3-proyecto/README.md, requisito 5: el 401 tiene su propio codigo de salida"
+    },
+    {
+      "id": "toolkit-bearer",
+      "descripcion": "Con AUTH_MODE=bearer el script autentica contra un endpoint Bearer",
+      "cmd": "BASE_URL={lab} AUTH_MODE=bearer API_TOKEN=token-de-laboratorio bash {semana}/3-proyecto/starter/api-toolkit.sh get /bearer 2>/dev/null",
+      "assert": "stdout~\"authenticated\": ?true",
+      "pista": "2-practicas/03-bearer-y-el-jwt-por-dentro.md, paso 2"
+    },
+    {
+      "id": "toolkit-bearer-token-intacto",
+      "descripcion": "El token llega al servidor tal cual, sin recortes ni comillas de mas",
+      "cmd": "BASE_URL={lab} AUTH_MODE=bearer API_TOKEN=token-de-laboratorio bash {semana}/3-proyecto/starter/api-toolkit.sh get /bearer 2>/dev/null",
+      "assert": "stdout~\"token\": ?\"token-de-laboratorio\"",
+      "pista": "1-teoria/05-bearer-y-el-flujo-de-login.md, seccion 3"
+    },
+    {
+      "id": "toolkit-apikey-en-header",
+      "descripcion": "Con AUTH_MODE=apikey la clave viaja en un header, no en la query string",
+      "cmd": "BASE_URL={lab} AUTH_MODE=apikey API_KEY=clave-de-laboratorio bash {semana}/3-proyecto/starter/api-toolkit.sh get /headers 2>/dev/null | tr -d '[:space:]'",
+      "assert": "stdout~\"X-Api-Key\":.?\"clave-de-laboratorio\"",
+      "pista": "2-practicas/02-sacar-la-credencial-de-la-linea.md, paso 5"
+    },
+    {
+      "id": "toolkit-sin-credencial-da-77",
+      "descripcion": "Sin credencial contra un endpoint protegido el script sale con 77",
+      "cmd": "BASE_URL={lab} AUTH_MODE=none bash {semana}/3-proyecto/starter/api-toolkit.sh get /bearer 2>/dev/null",
+      "assert": "exit=77",
+      "pista": "1-teoria/08-cuando-la-credencial-falla.md, seccion 3"
+    },
+    {
+      "id": "toolkit-403-tambien-da-77",
+      "descripcion": "Un 403 sale tambien con 77: reintentar con lo mismo no va a funcionar",
+      "cmd": "BASE_URL={lab} AUTH_MODE=none bash {semana}/3-proyecto/starter/api-toolkit.sh get /status/403 2>/dev/null",
+      "assert": "exit=77",
+      "pista": "1-teoria/08-cuando-la-credencial-falla.md, seccion 2"
+    },
+    {
+      "id": "toolkit-otro-error-no-es-77",
+      "descripcion": "Un 500 sale con 1, no con 77: no es un problema de credencial",
+      "cmd": "BASE_URL={lab} AUTH_MODE=none bash {semana}/3-proyecto/starter/api-toolkit.sh get /status/500 2>/dev/null",
+      "assert": "exit=1",
+      "pista": "3-proyecto/README.md, requisito 7"
+    },
+    {
+      "id": "toolkit-token-no-en-la-linea-de-comandos",
+      "descripcion": "El token no aparece en la linea de comandos de ningun proceso curl",
+      "cmd": "BASE_URL={lab} AUTH_MODE=bearer API_TOKEN=zzsecretozz bash {semana}/3-proyecto/starter/api-toolkit.sh get /delay/3 >/dev/null 2>&1 & sleep 1; n=$(ps -eo args | grep '^curl ' | grep -c zzsecretozz || true); wait; echo \"$n\"",
+      "assert": "stdout~^0$",
+      "pista": "2-practicas/02-sacar-la-credencial-de-la-linea.md, paso 6"
+    },
+    {
+      "id": "toolkit-dry-run-oculta-el-secreto",
+      "descripcion": "--dry-run imprime el comando pero no el valor de la credencial",
+      "cmd": "BASE_URL={lab} AUTH_MODE=bearer API_TOKEN=zzsecretozz bash {semana}/3-proyecto/starter/api-toolkit.sh --dry-run get /bearer 2>/dev/null",
+      "assert": "stdout!~zzsecretozz",
+      "pista": "3-proyecto/README.md, requisito 9: lo que imprime --dry-run acaba en un log"
+    },
+    {
+      "id": "toolkit-rechaza-credenciales-legibles",
+      "descripcion": "El script se niega a leer un archivo de credenciales con permisos abiertos",
+      "cmd": "f=$(mktemp) && printf 'API_TOKEN=token-de-laboratorio\\n' > \"$f\" && chmod 644 \"$f\" && BASE_URL={lab} AUTH_MODE=bearer BC_CURL_FILE=\"$f\" bash {semana}/3-proyecto/starter/api-toolkit.sh get /bearer >/dev/null 2>&1; c=$?; rm -f \"$f\"; exit $c",
+      "assert": "exit!=0",
+      "pista": "1-teoria/03-donde-no-poner-la-credencial.md, seccion 4"
+    },
+    {
+      "id": "toolkit-sin-credencial-escrita-dentro",
+      "descripcion": "No hay ninguna credencial escrita a mano dentro del script",
+      "cmd": "grep -nE '^[[:space:]]*(API_TOKEN|API_KEY|API_PASSWORD)=[\"'\\'']?[A-Za-z0-9_.-]{6,}' {semana}/3-proyecto/starter/api-toolkit.sh",
+      "assert": "exit!=0",
+      "pista": "1-teoria/03-donde-no-poner-la-credencial.md, antipatrones"
+    },
+    {
+      "id": "toolkit-sin-insecure",
+      "descripcion": "El script no desactiva la verificacion del certificado con -k",
+      "cmd": "grep -nE '(^|[[:space:]])(-k|--insecure)([[:space:]]|$)' {semana}/3-proyecto/starter/api-toolkit.sh",
+      "assert": "exit!=0",
+      "pista": "1-teoria/02-basic-auth.md, antipatrones"
+    },
+    {
+      "id": "toolkit-shellcheck",
+      "descripcion": "El script pasa shellcheck sin avisos",
+      "cmd": "shellcheck -S warning {semana}/3-proyecto/starter/api-toolkit.sh",
+      "assert": "exit0",
+      "pista": "3-proyecto/README.md, criterios de calidad"
+    }
+  ]
+}

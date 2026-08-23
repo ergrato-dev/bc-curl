@@ -1,0 +1,72 @@
+<svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 460" font-family="Arial, Helvetica, sans-serif">
+  <title>Un JWT partido en header, payload y firma, con el payload decodificado y la firma marcada como verificable solo por el servidor</title>
+  <rect width="800" height="460" fill="#0d1117"/>
+
+  <text x="400" y="32" text-anchor="middle" fill="#f0f6fc" font-size="22" font-weight="bold">El JWT por dentro</text>
+  <text x="400" y="52" text-anchor="middle" fill="#8b949e" font-size="12">El payload no está cifrado, está codificado. Un JWT en un log es un JWT legible.</text>
+
+  <!-- El token entero -->
+  <rect x="20" y="78" width="248" height="52" rx="8" fill="#161b22" stroke="#79c0ff" stroke-width="2"/>
+  <text x="144" y="100" text-anchor="middle" fill="#79c0ff" font-size="12" font-weight="bold">header</text>
+  <text x="144" y="119" text-anchor="middle" fill="#8b949e" font-family="'Courier New', monospace" font-size="10">eyJraWQiOiJkZWZhdWx0In0</text>
+
+  <text x="277" y="110" text-anchor="middle" fill="#f0f6fc" font-size="20" font-weight="bold">.</text>
+
+  <rect x="288" y="78" width="248" height="52" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="412" y="100" text-anchor="middle" fill="#3fb950" font-size="12" font-weight="bold">payload</text>
+  <text x="412" y="119" text-anchor="middle" fill="#8b949e" font-family="'Courier New', monospace" font-size="10">eyJzdWIiOiJiYy1jdXJsIn0</text>
+
+  <text x="545" y="110" text-anchor="middle" fill="#f0f6fc" font-size="20" font-weight="bold">.</text>
+
+  <rect x="556" y="78" width="224" height="52" rx="8" fill="#161b22" stroke="#f85149" stroke-width="2"/>
+  <text x="668" y="100" text-anchor="middle" fill="#f85149" font-size="12" font-weight="bold">firma</text>
+  <text x="668" y="119" text-anchor="middle" fill="#8b949e" font-family="'Courier New', monospace" font-size="10">AIpiCe40_wrdOIVMSDF</text>
+
+  <!-- Flechas -->
+  <line x1="144" y1="136" x2="144" y2="164" stroke="#79c0ff" stroke-width="1.5"/>
+  <polygon points="144,164 140,156 148,156" fill="#79c0ff"/>
+  <line x1="412" y1="136" x2="412" y2="164" stroke="#3fb950" stroke-width="1.5"/>
+  <polygon points="412,164 408,156 416,156" fill="#3fb950"/>
+  <line x1="668" y1="136" x2="668" y2="164" stroke="#f85149" stroke-width="1.5"/>
+  <polygon points="668,164 664,156 672,156" fill="#f85149"/>
+
+  <rect x="20" y="170" width="248" height="70" rx="8" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="36" y="192" fill="#79c0ff" font-family="'Courier New', monospace" font-size="10">{"kid":"default",</text>
+  <text x="36" y="208" fill="#79c0ff" font-family="'Courier New', monospace" font-size="10"> "typ":"JWT",</text>
+  <text x="36" y="224" fill="#79c0ff" font-family="'Courier New', monospace" font-size="10"> "alg":"RS256"}</text>
+
+  <rect x="288" y="170" width="248" height="70" rx="8" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="304" y="192" fill="#3fb950" font-family="'Courier New', monospace" font-size="10">{"sub":"bc-curl",</text>
+  <text x="304" y="208" fill="#e3b341" font-family="'Courier New', monospace" font-size="10"> "exp":1787506009,</text>
+  <text x="304" y="224" fill="#3fb950" font-family="'Courier New', monospace" font-size="10"> "iat":1787502409}</text>
+
+  <rect x="556" y="170" width="224" height="70" rx="8" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="668" y="192" text-anchor="middle" fill="#f85149" font-size="11" font-weight="bold">se lee, no dice nada</text>
+  <text x="668" y="210" text-anchor="middle" fill="#8b949e" font-size="10">verificarla necesita la clave</text>
+  <text x="668" y="226" text-anchor="middle" fill="#8b949e" font-size="10">La valida el SERVIDOR</text>
+
+  <line x1="20" y1="262" x2="780" y2="262" stroke="#30363d" stroke-width="1"/>
+
+  <!-- base64url -->
+  <text x="400" y="290" text-anchor="middle" fill="#f0f6fc" font-size="15" font-weight="bold">base64url no es base64: dos cambios y una ausencia</text>
+
+  <rect x="20" y="306" width="245" height="86" rx="8" fill="#161b22" stroke="#d2a8ff" stroke-width="1.5"/>
+  <text x="142" y="330" text-anchor="middle" fill="#d2a8ff" font-family="'Courier New', monospace" font-size="16" font-weight="bold">+ → -</text>
+  <text x="142" y="356" text-anchor="middle" fill="#8b949e" font-size="10">el + significa espacio</text>
+  <text x="142" y="374" text-anchor="middle" fill="#8b949e" font-size="10">en una query string</text>
+
+  <rect x="277" y="306" width="245" height="86" rx="8" fill="#161b22" stroke="#d2a8ff" stroke-width="1.5"/>
+  <text x="399" y="330" text-anchor="middle" fill="#d2a8ff" font-family="'Courier New', monospace" font-size="16" font-weight="bold">/ → _</text>
+  <text x="399" y="356" text-anchor="middle" fill="#8b949e" font-size="10">la / separa segmentos</text>
+  <text x="399" y="374" text-anchor="middle" fill="#8b949e" font-size="10">de ruta</text>
+
+  <rect x="534" y="306" width="246" height="86" rx="8" fill="#161b22" stroke="#f85149" stroke-width="2"/>
+  <text x="657" y="330" text-anchor="middle" fill="#f85149" font-family="'Courier New', monospace" font-size="16" font-weight="bold">sin = de relleno</text>
+  <text x="657" y="356" text-anchor="middle" fill="#8b949e" font-size="10">y base64 -d lo necesita:</text>
+  <text x="657" y="374" text-anchor="middle" fill="#f85149" font-size="10" font-weight="bold">aquí falla todo el mundo</text>
+
+  <rect x="20" y="404" width="760" height="42" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="1.5"/>
+  <text x="40" y="422" fill="#3fb950" font-size="12" font-weight="bold">Lo que falta se calcula:</text>
+  <text x="215" y="422" fill="#f0f6fc" font-family="'Courier New', monospace" font-size="12">relleno=$(( (4 - ${#p} % 4) % 4 ))</text>
+  <text x="40" y="438" fill="#8b949e" font-size="10">Ese número de signos «=» al final. El % 4 evita añadir cuatro cuando la longitud ya era exacta.</text>
+</svg>
