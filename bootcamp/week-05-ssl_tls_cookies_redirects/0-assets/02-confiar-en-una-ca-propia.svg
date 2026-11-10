@@ -1,0 +1,32 @@
+<svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" font-family="Arial, Helvetica, sans-serif">
+  <title>Cadena de confianza del laboratorio: certificado del servidor, intermedia y raíz; con el almacén del sistema la raíz no está y sale el 60, con --cacert lab-ca.pem sí está y la verificación pasa</title>
+  <rect width="800" height="400" fill="#0d1117"/>
+  <text x="400" y="32" text-anchor="middle" fill="#f0f6fc" font-size="22" font-weight="bold">Confiar en una CA propia</text>
+  <text x="400" y="52" text-anchor="middle" fill="#8b949e" font-size="12">la raíz no viaja: el cliente tiene que tenerla</text>
+
+  <g font-size="12">
+    <rect x="300" y="72" width="200" height="44" rx="6" fill="#161b22" stroke="#f0883e" stroke-width="1.5"/>
+    <text x="400" y="92" text-anchor="middle" fill="#f0883e" font-weight="bold">servidor</text>
+    <text x="400" y="108" text-anchor="middle" fill="#8b949e" font-size="11">SAN: localhost · viaja</text>
+    <line x1="400" y1="116" x2="400" y2="136" stroke="#8b949e"/>
+    <rect x="300" y="136" width="200" height="44" rx="6" fill="#161b22" stroke="#e3b341" stroke-width="1.5"/>
+    <text x="400" y="156" text-anchor="middle" fill="#e3b341" font-weight="bold">intermedia</text>
+    <text x="400" y="172" text-anchor="middle" fill="#8b949e" font-size="11">firmó al servidor · viaja</text>
+    <line x1="400" y1="180" x2="400" y2="200" stroke="#8b949e"/>
+    <rect x="300" y="200" width="200" height="44" rx="6" fill="#161b22" stroke="#d2a8ff" stroke-width="1.5" stroke-dasharray="5 3"/>
+    <text x="400" y="220" text-anchor="middle" fill="#d2a8ff" font-weight="bold">raíz</text>
+    <text x="400" y="236" text-anchor="middle" fill="#8b949e" font-size="11">CA:TRUE · NO viaja</text>
+  </g>
+
+  <rect x="20" y="270" width="370" height="110" rx="8" fill="#161b22" stroke="#f85149" stroke-width="1.5"/>
+  <text x="40" y="294" fill="#f85149" font-size="14" font-weight="bold">✗ almacén del sistema</text>
+  <text x="40" y="316" fill="#8b949e" font-size="12">/etc/ssl/certs: 120 CAs públicas</text>
+  <text x="40" y="336" fill="#8b949e" font-size="12">la raíz de Caddy no está</text>
+  <text x="40" y="362" fill="#f85149" font-family="'Courier New', monospace" font-size="12">curl: (60) unable to get local issuer</text>
+
+  <rect x="410" y="270" width="370" height="110" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="1.5"/>
+  <text x="430" y="294" fill="#3fb950" font-size="14" font-weight="bold">✓ --cacert docs/lab-ca.pem</text>
+  <text x="430" y="316" fill="#8b949e" font-size="12">la raíz está: la cadena se cierra</text>
+  <text x="430" y="336" fill="#8b949e" font-size="12">en Ubuntu, el CApath del sistema sigue</text>
+  <text x="430" y="362" fill="#3fb950" font-family="'Courier New', monospace" font-size="12">SSL certificate verify ok.</text>
+</svg>

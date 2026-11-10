@@ -26,6 +26,7 @@ fi
 
 LAB="${LAB_URL:-http://localhost:${HTTPBIN_PORT:-8080}}"
 LAB_TLS="${LAB_TLS_URL:-https://localhost:${TLS_PORT:-8443}}"
+LAB_MTLS="${LAB_MTLS_URL:-https://localhost:${MTLS_PORT:-8444}}"
 LAB_OAUTH="${LAB_OAUTH_URL:-http://localhost:${OAUTH_PORT:-8081}/default}"
 CA="${LAB_CA:-$RAIZ/docs/lab-ca.pem}"
 
@@ -124,8 +125,8 @@ evaluar() {
     exit0)      [[ "$codigo" -eq 0 ]] ;;
     "exit!=0")  [[ "$codigo" -ne 0 ]] ;;
     exit=*)     [[ "$codigo" -eq "${asercion#exit=}" ]] ;;
-    "stdout!~"*) ! grep -qE "${asercion#stdout!~}" <<<"$salida" ;;
-    stdout~*)   grep -qE "${asercion#stdout~}" <<<"$salida" ;;
+    "stdout!~"*) ! grep -qE -- "${asercion#stdout!~}" <<<"$salida" ;;
+    stdout~*)   grep -qE -- "${asercion#stdout~}" <<<"$salida" ;;
     *)
       rojo "ASERCION DESCONOCIDA: '$asercion'"
       gris "Validas: exit0, exit!=0, exit=N, stdout~RE, stdout!~RE"
@@ -183,6 +184,7 @@ verificar_semana() {
     cmd=${cmd//\{raiz\}/$RAIZ}
     cmd=${cmd//\{lab\}/$LAB}
     cmd=${cmd//\{lab_tls\}/$LAB_TLS}
+    cmd=${cmd//\{lab_mtls\}/$LAB_MTLS}
     cmd=${cmd//\{lab_oauth\}/$LAB_OAUTH}
     cmd=${cmd//\{ca\}/$CA}
 

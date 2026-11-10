@@ -1,0 +1,50 @@
+<svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" font-family="Arial, Helvetica, sans-serif">
+  <title>Una sesión con cookies en dos comandos curl: -c escribe el Set-Cookie en el tarro y -b lo devuelve en la siguiente petición; debajo, las siete columnas de una línea del tarro</title>
+  <rect width="800" height="400" fill="#0d1117"/>
+  <text x="400" y="32" text-anchor="middle" fill="#f0f6fc" font-size="22" font-weight="bold">Cookies — la memoria que curl no tiene</text>
+
+  <g font-size="12">
+    <rect x="20" y="60" width="240" height="90" rx="8" fill="#161b22" stroke="#79c0ff" stroke-width="1.5"/>
+    <text x="36" y="84" fill="#79c0ff" font-weight="bold">comando 1: login</text>
+    <text x="36" y="108" fill="#f0f6fc" font-family="'Courier New', monospace" font-size="11">curl -b tarro -c tarro URL</text>
+    <text x="36" y="132" fill="#8b949e" font-size="11">&lt; Set-Cookie: sesion=abc</text>
+
+    <rect x="290" y="60" width="220" height="90" rx="8" fill="#161b22" stroke="#e3b341" stroke-width="1.5"/>
+    <text x="400" y="88" text-anchor="middle" fill="#e3b341" font-weight="bold">tarro.txt</text>
+    <text x="400" y="112" text-anchor="middle" fill="#f0f6fc">permisos 600</text>
+    <text x="400" y="132" text-anchor="middle" fill="#8b949e" font-size="11">crearlo antes: curl usaría 644</text>
+
+    <rect x="540" y="60" width="240" height="90" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="1.5"/>
+    <text x="556" y="84" fill="#3fb950" font-weight="bold">comando 2: uso</text>
+    <text x="556" y="108" fill="#f0f6fc" font-family="'Courier New', monospace" font-size="11">curl -b tarro -c tarro URL</text>
+    <text x="556" y="132" fill="#8b949e" font-size="11">&gt; Cookie: sesion=abc</text>
+
+    <line x1="260" y1="105" x2="290" y2="105" stroke="#79c0ff" stroke-width="2"/>
+    <line x1="510" y1="105" x2="540" y2="105" stroke="#3fb950" stroke-width="2"/>
+  </g>
+
+  <text x="400" y="190" text-anchor="middle" fill="#8b949e" font-size="12">una línea del tarro: siete columnas separadas por tabuladores</text>
+  <g font-family="'Courier New', monospace" font-size="12">
+    <rect x="20" y="206" width="760" height="40" rx="6" fill="#161b22" stroke="#30363d"/>
+    <text x="30" y="231" fill="#d2a8ff">#HttpOnly_localhost</text>
+    <text x="210" y="231" fill="#f0f6fc">FALSE</text>
+    <text x="280" y="231" fill="#f0f6fc">/</text>
+    <text x="320" y="231" fill="#f0f6fc">FALSE</text>
+    <text x="400" y="231" fill="#e3b341">0</text>
+    <text x="460" y="231" fill="#79c0ff">sesion</text>
+    <text x="560" y="231" fill="#3fb950">abc</text>
+  </g>
+  <g font-size="11" fill="#8b949e">
+    <text x="30" y="266">dominio (el prefijo NO es comentario)</text>
+    <text x="210" y="282">subdominios</text>
+    <text x="280" y="266">ruta</text>
+    <text x="320" y="282">Secure</text>
+    <text x="400" y="266">caduca (0 = de sesión)</text>
+    <text x="460" y="298">nombre</text>
+    <text x="560" y="282">valor</text>
+  </g>
+
+  <rect x="20" y="316" width="760" height="66" rx="8" fill="#161b22" stroke="#f85149" stroke-width="1.5"/>
+  <text x="40" y="340" fill="#f85149" font-size="13" font-weight="bold">✗ curl -L URL-de-login</text>
+  <text x="40" y="362" fill="#8b949e" font-size="11">sin -b ni -c el motor está apagado: la cookie del login se pierde en el redirect · -b '' lo enciende</text>
+</svg>

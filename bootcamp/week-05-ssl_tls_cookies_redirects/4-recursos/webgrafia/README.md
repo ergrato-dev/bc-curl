@@ -1,73 +1,46 @@
-# 🔗 Webgrafía - Semana 5
+# Webgrafía — Semana 05
 
-## Documentación Oficial
+_Comprobado el 10 de noviembre de 2026._
 
-| Recurso | URL | Descripción |
-|---------|-----|-------------|
-| **curl Manual: TLS** | [https://curl.se/docs/manpage.html#--cert](https://curl.se/docs/manpage.html#--cert) | Flags de SSL/TLS en curl |
-| **curl Manual: Cookies** | [https://curl.se/docs/manpage.html#-c](https://curl.se/docs/manpage.html#-c) | Flags -c y -b |
-| **RFC 6265 — HTTP Cookies** | [https://datatracker.ietf.org/doc/html/rfc6265](https://datatracker.ietf.org/doc/html/rfc6265) | Especificación de cookies HTTP |
-| **RFC 8446 — TLS 1.3** | [https://datatracker.ietf.org/doc/html/rfc8446](https://datatracker.ietf.org/doc/html/rfc8446) | Especificación de TLS 1.3 |
-| **MDN: Set-Cookie** | [https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie) | Header Set-Cookie |
-| **MDN: Redirections** | [https://developer.mozilla.org/en-US/docs/Web/HTTP/Redirections](https://developer.mozilla.org/en-US/docs/Web/HTTP/Redirections) | Guía de redirects HTTP |
+## Referencia de curl
 
----
+| Recurso | Por qué vale la pena |
+|---|---|
+| [manpage de curl](https://curl.se/docs/manpage.html) | La fuente. Antes de escribir un flag que «suena bien», búscalo aquí |
+| [curl — SSL certificate verification](https://curl.se/docs/sslcerts.html) | La página a la que enlaza el propio error 60. Explica dónde busca curl las CAs y cómo cambiarlo |
+| [`--cacert`](https://curl.se/docs/manpage.html#--cacert) y [`--capath`](https://curl.se/docs/manpage.html#--capath) | El archivo, el directorio indexado por hash y `CURL_CA_BUNDLE` |
+| [`-E, --cert`](https://curl.se/docs/manpage.html#-E) y [`--key`](https://curl.se/docs/manpage.html#--key) | El certificado de cliente, sus formatos y por qué la frase no va en el comando |
+| [`--pinnedpubkey`](https://curl.se/docs/manpage.html#--pinnedpubkey) | Los formatos del pin y la versión desde la que cada backend lo soporta |
+| [`-b, --cookie`](https://curl.se/docs/manpage.html#-b) y [`-c, --cookie-jar`](https://curl.se/docs/manpage.html#-c) | Cuándo `-b` es texto y cuándo archivo, y cuándo escribe `-c` |
+| [curl — HTTP cookies](https://curl.se/docs/http-cookies.html) | El formato del tarro, columna a columna, incluido el prefijo `#HttpOnly_` |
+| [`-L, --location`](https://curl.se/docs/manpage.html#-L) | El cambio de método, las credenciales y la nota sobre `-X` |
+| [`--proto-redir`](https://curl.se/docs/manpage.html#--proto-redir) | La sintaxis `=`, `+` y `-` para limitar los protocolos de un salto |
+| [`--retry`](https://curl.se/docs/manpage.html#--retry) | La lista exacta de errores transitorios y la espera por defecto |
+| [Códigos de salida](https://curl.se/libcurl/c/libcurl-errors.html) | El 1, 28, 35, 47, 56, 58, 60, 77 y 90 de esta semana, con su nombre oficial |
+| [everything.curl.dev — Timeouts](https://everything.curl.dev/usingcurl/timeouts.html) | Los límites de tiempo explicados por el autor de curl |
 
-## Tutoriales y Guías
+## OpenSSL
 
-| Recurso | URL | Descripción |
-|---------|-----|-------------|
-| Everything curl — TLS | [https://everything.curl.dev/usingcurl/tls](https://everything.curl.dev/usingcurl/tls) | Guía completa de TLS con curl |
-| Everything curl — Cookies | [https://everything.curl.dev/usingcurl/cookies](https://everything.curl.dev/usingcurl/cookies) | Guía de cookies con curl |
-| SSL Labs Test | [https://www.ssllabs.com/ssltest/](https://www.ssllabs.com/ssltest/) | Analizar configuración SSL de un servidor |
-| Let's Encrypt | [https://letsencrypt.org/](https://letsencrypt.org/) | Certificados TLS gratuitos |
-| curl Cookiejar format | [https://curl.se/docs/http-cookies.html](https://curl.se/docs/http-cookies.html) | Formato del archivo cookie jar |
+| Recurso | Por qué vale la pena |
+|---|---|
+| [`openssl s_client`](https://docs.openssl.org/3.0/man1/openssl-s_client/) | `-connect`, `-servername`, `-showcerts`, `-CAfile`: todo lo que usas para mirar un servidor |
+| [`openssl x509`](https://docs.openssl.org/3.0/man1/openssl-x509/) | `-noout`, `-ext`, `-checkend`, `-fingerprint`, `-pubkey` |
+| [`openssl rehash`](https://docs.openssl.org/3.0/man1/openssl-rehash/) | Cómo se construye un directorio de CAs para `--capath` |
+| [`openssl req`](https://docs.openssl.org/3.0/man1/openssl-req/) | Generar el par de la práctica 02, y la CSR que pedirías en producción |
 
----
+## Artículos y guías
 
-## Artículos Recomendados
-
-| Artículo | URL | Tema |
-|----------|-----|------|
-| How TLS Works | [https://www.cloudflare.com/learning/ssl/transport-layer-security-tls/](https://www.cloudflare.com/learning/ssl/transport-layer-security-tls/) | Funcionamiento de TLS |
-| mTLS in Detail | [https://www.cloudflare.com/learning/access-management/what-is-mutual-tls/](https://www.cloudflare.com/learning/access-management/what-is-mutual-tls/) | Mutual TLS explicado |
-| HTTP Cookies: SameSite | [https://web.dev/articles/samesite-cookies-explained](https://web.dev/articles/samesite-cookies-explained) | Atributo SameSite |
-| Redirects and SEO | [https://developers.google.com/search/docs/crawling-indexing/301-redirects](https://developers.google.com/search/docs/crawling-indexing/301-redirects) | Redirects 301/302/307/308 |
-
----
-
-## APIs para Practicar
-
-| API | URL | Descripción |
-|-----|-----|-------------|
-| **httpbin.org/cookies** | [https://httpbin.org/cookies](https://httpbin.org/cookies) | Ver cookies enviadas |
-| **httpbin.org/cookies/set** | [https://httpbin.org/cookies/set?key=val](https://httpbin.org/cookies/set?key=val) | El servidor setea cookies |
-| **httpbin.org/redirect/N** | [https://httpbin.org/redirect/3](https://httpbin.org/redirect/3) | Cadena de N redirects |
-| **httpbin.org/delay/N** | [https://httpbin.org/delay/5](https://httpbin.org/delay/5) | Respuesta demorada (timeouts) |
-| **badssl.com** | [https://badssl.com/](https://badssl.com/) | Subdominios con distintos errores SSL |
+| Recurso | Por qué vale la pena |
+|---|---|
+| [Mozilla — Server Side TLS](https://wiki.mozilla.org/Security/Server_Side_TLS) | Qué versiones y cifrados se consideran seguros hoy. Útil para saber si un `--tlsv1.2` es un mínimo razonable |
+| [MDN — Set-Cookie](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie) | Todos los atributos con ejemplos, incluidos los que solo afectan al navegador |
+| [MDN — Redirections in HTTP](https://developer.mozilla.org/en-US/docs/Web/HTTP/Redirections) | La tabla de códigos 3xx y cuándo usar cada uno, desde el lado del servidor |
+| [Cloudflare — What is mutual TLS?](https://www.cloudflare.com/learning/access-management/what-is-mutual-tls/) | El concepto de mTLS con diagramas, y dónde se usa |
+| [Stripe — Idempotent requests](https://docs.stripe.com/api/idempotent_requests) | Un ejemplo real de `Idempotency-Key`: cómo una API hace seguro reintentar un POST |
+| [Caddy — `tls` directive](https://caddyserver.com/docs/caddyfile/directives/tls) | La CA interna y el `client_auth` que usa el laboratorio, para entender qué valida y qué no |
 
 ---
 
-## Herramientas
-
-| Herramienta | URL | Uso |
-|-------------|-----|-----|
-| **openssl s_client** | built-in | Inspeccionar certificados desde terminal |
-| **openssl x509** | built-in | Leer y parsear certificados |
-| **curl -v** | built-in | Ver handshake TLS completo |
-| **SSL Labs** | [https://ssllabs.com/](https://ssllabs.com/) | Auditoría de configuración SSL |
-| **badssl.com** | [https://badssl.com/](https://badssl.com/) | Probar errores SSL |
-
----
-
-## Comunidad
-
-| Recurso | URL | Descripción |
-|---------|-----|-------------|
-| curl Mailing List | [https://curl.se/mail/](https://curl.se/mail/) | Lista de correo oficial |
-| Security StackExchange | [https://security.stackexchange.com/](https://security.stackexchange.com/) | Preguntas de seguridad |
-| Mozilla SSL Config | [https://ssl-config.mozilla.org/](https://ssl-config.mozilla.org/) | Configuraciones SSL recomendadas |
-
----
-
-> 💡 **Tip**: Guarda estos enlaces en tus favoritos para referencia rápida.
+| Anterior | Siguiente |
+|---|---|
+| [Videografía](../videografia/README.md) | [Recursos](../README.md) |

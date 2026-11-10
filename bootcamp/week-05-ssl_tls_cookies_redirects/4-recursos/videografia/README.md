@@ -1,47 +1,26 @@
-# 🎥 Videografía - Semana 5
+# Videografía — Semana 05
 
-## Videos Recomendados
+_Comprobado el 10 de noviembre de 2026: los dos enlaces resuelven y el título
+coincide con el que aparece aquí. Ambos están en la
+[página oficial de vídeos de curl](https://curl.se/docs/videos/)._
 
-### SSL/TLS
+Pocos y elegidos. Un vídeo solo entra aquí si enseña algo que en texto se
+entiende peor.
 
-| Título | Canal | Duración | Enlace | Idioma |
-|--------|-------|----------|--------|--------|
-| TLS Explained | ByteByteGo | 8min | [YouTube](https://www.youtube.com/watch?v=0TLDTodL7Lc) | 🇬🇧 EN |
-| SSL Certificates Explained | Fireship | 5min | [YouTube](https://www.youtube.com/watch?v=r1nJT63BFQ0) | 🇬🇧 EN |
-| mTLS (Mutual TLS) | Hussein Nasser | 15min | [YouTube](https://www.youtube.com/watch?v=l_IgVm82sI0) | 🇬🇧 EN |
-| TLS/SSL en curl | Pelado Nerd | 10min | [YouTube](https://www.youtube.com/watch?v=RqEJYuhy1sQ) | 🇪🇸 ES |
+| Recurso | Por qué vale la pena |
+|---|---|
+| [Mastering curl with Daniel Stenberg (lead developer)](https://www.youtube.com/watch?v=V5vZWHP-RqU) — Daniel Stenberg | Tres horas y cuarenta del autor de curl recorriendo la herramienta de línea de comandos. Los bloques de TLS, cookies y redirects cubren esta semana entera, con los porqués de diseño que no están en el manpage |
+| [mastering the curl command line - with Daniel Stenberg](https://www.youtube.com/watch?v=q_juztjhUlA) — Daniel Stenberg | La versión de 2024, de menos de una hora. Si no tienes tiempo para la larga, esta repasa lo esencial, incluidos `--retry` y la verificación de certificados |
 
-### Cookies
+> [!TIP]
+> Si tienes poco tiempo, el segundo. El primero, por partes: usa los
+> capítulos del vídeo para saltar a TLS, a cookies o a redirects.
 
-| Título | Canal | Duración | Enlace | Idioma |
-|--------|-------|----------|--------|--------|
-| HTTP Cookies Explained | Web Dev Simplified | 12min | [YouTube](https://www.youtube.com/watch?v=GhrvZ5nUWNg) | 🇬🇧 EN |
-| HTTP Cookies and Sessions | Traversy Media | 20min | [YouTube](https://www.youtube.com/watch?v=64veb6tKTm0) | 🇬🇧 EN |
-| Cookies y Sesiones HTTP | midulive | 10min | [YouTube](https://www.youtube.com/watch?v=DYk2NW0ntB8) | 🇪🇸 ES |
-
-### Redirects
-
-| Título | Canal | Duración | Enlace | Idioma |
-|--------|-------|----------|--------|--------|
-| HTTP Redirects (301, 302, 307) | Programming with Mosh | 10min | [YouTube](https://www.youtube.com/watch?v=4IN7epwmnWA) | 🇬🇧 EN |
-| HTTP Redirect Best Practices | Google Chrome Developers | 8min | [YouTube](https://www.youtube.com/watch?v=r1lZ6hCWVk4) | 🇬🇧 EN |
-
-### Timeouts y Reintentos
-
-| Título | Canal | Duración | Enlace | Idioma |
-|--------|-------|----------|--------|--------|
-| HTTP Timeouts and Retries | Hussein Nasser | 20min | [YouTube](https://www.youtube.com/watch?v=XBfxuG43lVY) | 🇬🇧 EN |
-| curl Timeout Options | Academind | 8min | [YouTube](https://www.youtube.com/watch?v=IKaISyq5tGc) | 🇬🇧 EN |
+Para lo demás, el laboratorio rinde más que un vídeo: provocar un 60, un 35,
+un 56 y un 58 en la misma tarde no se olvida.
 
 ---
 
-## 📺 Canales Recomendados
-
-- **ByteByteGo** - Explicaciones visuales de sistemas
-- **Hussein Nasser** - Backend engineering profundo
-- **Pelado Nerd** - DevOps en español
-- **Fireship** - Explicaciones rápidas
-
----
-
-> 💡 **Tip**: Activa subtítulos en español si el video está en inglés.
+| Anterior | Siguiente |
+|---|---|
+| [Ebooks gratuitos](../ebooks-free/README.md) | [Webgrafía](../webgrafia/README.md) |

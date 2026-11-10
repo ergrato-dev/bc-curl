@@ -99,6 +99,7 @@ de rutas ni de puertos:
 | `{semana}` | Ruta de la carpeta de la semana, p. ej. `bootcamp/week-03-autenticacion_basica` |
 | `{lab}` | `http://localhost:8080` (o `$LAB_URL`) |
 | `{lab_tls}` | `https://localhost:8443` (o `$LAB_TLS_URL`) |
+| `{lab_mtls}` | `https://localhost:8444`, el frontal que exige certificado de cliente (o `$LAB_MTLS_URL`) |
 | `{lab_oauth}` | `http://localhost:8081/default` (o `$LAB_OAUTH_URL`) |
 | `{ca}` | Ruta a `docs/lab-ca.pem` (o `$LAB_CA`) |
 

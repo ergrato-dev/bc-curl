@@ -1,0 +1,40 @@
+<svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" font-family="Arial, Helvetica, sans-serif">
+  <title>Una petición con --retry 3: intentos con 503, esperas de 1, 2 y 4 segundos y un 200 al final; qué errores reintenta curl por defecto y cuáles no</title>
+  <rect width="800" height="400" fill="#0d1117"/>
+  <text x="400" y="32" text-anchor="middle" fill="#f0f6fc" font-size="22" font-weight="bold">Reintentos — curl --retry 3</text>
+
+  <g font-size="12" text-anchor="middle">
+    <rect x="30" y="66" width="110" height="44" rx="6" fill="#161b22" stroke="#f85149" stroke-width="1.5"/><text x="85" y="93" fill="#f85149">1º: 503</text>
+    <text x="175" y="93" fill="#8b949e">1 s</text>
+    <rect x="210" y="66" width="110" height="44" rx="6" fill="#161b22" stroke="#f85149" stroke-width="1.5"/><text x="265" y="93" fill="#f85149">2º: 503</text>
+    <text x="355" y="93" fill="#8b949e">2 s</text>
+    <rect x="390" y="66" width="110" height="44" rx="6" fill="#161b22" stroke="#f85149" stroke-width="1.5"/><text x="445" y="93" fill="#f85149">3º: timeout</text>
+    <text x="545" y="93" fill="#8b949e">4 s</text>
+    <rect x="590" y="66" width="110" height="44" rx="6" fill="#161b22" stroke="#3fb950" stroke-width="1.5"/><text x="645" y="93" fill="#3fb950">4º: 200</text>
+  </g>
+  <text x="400" y="134" text-anchor="middle" fill="#8b949e" font-size="11">la espera se dobla en cada intento · --retry-delay la fija · --retry-max-time acota el total</text>
+
+  <rect x="20" y="152" width="370" height="150" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="1.5"/>
+  <text x="40" y="176" fill="#3fb950" font-size="14" font-weight="bold">Se reintenta</text>
+  <g font-size="12" fill="#f0f6fc">
+    <text x="40" y="202">timeout (28)</text>
+    <text x="40" y="224">HTTP 408 · 429</text>
+    <text x="40" y="246">HTTP 500 · 502 · 503 · 504</text>
+    <text x="40" y="280" fill="#8b949e" font-size="11">con o sin --fail</text>
+  </g>
+
+  <rect x="410" y="152" width="370" height="150" rx="8" fill="#161b22" stroke="#f85149" stroke-width="1.5"/>
+  <text x="430" y="176" fill="#f85149" font-size="14" font-weight="bold">No se reintenta</text>
+  <g font-size="12" fill="#f0f6fc">
+    <text x="430" y="202">conexión rechazada (7)</text>
+    <text x="620" y="202" fill="#8b949e" font-size="11">--retry-connrefused</text>
+    <text x="430" y="224">404, 401 y demás 4xx</text>
+    <text x="620" y="224" fill="#8b949e" font-size="11">--retry-all-errors</text>
+    <text x="430" y="246">errores TLS (35, 60...)</text>
+    <text x="620" y="246" fill="#8b949e" font-size="11">no deben</text>
+  </g>
+
+  <rect x="20" y="320" width="760" height="62" rx="8" fill="#161b22" stroke="#e3b341" stroke-width="1.5"/>
+  <text x="40" y="344" fill="#e3b341" font-size="13" font-weight="bold">curl reintenta un POST igual que un GET</text>
+  <text x="40" y="366" fill="#8b949e" font-size="11">decidir si se puede repetir es tuyo: GET, PUT y DELETE sí; POST solo con Idempotency-Key</text>
+</svg>

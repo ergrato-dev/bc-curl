@@ -26,6 +26,8 @@ arquetipo del bootcamp es `-k`. _(S01)_
 
 **`Accept-Ranges`** — Header con el que el servidor anuncia que acepta rangos. Es un anuncio, no una garantía. _(S04)_
 
+**ALPN** (Application-Layer Protocol Negotiation) — Extensión de TLS con la que cliente y servidor acuerdan HTTP/2 o HTTP/1.1 dentro del handshake. _(S05)_
+
 ## B
 **Boundary** — Cadena aleatoria que separa las partes de un cuerpo multipart. La genera curl; no se escribe a mano. _(S04)_
 
@@ -58,6 +60,12 @@ _(S01)_
 
 **`Content-Range`** — Header de un `206` que dice qué bytes lleva y de qué total. _(S04)_
 
+**CA** (Certificate Authority) — Entidad que firma certificados. Un certificado vale si su cadena llega a una CA de confianza. _(S05)_
+
+**Cadena de confianza** (chain of trust) — Servidor, intermedia y raíz. La raíz no viaja: el cliente tiene que tenerla. _(S05)_
+
+**Cookie de sesión** (session cookie) — Cookie sin `Expires` ni `Max-Age`; en el tarro, caducidad `0`. `-j` la descarta al leer. _(S05)_
+
 ## D
 **`--data-urlencode`** — Codifica el valor de un campo de formulario antes de enviarlo. _(S04)_
 
@@ -80,6 +88,10 @@ mayúsculas; el valor sí. _(S01)_
 
 **HTTPS** — HTTP sobre TLS, puerto 443 por defecto. _(S01)_
 
+## I
+
+**Idempotente** (idempotent) — Que repetirlo da el mismo resultado: `GET`, `PUT`, `DELETE`. Decide qué se puede reintentar. _(S05)_
+
 ## L
 
 **libcurl** — La biblioteca que hace el trabajo; `curl` es la capa de línea de
@@ -93,6 +105,10 @@ con `-L`. _(S01)_
 **Método** (method) — El verbo de la petición: `GET`, `POST`, `HEAD`… _(S01)_
 
 **Multipart** (`multipart/form-data`) — Cuerpo dividido en partes con cabeceras propias y contenido sin codificar. Lo que manda `-F`. _(S04)_
+
+**mTLS** (mutual TLS) — TLS en el que también el cliente presenta certificado, con `--cert` y `--key`. Sin él: código 56. _(S05)_
+
+**Motor de cookies** (cookie engine) — Lo que guarda y devuelve cookies dentro de un comando. Apagado hasta usar `-b` o `-c`. _(S05)_
 
 ## O
 **`--output-dir`** — Directorio de destino de `-O`. `--output-dir` desde 7.73. _(S04)_
@@ -137,10 +153,18 @@ _(S01)_
 
 **SHA-256** — Hash de 64 caracteres hexadecimales; un bit distinto lo cambia entero. Lo que cierra la verificación de una descarga. _(S04)_
 
+**SNI** (Server Name Indication) — Nombre que el cliente manda en el handshake para que el servidor elija certificado. _(S05)_
+
+**subjectAltName** (SAN) — Campo del certificado con los nombres para los que vale. El único que miran los clientes actuales. _(S05)_
+
 ## T
 
 **Traza** (trace) — La salida de `-v` o `--trace-ascii`. Va por **stderr**.
 _(S01)_
+
+**Tarro de cookies** (cookie jar) — Archivo de cookies en formato Netscape que escribe `-c` y lee `-b`. Permisos 600. _(S05)_
+
+**Transitorio** (transient error) — Error que `--retry` reintenta: timeout, 408, 429, 500, 502, 503, 504. `--retry-connrefused` desde 7.52, `--retry-all-errors` desde 7.71. _(S05)_
 
 ## U
 

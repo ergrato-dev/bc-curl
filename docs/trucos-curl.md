@@ -101,7 +101,20 @@ Tres cosas que sirven las diez semanas:
 
 ## Semana 05 — SSL/TLS, cookies y redirects
 
-_Pendiente._
+| Truco | Cómo |
+|---|---|
+| Ver qué CAs usa tu curl por defecto | `curl -sv https://host/ -o /dev/null 2>&1 \| grep -E 'CAfile\|CApath'`. En Ubuntu, `--cacert` cambia el CAfile pero el CApath sigue |
+| Confiar **solo** en tu CA, sea cual sea el curl | `curl --cacert ca.pem --capath /dev/null URL`. Sin el `--capath`, el curl de Ubuntu sigue aceptando las CAs públicas |
+| Ver el certificado que presenta un servidor | `openssl s_client -connect host:443 -servername host </dev/null 2>/dev/null \| openssl x509 -noout -subject -issuer -enddate -ext subjectAltName` |
+| Avisar antes de que caduque un certificado | `... \| openssl x509 -noout -checkend 1209600`. Sale con 1 si caduca en menos de 14 días |
+| Probar un nodo concreto de un balanceador | `curl --resolve host:443:10.0.0.5 https://host/`. La URL no cambia: el SNI y la verificación siguen siendo los de `host` |
+| Comprobar que un certificado y una clave casan | `openssl x509 -in c.crt -noout -pubkey \| openssl dgst -sha256` y `openssl pkey -in c.key -pubout \| openssl dgst -sha256`: las dos huellas iguales |
+| La frase de una clave cifrada sin que salga en `ps` | `pass = "..."` en un archivo con permisos 600, y `--config archivo`. Nunca `--pass` ni `--cert c.pem:frase` |
+| Encender el motor de cookies sin mandar ninguna | `curl -L -b '' URL`. Sin él, la cookie que fija un login con redirect se pierde en el salto |
+| Leer el tarro sin perder las cookies `HttpOnly` | `awk -F'\t' 'NF == 7 { print $6 "=" $7 }' tarro.txt`. Un `grep -v '^#'` se lleva las líneas `#HttpOnly_` |
+| Ver a dónde lleva un redirect sin seguirlo | `curl -s -o /dev/null -w '%{redirect_url}\n' URL` |
+| `--proto-redir` en zsh | `--proto-redir '=https'`, con comillas. Sin ellas, zsh lo expande y falla con `zsh: https not found` |
+| Distinguir los dos timeouts | El mensaje del 28: `Connection timeout after` es `--connect-timeout`; `Operation timed out after` es `--max-time` |
 
 ## Semana 06 — Output, debug y configuración
 

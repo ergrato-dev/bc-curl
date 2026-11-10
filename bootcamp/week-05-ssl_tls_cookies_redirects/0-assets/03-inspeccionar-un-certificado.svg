@@ -1,0 +1,38 @@
+<svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" font-family="Arial, Helvetica, sans-serif">
+  <title>Los campos de un certificado, la herramienta que enseña cada uno y el fallo que provoca cuando no cuadra</title>
+  <rect width="800" height="400" fill="#0d1117"/>
+  <text x="400" y="32" text-anchor="middle" fill="#f0f6fc" font-size="22" font-weight="bold">Inspeccionar un certificado</text>
+  <text x="400" y="52" text-anchor="middle" fill="#8b949e" font-size="12">openssl s_client -connect host:443 -servername host | openssl x509 -noout ...</text>
+
+  <g font-size="12">
+    <text x="30" y="88" fill="#8b949e" font-weight="bold">Campo</text>
+    <text x="230" y="88" fill="#8b949e" font-weight="bold">Cómo verlo</text>
+    <text x="560" y="88" fill="#8b949e" font-weight="bold">Si no cuadra</text>
+    <line x1="20" y1="96" x2="780" y2="96" stroke="#30363d"/>
+
+    <text x="30" y="124" fill="#79c0ff" font-weight="bold">subjectAltName</text>
+    <text x="230" y="124" fill="#f0f6fc" font-family="'Courier New', monospace">-ext subjectAltName</text>
+    <text x="560" y="124" fill="#f85149">60: no alternative ... name</text>
+
+    <text x="30" y="160" fill="#79c0ff" font-weight="bold">issuer</text>
+    <text x="230" y="160" fill="#f0f6fc" font-family="'Courier New', monospace">-issuer</text>
+    <text x="560" y="160" fill="#f85149">60: unable to get local issuer</text>
+
+    <text x="30" y="196" fill="#79c0ff" font-weight="bold">notBefore / notAfter</text>
+    <text x="230" y="196" fill="#f0f6fc" font-family="'Courier New', monospace">-dates · -checkend N</text>
+    <text x="560" y="196" fill="#f85149">60: certificate has expired</text>
+
+    <text x="30" y="232" fill="#79c0ff" font-weight="bold">clave pública</text>
+    <text x="230" y="232" fill="#f0f6fc" font-family="'Courier New', monospace">-pubkey | openssl dgst</text>
+    <text x="560" y="232" fill="#f85149">90 con --pinnedpubkey</text>
+
+    <text x="30" y="268" fill="#79c0ff" font-weight="bold">la cadena entera</text>
+    <text x="230" y="268" fill="#f0f6fc" font-family="'Courier New', monospace">-showcerts · %{certs} (7.88+)</text>
+    <text x="560" y="268" fill="#f85149">60 si falta la intermedia</text>
+  </g>
+
+  <rect x="20" y="296" width="760" height="86" rx="8" fill="#161b22" stroke="#e3b341" stroke-width="1.5"/>
+  <text x="40" y="320" fill="#e3b341" font-size="13" font-weight="bold">Probar un nodo sin cambiar el nombre</text>
+  <text x="40" y="344" fill="#f0f6fc" font-family="'Courier New', monospace" font-size="12">curl --resolve host:443:10.0.0.5 https://host/</text>
+  <text x="40" y="366" fill="#8b949e" font-size="11">la URL no cambia: el SNI y la verificación siguen siendo los de host · con la IP en la URL, otro certificado o un 35</text>
+</svg>

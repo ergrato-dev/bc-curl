@@ -1,0 +1,153 @@
+{
+  "semana": "05",
+  "titulo": "SSL/TLS, cookies y redirects",
+  "checks": [
+    {
+      "id": "laboratorio-tls-arriba",
+      "descripcion": "El frontal HTTPS del laboratorio valida con la CA exportada",
+      "cmd": "curl -sf -o /dev/null --max-time 5 --cacert {ca} -w '%{http_code}' {lab_tls}/get",
+      "assert": "stdout~^200$",
+      "pista": "ejecuta ./scripts/start.sh: arranca el laboratorio y exporta docs/lab-ca.pem"
+    },
+    {
+      "id": "toolkit-ejecutable",
+      "descripcion": "api-toolkit.sh existe, es ejecutable y arranca con set -euo pipefail",
+      "cmd": "test -x {semana}/3-proyecto/starter/api-toolkit.sh && grep -q 'set -euo pipefail' {semana}/3-proyecto/starter/api-toolkit.sh",
+      "assert": "exit0",
+      "pista": "3-proyecto/README.md, como entregarlo"
+    },
+    {
+      "id": "toolkit-sin-todos",
+      "descripcion": "No queda ningun TODO por resolver",
+      "cmd": "grep -c 'TODO [0-9]' {semana}/3-proyecto/starter/api-toolkit.sh",
+      "assert": "stdout~^0$",
+      "pista": "busca 'TODO' en el script: cada uno es un hueco de la capa 5"
+    },
+    {
+      "id": "toolkit-sigue-descargando",
+      "descripcion": "La capa 4 sigue funcionando: download guarda el archivo entero",
+      "cmd": "d=$(mktemp -d); {semana}/3-proyecto/starter/api-toolkit.sh download /range/1000 \"$d/f.bin\" 2>/dev/null; wc -c < \"$d/f.bin\"",
+      "assert": "stdout~^1000$",
+      "pista": "la capa 5 no deberia tocar descargar(); revisa que construir_args_descarga sigue terminando en la URL"
+    },
+    {
+      "id": "toolkit-tls-sin-ca-falla",
+      "descripcion": "Contra el frontal HTTPS sin API_CACERT, el certificado no valida y sale con 69",
+      "cmd": "BASE_URL={lab_tls} {semana}/3-proyecto/starter/api-toolkit.sh get /get",
+      "assert": "exit=69",
+      "pista": "curl sale con 60; fallo_de_red tiene que traducirlo a 69 (TODO 6)"
+    },
+    {
+      "id": "toolkit-tls-con-ca",
+      "descripcion": "Con API_CACERT, la peticion HTTPS valida y devuelve el cuerpo",
+      "cmd": "BASE_URL={lab_tls} API_CACERT={ca} {semana}/3-proyecto/starter/api-toolkit.sh get /get",
+      "assert": "stdout~\"url\": \"https://",
+      "pista": "API_CACERT tiene que acabar en --cacert (TODO 1)"
+    },
+    {
+      "id": "toolkit-cacert-inexistente",
+      "descripcion": "Un API_CACERT que no existe es un error de uso, antes de llamar a curl",
+      "cmd": "BASE_URL={lab_tls} API_CACERT=/no/existe.pem {semana}/3-proyecto/starter/api-toolkit.sh get /get",
+      "assert": "exit=1",
+      "pista": "comprueba con [ -r ] antes de anadir --cacert (TODO 1)"
+    },
+    {
+      "id": "toolkit-mtls-sin-certificado",
+      "descripcion": "El frontal mTLS rechaza al toolkit sin certificado de cliente: sale con 69",
+      "cmd": "BASE_URL={lab_mtls} API_CACERT={ca} {semana}/3-proyecto/starter/api-toolkit.sh get /",
+      "assert": "exit=69",
+      "pista": "sin --cert, el handshake falla con 56; fallo_de_red lo traduce (TODO 6)"
+    },
+    {
+      "id": "toolkit-mtls-con-certificado",
+      "descripcion": "Con API_CLIENT_CERT y API_CLIENT_KEY, el frontal mTLS acepta la conexion",
+      "cmd": "d=$(mktemp -d); openssl req -x509 -newkey ec -pkeyopt ec_paramgen_curve:P-256 -nodes -keyout \"$d/k.pem\" -out \"$d/c.pem\" -days 1 -subj /CN=alumno 2>/dev/null; chmod 600 \"$d/k.pem\"; BASE_URL={lab_mtls} API_CACERT={ca} API_CLIENT_CERT=\"$d/c.pem\" API_CLIENT_KEY=\"$d/k.pem\" {semana}/3-proyecto/starter/api-toolkit.sh get /",
+      "assert": "stdout~mTLS OK",
+      "pista": "--cert y --key (TODO 2)"
+    },
+    {
+      "id": "toolkit-mtls-clave-legible",
+      "descripcion": "Una clave privada legible por otros usuarios se rechaza con exit 1",
+      "cmd": "d=$(mktemp -d); openssl req -x509 -newkey ec -pkeyopt ec_paramgen_curve:P-256 -nodes -keyout \"$d/k.pem\" -out \"$d/c.pem\" -days 1 -subj /CN=alumno 2>/dev/null; chmod 644 \"$d/k.pem\"; BASE_URL={lab_mtls} API_CACERT={ca} API_CLIENT_CERT=\"$d/c.pem\" API_CLIENT_KEY=\"$d/k.pem\" {semana}/3-proyecto/starter/api-toolkit.sh get /",
+      "assert": "exit=1",
+      "pista": "exigir_600 sobre API_CLIENT_KEY (TODO 2)"
+    },
+    {
+      "id": "toolkit-cookies-persisten",
+      "descripcion": "Con COOKIE_JAR, una cookie fijada en una llamada se envia en la siguiente",
+      "cmd": "d=$(mktemp -d); COOKIE_JAR=\"$d/j\" {semana}/3-proyecto/starter/api-toolkit.sh get '/cookies/set?sesion=abc' >/dev/null; COOKIE_JAR=\"$d/j\" {semana}/3-proyecto/starter/api-toolkit.sh get /cookies",
+      "assert": "stdout~\"sesion\": \"abc\"",
+      "pista": "hacen falta --cookie Y --cookie-jar sobre el mismo archivo (TODO 3)"
+    },
+    {
+      "id": "toolkit-cookie-jar-600",
+      "descripcion": "El tarro de cookies se crea con permisos 600",
+      "cmd": "d=$(mktemp -d); COOKIE_JAR=\"$d/j\" {semana}/3-proyecto/starter/api-toolkit.sh get '/cookies/set?sesion=abc' >/dev/null; stat -c %a \"$d/j\"",
+      "assert": "stdout~^600$",
+      "pista": "curl lo crearia con 644: crealo tu antes, con umask 077 (TODO 3)"
+    },
+    {
+      "id": "toolkit-sigue-redirects",
+      "descripcion": "get sigue los redirects y devuelve el destino final",
+      "cmd": "{semana}/3-proyecto/starter/api-toolkit.sh get /redirect/3",
+      "assert": "stdout~\"url\": \"http://[^\"]*/get\"",
+      "pista": "--location y --max-redirs (TODO 4)"
+    },
+    {
+      "id": "toolkit-corta-bucles",
+      "descripcion": "Una cadena de 9 redirects supera el maximo y sale con 69",
+      "cmd": "{semana}/3-proyecto/starter/api-toolkit.sh get /redirect/9",
+      "assert": "exit=69",
+      "pista": "--max-redirs 5; curl sale con 47 (TODOs 4 y 6)"
+    },
+    {
+      "id": "toolkit-no-baja-a-http",
+      "descripcion": "Desde https, un redirect a http no se sigue",
+      "cmd": "BASE_URL={lab_tls} API_CACERT={ca} {semana}/3-proyecto/starter/api-toolkit.sh get '/redirect-to?url={lab}/get'",
+      "assert": "exit=69",
+      "pista": "--proto-redir =https cuando BASE_URL empieza por https (TODO 4)"
+    },
+    {
+      "id": "toolkit-no-filtra-apikey",
+      "descripcion": "Con AUTH_MODE=apikey, la clave no viaja a otro host tras un redirect",
+      "cmd": "AUTH_MODE=apikey API_KEY=clave-de-prueba {semana}/3-proyecto/starter/api-toolkit.sh get '/redirect-to?url=http://127.0.0.1:8080/headers'",
+      "assert": "stdout!~clave-de-prueba",
+      "pista": "curl no quita los headers propios al cambiar de host: con apikey, no sigas redirects (TODO 4)"
+    },
+    {
+      "id": "toolkit-post-no-sigue-redirects",
+      "descripcion": "post no sigue redirects: un 302 convertiria el POST en GET",
+      "cmd": "{semana}/3-proyecto/starter/api-toolkit.sh --dry-run post /post '{}'",
+      "assert": "stdout!~--location",
+      "pista": "--location solo con GET (TODO 4)"
+    },
+    {
+      "id": "toolkit-reintenta-solo-idempotentes",
+      "descripcion": "get reintenta y post no",
+      "cmd": "a=$({semana}/3-proyecto/starter/api-toolkit.sh --dry-run get /get); b=$({semana}/3-proyecto/starter/api-toolkit.sh --dry-run post /post '{}'); echo \"get=$(grep -c -- --retry <<<\"$a\") post=$(grep -c -- --retry <<<\"$b\")\"",
+      "assert": "stdout~^get=1 post=0$",
+      "pista": "--retry solo para GET, PUT y DELETE (TODO 5)"
+    },
+    {
+      "id": "toolkit-connect-timeout",
+      "descripcion": "Todas las peticiones llevan --connect-timeout",
+      "cmd": "{semana}/3-proyecto/starter/api-toolkit.sh --dry-run post /post '{}'",
+      "assert": "stdout~--connect-timeout [0-9]",
+      "pista": "RED_CURL empieza por --connect-timeout"
+    },
+    {
+      "id": "toolkit-sin-insecure",
+      "descripcion": "El script no desactiva la verificacion TLS",
+      "cmd": "grep -nE -- '(^|[[:space:]])(-k|--insecure)([[:space:]]|$)' {semana}/3-proyecto/starter/api-toolkit.sh",
+      "assert": "exit!=0",
+      "pista": "si el certificado no valida, la respuesta es --cacert, nunca -k"
+    },
+    {
+      "id": "toolkit-shellcheck",
+      "descripcion": "shellcheck -S warning no encuentra nada",
+      "cmd": "shellcheck -S warning {semana}/3-proyecto/starter/api-toolkit.sh",
+      "assert": "exit0",
+      "pista": "instala shellcheck y corrige lo que diga"
+    }
+  ]
+}

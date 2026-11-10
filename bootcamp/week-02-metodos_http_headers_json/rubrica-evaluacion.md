@@ -5,7 +5,7 @@
 | Evidencia | Peso | Instrumento |
 |---|:--:|---|
 | 🧠 Conocimiento | 30% | Las 10 preguntas de abajo, con respuesta argumentada |
-| 💪 Desempeño | 40% | Las 4 prácticas, verificadas por `checks.json` |
+| 💪 Desempeño | 40% | Las 4 prácticas, con sus entregables .md y salida real de tu máquina |
 | 📦 Producto | 30% | `api-toolkit.sh`: 60 pts de autograding + 40 pts de rúbrica manual |
 
 > **Mínimo 70% en cada evidencia**, no en el promedio. Un 100% en el producto no
