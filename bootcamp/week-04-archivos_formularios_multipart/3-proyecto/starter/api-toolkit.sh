@@ -130,6 +130,16 @@ cargar_credenciales() {
   done < <(grep -E '^[A-Z_]+=' "$BC_CURL_FILE" || true)
 }
 
+# escapar_config TEXTO
+#
+# Escapa \ y " para poder meter TEXTO entre comillas dobles en un archivo de
+# --config. Sin esto, una password con comillas rompe la linea, y una con \
+# se interpreta como un escape (\t, \n...) y llega cambiada al servidor.
+escapar_config() {
+  local v="${1//\\/\\\\}"
+  printf '%s' "${v//\"/\\\"}"
+}
+
 construir_config() {
   [ "$AUTH_MODE" = none ] && return 0
 
@@ -139,19 +149,25 @@ construir_config() {
   CONFIG_CURL="$(mktemp "${TMPDIR:-/tmp}/api-toolkit.XXXXXX")"
   umask "$umask_previa"
 
+  # Un salto de linea no se puede escapar: cerraria la opcion y lo que viniera
+  # detras se leeria como OTRA opcion de curl. Se rechaza.
+  case "${API_USER}${API_PASSWORD}${API_TOKEN}${API_KEY}" in
+    *$'\n'*|*$'\r'*) error "la credencial contiene un salto de linea" ;;
+  esac
+
   case "$AUTH_MODE" in
     basic)
       [ -n "$API_USER" ] && [ -n "$API_PASSWORD" ] \
         || error "AUTH_MODE=basic necesita API_USER y API_PASSWORD"
-      printf 'user = "%s:%s"\n' "$API_USER" "$API_PASSWORD" > "$CONFIG_CURL"
+      printf 'user = "%s:%s"\n' "$(escapar_config "$API_USER")" "$(escapar_config "$API_PASSWORD")" > "$CONFIG_CURL"
       ;;
     bearer)
       [ -n "$API_TOKEN" ] || error "AUTH_MODE=bearer necesita API_TOKEN"
-      printf 'header = "Authorization: Bearer %s"\n' "$API_TOKEN" > "$CONFIG_CURL"
+      printf 'header = "Authorization: Bearer %s"\n' "$(escapar_config "$API_TOKEN")" > "$CONFIG_CURL"
       ;;
     apikey)
       [ -n "$API_KEY" ] || error "AUTH_MODE=apikey necesita API_KEY"
-      printf 'header = "%s: %s"\n' "$API_KEY_HEADER" "$API_KEY" > "$CONFIG_CURL"
+      printf 'header = "%s: %s"\n' "$(escapar_config "$API_KEY_HEADER")" "$(escapar_config "$API_KEY")" > "$CONFIG_CURL"
       ;;
     *)
       error "AUTH_MODE desconocido: $AUTH_MODE (usa none, basic, bearer o apikey)"
