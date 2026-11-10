@@ -1,73 +1,45 @@
-# 🔗 Webgrafía - Semana 4
+# Webgrafía — Semana 04
 
-## Documentación Oficial
+_Comprobado el 10 de noviembre de 2026._
 
-| Recurso | URL | Descripción |
-|---------|-----|-------------|
-| **curl Manual: Download** | [https://curl.se/docs/manpage.html#-o](https://curl.se/docs/manpage.html#-o) | Flags de descarga (-o, -O, -C, --progress-bar) |
-| **curl Manual: Upload** | [https://curl.se/docs/manpage.html#-F](https://curl.se/docs/manpage.html#-F) | Flag -F y multipart |
-| **curl Manual: Timeouts** | [https://curl.se/docs/manpage.html#--max-time](https://curl.se/docs/manpage.html#--max-time) | Timeouts y reintentos |
-| **MDN: MIME Types** | [https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types) | Lista completa de MIME types |
-| **RFC 7578** | [https://datatracker.ietf.org/doc/html/rfc7578](https://datatracker.ietf.org/doc/html/rfc7578) | Especificación multipart/form-data |
-| **RFC 1867** | [https://datatracker.ietf.org/doc/html/rfc1867](https://datatracker.ietf.org/doc/html/rfc1867) | Form-based File Upload |
+## Referencia de curl
 
----
+| Recurso | Por qué vale la pena |
+|---|---|
+| [manpage de curl](https://curl.se/docs/manpage.html) | La fuente. Antes de escribir un flag que «suena bien», búscalo aquí |
+| [`-O, --remote-name`](https://curl.se/docs/manpage.html#-O) y [`-J`](https://curl.se/docs/manpage.html#-J) | De dónde sale el nombre del archivo, y las reglas de seguridad del nombre que manda el servidor |
+| [`-C, --continue-at`](https://curl.se/docs/manpage.html#-C) | El guion, el desplazamiento explícito y su relación con `-o` |
+| [`-r, --range`](https://curl.se/docs/manpage.html#-r) | Las formas del rango, incluida la de los últimos N bytes |
+| [`-F, --form`](https://curl.se/docs/manpage.html#-F) | Todas las directivas (`;type=`, `;filename=`, `;headers=`) y las comillas en el nombre |
+| [`-T, --upload-file`](https://curl.se/docs/manpage.html#-T) | La barra final, el globbing y el `-` de stdin |
+| [`--data-urlencode`](https://curl.se/docs/manpage.html#--data-urlencode) | Las cinco formas, con un ejemplo de cada una |
+| [`--max-filesize`](https://curl.se/docs/manpage.html#--max-filesize) | La nota sobre transferencias de tamaño desconocido, que explica el punto ciego de 7.81 |
+| [`--write-out`](https://curl.se/docs/manpage.html#-w) | `size_download`, `size_upload`, `speed_*`, `content_type`, `filename_effective` |
+| [Códigos de salida](https://curl.se/libcurl/c/libcurl-errors.html) | El 18, 22, 23, 26, 28, 33 y 63 de esta semana, con su nombre oficial |
+| [everything.curl.dev — Timeouts](https://everything.curl.dev/usingcurl/timeouts.html) | Los límites de tiempo y velocidad explicados por el autor de curl |
 
-## Tutoriales y Guías
+## HTTP y formatos
 
-| Recurso | URL | Descripción |
-|---------|-----|-------------|
-| Everything curl — Download | [https://everything.curl.dev/usingcurl/downloads](https://everything.curl.dev/usingcurl/downloads) | Guía oficial de descargas |
-| Everything curl — Upload | [https://everything.curl.dev/usingcurl/uploads](https://everything.curl.dev/usingcurl/uploads) | Guía oficial de uploads |
-| curl Cheat Sheet | [https://curl.se/docs/cheatsheet.html](https://curl.se/docs/cheatsheet.html) | Chuleta rápida de comandos |
-| MDN: POST method | [https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/POST](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/POST) | Método POST explicado |
-| Content-Disposition Guide | [https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Disposition](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Disposition) | Header Content-Disposition |
+| Recurso | Por qué vale la pena |
+|---|---|
+| [MDN — HTTP range requests](https://developer.mozilla.org/en-US/docs/Web/HTTP/Range_requests) | La conversación completa de un rango con ejemplos de cada respuesta, más legible que el RFC |
+| [MDN — Content-Disposition](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Disposition) | El header en sus dos usos: en una respuesta (`-J`) y dentro de una parte multipart |
+| [MDN — Sending form data](https://developer.mozilla.org/en-US/docs/Learn/Forms/Sending_and_retrieving_form_data) | Qué manda un navegador en cada caso: urlencoded por defecto, multipart cuando hay un archivo |
+| [MDN — MIME types](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types) | Los `Content-Type` habituales, para el `;type=` de `-F` y el `-H` de `--data-binary` |
+| [WHATWG URL — urlencoded](https://url.spec.whatwg.org/#application/x-www-form-urlencoded) | La especificación vigente del formato de los formularios, con el algoritmo exacto de codificación |
 
----
+## Verificación y casos reales
 
-## Artículos Recomendados
-
-| Artículo | URL | Tema |
-|----------|-----|------|
-| Multipart form data explained | [https://developer.mozilla.org/en-US/docs/Learn/Forms/Sending_and_retrieving_form_data](https://developer.mozilla.org/en-US/docs/Learn/Forms/Sending_and_retrieving_form_data) | Formularios y multipart |
-| URL encoding reference | [https://www.w3schools.com/tags/ref_urlencode.asp](https://www.w3schools.com/tags/ref_urlencode.asp) | Tabla de percent-encoding |
-| curl resume download | [https://everything.curl.dev/usingcurl/downloads/resume](https://everything.curl.dev/usingcurl/downloads/resume) | Reanudar descargas |
-| When to use multipart vs JSON | [https://stackoverflow.com/questions/4526273/](https://stackoverflow.com/questions/4526273/) | JSON vs multipart en APIs |
-
----
-
-## APIs para Practicar
-
-| API | URL | Descripción |
-|-----|-----|-------------|
-| **httpbin.org/post** | [https://httpbin.org/post](https://httpbin.org/post) | Recibe cualquier POST y refleja el body |
-| **httpbin.org/image** | [https://httpbin.org/image/png](https://httpbin.org/image/png) | Devuelve imágenes para practicar descargas |
-| **httpbin.org/stream-bytes** | [https://httpbin.org/stream-bytes/1024](https://httpbin.org/stream-bytes/1024) | Stream de bytes para probar limit-rate |
-| **Reqres.in** | [https://reqres.in/](https://reqres.in/) | API REST para POST con JSON |
+| Recurso | Por qué vale la pena |
+|---|---|
+| [GNU coreutils — sha2 utilities](https://www.gnu.org/software/coreutils/manual/html_node/sha2-utilities.html) | `sha256sum -c`, `--quiet`, `--ignore-missing`, y el formato exacto de la línea |
+| [Ubuntu — How to verify your Ubuntu download](https://ubuntu.com/tutorials/how-to-verify-ubuntu) | Un `SHA256SUMS` firmado de verdad, verificado paso a paso. Es la tabla de fuentes de la teoría 03 en la práctica |
+| [AWS S3 — Presigned URL uploads](https://docs.aws.amazon.com/AmazonS3/latest/userguide/PresignedUrlUploadObject.html) | El caso canónico de subida en crudo con `PUT`, y por qué el multipart no sirve ahí |
+| [GitHub REST — Create or update file contents](https://docs.github.com/en/rest/repos/contents#create-or-update-file-contents) | El caso canónico de archivo en base64 dentro de JSON |
+| [Manual de jq — invocación](https://jqlang.github.io/jq/manual/#invoking-jq) | `--rawfile`, la forma de meter un archivo en un JSON sin pasar por el argv |
 
 ---
 
-## Herramientas
-
-| Herramienta | URL | Uso |
-|-------------|-----|-----|
-| **curl** | [https://curl.se/](https://curl.se/) | Cliente HTTP CLI |
-| **jq** | [https://jqlang.github.io/jq/](https://jqlang.github.io/jq/) | Procesar JSON |
-| **python3 -m json.tool** | built-in | Formatear JSON |
-| **file (comando)** | built-in | Identificar MIME type de archivos |
-| **wc** | built-in | Contar bytes/líneas de archivos |
-| **ls -lh** | built-in | Ver tamaño de archivos |
-
----
-
-## Comunidad
-
-| Recurso | URL | Descripción |
-|---------|-----|-------------|
-| curl Mailing List | [https://curl.se/mail/](https://curl.se/mail/) | Lista de correo oficial |
-| StackOverflow curl | [https://stackoverflow.com/questions/tagged/curl](https://stackoverflow.com/questions/tagged/curl) | Preguntas sobre curl |
-| r/curl | [https://reddit.com/r/curl](https://reddit.com/r/curl) | Comunidad de curl |
-
----
-
-> 💡 **Tip**: Guarda estos enlaces en tus favoritos para referencia rápida.
+| Anterior | Siguiente |
+|---|---|
+| [Videografía](../videografia/README.md) | [Recursos de la semana](../README.md) |

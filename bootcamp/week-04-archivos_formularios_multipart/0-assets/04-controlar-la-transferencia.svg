@@ -1,0 +1,41 @@
+<svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" font-family="Arial, Helvetica, sans-serif">
+  <title>Los limites de una transferencia sobre una linea de tiempo: connect-timeout, speed-limit con speed-time, max-time y max-filesize; limit-rate frena sin cortar</title>
+  <rect width="800" height="420" fill="#0d1117"/>
+
+  <text x="400" y="32" text-anchor="middle" fill="#f0f6fc" font-size="22" font-weight="bold">Controlar la transferencia</text>
+  <text x="400" y="52" text-anchor="middle" fill="#8b949e" font-size="12">distinguir lento pero vivo de muerto</text>
+
+  <!-- Linea de tiempo -->
+  <line x1="40" y1="120" x2="760" y2="120" stroke="#30363d" stroke-width="2"/>
+  <polygon points="760,120 752,116 752,124" fill="#30363d"/>
+  <text x="765" y="140" text-anchor="end" fill="#8b949e" font-size="10">tiempo</text>
+
+  <rect x="40" y="96" width="110" height="48" rx="4" fill="#161b22" stroke="#79c0ff" stroke-width="1.5"/>
+  <text x="95" y="116" text-anchor="middle" fill="#79c0ff" font-size="11" font-weight="bold">conexión</text>
+  <text x="95" y="134" text-anchor="middle" fill="#8b949e" font-size="10">TCP + TLS</text>
+
+  <rect x="150" y="96" width="610" height="48" rx="4" fill="#161b22" stroke="#f0883e" stroke-width="1.5"/>
+  <text x="455" y="116" text-anchor="middle" fill="#f0883e" font-size="11" font-weight="bold">transferencia del cuerpo</text>
+  <text x="455" y="134" text-anchor="middle" fill="#8b949e" font-size="10">a veces rápida, a veces lenta, a veces parada</text>
+
+  <!-- Limites -->
+  <line x1="40" y1="164" x2="150" y2="164" stroke="#79c0ff" stroke-width="3"/>
+  <text x="40" y="184" fill="#79c0ff" font-family="'Courier New', monospace" font-size="12">--connect-timeout</text>
+  <text x="40" y="200" fill="#8b949e" font-size="10">no conecta: 28</text>
+
+  <line x1="40" y1="224" x2="760" y2="224" stroke="#e3b341" stroke-width="3"/>
+  <text x="40" y="244" fill="#e3b341" font-family="'Courier New', monospace" font-size="12">--max-time</text>
+  <text x="40" y="260" fill="#8b949e" font-size="10">techo absoluto de toda la operación: 28. Para una descarga, generoso</text>
+
+  <rect x="440" y="276" width="150" height="20" rx="3" fill="#f85149" opacity="0.25" stroke="#f85149" stroke-width="1"/>
+  <text x="515" y="291" text-anchor="middle" fill="#f85149" font-size="10">velocidad &lt; mínimo</text>
+  <text x="40" y="292" fill="#f85149" font-family="'Courier New', monospace" font-size="12">--speed-limit + --speed-time</text>
+  <text x="40" y="308" fill="#8b949e" font-size="10">por debajo de B bytes/s durante S segundos seguidos: 28. El detector de conexiones muertas</text>
+
+  <text x="40" y="340" fill="#d2a8ff" font-family="'Courier New', monospace" font-size="12">--max-filesize</text>
+  <text x="40" y="356" fill="#8b949e" font-size="10">cuerpo mayor que el límite: 63. En 7.81 solo si hay Content-Length</text>
+
+  <rect x="20" y="372" width="760" height="36" rx="6" fill="#161b22" stroke="#3fb950" stroke-width="1.5"/>
+  <text x="40" y="395" fill="#3fb950" font-family="'Courier New', monospace" font-size="12">--limit-rate 500K</text>
+  <text x="220" y="395" fill="#f0f6fc" font-size="11">no corta nada: frena a curl para no saturar la red compartida</text>
+</svg>

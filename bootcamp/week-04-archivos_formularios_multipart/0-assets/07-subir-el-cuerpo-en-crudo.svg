@@ -1,0 +1,37 @@
+<svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" font-family="Arial, Helvetica, sans-serif">
+  <title>Subir en crudo con -T, que manda PUT sin Content-Type y en streaming, y con --data-binary arroba archivo, que manda POST con Content-Type de formulario por defecto</title>
+  <rect width="800" height="420" fill="#0d1117"/>
+
+  <text x="400" y="32" text-anchor="middle" fill="#f0f6fc" font-size="22" font-weight="bold">Subir en crudo — el cuerpo es el archivo</text>
+  <text x="400" y="52" text-anchor="middle" fill="#8b949e" font-size="12">sin boundary, sin nombre de campo, sin codificar</text>
+
+  <!-- Con -T -->
+  <rect x="20" y="78" width="370" height="250" rx="8" fill="#161b22" stroke="#f0883e" stroke-width="1.5"/>
+  <text x="40" y="104" fill="#f0883e" font-family="'Courier New', monospace" font-size="15" font-weight="bold">-T archivo</text>
+  <g font-size="12">
+    <text x="40" y="134" fill="#8b949e">Método</text><text x="190" y="134" fill="#f0f6fc" font-family="'Courier New', monospace">PUT</text>
+    <text x="40" y="158" fill="#8b949e">Content-Type</text><text x="190" y="158" fill="#e3b341">ninguno</text>
+    <text x="40" y="182" fill="#8b949e">Lectura</text><text x="190" y="182" fill="#3fb950">en streaming</text>
+    <text x="40" y="206" fill="#8b949e">URL acabada en /</text><text x="190" y="206" fill="#f0f6fc">le añade el nombre</text>
+    <text x="40" y="230" fill="#8b949e">Desde un pipe</text><text x="190" y="230" fill="#f0f6fc" font-family="'Courier New', monospace">-T -</text>
+    <text x="190" y="248" fill="#8b949e" font-size="11">Transfer-Encoding: chunked</text>
+    <text x="40" y="276" fill="#8b949e">Expect: 100-continue</text>
+    <text x="40" y="294" fill="#8b949e" font-size="11">7.81: siempre · 8.x: solo &gt; 1 MB</text>
+  </g>
+
+  <!-- Con data-binary -->
+  <rect x="410" y="78" width="370" height="250" rx="8" fill="#161b22" stroke="#79c0ff" stroke-width="1.5"/>
+  <text x="430" y="104" fill="#79c0ff" font-family="'Courier New', monospace" font-size="15" font-weight="bold">--data-binary @archivo</text>
+  <g font-size="12">
+    <text x="430" y="134" fill="#8b949e">Método</text><text x="580" y="134" fill="#f0f6fc" font-family="'Courier New', monospace">POST</text>
+    <text x="430" y="158" fill="#8b949e">Content-Type</text><text x="580" y="158" fill="#f85149">de formulario</text>
+    <text x="580" y="176" fill="#8b949e" font-size="11">hay que cambiarlo con -H</text>
+    <text x="430" y="200" fill="#8b949e">Lectura</text><text x="580" y="200" fill="#e3b341">entero en memoria</text>
+    <text x="430" y="224" fill="#8b949e">URL acabada en /</text><text x="580" y="224" fill="#f0f6fc">la deja igual</text>
+    <text x="430" y="248" fill="#8b949e">Desde un pipe</text><text x="580" y="248" fill="#f0f6fc" font-family="'Courier New', monospace">@-</text>
+  </g>
+
+  <rect x="20" y="346" width="760" height="56" rx="8" fill="#161b22" stroke="#f85149" stroke-width="1.5"/>
+  <text x="40" y="370" fill="#f85149" font-size="13" font-weight="bold">✗ --data-binary @meta.json sin -H</text>
+  <text x="40" y="390" fill="#8b949e" font-size="11">llega como formulario: el JSON entero se convierte en el nombre de un campo vacío</text>
+</svg>

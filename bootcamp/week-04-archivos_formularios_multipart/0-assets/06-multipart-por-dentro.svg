@@ -1,0 +1,47 @@
+<svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 460" font-family="Arial, Helvetica, sans-serif">
+  <title>Anatomia de un cuerpo multipart/form-data: boundary en el header, delimitadores con dos guiones, cabeceras de cada parte, linea en blanco, contenido y cierre</title>
+  <rect width="800" height="460" fill="#0d1117"/>
+
+  <text x="400" y="32" text-anchor="middle" fill="#f0f6fc" font-size="22" font-weight="bold">Multipart por dentro</text>
+  <text x="400" y="52" text-anchor="middle" fill="#8b949e" font-size="12">curl -F 'autor=ana' -F 'doc=@nota.txt' URL</text>
+
+  <!-- Header -->
+  <rect x="20" y="70" width="760" height="40" rx="6" fill="#161b22" stroke="#79c0ff" stroke-width="1.5"/>
+  <text x="36" y="95" fill="#79c0ff" font-family="'Courier New', monospace" font-size="12">Content-Type: multipart/form-data; boundary=<tspan fill="#f0883e">----13bf6e</tspan></text>
+
+  <!-- Cuerpo -->
+  <rect x="20" y="124" width="520" height="320" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1.5"/>
+  <g font-family="'Courier New', monospace" font-size="12">
+    <text x="36" y="150" fill="#f0883e">------13bf6e</text>
+    <text x="36" y="172" fill="#d2a8ff">Content-Disposition: form-data; name="autor"</text>
+    <text x="36" y="194" fill="#8b949e">(línea en blanco)</text>
+    <text x="36" y="216" fill="#f0f6fc">ana</text>
+    <text x="36" y="246" fill="#f0883e">------13bf6e</text>
+    <text x="36" y="268" fill="#d2a8ff">Content-Disposition: form-data; name="doc";</text>
+    <text x="36" y="286" fill="#d2a8ff">    filename="nota.txt"</text>
+    <text x="36" y="308" fill="#d2a8ff">Content-Type: text/plain</text>
+    <text x="36" y="330" fill="#8b949e">(línea en blanco)</text>
+    <text x="36" y="352" fill="#f0f6fc">hola\n</text>
+    <text x="36" y="382" fill="#f0883e">------13bf6e--</text>
+  </g>
+  <text x="36" y="420" fill="#8b949e" font-size="11">Cada línea de formato acaba en \r\n. El contenido va sin codificar.</text>
+
+  <!-- Anotaciones -->
+  <g font-size="11">
+    <text x="560" y="150" fill="#f0883e" font-weight="bold">Delimitador</text>
+    <text x="560" y="166" fill="#8b949e">-- + boundary: dos guiones más</text>
+    <text x="560" y="180" fill="#8b949e">que en el header</text>
+
+    <text x="560" y="214" fill="#d2a8ff" font-weight="bold">Cabeceras de la parte</text>
+    <text x="560" y="230" fill="#8b949e">name = campo · filename = archivo</text>
+
+    <text x="560" y="268" fill="#f0f6fc" font-weight="bold">@ crea parte de archivo</text>
+    <text x="560" y="284" fill="#8b949e">&lt; crea parte de texto</text>
+    <text x="560" y="300" fill="#8b949e">;type= y ;filename= las ajustan</text>
+
+    <text x="560" y="382" fill="#f0883e" font-weight="bold">Cierre</text>
+    <text x="560" y="398" fill="#8b949e">boundary + -- al final</text>
+
+    <text x="560" y="432" fill="#f85149" font-weight="bold">Boundary copiado a mano = 400</text>
+  </g>
+</svg>

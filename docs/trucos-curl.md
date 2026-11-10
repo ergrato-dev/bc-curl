@@ -84,7 +84,20 @@ Tres cosas que sirven las diez semanas:
 
 ## Semana 04 — Archivos, formularios y multipart
 
-_Pendiente._
+| Truco | Cómo |
+|---|---|
+| Saber con qué nombre guardó curl el archivo | `curl -sOJ -w '%{filename_effective}\n' URL`. Con `-J` el nombre lo decide el servidor, no la URL |
+| Ver el tamaño de un recurso sin descargarlo | `curl -sI URL \| grep -i '^content-length'`. Si no aparece, el servidor no lo sabe de antemano y `--max-filesize` no podrá cortar a priori |
+| Saber si un servidor acepta rangos antes de reanudar | `curl -sI URL \| grep -i '^accept-ranges'`. `bytes` = sí; ausente o `none` = `-C -` fallará con el 33 |
+| Descargar solo el principio de un archivo para mirar qué es | `curl -s -r 0-15 URL \| xxd`. Los primeros bytes son la firma: `%PDF`, `PK` (zip), `\x89PNG` |
+| Que el 404 no deje un archivo vacío en 7.81, sin `--remove-on-error` | `curl -fsS -o f URL \|\| rm -f f`. `--remove-on-error` es 7.83+ y hace exactamente eso |
+| Bajar varias URLs guardando cada una con su nombre | `curl --remote-name-all URL1 URL2 URL3`. Equivale a poner un `-O` delante de cada una |
+| Mandar un campo de formulario que empieza por `@` sin que curl lea un archivo | `curl --form-string 'twitter=@usuario' URL`. Con `-F` curl intentaría abrir el archivo `usuario` |
+| Subir un archivo cuyo nombre lleva `;` o `,` | `curl -F 'doc=@"informe;v2.pdf"' URL`. Sin comillas, curl corta en el `;` e intenta abrir `informe`: el 26 en el mejor caso, el archivo equivocado en el peor |
+| Ver el multipart exacto que curl va a enviar | `curl -s -F 'a=1' -F 'f=@archivo' http://localhost:8080/post \| jq -r .data`. El `data` de `/post` es el cuerpo crudo |
+| Subir desde un pipe sin archivo intermedio | `tar cz dir \| curl -T - URL`. Sin tamaño conocido, curl usa `Transfer-Encoding: chunked` |
+| Quitar la espera del `Expect: 100-continue` en subidas grandes | `curl -H 'Expect:' -T grande.bin URL`. El header vacío lo suprime; útil cuando el servidor no contesta el `100` y curl espera 1 s |
+| Medir a qué velocidad subiste | `curl -s -T f -o /dev/null -w '%{size_upload} B a %{speed_upload} B/s\n' URL` |
 
 ## Semana 05 — SSL/TLS, cookies y redirects
 

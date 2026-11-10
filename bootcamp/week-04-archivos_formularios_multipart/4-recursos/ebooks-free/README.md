@@ -1,27 +1,32 @@
-# 📖 Recursos de Ebooks Gratuitos - Semana 4
+# Libros y RFC gratuitos — Semana 04
 
-## HTTP y Transferencias
+_Comprobado el 10 de noviembre de 2026._
 
-| Título | Autor | Enlace | Descripción |
-|--------|-------|--------|-------------|
-| HTTP: The Definitive Guide | David Gourley, Brian Totty | [Link](https://www.oreilly.com/library/view/http-the-definitive/1565925092/) | Capítulos sobre transferencias, encoding, MIME |
-| High Performance Browser Networking | Ilya Grigorik | [Link](https://hpbn.co/) | Optimización de transferencias HTTP |
-| Everything curl — Downloads | Daniel Stenberg | [Link](https://everything.curl.dev/usingcurl/downloads) | Capítulo oficial de descargas con curl |
+## Libros
 
-## Formularios y Uploads
+| Recurso | Por qué vale la pena |
+|---|---|
+| [everything.curl.dev — Downloads](https://everything.curl.dev/usingcurl/downloads/) | El capítulo de descargas del libro oficial, escrito por el autor de curl. Cubre `-o`, `-O`, `-J` y lo que pasa con la query string mejor que el manpage |
+| [everything.curl.dev — Resuming](https://everything.curl.dev/usingcurl/downloads/resume.html) | Corto y exacto sobre `-C -`. Lo que dice de los servidores que ignoran el rango es la teoría 02 en dos párrafos |
+| [everything.curl.dev — Uploads](https://everything.curl.dev/usingcurl/uploads.html) | Las tres formas de subir — `-d`, `-F`, `-T` — en la misma página, que es exactamente la comparación de la teoría 08 |
+| [everything.curl.dev — Multipart formposts](https://everything.curl.dev/http/post/multipart.html) | Enseña el cuerpo multipart tal como sale por el cable. Léelo después de la práctica 03 y lo reconocerás línea a línea |
+| [High Performance Browser Networking](https://hpbn.co/) | Gratis online. Los capítulos de HTTP/1.1 explican por qué existen `Range`, chunked y `Expect: 100-continue` desde el lado del rendimiento |
 
-| Título | Autor | Enlace | Descripción |
-|--------|-------|--------|-------------|
-| Everything curl — Uploads | Daniel Stenberg | [Link](https://everything.curl.dev/usingcurl/uploads) | Guía oficial de uploads con curl |
-| RESTful Web APIs | Leonard Richardson | [Link](https://www.oreilly.com/library/view/restful-web-apis/9781449359713/) | Diseño de APIs con uploads |
+## RFC
 
-## MIME Types y Encoding
+Se leen por secciones. Cuando la documentación de una API y el comportamiento
+del servidor no coinciden, estos documentos deciden quién tiene razón.
 
-| Título | Autor | Enlace | Descripción |
-|--------|-------|--------|-------------|
-| MIME Types Reference | MDN | [Link](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types) | Lista completa de MIME types |
-| Data Transfer over HTTP | RFCs | [Link](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URLs) | Formatos de transferencia de datos |
+| RFC | Por qué vale la pena |
+|---|---|
+| [RFC 9110 §14](https://datatracker.ietf.org/doc/html/rfc9110#section-14) | Range requests completo: `Range`, `Content-Range`, `206`, `416` y el `If-Range` que curl no envía por su cuenta |
+| [RFC 7578](https://datatracker.ietf.org/doc/html/rfc7578) | `multipart/form-data` en diez páginas. La sección 4 es literalmente lo que ves con `cat -A` en la práctica 03 |
+| [RFC 6266](https://datatracker.ietf.org/doc/html/rfc6266) | `Content-Disposition` en respuestas HTTP: `filename` y `filename*`, y por qué el cliente tiene que limpiar el nombre que le mandan |
+| [RFC 9112 §7.1](https://datatracker.ietf.org/doc/html/rfc9112#section-7.1) | El formato de `Transfer-Encoding: chunked`, que viste con `-T -` |
+| [RFC 4648](https://datatracker.ietf.org/doc/html/rfc4648) | Base64 y base64url. Explica el 33 % de la teoría 08 y el `tr '_-' '/+'` de la práctica 04 |
 
 ---
 
-> 💡 **Nota**: Todos los recursos listados son gratuitos y legales.
+| Anterior | Siguiente |
+|---|---|
+| [Recursos de la semana](../README.md) | [Videografía](../videografia/README.md) |

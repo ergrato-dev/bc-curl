@@ -1,0 +1,48 @@
+<svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 440" font-family="Arial, Helvetica, sans-serif">
+  <title>Reanudacion con -C -: curl mide el archivo local, pide Range desde ese byte, y las tres respuestas posibles 206, 200 y 416</title>
+  <rect width="800" height="440" fill="#0d1117"/>
+
+  <text x="400" y="32" text-anchor="middle" fill="#f0f6fc" font-size="22" font-weight="bold">Reanudar — pedir solo lo que falta</text>
+  <text x="400" y="52" text-anchor="middle" fill="#8b949e" font-size="12">-C - mide el archivo de salida y pide desde ese byte</text>
+
+  <!-- Barra del archivo -->
+  <text x="20" y="88" fill="#8b949e" font-size="11">datos.bin.part (local)</text>
+  <rect x="20" y="96" width="380" height="32" rx="4" fill="#f0883e" opacity="0.85"/>
+  <rect x="400" y="96" width="380" height="32" rx="4" fill="#161b22" stroke="#30363d" stroke-width="1.5" stroke-dasharray="5,4"/>
+  <text x="210" y="117" text-anchor="middle" fill="#0d1117" font-size="12" font-weight="bold">bytes 0 – 499 (ya los tienes)</text>
+  <text x="590" y="117" text-anchor="middle" fill="#8b949e" font-size="12">bytes 500 – 999 (faltan)</text>
+
+  <!-- Peticion y respuesta -->
+  <rect x="20" y="148" width="370" height="60" rx="8" fill="#161b22" stroke="#f0883e" stroke-width="1.5"/>
+  <text x="40" y="172" fill="#f0883e" font-size="12" font-weight="bold">curl envía</text>
+  <text x="40" y="194" fill="#f0f6fc" font-family="'Courier New', monospace" font-size="13">Range: bytes=500-</text>
+
+  <line x1="396" y1="178" x2="404" y2="178" stroke="#30363d" stroke-width="2"/>
+
+  <rect x="410" y="148" width="370" height="60" rx="8" fill="#161b22" stroke="#79c0ff" stroke-width="1.5"/>
+  <text x="430" y="172" fill="#79c0ff" font-size="12" font-weight="bold">el servidor responde</text>
+  <text x="430" y="194" fill="#f0f6fc" font-family="'Courier New', monospace" font-size="12">Content-Range: bytes 500-999/1000</text>
+
+  <line x1="20" y1="228" x2="780" y2="228" stroke="#30363d" stroke-width="1"/>
+
+  <!-- Tres respuestas -->
+  <rect x="20" y="246" width="240" height="140" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="1.5"/>
+  <text x="140" y="274" text-anchor="middle" fill="#3fb950" font-size="20" font-weight="bold">206</text>
+  <text x="140" y="300" text-anchor="middle" fill="#f0f6fc" font-size="12">Manda lo que falta</text>
+  <text x="140" y="326" text-anchor="middle" fill="#8b949e" font-size="11">curl lo añade al final</text>
+  <text x="140" y="364" text-anchor="middle" fill="#3fb950" font-family="'Courier New', monospace" font-size="12">sale con 0</text>
+
+  <rect x="280" y="246" width="240" height="140" rx="8" fill="#161b22" stroke="#f85149" stroke-width="1.5"/>
+  <text x="400" y="274" text-anchor="middle" fill="#f85149" font-size="20" font-weight="bold">200</text>
+  <text x="400" y="300" text-anchor="middle" fill="#f0f6fc" font-size="12">Ignoró el rango: manda todo</text>
+  <text x="400" y="326" text-anchor="middle" fill="#8b949e" font-size="11">añadirlo duplicaría bytes</text>
+  <text x="400" y="364" text-anchor="middle" fill="#f85149" font-family="'Courier New', monospace" font-size="12">curl 7.81 para: código 33</text>
+
+  <rect x="540" y="246" width="240" height="140" rx="8" fill="#161b22" stroke="#e3b341" stroke-width="1.5"/>
+  <text x="660" y="274" text-anchor="middle" fill="#e3b341" font-size="20" font-weight="bold">416</text>
+  <text x="660" y="300" text-anchor="middle" fill="#f0f6fc" font-size="12">No falta nada</text>
+  <text x="660" y="326" text-anchor="middle" fill="#8b949e" font-size="11">el archivo ya estaba completo</text>
+  <text x="660" y="364" text-anchor="middle" fill="#e3b341" font-family="'Courier New', monospace" font-size="12">0, o 22 con --fail</text>
+
+  <text x="400" y="420" text-anchor="middle" fill="#d2a8ff" font-size="12">Patrón .part: descargar a datos.bin.part y solo con éxito → mv datos.bin.part datos.bin</text>
+</svg>

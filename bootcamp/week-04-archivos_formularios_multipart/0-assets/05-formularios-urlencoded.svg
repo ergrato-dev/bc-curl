@@ -1,0 +1,33 @@
+<svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" font-family="Arial, Helvetica, sans-serif">
+  <title>El mismo valor enviado con -d, que lo manda tal cual y rompe el formulario, y con --data-urlencode, que lo codifica y llega intacto</title>
+  <rect width="800" height="400" fill="#0d1117"/>
+
+  <text x="400" y="32" text-anchor="middle" fill="#f0f6fc" font-size="22" font-weight="bold">Urlencoded — tres caracteres que lo rompen</text>
+  <text x="400" y="52" text-anchor="middle" fill="#8b949e" font-size="12">&amp; separa campos · + es un espacio · % empieza un escape</text>
+
+  <rect x="20" y="76" width="760" height="50" rx="8" fill="#161b22" stroke="#30363d" stroke-width="1.5"/>
+  <text x="40" y="98" fill="#8b949e" font-size="11">lo que quieres mandar</text>
+  <text x="40" y="117" fill="#f0f6fc" font-family="'Courier New', monospace" font-size="14">nota = 50% &amp; más</text>
+
+  <!-- Con -d -->
+  <rect x="20" y="146" width="370" height="200" rx="8" fill="#161b22" stroke="#f85149" stroke-width="1.5"/>
+  <text x="40" y="172" fill="#f85149" font-size="14" font-weight="bold">✗ -d 'nota=50% &amp; más'</text>
+  <text x="40" y="196" fill="#8b949e" font-size="11">curl lo manda tal cual:</text>
+  <text x="40" y="216" fill="#f0f6fc" font-family="'Courier New', monospace" font-size="12">nota=50% &amp; más</text>
+  <text x="40" y="246" fill="#8b949e" font-size="11">el servidor lee:</text>
+  <text x="40" y="266" fill="#f85149" font-family="'Courier New', monospace" font-size="12">"50% " no es un escape válido</text>
+  <text x="40" y="296" fill="#f85149" font-size="20" font-weight="bold">400</text>
+  <text x="90" y="296" fill="#f0f6fc" font-size="11">y se pierden todos los campos,</text>
+  <text x="90" y="312" fill="#f0f6fc" font-size="11">no solo este</text>
+
+  <!-- Con data-urlencode -->
+  <rect x="410" y="146" width="370" height="200" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="1.5"/>
+  <text x="430" y="172" fill="#3fb950" font-size="14" font-weight="bold">✓ --data-urlencode 'nota=50% &amp; más'</text>
+  <text x="430" y="196" fill="#8b949e" font-size="11">curl codifica el valor:</text>
+  <text x="430" y="216" fill="#f0f6fc" font-family="'Courier New', monospace" font-size="12">nota=50%25+%26+m%C3%A1s</text>
+  <text x="430" y="246" fill="#8b949e" font-size="11">% → %25 · espacio → + · &amp; → %26 · á → %C3%A1</text>
+  <text x="430" y="276" fill="#8b949e" font-size="11">el servidor reconstruye:</text>
+  <text x="430" y="296" fill="#3fb950" font-family="'Courier New', monospace" font-size="13">nota = "50% &amp; más"</text>
+
+  <text x="400" y="378" text-anchor="middle" fill="#d2a8ff" font-size="12">-d @archivo quita los saltos de línea · --data-binary @archivo los conserva · el nombre nunca se codifica</text>
+</svg>

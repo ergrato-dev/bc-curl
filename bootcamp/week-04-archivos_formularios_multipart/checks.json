@@ -1,0 +1,132 @@
+{
+  "semana": "04",
+  "titulo": "Archivos, formularios y multipart",
+  "checks": [
+    {
+      "id": "laboratorio-arriba",
+      "descripcion": "El laboratorio sirve rangos de bytes en /range",
+      "cmd": "curl -sf -o /dev/null --max-time 5 -r 0-9 -w '%{http_code}' {lab}/range/100",
+      "assert": "stdout~^206$",
+      "pista": "ejecuta ./scripts/start.sh antes de nada"
+    },
+    {
+      "id": "toolkit-ejecutable",
+      "descripcion": "api-toolkit.sh existe, es ejecutable y arranca con set -euo pipefail",
+      "cmd": "test -x {semana}/3-proyecto/starter/api-toolkit.sh && grep -q 'set -euo pipefail' {semana}/3-proyecto/starter/api-toolkit.sh",
+      "assert": "exit0",
+      "pista": "3-proyecto/README.md, como entregarlo"
+    },
+    {
+      "id": "toolkit-sin-todos",
+      "descripcion": "No quedan marcadores TODO sin resolver en el script",
+      "cmd": "grep -cE '^[[:space:]]*#[[:space:]]*TODO' {semana}/3-proyecto/starter/api-toolkit.sh",
+      "assert": "stdout~^0$",
+      "pista": "3-proyecto/README.md: cada TODO numerado es un hueco que tienes que rellenar"
+    },
+    {
+      "id": "toolkit-sigue-autenticando",
+      "descripcion": "La capa 3 sigue funcionando: con AUTH_MODE=bearer el get autentica",
+      "cmd": "BASE_URL={lab} AUTH_MODE=bearer API_TOKEN=token-de-laboratorio bash {semana}/3-proyecto/starter/api-toolkit.sh get /bearer 2>/dev/null",
+      "assert": "stdout~\"authenticated\": ?true",
+      "pista": "el starter trae la capa 3 resuelta: si falla, has roto construir_config o ejecutar al anadir la capa 4"
+    },
+    {
+      "id": "toolkit-download-guarda",
+      "descripcion": "download guarda el archivo entero en el destino indicado",
+      "cmd": "d=$(mktemp -d) && BASE_URL={lab} bash {semana}/3-proyecto/starter/api-toolkit.sh download /range/1000 \"$d/f.bin\" >/dev/null 2>&1; wc -c < \"$d/f.bin\" | tr -d ' '; rm -rf \"$d\"",
+      "assert": "stdout~^1000$",
+      "pista": "2-practicas/01-descargar-y-reanudar.md, paso 2"
+    },
+    {
+      "id": "toolkit-download-404-sale-1",
+      "descripcion": "Un download que recibe un 404 sale con 1",
+      "cmd": "d=$(mktemp -d) && BASE_URL={lab} bash {semana}/3-proyecto/starter/api-toolkit.sh download /status/404 \"$d/f.bin\" >/dev/null 2>&1; c=$?; rm -rf \"$d\"; exit $c",
+      "assert": "exit=1",
+      "pista": "1-teoria/01-descargar-un-archivo.md, seccion 4"
+    },
+    {
+      "id": "toolkit-download-sin-pagina-de-error",
+      "descripcion": "Un download fallido no deja ningun archivo en el destino",
+      "cmd": "d=$(mktemp -d) && BASE_URL={lab} bash {semana}/3-proyecto/starter/api-toolkit.sh download /status/404 \"$d/f.bin\" >/dev/null 2>&1; ls -A \"$d\" | wc -l | tr -d ' '; rm -rf \"$d\"",
+      "assert": "stdout~^0$",
+      "pista": "2-practicas/01-descargar-y-reanudar.md, paso 3: la pagina de error guardada como si fuera el archivo"
+    },
+    {
+      "id": "toolkit-download-usa-parte",
+      "descripcion": "Mientras descarga, el archivo se escribe en DESTINO.part y no en DESTINO",
+      "cmd": "d=$(mktemp -d); BASE_URL={lab} bash {semana}/3-proyecto/starter/api-toolkit.sh download '/drip?numbytes=10&duration=2&delay=0' \"$d/f.bin\" >/dev/null 2>&1 & sleep 1; ls \"$d\"; wait; rm -rf \"$d\"",
+      "assert": "stdout~^f[.]bin[.]part$",
+      "pista": "1-teoria/02-rangos-y-descargas-reanudables.md, seccion 3"
+    },
+    {
+      "id": "toolkit-download-reanuda",
+      "descripcion": "Con --resume continua el DESTINO.part existente en vez de empezar de cero",
+      "cmd": "d=$(mktemp -d) && printf 'X%.0s' $(seq 500) > \"$d/f.bin.part\" && BASE_URL={lab} bash {semana}/3-proyecto/starter/api-toolkit.sh --resume download /range/1000 \"$d/f.bin\" >/dev/null 2>&1; echo \"$(head -c 1 \"$d/f.bin\") $(wc -c < \"$d/f.bin\" | tr -d ' ')\"; rm -rf \"$d\"",
+      "assert": "stdout~^X 1000$",
+      "pista": "2-practicas/01-descargar-y-reanudar.md, paso 6"
+    },
+    {
+      "id": "toolkit-download-ya-completo",
+      "descripcion": "--resume sobre una descarga ya completa sale con 0 y deja el archivo en su sitio",
+      "cmd": "d=$(mktemp -d) && curl -s {lab}/range/1000 > \"$d/f.bin.part\" && BASE_URL={lab} bash {semana}/3-proyecto/starter/api-toolkit.sh --resume download /range/1000 \"$d/f.bin\" >/dev/null 2>&1; c=$?; test -f \"$d/f.bin\" || c=99; rm -rf \"$d\"; exit $c",
+      "assert": "exit0",
+      "pista": "1-teoria/02-rangos-y-descargas-reanudables.md, seccion 4: el 416"
+    },
+    {
+      "id": "toolkit-download-sha256-correcto",
+      "descripcion": "Con --sha256 y el hash correcto, download sale con 0",
+      "cmd": "d=$(mktemp -d) && BASE_URL={lab} bash {semana}/3-proyecto/starter/api-toolkit.sh --sha256 2ac123dcd759eebabfa1b17c0332b88b3815ef3f95fbfcceb5fac07e233235bd download /range/100 \"$d/f.bin\" >/dev/null 2>&1; c=$?; rm -rf \"$d\"; exit $c",
+      "assert": "exit0",
+      "pista": "2-practicas/02-verificar-y-limitar.md, paso 3"
+    },
+    {
+      "id": "toolkit-download-sha256-incorrecto",
+      "descripcion": "Con un --sha256 que no coincide, download falla y no deja el archivo",
+      "cmd": "d=$(mktemp -d) && BASE_URL={lab} bash {semana}/3-proyecto/starter/api-toolkit.sh --sha256 0000000000000000000000000000000000000000000000000000000000000000 download /range/100 \"$d/f.bin\" >/dev/null 2>&1; c=$?; n=$(ls -A \"$d\" | wc -l); rm -rf \"$d\"; [ \"$c\" -ne 0 ] && [ \"$n\" -eq 0 ]",
+      "assert": "exit0",
+      "pista": "1-teoria/03-verificar-lo-descargado.md, seccion 3"
+    },
+    {
+      "id": "toolkit-upload-multipart",
+      "descripcion": "upload envia el archivo como multipart/form-data",
+      "cmd": "f=$(mktemp) && echo hola > \"$f\" && BASE_URL={lab} bash {semana}/3-proyecto/starter/api-toolkit.sh upload /post \"$f\" 2>/dev/null; rm -f \"$f\"",
+      "assert": "stdout~multipart/form-data; boundary=",
+      "pista": "2-practicas/03-formularios-y-multipart.md, paso 5"
+    },
+    {
+      "id": "toolkit-upload-campo",
+      "descripcion": "El archivo viaja en el campo que dice UPLOAD_FIELD",
+      "cmd": "f=$(mktemp) && echo hola > \"$f\" && BASE_URL={lab} UPLOAD_FIELD=adjunto bash {semana}/3-proyecto/starter/api-toolkit.sh upload /post \"$f\" 2>/dev/null | jq -r '.files | keys[]'; rm -f \"$f\"",
+      "assert": "stdout~^adjunto$",
+      "pista": "1-teoria/06-multipart-por-dentro.md, seccion 2"
+    },
+    {
+      "id": "toolkit-upload-inexistente",
+      "descripcion": "upload de un archivo que no existe sale con 1 sin llegar a llamar a curl",
+      "cmd": "BASE_URL={lab} bash {semana}/3-proyecto/starter/api-toolkit.sh upload /post /no/existe.txt 2>/dev/null",
+      "assert": "exit=1",
+      "pista": "3-proyecto/README.md, requisito 12: curl saldria con 26, que nadie sabe leer"
+    },
+    {
+      "id": "toolkit-no-fija-content-type-multipart",
+      "descripcion": "El script no escribe a mano el Content-Type multipart: el boundary lo pone curl",
+      "cmd": "grep -niE 'Content-Type:[[:space:]]*multipart' {semana}/3-proyecto/starter/api-toolkit.sh",
+      "assert": "exit!=0",
+      "pista": "1-teoria/06-multipart-por-dentro.md, antipatrones"
+    },
+    {
+      "id": "toolkit-sin-insecure",
+      "descripcion": "El script no desactiva la verificacion del certificado con -k",
+      "cmd": "grep -nE '(^|[[:space:]])(-k|--insecure)([[:space:]]|$)' {semana}/3-proyecto/starter/api-toolkit.sh",
+      "assert": "exit!=0",
+      "pista": "Semana 03, 1-teoria/02-basic-auth.md, antipatrones"
+    },
+    {
+      "id": "toolkit-shellcheck",
+      "descripcion": "El script pasa shellcheck sin avisos",
+      "cmd": "shellcheck -S warning {semana}/3-proyecto/starter/api-toolkit.sh",
+      "assert": "exit0",
+      "pista": "3-proyecto/README.md, criterios de calidad"
+    }
+  ]
+}

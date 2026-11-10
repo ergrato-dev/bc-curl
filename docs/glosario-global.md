@@ -24,6 +24,11 @@ Este archivo es **acumulativo**: cada semana añade sus términos al cerrarse.
 **Antipatrón** — Solución que funciona hoy y crea un problema mayor mañana. El
 arquetipo del bootcamp es `-k`. _(S01)_
 
+**`Accept-Ranges`** — Header con el que el servidor anuncia que acepta rangos. Es un anuncio, no una garantía. _(S04)_
+
+## B
+**Boundary** — Cadena aleatoria que separa las partes de un cuerpo multipart. La genera curl; no se escribe a mano. _(S04)_
+
 ## C
 
 **Cliente** (client) — Quien inicia la comunicación HTTP. En este bootcamp,
@@ -46,6 +51,15 @@ línea vacía. _(S01)_
 
 **curl** — Herramienta de línea de comandos para transferir datos con URLs.
 _(S01)_
+
+**Chunked** (Transfer-Encoding: chunked) — Cuerpo enviado en trozos sin tamaño previo. Lo usa `-T -`. _(S04)_
+
+**`Content-Disposition`** — Header que propone un nombre de archivo en una respuesta, o da el `name` de una parte multipart. _(S04)_
+
+**`Content-Range`** — Header de un `206` que dice qué bytes lleva y de qué total. _(S04)_
+
+## D
+**`--data-urlencode`** — Codifica el valor de un campo de formulario antes de enviarlo. _(S04)_
 
 ## F
 
@@ -78,6 +92,11 @@ con `-L`. _(S01)_
 
 **Método** (method) — El verbo de la petición: `GET`, `POST`, `HEAD`… _(S01)_
 
+**Multipart** (`multipart/form-data`) — Cuerpo dividido en partes con cabeceras propias y contenido sin codificar. Lo que manda `-F`. _(S04)_
+
+## O
+**`--output-dir`** — Directorio de destino de `-O`. `--output-dir` desde 7.73. _(S04)_
+
 ## P
 
 **Path** — La ruta al recurso dentro del servidor. _(S01)_
@@ -91,6 +110,10 @@ cuerpo opcional. _(S01)_
 **Puerto** (port) — El número tras los dos puntos en la URL. Por defecto, el del
 esquema. _(S01)_
 
+**`.part`** — Archivo de una descarga en curso; se renombra al destino solo cuando está completo y verificado. _(S04)_
+
+**Petición de rango** (range request) — Petición que pide solo una parte de un recurso con `Range`. _(S04)_
+
 ## Q
 
 **Query string** — Lo que sigue al `?` en la URL, en pares `clave=valor`. Queda
@@ -103,12 +126,16 @@ en los logs del servidor: nunca una credencial. _(S01)_
 **Respuesta** (response) — Mensaje del servidor: status line, headers y cuerpo
 opcional. _(S01)_
 
+**`--remove-on-error`** — Borra el archivo de salida si la transferencia falla. `--remove-on-error` desde 7.83. _(S04)_
+
 ## S
 
 **Servidor** (server) — Quien recibe la petición y responde. _(S01)_
 
 **Sin estado** (stateless) — El servidor no recuerda la petición anterior.
 _(S01)_
+
+**SHA-256** — Hash de 64 caracteres hexadecimales; un bit distinto lo cambia entero. Lo que cierra la verificación de una descarga. _(S04)_
 
 ## T
 
@@ -118,6 +145,8 @@ _(S01)_
 ## U
 
 **URL** — `esquema://usuario@host:puerto/path?query#fragmento`. _(S01)_
+
+**Urlencoded** (`application/x-www-form-urlencoded`) — Formato de formulario con `&`, `+` y `%XX`. Lo que manda `-d`. _(S04)_
 
 ## W
 

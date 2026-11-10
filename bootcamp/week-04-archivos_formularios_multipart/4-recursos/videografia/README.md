@@ -1,49 +1,27 @@
-# 🎥 Videografía - Semana 4
+# Videografía — Semana 04
 
-## Videos Recomendados
+_Comprobado el 10 de noviembre de 2026: los dos enlaces resuelven y el título
+coincide con el que aparece aquí. Ambos están en la
+[página oficial de vídeos de curl](https://curl.se/docs/videos/)._
 
-### Descargas con curl
+Pocos y elegidos. Un vídeo solo entra aquí si enseña algo que en texto se
+entiende peor.
 
-| Título | Canal | Duración | Enlace | Idioma |
-|--------|-------|----------|--------|--------|
-| curl Download Files Tutorial | ProgrammingKnowledge | 12min | [YouTube](https://www.youtube.com/watch?v=LBQZQqljM_Y) | 🇬🇧 EN |
-| How to Download Files with curl | Traversy Media | 10min | [YouTube](https://www.youtube.com/watch?v=WxZvFEld0gE) | 🇬🇧 EN |
-| curl: Descargar archivos | Pelado Nerd | 8min | [YouTube](https://www.youtube.com/watch?v=BsSm4pW7c2o) | 🇪🇸 ES |
+| Recurso | Por qué vale la pena |
+|---|---|
+| [using curl better — with curl creator Daniel Stenberg](https://www.youtube.com/watch?v=I6id1Y0YuNk) — freeCodeCamp Talks | El autor de curl repasando el uso de la herramienta de línea de comandos, incluidas descargas, subidas y formularios. Ver a quien la escribió elegir un flag explica más que la lista de flags |
+| [curl from start to end — with Daniel Stenberg](https://www.youtube.com/watch?v=WmMa1GVPWZ0) — Daniel Stenberg | Qué pasa por dentro de curl desde que lee la línea de comandos hasta que escribe el último byte. Útil para entender por qué `-C -` mide el archivo antes de conectar y por qué `-T` lee en streaming |
 
-### Formularios y Uploads
+> [!TIP]
+> Si tienes poco tiempo, el primero. El segundo es para cuando algo de esta
+> semana te haya sorprendido y quieras saber por qué curl lo hace así.
 
-| Título | Canal | Duración | Enlace | Idioma |
-|--------|-------|----------|--------|--------|
-| HTTP File Upload Explained | Web Dev Simplified | 15min | [YouTube](https://www.youtube.com/watch?v=4G9U6Pj1Kw0) | 🇬🇧 EN |
-| Multipart Form Data | Academind | 12min | [YouTube](https://www.youtube.com/watch?v=KDKAnNmsKvQ) | 🇬🇧 EN |
-| How to POST with curl | Programming with Mosh | 10min | [YouTube](https://www.youtube.com/watch?v=cQv_LGmJQpI) | 🇬🇧 EN |
-| Subir archivos con curl | Fazt Code | 10min | [YouTube](https://www.youtube.com/watch?v=x6k60DphNqE) | 🇪🇸 ES |
-
-### MIME Types y Transferencia
-
-| Título | Canal | Duración | Enlace | Idioma |
-|--------|-------|----------|--------|--------|
-| What are MIME Types? | Fireship | 4min | [YouTube](https://www.youtube.com/watch?v=YzSxpHmw0eU) | 🇬🇧 EN |
-| Content-Type explained | Programming with Mosh | 8min | [YouTube](https://www.youtube.com/watch?v=D3JhYXGolcg) | 🇬🇧 EN |
-| HTTP Content Negotiation | WebConcepts | 6min | [YouTube](https://www.youtube.com/watch?v=5LKECVaaxJI) | 🇬🇧 EN |
-
-### curl Avanzado
-
-| Título | Canal | Duración | Enlace | Idioma |
-|--------|-------|----------|--------|--------|
-| curl timeouts and retries | Academind | 10min | [YouTube](https://www.youtube.com/watch?v=IKaISyq5tGc) | 🇬🇧 EN |
-| curl Progress Bar and Limits | ProgrammingKnowledge | 8min | [YouTube](https://www.youtube.com/watch?v=NSWm0oIdI8s) | 🇬🇧 EN |
+Para lo demás —rangos, multipart, base64— el laboratorio rinde más que un
+vídeo: ver tu propio cuerpo multipart con `cat -A` en la práctica 03 no se
+olvida.
 
 ---
 
-## 📺 Canales Recomendados
-
-- **Pelado Nerd** - DevOps y terminal en español
-- **Fazt Code** - Tutoriales prácticos en español
-- **Traversy Media** - Desarrollo web y herramientas
-- **Academind** - Tutoriales detallados
-- **Web Dev Simplified** - Conceptos claros
-
----
-
-> 💡 **Tip**: Activa subtítulos en español si el video está en inglés.
+| Anterior | Siguiente |
+|---|---|
+| [Ebooks gratuitos](../ebooks-free/README.md) | [Webgrafía](../webgrafia/README.md) |
