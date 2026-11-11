@@ -1,0 +1,39 @@
+<svg viewBox="0 0 800 420" role="img" xmlns="http://www.w3.org/2000/svg" font-family="Inter, system-ui, -apple-system, sans-serif">
+  <title>Una traza -v con sus cuatro tipos de línea: asterisco para lo que hace curl, mayor que para lo que envía, menor que para lo que recibe y llaves para bloques de datos; a la derecha, las fases de la petición y el fallo que corta la traza en cada una, con su código</title>
+  <rect width="800" height="420" fill="#0d1117"/>
+  <text x="400" y="34" text-anchor="middle" fill="#f0f6fc" font-size="22" font-weight="bold">Leer una traza -v</text>
+  <rect x="30" y="56" width="440" height="340" rx="8" fill="#161b22" stroke="#30363d"/>
+  <g font-size="13">
+    <text x="46" y="84" fill="#8b949e">*   Trying 127.0.0.1:8080...</text>
+    <text x="46" y="106" fill="#8b949e">* Connected to localhost port 8080</text>
+    <text x="46" y="134" fill="#f0883e">&gt; GET /get HTTP/1.1</text>
+    <text x="46" y="156" fill="#f0883e">&gt; Host: localhost:8080</text>
+    <text x="46" y="178" fill="#f85149">&gt; Authorization: Bearer ...   ← tachar</text>
+    <text x="46" y="200" fill="#f0883e">&gt;</text>
+    <text x="46" y="228" fill="#58a6ff">&lt; HTTP/1.1 200 OK</text>
+    <text x="46" y="250" fill="#58a6ff">&lt; Content-Type: application/json</text>
+    <text x="46" y="272" fill="#f85149">&lt; Set-Cookie: sesion=...        ← tachar</text>
+    <text x="46" y="294" fill="#58a6ff">&lt;</text>
+    <text x="46" y="322" fill="#d2a8ff">{ [245 bytes data]</text>
+    <text x="46" y="350" fill="#8b949e">* Connection #0 left intact</text>
+  </g>
+  <g font-size="13">
+    <text x="46" y="384" fill="#8b949e">*</text><text x="60" y="384" fill="#8b949e">curl</text>
+    <text x="110" y="384" fill="#f0883e">&gt; envías</text>
+    <text x="190" y="384" fill="#58a6ff">&lt; recibes</text>
+    <text x="280" y="384" fill="#d2a8ff">{ } datos</text>
+  </g>
+  <text x="500" y="84" fill="#f0f6fc" font-size="15" font-weight="bold">Dónde se corta</text>
+  <g font-size="13">
+    <rect x="500" y="98" width="270" height="44" rx="6" fill="#161b22" stroke="#f85149"/>
+    <text x="514" y="118" fill="#f0f6fc">DNS — sin * Connected</text><text x="514" y="134" fill="#8b949e">* Could not resolve host · 6</text>
+    <rect x="500" y="150" width="270" height="44" rx="6" fill="#161b22" stroke="#f85149"/>
+    <text x="514" y="170" fill="#f0f6fc">TCP — sin * Connected</text><text x="514" y="186" fill="#8b949e">* connect to ... failed · 7</text>
+    <rect x="500" y="202" width="270" height="44" rx="6" fill="#161b22" stroke="#f85149"/>
+    <text x="514" y="222" fill="#f0f6fc">TLS — Connected, sin &gt;</text><text x="514" y="238" fill="#8b949e">* SSL certificate problem · 60</text>
+    <rect x="500" y="254" width="270" height="44" rx="6" fill="#161b22" stroke="#e3b341"/>
+    <text x="514" y="274" fill="#f0f6fc">Redirects — bloques repetidos</text><text x="514" y="290" fill="#8b949e">* Maximum (N) redirects · 47</text>
+    <rect x="500" y="306" width="270" height="44" rx="6" fill="#161b22" stroke="#3fb950"/>
+    <text x="514" y="326" fill="#f0f6fc">HTTP — traza completa</text><text x="514" y="342" fill="#8b949e">&lt; HTTP/1.1 401 · el fallo es de la API</text>
+  </g>
+</svg>

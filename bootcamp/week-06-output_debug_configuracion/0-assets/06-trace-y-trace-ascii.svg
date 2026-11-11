@@ -1,0 +1,19 @@
+<svg viewBox="0 0 800 380" role="img" xmlns="http://www.w3.org/2000/svg" font-family="Inter, system-ui, -apple-system, sans-serif">
+  <title>Las tres trazas de curl de menos a más detalle: -v muestra headers y decisiones y resume los datos en su tamaño; --trace-ascii muestra además los datos en texto con su desplazamiento; --trace añade el volcado hexadecimal; las tres admiten --trace-time</title>
+  <rect width="800" height="380" fill="#0d1117"/>
+  <text x="400" y="34" text-anchor="middle" fill="#f0f6fc" font-size="22" font-weight="bold">Tres niveles de traza</text>
+  <g font-size="14">
+    <rect x="40" y="60" width="720" height="80" rx="8" fill="#161b22" stroke="#58a6ff"/>
+    <text x="56" y="86" fill="#58a6ff" font-weight="bold">-v</text><text x="140" y="86" fill="#8b949e">stderr · headers y decisiones de curl</text>
+    <text x="56" y="116" fill="#f0f6fc">&gt; POST /post HTTP/1.1</text><text x="330" y="116" fill="#d2a8ff">} [7 bytes data]</text><text x="500" y="116" fill="#8b949e">← no ves qué 7 bytes</text>
+    <rect x="40" y="152" width="720" height="90" rx="8" fill="#161b22" stroke="#f0883e"/>
+    <text x="56" y="178" fill="#f0883e" font-weight="bold">--trace-ascii F</text><text x="200" y="178" fill="#8b949e">a un archivo, o a stdout con - · + los datos en texto</text>
+    <text x="56" y="204" fill="#f0f6fc">=&gt; Send data, 7 bytes (0x7)</text>
+    <text x="56" y="228" fill="#f0f6fc">0000: {"a":1}</text><text x="330" y="228" fill="#8b949e">no imprimibles como "." — un \r se confunde</text>
+    <rect x="40" y="254" width="720" height="90" rx="8" fill="#161b22" stroke="#f85149"/>
+    <text x="56" y="280" fill="#f85149" font-weight="bold">--trace F</text><text x="200" y="280" fill="#8b949e">+ volcado hexadecimal: cada byte exacto</text>
+    <text x="56" y="306" fill="#f0f6fc">0000: 7b 22 61 22 3a 31 7d 0d 0a     {"a":1}..</text>
+    <text x="56" y="330" fill="#8b949e">0d 0a = CR LF · ef bb bf = BOM · bytes antes de descomprimir y de unir chunks</text>
+  </g>
+  <text x="40" y="368" fill="#e3b341" font-size="13">--trace-time pone hora a cada línea · la traza completa lleva el cuerpo: no se comparte</text>
+</svg>

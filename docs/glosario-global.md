@@ -66,10 +66,18 @@ _(S01)_
 
 **Cookie de sesión** (session cookie) — Cookie sin `Expires` ni `Max-Age`; en el tarro, caducidad `0`. `-j` la descarta al leer. _(S05)_
 
+**CR LF** — `\r\n`, el final de línea de los headers HTTP/1.1. curl entrega el `\r`: `tr -d '\r'` antes de comparar un valor. _(S06)_
+
+**`.curlrc`** — Configuración que curl lee antes de cada comando: `$CURL_HOME/.curlrc`, luego `$XDG_CONFIG_HOME` (7.73+), luego `~/.curlrc`. Un script la ignora con `-q`. _(S06)_
+
 ## D
 **`--data-urlencode`** — Codifica el valor de un campo de formulario antes de enviarlo. _(S04)_
 
+**`--disable`** (`-q`) — No leer ningún `.curlrc`. Solo funciona como **primer** argumento; en otra posición se ignora sin avisar. _(S06)_
+
 ## F
+
+**Fase** (phase) — Tramo de una petición: dns, tcp, tls, servidor, transferencia. Se calcula restando dos instantes `time_*`; sin TLS, `time_appconnect` vale 0. _(S06)_
 
 **Feature** — Capacidad compilada dentro del binario (`HTTP2`, `brotli`). Se
 listan en `Features:` de `curl --version`. _(S01)_
@@ -92,6 +100,10 @@ mayúsculas; el valor sí. _(S01)_
 
 **Idempotente** (idempotent) — Que repetirlo da el mismo resultado: `GET`, `PUT`, `DELETE`. Decide qué se puede reintentar. _(S05)_
 
+## J
+
+**JSON Lines** — Un objeto JSON por línea. Se añade con `>>` y se lee con `jq -s`. El formato de las métricas del toolkit. _(S06)_
+
 ## L
 
 **libcurl** — La biblioteca que hace el trabajo; `curl` es la capa de línea de
@@ -109,6 +121,8 @@ con `-L`. _(S01)_
 **mTLS** (mutual TLS) — TLS en el que también el cliente presenta certificado, con `--cert` y `--key`. Sin él: código 56. _(S05)_
 
 **Motor de cookies** (cookie engine) — Lo que guarda y devuelve cookies dentro de un comando. Apagado hasta usar `-b` o `-c`. _(S05)_
+
+**Medidor de progreso** (progress meter) — Tabla que curl escribe en stderr solo cuando stdout no es una terminal. `--no-progress-meter` desde 7.67. _(S06)_
 
 ## O
 **`--output-dir`** — Directorio de destino de `-O`. `--output-dir` desde 7.73. _(S04)_
@@ -129,6 +143,8 @@ esquema. _(S01)_
 **`.part`** — Archivo de una descarga en curso; se renombra al destino solo cuando está completo y verificado. _(S04)_
 
 **Petición de rango** (range request) — Petición que pide solo una parte de un recurso con `Range`. _(S04)_
+
+**Percentil** (percentile) — p50 (mediana) y p95: el valor por debajo del cual está el 50 % o el 95 % de las medidas. Describen la latencia mejor que la media. _(S06)_
 
 ## Q
 
@@ -159,8 +175,13 @@ _(S01)_
 
 ## T
 
-**Traza** (trace) — La salida de `-v` o `--trace-ascii`. Va por **stderr**.
-_(S01)_
+**Traza** (trace) — La salida de `-v` (por **stderr**) o de `--trace-ascii` (a un
+archivo, o a stdout con `-`). Antes de compartirla se tacha. _(S01, S06)_
+
+**Tachar** (redact) — Sustituir el valor de un header de credencial o sesión por
+`<REDACTADO>` en una traza, dejando el nombre. _(S06)_
+
+**TTFB** (time to first byte) — `time_starttransfer`. Incluye DNS, TCP y TLS; lo del servidor es la diferencia con `time_appconnect`. _(S06)_
 
 **Tarro de cookies** (cookie jar) — Archivo de cookies en formato Netscape que escribe `-c` y lee `-b`. Permisos 600. _(S05)_
 
@@ -172,11 +193,17 @@ _(S01)_
 
 **Urlencoded** (`application/x-www-form-urlencoded`) — Formato de formulario con `&`, `+` y `%XX`. Lo que manda `-d`. _(S04)_
 
+**User-Agent** — Header con el que el cliente se identifica. Un script propio se presenta con el suyo, no con `curl/VERSION`. _(S06)_
+
 ## W
 
 **`--write-out`** (`-w`) — Imprime variables de la transferencia al terminar:
 `%{http_code}`, `%{time_total}`, `%{json}` (7.70+). `%{total_time}` y
-`%{status_code}` no existen. _(S01)_
+`%{status_code}` no existen. Una variable inexistente sale vacía y con código 0. Con `@archivo`, los saltos de línea reales se ignoran. _(S01, S06)_
+
+## X
+
+**`XDG_CONFIG_HOME`** — Segundo sitio donde curl busca su configuración, desde 7.73. 7.81 lee ahí `.curlrc`; 8.17, `curlrc`. _(S06)_
 
 ---
 

@@ -1,0 +1,132 @@
+{
+  "semana": "06",
+  "titulo": "Output, debug y configuración",
+  "checks": [
+    {
+      "id": "laboratorio-arriba",
+      "descripcion": "El laboratorio responde en el puerto 8080",
+      "cmd": "curl -sf -o /dev/null --max-time 5 -w '%{http_code}' {lab}/get",
+      "assert": "stdout~^200$",
+      "pista": "ejecuta ./scripts/start.sh"
+    },
+    {
+      "id": "toolkit-ejecutable",
+      "descripcion": "api-toolkit.sh existe, es ejecutable y arranca con set -euo pipefail",
+      "cmd": "test -x {semana}/3-proyecto/starter/api-toolkit.sh && grep -q 'set -euo pipefail' {semana}/3-proyecto/starter/api-toolkit.sh",
+      "assert": "exit0",
+      "pista": "3-proyecto/README.md, como entregarlo"
+    },
+    {
+      "id": "toolkit-sin-todos",
+      "descripcion": "No queda ningun TODO por resolver",
+      "cmd": "grep -c 'TODO [0-9]' {semana}/3-proyecto/starter/api-toolkit.sh",
+      "assert": "stdout~^0$",
+      "pista": "busca 'TODO' en el script: cada uno es un hueco de la capa 6"
+    },
+    {
+      "id": "toolkit-red-sigue",
+      "descripcion": "La capa 5 sigue funcionando: get valida con API_CACERT y sigue los redirects",
+      "cmd": "BASE_URL={lab_tls} API_CACERT={ca} {semana}/3-proyecto/starter/api-toolkit.sh get /redirect/2",
+      "assert": "stdout~\"url\": \"https://",
+      "pista": "la capa 6 no deberia tocar construir_red salvo para anadir el User-Agent y --verbose"
+    },
+    {
+      "id": "toolkit-ignora-curlrc",
+      "descripcion": "Un ~/.curlrc con include no cambia la salida del toolkit",
+      "cmd": "h=$(mktemp -d); echo include > \"$h/.curlrc\"; CURL_HOME=\"$h\" HOME=\"$h\" {semana}/3-proyecto/starter/api-toolkit.sh get /get | head -1",
+      "assert": "stdout~^[{]$",
+      "pista": "--disable tiene que ser el primer argumento de curl (TODO 1). Practica 03, paso 4"
+    },
+    {
+      "id": "toolkit-user-agent",
+      "descripcion": "El toolkit se presenta al servidor como api-toolkit/VERSION",
+      "cmd": "{semana}/3-proyecto/starter/api-toolkit.sh get /user-agent",
+      "assert": "stdout~\"user-agent\": \"api-toolkit/[0-9]",
+      "pista": "--user-agent en construir_red (TODO 2)"
+    },
+    {
+      "id": "toolkit-timing-fases",
+      "descripcion": "--timing imprime por stderr las seis medidas: dns, tcp, tls, servidor, transferencia y total",
+      "cmd": "{semana}/3-proyecto/starter/api-toolkit.sh --timing get /get 2>&1 >/dev/null",
+      "assert": "stdout~^tiempos: dns=[0-9.]+s tcp=[0-9.]+s tls=[0-9.]+s servidor=[0-9.]+s transferencia=[0-9.]+s total=[0-9.]+s$",
+      "pista": "FORMATO_W (TODO 3), fases (TODO 4) y medir (TODO 5). Practica 02"
+    },
+    {
+      "id": "toolkit-timing-sin-tls",
+      "descripcion": "Sobre http, la fase tls dura cero y no sale negativa",
+      "cmd": "{semana}/3-proyecto/starter/api-toolkit.sh --timing get /get 2>&1 >/dev/null",
+      "assert": "stdout~ tls=0[.]0+s ",
+      "pista": "sin TLS, time_appconnect vale 0: la fase tls termina donde termino la conexion (TODO 4)"
+    },
+    {
+      "id": "toolkit-timing-con-tls",
+      "descripcion": "Sobre https, la fase tls dura mas de cero",
+      "cmd": "BASE_URL={lab_tls} API_CACERT={ca} {semana}/3-proyecto/starter/api-toolkit.sh --timing get /get 2>&1 >/dev/null",
+      "assert": "stdout~ tls=([1-9]|0[.]0*[1-9])",
+      "pista": "la fase tls va de time_connect a time_appconnect (TODO 4)"
+    },
+    {
+      "id": "toolkit-stdout-limpio",
+      "descripcion": "Con --verbose y --timing, stdout sigue siendo solo el cuerpo JSON",
+      "cmd": "{semana}/3-proyecto/starter/api-toolkit.sh --verbose --timing get /get 2>/dev/null | jq -s -r 'if length == 1 then .[0].url else empty end'",
+      "assert": "stdout~^http://",
+      "pista": "la traza y los tiempos van a stderr; el -w no puede dejar nada detras del cuerpo (TODOs 1, 3 y 5)"
+    },
+    {
+      "id": "toolkit-metricas-una-por-peticion",
+      "descripcion": "Con METRICS_FILE, cada peticion anade exactamente una linea JSON",
+      "cmd": "d=$(mktemp -d); for i in 1 2; do METRICS_FILE=\"$d/m.jsonl\" {semana}/3-proyecto/starter/api-toolkit.sh get /get >/dev/null; done; jq -s length \"$d/m.jsonl\"",
+      "assert": "stdout~^2$",
+      "pista": "jq -c y >>, no > (TODO 5). Practica 04"
+    },
+    {
+      "id": "toolkit-metricas-campos",
+      "descripcion": "La linea de metricas lleva el metodo, el endpoint y el codigo HTTP, tambien si es un 4xx",
+      "cmd": "d=$(mktemp -d); METRICS_FILE=\"$d/m.jsonl\" {semana}/3-proyecto/starter/api-toolkit.sh get /status/418 >/dev/null || true; jq -r '[.metodo, .endpoint, (.codigo | tostring)] | join(\" \")' \"$d/m.jsonl\"",
+      "assert": "stdout~^GET /status/418 418$",
+      "pista": "medir se llama antes de salir_por_codigo; el codigo va como numero (TODO 5)"
+    },
+    {
+      "id": "toolkit-metricas-sin-query",
+      "descripcion": "El endpoint de las metricas no incluye la query string",
+      "cmd": "d=$(mktemp -d); METRICS_FILE=\"$d/m.jsonl\" {semana}/3-proyecto/starter/api-toolkit.sh get '/get?api_key=x' >/dev/null; jq -r .endpoint \"$d/m.jsonl\"",
+      "assert": "stdout~^/get$",
+      "pista": "corta el endpoint en el primer ? antes de escribirlo (TODO 5)"
+    },
+    {
+      "id": "toolkit-metricas-fallo-de-red",
+      "descripcion": "Un fallo de red tambien deja su linea de metricas, con codigo 0",
+      "cmd": "d=$(mktemp -d); BASE_URL=http://127.0.0.1:9 METRICS_FILE=\"$d/m.jsonl\" {semana}/3-proyecto/starter/api-toolkit.sh get /get >/dev/null 2>&1 || true; jq -r .codigo \"$d/m.jsonl\"",
+      "assert": "stdout~^0$",
+      "pista": "curl escribe el -w tambien cuando falla, con 000; 000 no es JSON valido (TODO 5)"
+    },
+    {
+      "id": "toolkit-verbose-traza",
+      "descripcion": "--verbose muestra por stderr la peticion que se envia",
+      "cmd": "{semana}/3-proyecto/starter/api-toolkit.sh --verbose get /get 2>&1 >/dev/null",
+      "assert": "stdout~^> GET /get HTTP",
+      "pista": "lanzar_curl tiene que pasar stderr por redactar_traza, no tirarlo (TODO 1). Practica 01"
+    },
+    {
+      "id": "toolkit-verbose-tacha-token",
+      "descripcion": "Con --verbose y AUTH_MODE=bearer, el token sale tachado en la traza",
+      "cmd": "t=$(AUTH_MODE=bearer API_TOKEN=token-de-prueba {semana}/3-proyecto/starter/api-toolkit.sh --verbose get /bearer 2>&1 >/dev/null); grep -q '^> Authorization: <REDACTADO>$' <<<\"$t\" && ! grep -q token-de-prueba <<<\"$t\"",
+      "assert": "exit0",
+      "pista": "redactar_traza (TODO 6). Practica 01, paso 6"
+    },
+    {
+      "id": "toolkit-verbose-tacha-apikey",
+      "descripcion": "Con --verbose y AUTH_MODE=apikey, la clave sale tachada en la traza",
+      "cmd": "t=$(AUTH_MODE=apikey API_KEY=clave-de-prueba {semana}/3-proyecto/starter/api-toolkit.sh --verbose get /headers 2>&1 >/dev/null); grep -q '^> X-API-Key: <REDACTADO>$' <<<\"$t\" && ! grep -q clave-de-prueba <<<\"$t\"",
+      "assert": "exit0",
+      "pista": "el header de la clave se llama como diga API_KEY_HEADER, no siempre Authorization (TODO 6)"
+    },
+    {
+      "id": "toolkit-shellcheck",
+      "descripcion": "shellcheck -S warning no encuentra nada",
+      "cmd": "shellcheck -S warning {semana}/3-proyecto/starter/api-toolkit.sh",
+      "assert": "exit0",
+      "pista": "instala shellcheck y corrige lo que diga"
+    }
+  ]
+}

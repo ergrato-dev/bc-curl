@@ -1,58 +1,41 @@
-# 🔗 Webgrafía - Semana 6
+# Webgrafía — Semana 06
 
-## Documentación Oficial
+_Comprobado el 10 de noviembre de 2026._
 
-| Recurso | URL | Descripción |
-|---------|-----|-------------|
-| **curl Manual: --write-out** | [https://curl.se/docs/manpage.html#-w](https://curl.se/docs/manpage.html#-w) | Todas las variables de -w |
-| **curl Manual: --trace** | [https://curl.se/docs/manpage.html#--trace](https://curl.se/docs/manpage.html#--trace) | Documentación de trace |
-| **curl Manual: Config File** | [https://curl.se/docs/manpage.html#-K](https://curl.se/docs/manpage.html#-K) | Archivos de configuración |
-| **Everything curl: Verbose** | [https://everything.curl.dev/usingcurl/verbose](https://everything.curl.dev/usingcurl/verbose) | Guía completa de debugging |
-| **Everything curl: Write-out** | [https://everything.curl.dev/usingcurl/verbose/writeout](https://everything.curl.dev/usingcurl/verbose/writeout) | Variables de --write-out |
+## Referencia de curl
 
----
+| Recurso | Por qué vale la pena |
+|---|---|
+| [manpage de curl](https://curl.se/docs/manpage.html) | La fuente. Antes de escribir un flag que «suena bien», búscalo aquí |
+| [`-w, --write-out`](https://curl.se/docs/manpage.html#-w) | La lista completa de variables, con la versión en que entró cada una. Imprescindible para no inventar un `%{total_time}` |
+| [`-v, --verbose`](https://curl.se/docs/manpage.html#-v) | Qué enseña y qué no, y cómo se combina con `--trace` |
+| [`--trace-ascii`](https://curl.se/docs/manpage.html#--trace-ascii) | El formato de la traza y por qué `-` es stdout |
+| [`-K, --config`](https://curl.se/docs/manpage.html#-K) | La sintaxis del archivo y el orden exacto en que se busca el `.curlrc` |
+| [`-q, --disable`](https://curl.se/docs/manpage.html#-q) | Una línea que dice "first parameter". Es la razón del TODO 1 |
+| [`-D, --dump-header`](https://curl.se/docs/manpage.html#-D) | Headers a un archivo, también los de cada redirect |
+| [`--libcurl`](https://curl.se/docs/manpage.html#--libcurl) | Del comando al programa en C equivalente |
+| [libcurl — `curl_easy_getinfo`](https://curl.se/libcurl/c/curl_easy_getinfo.html) | El diagrama de los tiempos que hay debajo de cada `time_*` de `-w`, con qué marca exactamente cada instante |
+| [Códigos de salida](https://curl.se/libcurl/c/libcurl-errors.html) | El 6, 7, 22, 28, 47 y 60 que esta semana aparecen en `%{exitcode}` |
+| [Cuándo entró cada opción](https://github.com/curl/curl/blob/master/docs/options-in-versions) | Para saber si tu curl tiene `--trace-ids` o `--variable` sin probarlo |
 
-## Tutoriales y Guías
+## Artículos
 
-| Recurso | URL | Descripción |
-|---------|-----|-------------|
-| curl Cheat Sheet | [https://curl.se/docs/cheatsheet.html](https://curl.se/docs/cheatsheet.html) | Chuleta rápida de comandos |
-| Write-out variables list | [https://everything.curl.dev/usingcurl/verbose/writeout](https://everything.curl.dev/usingcurl/verbose/writeout) | Lista completa de variables -w |
-| Bash Heredoc Guide | [https://linuxize.com/post/bash-heredoc/](https://linuxize.com/post/bash-heredoc/) | Tutorial de heredocs |
-| Exit codes manual | [https://curl.se/docs/manpage.html#EXIT](https://curl.se/docs/manpage.html#EXIT) | Códigos de salida de curl |
-
----
-
-## Artículos Recomendados
-
-| Artículo | URL | Tema |
-|----------|-----|------|
-| Measuring API Performance | [https://blog.logrocket.com/measuring-api-performance-curl/](https://blog.logrocket.com/measuring-api-performance-curl/) | Métricas con curl |
-| curl exit codes explained | [https://everything.curl.dev/usingcurl/returns](https://everything.curl.dev/usingcurl/returns) | Códigos de error |
-| Stderr vs Stdout | [https://www.howtogeek.com/435903/what-are-stdin-stdout-and-stderr-on-linux/](https://www.howtogeek.com/435903/what-are-stdin-stdout-and-stderr-on-linux/) | Redirección de streams |
-
----
+| Recurso | Por qué vale la pena |
+|---|---|
+| [Daniel Stenberg — curl write-out JSON](https://daniel.haxx.se/blog/2020/03/17/curl-write-out-json/) | El anuncio de `%{json}` en 7.70, con el porqué: dejar de partir líneas por espacios |
+| [Daniel Stenberg — Easier header picking with curl](https://daniel.haxx.se/blog/2022/03/24/easier-header-picking-with-curl/) | `%header{}` y `%{header_json}` contados por quien los añadió, con la sintaxis rara de las llaves explicada |
+| [JSON Lines](https://jsonlines.org/) | El formato de `METRICS_FILE`: una línea, un objeto. Dos párrafos que bastan |
+| [Brendan Gregg — The USE Method](https://www.brendangregg.com/usemethod.html) | Utilización, saturación, errores: un método para no mirar métricas al azar cuando algo va lento |
 
 ## Herramientas
 
-| Herramienta | URL | Uso |
-|-------------|-----|-----|
-| **curl** | [https://curl.se/](https://curl.se/) | Cliente HTTP CLI |
-| **jq** | [https://jqlang.github.io/jq/](https://jqlang.github.io/jq/) | Procesar JSON |
-| **awk** | built-in | Procesar texto columnar |
-| **xxd** | built-in | Ver archivos binarios en hex |
-| **tee** | built-in | Redirigir y mostrar al mismo tiempo |
+| Recurso | Por qué vale la pena |
+|---|---|
+| [Manual de jq](https://jqlang.github.io/jq/manual/) | `-c`, `-s`, `--arg`, `--argjson`, `group_by` y `sort`: todo lo que usa la práctica 04 |
+| [Bash Reference Manual — Redirections](https://www.gnu.org/software/bash/manual/html_node/Redirections.html) | Qué hacen exactamente `2>`, `2>&1` y su orden. Para entender por qué zsh se comporta distinto |
 
 ---
 
-## Comunidad
-
-| Recurso | URL | Descripción |
-|---------|-----|-------------|
-| curl Mailing List | [https://curl.se/mail/](https://curl.se/mail/) | Lista de correo oficial |
-| StackOverflow curl | [https://stackoverflow.com/questions/tagged/curl](https://stackoverflow.com/questions/tagged/curl) | Preguntas sobre curl |
-| Bash StackOverflow | [https://stackoverflow.com/questions/tagged/bash](https://stackoverflow.com/questions/tagged/bash) | Preguntas sobre bash |
-
----
-
-> 💡 **Tip**: Guarda estos enlaces en tus favoritos para referencia rápida.
+| Anterior | Siguiente |
+|---|---|
+| [Videografía](../videografia/README.md) | [Glosario](../../5-glosario/README.md) |

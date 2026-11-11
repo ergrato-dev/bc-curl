@@ -81,7 +81,7 @@ Flags globales:
 | 03 | **Credenciales** | Lee el token del entorno o de `~/.bc-curl`. Nunca en la línea de comandos |
 | 04 | **Transferencias** | `download` con reanudación, subida de archivos y multipart |
 | 05 | **Red hostil** | CA propia, mTLS, cookies persistentes, redirects, timeouts y reintentos |
-| 06 | **Observable** | `--verbose`, métricas con `--write-out`, configuración en `.curlrc` |
+| 06 | **Observable** | `--verbose` con credenciales tachadas, `--timing` y métricas JSON con `--write-out`, ignora el `~/.curlrc`, User-Agent propio |
 | 07 | **Robusto** | Falla cuando debe fallar, `fetch-all` con paginación, backoff ante 429 |
 | 08 | **OAuth2** | `auth login/logout/status`, refresco automático del token caducado |
 | 09 | **Rápido** | Peticiones en paralelo, reutilización de conexión, `bench` |

@@ -1,0 +1,32 @@
+<svg viewBox="0 0 800 400" role="img" xmlns="http://www.w3.org/2000/svg" font-family="Inter, system-ui, -apple-system, sans-serif">
+  <title>Los dos flujos de salida de curl: el cuerpo, los headers de -i y la salida de -w van a stdout; el medidor de progreso, los errores y la traza de -v van a stderr; -s apaga medidor y errores, -S devuelve los errores</title>
+  <rect width="800" height="400" fill="#0d1117"/>
+  <text x="400" y="34" text-anchor="middle" fill="#f0f6fc" font-size="22" font-weight="bold">stdout y stderr — qué va a cada flujo</text>
+  <rect x="40" y="150" width="150" height="80" rx="8" fill="#161b22" stroke="#f0883e" stroke-width="2"/>
+  <text x="115" y="198" text-anchor="middle" fill="#f0883e" font-size="22" font-weight="bold">curl</text>
+  <path d="M190 170 L300 105" stroke="#58a6ff" stroke-width="3" fill="none"/>
+  <path d="M190 210 L300 285" stroke="#d2a8ff" stroke-width="3" fill="none"/>
+  <rect x="300" y="60" width="300" height="110" rx="8" fill="#161b22" stroke="#58a6ff"/>
+  <text x="320" y="88" fill="#58a6ff" font-size="16" font-weight="bold">stdout (1) — el resultado</text>
+  <text x="320" y="114" fill="#f0f6fc" font-size="14">el cuerpo de la respuesta</text>
+  <text x="320" y="136" fill="#f0f6fc" font-size="14">los headers, con -i</text>
+  <text x="320" y="158" fill="#f0f6fc" font-size="14">la salida de -w (salvo %{stderr})</text>
+  <rect x="300" y="220" width="300" height="140" rx="8" fill="#161b22" stroke="#d2a8ff"/>
+  <text x="320" y="248" fill="#d2a8ff" font-size="16" font-weight="bold">stderr (2) — el diagnóstico</text>
+  <text x="320" y="274" fill="#f0f6fc" font-size="14">medidor de progreso</text>
+  <text x="320" y="296" fill="#f0f6fc" font-size="14">curl: (7) Failed to connect ...</text>
+  <text x="320" y="318" fill="#f0f6fc" font-size="14">la traza de -v</text>
+  <text x="320" y="340" fill="#f0f6fc" font-size="14">lo que sigue a %{stderr} en -w</text>
+  <g font-size="13">
+    <text x="620" y="100" fill="#3fb950" font-weight="bold">-o archivo</text>
+    <text x="620" y="120" fill="#8b949e">lo manda a un archivo</text>
+    <text x="620" y="150" fill="#8b949e">| jq — llega limpio</text>
+    <text x="620" y="260" fill="#f85149" font-weight="bold">-s</text>
+    <text x="645" y="260" fill="#8b949e">apaga medidor y errores</text>
+    <text x="620" y="284" fill="#3fb950" font-weight="bold">-sS</text>
+    <text x="655" y="284" fill="#8b949e">devuelve los errores</text>
+    <text x="620" y="308" fill="#e3b341" font-weight="bold">medidor</text>
+    <text x="620" y="328" fill="#8b949e">solo si stdout no es</text>
+    <text x="620" y="346" fill="#8b949e">una terminal</text>
+  </g>
+</svg>

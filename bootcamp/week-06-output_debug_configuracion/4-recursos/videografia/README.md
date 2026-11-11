@@ -1,46 +1,27 @@
-# 🎥 Videografía - Semana 6
+# Videografía — Semana 06
 
-## Videos Recomendados
+_Comprobado el 10 de noviembre de 2026: los tres enlaces resuelven y el título
+coincide con el que aparece aquí. Los tres están en la
+[página oficial de vídeos de curl](https://curl.se/docs/videos/)._
 
-### curl --write-out
+Pocos y elegidos. Un vídeo solo entra aquí si enseña algo que en texto se
+entiende peor.
 
-| Título | Canal | Duración | Enlace | Idioma |
-|--------|-------|----------|--------|--------|
-| curl --write-out for metrics | Academind | 8min | [YouTube](https://www.youtube.com/watch?v=IKaISyq5tGc) | 🇬🇧 EN |
-| Measuring API Response Times | Programming with Mosh | 10min | [YouTube](https://www.youtube.com/watch?v=ZRzX97JLENc) | 🇬🇧 EN |
+| Recurso | Por qué vale la pena |
+|---|---|
+| [curl for network debugging](https://curl.se/video/curlup-2017/2017-03-18_02_Aleksandar_Lazic_curl_for_network_debugging.mp4) — Aleksandar Lazic, curl-up 2017 ([diapositivas](https://curl.se/video/curlup-2017/2017-03-18_02_Aleksandar_Lazic_curl_for_network_debugging.pdf)) | Siete minutos de alguien que depura redes con curl a diario. Corto y práctico: el uso de `-v` y `-w` desde el lado de operaciones |
+| [curl command line variables with Daniel Stenberg](https://www.youtube.com/watch?v=KzzrhLgCjik) — Daniel Stenberg | 36 minutos sobre `--variable` y `--expand-*`, explicados por quien los diseñó cuando salió la 8.3. Complementa la teoría 08 §3.2 |
+| [mastering the curl command line - with Daniel Stenberg](https://www.youtube.com/watch?v=q_juztjhUlA) — Daniel Stenberg | La versión corta del curso del autor. Repasa la configuración, `--write-out` y la depuración con el resto de la herramienta |
 
-### Debugging con curl
+> [!TIP]
+> Si tienes poco tiempo, el primero. El de variables solo si tu curl es 8.3 o
+> posterior: en 7.81 no podrás probar nada de lo que enseña.
 
-| Título | Canal | Duración | Enlace | Idioma |
-|--------|-------|----------|--------|--------|
-| Debug HTTP with curl | Traversy Media | 12min | [YouTube](https://www.youtube.com/watch?v=WxZvFEld0gE) | 🇬🇧 EN |
-| Verbose curl explained | Hussein Nasser | 15min | [YouTube](https://www.youtube.com/watch?v=IKaISyq5tGc) | 🇬🇧 EN |
-| curl Debugging Deep Dive | freeCodeCamp | 25min | [YouTube](https://www.youtube.com/watch?v=5yQBKGBAQGA) | 🇬🇧 EN |
-
-### Bash Scripting
-
-| Título | Canal | Duración | Enlace | Idioma |
-|--------|-------|----------|--------|--------|
-| Bash Scripting Full Course | freeCodeCamp | 3h | [YouTube](https://www.youtube.com/watch?v=tK9Oc6AEnR4) | 🇬🇧 EN |
-| Bash Scripting en español | Pelado Nerd | 45min | [YouTube](https://www.youtube.com/watch?v=BUOqXhEIMs4) | 🇪🇸 ES |
-| Heredocs y variables bash | Fazt Code | 10min | [YouTube](https://www.youtube.com/watch?v=8XuyXpuoMvs) | 🇪🇸 ES |
-
-### .curlrc y Configuración
-
-| Título | Canal | Duración | Enlace | Idioma |
-|--------|-------|----------|--------|--------|
-| curl Config File Tutorial | ProgrammingKnowledge | 8min | [YouTube](https://www.youtube.com/watch?v=NSWm0oIdI8s) | 🇬🇧 EN |
-| Automate curl with .curlrc | Technical Tutorials | 6min | [YouTube](https://www.youtube.com/watch?v=JqHqKLGhPJY) | 🇬🇧 EN |
+Para lo demás, el laboratorio rinde más que un vídeo: leer cinco trazas rotas
+seguidas enseña a leer la sexta.
 
 ---
 
-## 📺 Canales Recomendados
-
-- **Academind** - Tutoriales detallados
-- **Hussein Nasser** - Backend engineering
-- **freeCodeCamp** - Cursos completos
-- **Fazt Code** - Tutoriales en español
-
----
-
-> 💡 **Tip**: Activa subtítulos en español si el video está en inglés.
+| Anterior | Siguiente |
+|---|---|
+| [Ebooks gratuitos](../ebooks-free/README.md) | [Webgrafía](../webgrafia/README.md) |

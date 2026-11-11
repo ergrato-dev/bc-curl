@@ -73,7 +73,7 @@ Per-week publication status in [`bootcamp/README.md`](bootcamp/README.md).
 | 03 | [Basic authentication](bootcamp/week-03-autenticacion_basica/) | Basic Auth, `.netrc`, API keys, Bearer, JWT, not leaking the credential |
 | 04 | [Files, forms and multipart](bootcamp/week-04-archivos_formularios_multipart/) | Resumable downloads, ranges, `-F`, `-T`, transfer control |
 | 05 | [SSL/TLS, cookies and redirects](bootcamp/week-05-ssl_tls_cookies_redirects/) | Handshake, custom CA, mTLS, cookie jar, redirects, timeouts and retries |
-| 06 | [Output, debugging and configuration](bootcamp/week-06-output_debug_configuracion/) | `--write-out`, `--trace`, `.curlrc`, `--libcurl`, proxies, URL globbing |
+| 06 | [Output, debugging and configuration](bootcamp/week-06-output_debug_configuracion/) | `--write-out`, phases, `-v`, `--trace`, `.curlrc`, `-K`, `--libcurl` |
 | 07 | [Bash scripting with curl](bootcamp/week-07-scripting_bash_con_curl/) | Exit codes, `--fail-with-body`, jq, pagination, backoff |
 | 08 | [OAuth2 and advanced authentication](bootcamp/week-08-oauth2_y_autenticacion_avanzada/) | Client credentials, PKCE, device code, refresh, secure token storage |
 | 09 | [HTTP/2, parallelism and performance](bootcamp/week-09-http2_paralelismo_performance/) | HTTP/2, HTTP/3, `-Z`, connection reuse, ETag, WebSockets |

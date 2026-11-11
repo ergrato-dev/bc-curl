@@ -118,7 +118,20 @@ Tres cosas que sirven las diez semanas:
 
 ## Semana 06 — Output, debug y configuración
 
-_Pendiente._
+| Truco | Cómo |
+|---|---|
+| Ver de un vistazo todo lo que `-w` sabe | `curl -s -o /dev/null -w '%{json}' URL \| jq .` (7.70+). Cuarenta campos con su valor real, sin abrir el manual |
+| El formato de `-w` en un archivo | `curl -w @formato.txt URL`. Ojo: curl **ignora** los saltos de línea reales del archivo; cada línea tiene que acabar en un `\n` escrito |
+| Que `-w` escriba en stderr y no ensucie el cuerpo | `-w '%{stderr}%{http_code}\n'`. Lo que sigue a `%{stderr}` va a stderr; `%{stdout}` vuelve |
+| Una línea solo cuando algo falla | `-w '%{onerror}error %{exitcode}: %{errormsg}\n'` (7.75+). Si la transferencia salió bien, no imprime nada |
+| Leer un header sin el `\r` que rompe las comparaciones | `curl -s -D - -o /dev/null URL \| tr -d '\r' \| awk -F': ' 'tolower($1) == "etag" { print $2 }'`. Con 7.84+: `-w '%header{etag}'` |
+| Saber qué paso de la traza es el lento | `curl -v --trace-time URL`. Cada línea lleva la hora con microsegundos |
+| Ver el cuerpo que enviaste, byte a byte | `curl --trace-ascii - -o /dev/null -d @datos.json URL`. La traza va a stdout; el cuerpo de la respuesta, a `/dev/null` |
+| Pasar de un comando curl a código C | `curl --libcurl prog.c URL`. Escribe el programa equivalente con cada opción que usó |
+| Comprobar si un `.curlrc` te está cambiando el comando | Repite con `curl -q ...`. Si cambia el resultado, el `.curlrc` estaba interviniendo |
+| Probar un `.curlrc` sin tocar el tuyo | `CURL_HOME=/tmp/prueba curl URL`. curl busca primero en `$CURL_HOME/.curlrc` |
+| Una credencial en un `-K` sin escribirla en disco | `printf 'header = "Authorization: Bearer %s"\n' "$API_TOKEN" \| curl -K - URL` |
+| `2>&1 >/dev/null` en zsh | No hace lo mismo que en bash: zsh duplica stdout a los dos sitios (`MULTIOS`) y el cuerpo vuelve a salir. Usa `2>traza.txt >/dev/null` o ejecútalo con `bash -c` |
 
 ## Semana 07 — Scripting bash con curl
 

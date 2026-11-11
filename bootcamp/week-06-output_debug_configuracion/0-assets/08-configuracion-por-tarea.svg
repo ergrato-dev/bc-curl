@@ -1,0 +1,34 @@
+<svg viewBox="0 0 800 380" role="img" xmlns="http://www.w3.org/2000/svg" font-family="Inter, system-ui, -apple-system, sans-serif">
+  <title>Cómo compone curl la configuración: el .curlrc si no hay -q, y después cada argumento en orden; cada -K se expande en su sitio como si sus líneas estuvieran escritas ahí; -K - lee de stdin, y una credencial puede llegar por un pipe desde printf sin aparecer en la lista de procesos ni en el disco</title>
+  <rect width="800" height="380" fill="#0d1117"/>
+  <text x="400" y="34" text-anchor="middle" fill="#f0f6fc" font-size="22" font-weight="bold">-K: la configuración se expande en su sitio</text>
+  <g font-size="14">
+    <rect x="40" y="64" width="110" height="44" rx="6" fill="#161b22" stroke="#8b949e"/><text x="95" y="91" text-anchor="middle" fill="#8b949e">.curlrc</text>
+    <rect x="160" y="64" width="60" height="44" rx="6" fill="#161b22" stroke="#3fb950"/><text x="190" y="91" text-anchor="middle" fill="#3fb950">-q</text>
+    <rect x="230" y="64" width="150" height="44" rx="6" fill="#161b22" stroke="#f0883e"/><text x="305" y="91" text-anchor="middle" fill="#f0883e">-K informe.cfg</text>
+    <rect x="390" y="64" width="90" height="44" rx="6" fill="#161b22" stroke="#d2a8ff"/><text x="435" y="91" text-anchor="middle" fill="#d2a8ff">-K -</text>
+    <rect x="490" y="64" width="130" height="44" rx="6" fill="#161b22" stroke="#79c0ff"/><text x="555" y="91" text-anchor="middle" fill="#79c0ff">--max-time 5</text>
+    <rect x="630" y="64" width="130" height="44" rx="6" fill="#161b22" stroke="#30363d"/><text x="695" y="91" text-anchor="middle" fill="#f0f6fc">URL</text>
+  </g>
+  <line x1="60" y1="86" x2="130" y2="86" stroke="#f85149" stroke-width="2"/>
+  <text x="40" y="132" fill="#8b949e" font-size="13">orden de aplicación →  ante un valor único, gana el que va después</text>
+  <rect x="230" y="150" width="250" height="110" rx="6" fill="#161b22" stroke="#f0883e"/>
+  <g font-size="13" fill="#f0f6fc">
+    <text x="244" y="174">fail-with-body</text>
+    <text x="244" y="194">connect-timeout = 5</text>
+    <text x="244" y="214">max-time = 30</text>
+    <text x="244" y="234">header = "Accept: ..."</text>
+    <text x="244" y="252" fill="#3fb950">sin secretos: se versiona</text>
+  </g>
+  <rect x="500" y="150" width="260" height="110" rx="6" fill="#161b22" stroke="#d2a8ff"/>
+  <g font-size="13" fill="#f0f6fc">
+    <text x="514" y="174">printf 'header = "Auth...%s"'</text>
+    <text x="514" y="194">  "$API_TOKEN" | curl -K -</text>
+    <text x="514" y="220" fill="#3fb950">ps: solo "-K -"</text>
+    <text x="514" y="238" fill="#3fb950">disco: nada · printf es builtin</text>
+    <text x="514" y="254" fill="#f85149">traza -v: sí sale, táchala</text>
+  </g>
+  <rect x="40" y="290" width="720" height="60" rx="6" fill="#161b22" stroke="#e3b341"/>
+  <text x="56" y="314" fill="#e3b341" font-size="14" font-weight="bold">--variable %API_TOKEN  +  --expand-header '... {{API_TOKEN}}'   (8.3+)</text>
+  <text x="56" y="338" fill="#8b949e" font-size="13">falla si la variable no existe · en 7.81 no existe: variables de bash y -K -</text>
+</svg>

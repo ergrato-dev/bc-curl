@@ -130,12 +130,31 @@ alternativa.**
 | **`--json`** | **7.82.0** | **02** | `-H 'Content-Type: application/json' -H 'Accept: application/json' -d '...'` — exactamente lo que hace el flag |
 | `--remove-on-error` | 7.83.0 | 04 | `curl -o f ... \|\| rm -f f` |
 | `--url-query` | 7.87.0 | 02 | `--data-urlencode` con `-G` |
+| `--trace-ids` | 8.2.0 | 06 | Lanzar las transferencias por separado, una traza cada una |
 | `--variable` | 8.3.0 | 06 | Variables de bash normales |
+| `--trace-config` | 8.3.0 | 06 | `-v` o `--trace-ascii`, sin el detalle por componente |
 
 > [!WARNING]
 > `--json` es el caso que más muerde. Es de 7.82 y **Ubuntu 22.04 trae 7.81**.
 > Está a una versión de distancia. En el material siempre va con su equivalente
 > largo al lado.
+
+### Variables de `--write-out` que hay que marcar
+
+Una variable de `-w` que tu curl no conoce **no da error**: avisa en stderr y
+sale con 0. `%header{}` en 7.81 ni siquiera avisa: imprime el texto literal.
+Por eso estas se marcan igual que los flags.
+
+| Variable | Desde | Semana | Alternativa en 7.81 |
+|---|:--:|:--:|---|
+| `%{json}` | 7.70.0 | 06 | — (7.81 la tiene) |
+| `%{exitcode}`, `%{errormsg}`, `%{onerror}`, `%{url}` | 7.75.0 | 06 | — (7.81 las tiene) |
+| `%{header_json}` | 7.83.0 | 06 | `-D -` y `awk` |
+| `%header{nombre}` | 7.84.0 | 06 | `-D - -o /dev/null \| tr -d '\r' \| awk ...` |
+| `%{certs}` | 7.88.0 | 05 | `openssl s_client -showcerts` |
+| `%{num_retries}` | 8.9.0 | 05 | Contar las líneas `Will retry` de stderr |
+| `%{time_posttransfer}` | 8.10.0 | 09 | — |
+| `%{time_queue}` | 8.12.0 | 09 | — |
 
 ---
 

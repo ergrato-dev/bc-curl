@@ -1,0 +1,28 @@
+<svg viewBox="0 0 800 400" role="img" xmlns="http://www.w3.org/2000/svg" font-family="Inter, system-ui, -apple-system, sans-serif">
+  <title>Orden en que curl busca su archivo de configuración: CURL_HOME, XDG_CONFIG_HOME y HOME; usa el primero que encuentra, aplica sus opciones y después las del comando, que pisan las de valor único y se suman a las acumulativas; -q como primer argumento corta la búsqueda</title>
+  <rect width="800" height="400" fill="#0d1117"/>
+  <text x="400" y="34" text-anchor="middle" fill="#f0f6fc" font-size="22" font-weight="bold">.curlrc — dónde lo busca y qué gana</text>
+  <rect x="40" y="60" width="200" height="44" rx="6" fill="#161b22" stroke="#f0883e" stroke-width="2"/>
+  <text x="140" y="88" text-anchor="middle" fill="#f0883e" font-size="15" font-weight="bold">curl ...</text>
+  <path d="M240 82 L300 82" stroke="#8b949e" stroke-width="2"/>
+  <rect x="300" y="60" width="200" height="44" rx="6" fill="#161b22" stroke="#3fb950"/>
+  <text x="400" y="80" text-anchor="middle" fill="#3fb950" font-size="14" font-weight="bold">¿primer argumento -q?</text>
+  <text x="400" y="97" text-anchor="middle" fill="#8b949e" font-size="13">sí: no se lee ninguno</text>
+  <g font-size="14">
+    <rect x="300" y="128" width="200" height="40" rx="6" fill="#161b22" stroke="#30363d"/><text x="316" y="153" fill="#f0f6fc">1. $CURL_HOME/.curlrc</text>
+    <rect x="300" y="178" width="200" height="40" rx="6" fill="#161b22" stroke="#30363d"/><text x="316" y="203" fill="#f0f6fc">2. $XDG_CONFIG_HOME/…</text>
+    <rect x="300" y="228" width="200" height="40" rx="6" fill="#161b22" stroke="#30363d"/><text x="316" y="253" fill="#f0f6fc">3. $HOME/.curlrc</text>
+  </g>
+  <path d="M400 104 L400 128" stroke="#8b949e" stroke-width="2"/>
+  <text x="300" y="292" fill="#8b949e" font-size="13">el primero que existe; solo uno</text>
+  <text x="300" y="312" fill="#e3b341" font-size="13">en XDG: 7.81 lee .curlrc, 8.17 curlrc</text>
+  <text x="530" y="140" fill="#f0f6fc" font-size="15" font-weight="bold">Después, el comando</text>
+  <g font-size="13">
+    <text x="530" y="170" fill="#79c0ff" font-weight="bold">valor único</text><text x="530" y="188" fill="#8b949e">--max-time, -w, -A: gana el último</text>
+    <text x="530" y="218" fill="#79c0ff" font-weight="bold">acumulativa</text><text x="530" y="236" fill="#8b949e">-H, -d, -F: se suman</text>
+    <text x="530" y="266" fill="#f85149" font-weight="bold">interruptor</text><text x="530" y="284" fill="#8b949e">-L, -i, -k: se queda encendido</text><text x="530" y="302" fill="#8b949e">salvo con su --no-</text>
+  </g>
+  <rect x="40" y="340" width="720" height="40" rx="6" fill="#161b22" stroke="#f85149"/>
+  <text x="60" y="365" fill="#3fb950" font-size="14" font-weight="bold">En un script: curl -q</text>
+  <text x="250" y="365" fill="#f0f6fc" font-size="14">siempre, y en primera posición; en segunda se ignora sin avisar</text>
+</svg>

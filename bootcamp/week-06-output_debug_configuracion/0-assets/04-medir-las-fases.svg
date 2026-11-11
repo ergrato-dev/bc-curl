@@ -1,0 +1,34 @@
+<svg viewBox="0 0 800 400" role="img" xmlns="http://www.w3.org/2000/svg" font-family="Inter, system-ui, -apple-system, sans-serif">
+  <title>Línea de tiempo de una petición HTTPS con los cinco instantes acumulados que mide curl y las cinco duraciones que salen de restarlos: dns, tcp, tls, servidor y transferencia, cada una con lo que delata si es larga</title>
+  <rect width="800" height="400" fill="#0d1117"/>
+  <text x="400" y="34" text-anchor="middle" fill="#f0f6fc" font-size="22" font-weight="bold">De instantes a fases</text>
+  <line x1="40" y1="110" x2="760" y2="110" stroke="#30363d" stroke-width="2"/>
+  <g font-size="13" fill="#79c0ff" text-anchor="middle">
+    <circle cx="40" cy="110" r="5" fill="#f0f6fc"/><text x="40" y="92" fill="#f0f6fc">0</text>
+    <circle cx="120" cy="110" r="5" fill="#79c0ff"/><text x="120" y="78">time_namelookup</text>
+    <circle cx="220" cy="110" r="5" fill="#79c0ff"/><text x="220" y="98">time_connect</text>
+    <circle cx="350" cy="110" r="5" fill="#79c0ff"/><text x="350" y="78">time_appconnect</text>
+    <circle cx="610" cy="110" r="5" fill="#79c0ff"/><text x="610" y="98">time_starttransfer</text>
+    <circle cx="760" cy="110" r="5" fill="#79c0ff"/><text x="740" y="78">time_total</text>
+  </g>
+  <g font-size="14" font-weight="bold" text-anchor="middle">
+    <rect x="40" y="130" width="80" height="44" fill="#161b22" stroke="#79c0ff"/><text x="80" y="157" fill="#f0f6fc">dns</text>
+    <rect x="120" y="130" width="100" height="44" fill="#161b22" stroke="#79c0ff"/><text x="170" y="157" fill="#f0f6fc">tcp</text>
+    <rect x="220" y="130" width="130" height="44" fill="#161b22" stroke="#d2a8ff"/><text x="285" y="157" fill="#f0f6fc">tls</text>
+    <rect x="350" y="130" width="260" height="44" fill="#161b22" stroke="#e3b341"/><text x="480" y="157" fill="#f0f6fc">servidor</text>
+    <rect x="610" y="130" width="150" height="44" fill="#161b22" stroke="#3fb950"/><text x="685" y="157" fill="#f0f6fc">transferencia</text>
+  </g>
+  <g font-size="13" fill="#8b949e">
+    <text x="40" y="214" fill="#f0f6fc" font-weight="bold">Si es larga, mira...</text>
+    <text x="40" y="240" fill="#79c0ff" font-weight="bold">dns</text><text x="150" y="240">resolver lento o caído</text>
+    <text x="40" y="262" fill="#79c0ff" font-weight="bold">tcp</text><text x="150" y="262">distancia, servidor saturado aceptando</text>
+    <text x="40" y="284" fill="#d2a8ff" font-weight="bold">tls</text><text x="150" y="284">cadena larga, sin reanudación, CPU del servidor</text>
+    <text x="40" y="306" fill="#e3b341" font-weight="bold">servidor</text><text x="150" y="306">el backend: base de datos, colas, cálculo</text>
+    <text x="40" y="328" fill="#3fb950" font-weight="bold">transferencia</text><text x="150" y="328">tamaño, ancho de banda, streaming lento</text>
+    <text x="440" y="240" fill="#f85149" font-weight="bold">Sin TLS: time_appconnect = 0</text>
+    <text x="440" y="262">la fase tls termina en time_connect</text>
+    <text x="440" y="292" fill="#f85149" font-weight="bold">Si falla: varios instantes = 0</text>
+    <text x="440" y="314">toda resta se acota a 0, nunca negativa</text>
+    <text x="440" y="344">Bash no resta decimales: awk</text>
+  </g>
+</svg>
