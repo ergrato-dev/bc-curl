@@ -2,7 +2,6 @@
     // ============================================
     // PRIVACIDAD — TELEMETRIA DESHABILITADA
     // ============================================
-
     "telemetry.telemetryLevel": "off",
     "telemetry.enableTelemetry": false,
     "telemetry.enableCrashReporter": false,
@@ -11,21 +10,17 @@
     "update.mode": "none",
     "extensions.autoCheckUpdates": false,
     "extensions.autoUpdate": false,
-
     "github.copilot.enable": {
         "*": false
     },
     "github.copilot.advanced": {
         "debug.telemetry": false
     },
-
     "git.telemetry": false,
     "git.showUserEmailInExplorer": false,
-
     // ============================================
     // OPTIMIZACION DE RECURSOS
     // ============================================
-
     "workbench.editor.enablePreview": true,
     "workbench.editor.enablePreviewFromQuickOpen": true,
     "workbench.editor.enablePreviewFromCodeNavigation": true,
@@ -37,11 +32,9 @@
     "workbench.editor.revealIfOpen": true,
     "files.maxMemoryForLargeFilesMB": 256,
     "search.maxResults": 1000,
-
     // ============================================
     // SHELL — LOS STARTER SON BASH
     // ============================================
-
     "files.associations": {
         "*.sh": "shellscript",
         ".curlrc": "properties"
@@ -52,29 +45,34 @@
         "editor.tabSize": 2,
         "editor.insertSpaces": true
     },
-
     // ============================================
     // TEMA VISUAL (curl orange)
     // ============================================
-
     "workbench.colorCustomizations": {
-        "activityBar.activeBackground": "#f4a261",
-        "activityBar.background": "#f4a261",
-        "activityBar.foreground": "#0d1117",
-        "activityBar.inactiveForeground": "#0d111799",
-        "activityBarBadge.background": "#3fb950",
-        "activityBarBadge.foreground": "#0d1117",
-        "commandCenter.border": "#e7e7e799",
-        "sash.hoverBorder": "#f4a261",
+        "activityBar.activeBackground": "#f4a56d",
+        "activityBar.background": "#f4a56d",
+        "activityBar.foreground": "#15202b",
+        "activityBar.inactiveForeground": "#15202b99",
+        "activityBarBadge.background": "#097736",
+        "activityBarBadge.foreground": "#e7e7e7",
+        "commandCenter.border": "#15202b99",
+        "sash.hoverBorder": "#f4a56d",
         "statusBar.background": "#f0883e",
-        "statusBar.foreground": "#0d1117",
-        "statusBarItem.hoverBackground": "#f4a261",
-        "statusBarItem.remoteBackground": "#f0883e",
-        "statusBarItem.remoteForeground": "#0d1117",
+        "statusBar.foreground": "#15202b",
+        "statusBarItem.hoverBackground": "#e96b12",
+        "statusBarItem.remoteBackground": "#a6f8c8",
+        "statusBarItem.remoteForeground": "#15202b",
         "titleBar.activeBackground": "#f0883e",
-        "titleBar.activeForeground": "#0d1117",
+        "titleBar.activeForeground": "#15202b",
         "titleBar.inactiveBackground": "#f0883e99",
-        "titleBar.inactiveForeground": "#0d111799"
+        "titleBar.inactiveForeground": "#15202b99",
+        "activityBarTop.activeBackground": "#f4a56d",
+        "activityBarTop.background": "#f4a56d",
+        "activityBarTop.foreground": "#15202b",
+        "activityBarTop.inactiveForeground": "#15202b99",
+        "commandCenter.foreground": "#15202b",
+        "statusBar.debuggingBackground": "#f0883e",
+        "statusBar.debuggingForeground": "#15202b"
     },
     "peacock.color": "#f0883e"
 }
