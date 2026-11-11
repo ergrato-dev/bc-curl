@@ -1,0 +1,50 @@
+<svg viewBox="0 0 820 440" role="img" xmlns="http://www.w3.org/2000/svg" font-family="Inter, system-ui, -apple-system, sans-serif">
+  <title>El contrato de api-toolkit: por stdout solo salen datos de una respuesta 2xx o 3xx; por stderr, los mensajes, la traza y el cuerpo de cualquier error; y el código de salida, con cinco valores: 0 éxito, 1 fallo definitivo, 69 sin respuesta HTTP, 75 fallo temporal que merece repetirse más tarde y 77 credencial rechazada, cada uno con lo que haría un cron que lo recibe</title>
+  <rect width="820" height="440" fill="#0d1117"/>
+  <defs><marker id="f" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#8b949e"/></marker></defs>
+  <text x="410.0" y="34" text-anchor="middle" fill="#f0f6fc" font-size="22" font-weight="bold">El contrato de api-toolkit</text>
+  <rect x="30" y="170" width="170" height="80" rx="8" fill="#161b22" stroke="#f0883e" stroke-width="2"/>
+  <text x="115" y="206" text-anchor="middle" fill="#f0883e" font-size="17" font-weight="bold" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">api-toolkit</text>
+  <text x="115" y="230" text-anchor="middle" fill="#8b949e" font-size="13">fetch-all, get...</text>
+  <path d="M200 190 L250 100" stroke="#58a6ff" stroke-width="2.5" fill="none" marker-end="url(#f)"/>
+  <path d="M200 210 L250 210" stroke="#d2a8ff" stroke-width="2.5" fill="none" marker-end="url(#f)"/>
+  <path d="M200 232 L250 330" stroke="#e3b341" stroke-width="2.5" fill="none" marker-end="url(#f)"/>
+  <rect x="252" y="62" width="250" height="84" rx="8" fill="#161b22" stroke="#58a6ff" stroke-width="2"/>
+  <text x="272" y="90" fill="#58a6ff" font-size="15" font-weight="bold">stdout: solo datos</text>
+  <text x="272" y="114" fill="#f0f6fc" font-size="13">el cuerpo de un 2xx o 3xx</text>
+  <text x="272" y="134" fill="#f0f6fc" font-size="13">fetch-all: todo o nada</text>
+  <rect x="252" y="168" width="250" height="84" rx="8" fill="#161b22" stroke="#d2a8ff" stroke-width="2"/>
+  <text x="272" y="196" fill="#d2a8ff" font-size="15" font-weight="bold">stderr: todo lo demás</text>
+  <text x="272" y="220" fill="#f0f6fc" font-size="13">mensajes, traza de --verbose</text>
+  <text x="272" y="240" fill="#f0f6fc" font-size="13">y el cuerpo de un error</text>
+  <rect x="252" y="274" width="250" height="150" rx="8" fill="#161b22" stroke="#e3b341" stroke-width="2"/>
+  <text x="272" y="300" fill="#e3b341" font-size="15" font-weight="bold">código de salida</text>
+  <text x="290" y="326" text-anchor="end" fill="#3fb950" font-size="13" font-weight="bold" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">0</text>
+  <text x="302" y="326" fill="#f0f6fc" font-size="12">éxito</text>
+  <path d="M505 322 L540 322" stroke="#30363d" stroke-width="1" fill="none" marker-end="url(#f)"/>
+  <text x="548" y="326" fill="#f0f6fc" font-size="12">sigue</text>
+  <text x="290" y="346" text-anchor="end" fill="#f85149" font-size="13" font-weight="bold" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">1</text>
+  <text x="302" y="346" fill="#f0f6fc" font-size="12">fallo definitivo</text>
+  <path d="M505 342 L540 342" stroke="#30363d" stroke-width="1" fill="none" marker-end="url(#f)"/>
+  <text x="548" y="346" fill="#f0f6fc" font-size="12">avisa: hay que mirarlo</text>
+  <text x="290" y="366" text-anchor="end" fill="#f0883e" font-size="13" font-weight="bold" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">69</text>
+  <text x="302" y="366" fill="#f0f6fc" font-size="12">sin respuesta HTTP</text>
+  <path d="M505 362 L540 362" stroke="#30363d" stroke-width="1" fill="none" marker-end="url(#f)"/>
+  <text x="548" y="366" fill="#f0f6fc" font-size="12">avisa si se repite</text>
+  <text x="290" y="386" text-anchor="end" fill="#e3b341" font-size="13" font-weight="bold" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">75</text>
+  <text x="302" y="386" fill="#f0f6fc" font-size="12">temporal: 429, 503...</text>
+  <path d="M505 382 L540 382" stroke="#30363d" stroke-width="1" fill="none" marker-end="url(#f)"/>
+  <text x="548" y="386" fill="#f0f6fc" font-size="12">reintenta en el siguiente ciclo</text>
+  <text x="290" y="406" text-anchor="end" fill="#d2a8ff" font-size="13" font-weight="bold" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">77</text>
+  <text x="302" y="406" fill="#f0f6fc" font-size="12">credencial: 401, 403</text>
+  <path d="M505 402 L540 402" stroke="#30363d" stroke-width="1" fill="none" marker-end="url(#f)"/>
+  <text x="548" y="406" fill="#f0f6fc" font-size="12">avisa: renueva la credencial</text>
+  <text x="660" y="300" text-anchor="middle" fill="#8b949e" font-size="13" font-weight="bold">lo que hace un cron</text>
+  <rect x="540" y="62" width="250" height="190" rx="8" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="560" y="92" fill="#f0f6fc" font-size="13">quien llama no lee mensajes:</text>
+  <text x="560" y="114" fill="#f0f6fc" font-size="13">lee stdout y el código</text>
+  <text x="560" y="150" fill="#8b949e" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">./api-toolkit.sh get /x \</text>
+  <text x="560" y="170" fill="#8b949e" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">  &gt; datos.json.tmp &amp;&amp; \</text>
+  <text x="560" y="190" fill="#8b949e" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">  mv datos.json.tmp datos.json</text>
+  <text x="560" y="226" fill="#3fb950" font-size="13" font-weight="bold">si falla, datos.json no cambia</text>
+</svg>

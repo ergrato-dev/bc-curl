@@ -1,0 +1,34 @@
+<svg viewBox="0 0 820 420" role="img" xmlns="http://www.w3.org/2000/svg" font-family="Inter, system-ui, -apple-system, sans-serif">
+  <title>Los códigos de salida de jq: 0 si el programa terminó; con -e, 1 si el último resultado es false o null y 4 si no hubo ningún resultado; 2 error de uso, 3 error de compilación, 5 error de ejecución; con una nota en rojo sobre la entrada vacía, que en jq 1.6 sale con 0 aunque lleve -e y en jq 1.7 sale con 4</title>
+  <rect width="820" height="420" fill="#0d1117"/>
+  <defs><marker id="f" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#8b949e"/></marker></defs>
+  <text x="410.0" y="34" text-anchor="middle" fill="#f0f6fc" font-size="22" font-weight="bold">Lo que jq dice con su código de salida</text>
+  <rect x="40" y="62" width="460" height="34" rx="8" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="70" y="85" text-anchor="middle" fill="#3fb950" font-size="18" font-weight="bold" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">0</text>
+  <text x="100" y="84" fill="#f0f6fc" font-size="14">el programa terminó sin errores</text>
+  <rect x="40" y="104" width="460" height="34" rx="8" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="70" y="127" text-anchor="middle" fill="#e3b341" font-size="18" font-weight="bold" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">1</text>
+  <text x="100" y="126" fill="#f0f6fc" font-size="14">con -e: el último resultado es false o null</text>
+  <rect x="40" y="146" width="460" height="34" rx="8" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="70" y="169" text-anchor="middle" fill="#f85149" font-size="18" font-weight="bold" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">2</text>
+  <text x="100" y="168" fill="#f0f6fc" font-size="14">error de uso: opción mala, --argjson inválido</text>
+  <rect x="40" y="188" width="460" height="34" rx="8" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="70" y="211" text-anchor="middle" fill="#f85149" font-size="18" font-weight="bold" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">3</text>
+  <text x="100" y="210" fill="#f0f6fc" font-size="14">error de compilación: el filtro está mal escrito</text>
+  <rect x="40" y="230" width="460" height="34" rx="8" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="70" y="253" text-anchor="middle" fill="#e3b341" font-size="18" font-weight="bold" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">4</text>
+  <text x="100" y="252" fill="#f0f6fc" font-size="14">con -e: no hubo ningún resultado</text>
+  <rect x="40" y="272" width="460" height="34" rx="8" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="70" y="295" text-anchor="middle" fill="#f85149" font-size="18" font-weight="bold" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">5</text>
+  <text x="100" y="294" fill="#f0f6fc" font-size="14">error de ejecución: indexar un texto como objeto</text>
+  <text x="40" y="330" fill="#8b949e" font-size="13">la entrada que no es JSON: 4 en jq 1.6, 5 en jq 1.7. Compara con 0, no con un número</text>
+  <rect x="530" y="62" width="260" height="240" rx="8" fill="#161b22" stroke="#f85149" stroke-width="2"/>
+  <text x="660" y="92" text-anchor="middle" fill="#f85149" font-size="16" font-weight="bold">la trampa de jq 1.6</text>
+  <text x="550" y="126" fill="#f0f6fc" font-size="13" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">printf '' | jq -e .</text>
+  <text x="550" y="158" fill="#f85149" font-size="14" font-weight="bold">jq 1.6 (Ubuntu 22.04): 0</text>
+  <text x="550" y="184" fill="#3fb950" font-size="14" font-weight="bold">jq 1.7: 4</text>
+  <text x="550" y="220" fill="#f0f6fc" font-size="13">un curl que falló sin escribir</text>
+  <text x="550" y="242" fill="#f0f6fc" font-size="13">nada pasa por bueno</text>
+  <text x="550" y="278" fill="#3fb950" font-size="13" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">[ -s archivo ] &amp;&amp; jq -e ...</text>
+  <text x="410" y="380" text-anchor="middle" fill="#f0f6fc" font-size="15" font-weight="bold">-e convierte &quot;falta el campo&quot; en un fallo que set -e ve</text>
+</svg>

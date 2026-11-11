@@ -1,0 +1,33 @@
+<svg viewBox="0 0 820 420" role="img" xmlns="http://www.w3.org/2000/svg" font-family="Inter, system-ui, -apple-system, sans-serif">
+  <title>Tres columnas que comparan la misma respuesta 429 con un cuerpo JSON de error: sin --fail, curl sale con 0 y el cuerpo llega a stdout como si fueran datos; con --fail, sale con 22 y el cuerpo se pierde; con --fail-with-body, 7.76 o posterior, sale con 22 y el cuerpo llega a stdout o al archivo de -o</title>
+  <rect width="820" height="420" fill="#0d1117"/>
+  <defs><marker id="f" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#8b949e"/></marker></defs>
+  <text x="410.0" y="34" text-anchor="middle" fill="#f0f6fc" font-size="22" font-weight="bold">La misma respuesta 429, tres formas de tratarla</text>
+  <rect x="210" y="60" width="400" height="44" rx="8" fill="#161b22" stroke="#f0883e" stroke-width="2"/>
+  <text x="410" y="88" text-anchor="middle" fill="#f0f6fc" font-size="14" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">HTTP 429   {&quot;error&quot;:&quot;demasiadas peticiones&quot;}</text>
+  <path d="M410 104 L150 140" stroke="#8b949e" stroke-width="1.5" fill="none" marker-end="url(#f)"/>
+  <rect x="30" y="145" width="240" height="230" rx="8" fill="#161b22" stroke="#f85149" stroke-width="2"/>
+  <text x="150" y="175" text-anchor="middle" fill="#f85149" font-size="17" font-weight="bold" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">sin --fail</text>
+  <text x="150" y="203" text-anchor="middle" fill="#f0f6fc" font-size="15" font-weight="bold">sale con 0</text>
+  <text x="150" y="240" text-anchor="middle" fill="#f0f6fc" font-size="14">el cuerpo del error</text>
+  <text x="150" y="264" text-anchor="middle" fill="#f0f6fc" font-size="14">llega a stdout</text>
+  <text x="150" y="288" text-anchor="middle" fill="#f0f6fc" font-size="14">como si fueran datos</text>
+  <text x="150" y="350" text-anchor="middle" fill="#8b949e" font-size="13">el script no se entera</text>
+  <path d="M410 104 L410 140" stroke="#8b949e" stroke-width="1.5" fill="none" marker-end="url(#f)"/>
+  <rect x="290" y="145" width="240" height="230" rx="8" fill="#161b22" stroke="#e3b341" stroke-width="2"/>
+  <text x="410" y="175" text-anchor="middle" fill="#e3b341" font-size="17" font-weight="bold" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">--fail</text>
+  <text x="410" y="203" text-anchor="middle" fill="#f0f6fc" font-size="15" font-weight="bold">sale con 22</text>
+  <text x="410" y="240" text-anchor="middle" fill="#f0f6fc" font-size="14">el cuerpo se pierde</text>
+  <text x="410" y="264" text-anchor="middle" fill="#f0f6fc" font-size="14">-o no crea el archivo</text>
+  <text x="410" y="288" text-anchor="middle" fill="#f0f6fc" font-size="14">solo queda el código</text>
+  <text x="410" y="350" text-anchor="middle" fill="#8b949e" font-size="13">se entera, sin saber por qué</text>
+  <path d="M410 104 L670 140" stroke="#8b949e" stroke-width="1.5" fill="none" marker-end="url(#f)"/>
+  <rect x="550" y="145" width="240" height="230" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="670" y="175" text-anchor="middle" fill="#3fb950" font-size="17" font-weight="bold" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">--fail-with-body</text>
+  <text x="670" y="203" text-anchor="middle" fill="#f0f6fc" font-size="15" font-weight="bold">sale con 22 (7.76+)</text>
+  <text x="670" y="240" text-anchor="middle" fill="#f0f6fc" font-size="14">el cuerpo llega a</text>
+  <text x="670" y="264" text-anchor="middle" fill="#f0f6fc" font-size="14">stdout o al archivo de -o</text>
+  <text x="670" y="288" text-anchor="middle" fill="#f0f6fc" font-size="14">con el motivo del error</text>
+  <text x="670" y="350" text-anchor="middle" fill="#8b949e" font-size="13">se entera, y sabe por qué</text>
+  <text x="410" y="405" text-anchor="middle" fill="#8b949e" font-size="13">En 7.81, --fail y --fail-with-body juntos son un error de uso (sale con 2)</text>
+</svg>

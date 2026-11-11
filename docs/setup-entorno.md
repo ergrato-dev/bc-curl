@@ -21,7 +21,7 @@ El laboratorio son tres contenedores en tu máquina:
 |---|---|---|
 | httpbin | `http://localhost:8080` | Métodos, status codes, headers, auth, cookies, redirects, compresión, multipart, rangos, ETag |
 | OAuth2 | `http://localhost:8081/default` | Tokens firmados de verdad: client credentials, authorization code + PKCE, device code, refresh |
-| TLS | `https://localhost:8443` | HTTPS con CA propia, HTTP/2 y HTTP/3 |
+| TLS | `https://localhost:8443` | HTTPS con CA propia, HTTP/2 y HTTP/3. Además, `/paginas` (paginación con `Link`) y `/limitado` (429 con `Retry-After`) |
 | mTLS | `https://localhost:8444` | Exige certificado de cliente |
 
 Consumen unos 300 MB de RAM en total.

@@ -121,7 +121,7 @@ No `httpbin.org`. Three containers on your machine, ~300 MB of RAM:
 |---|---|---|
 | httpbin | `http://localhost:8080` | Methods, status, headers, auth, cookies, redirects, compression, multipart, ETag |
 | OAuth2 | `http://localhost:8081/default` | Real signed tokens, with `exp` and a `jwks` endpoint |
-| TLS | `https://localhost:8443` | HTTPS with its own CA, HTTP/2 and HTTP/3 |
+| TLS | `https://localhost:8443` | HTTPS with its own CA, HTTP/2 and HTTP/3. Also `/paginas` (pagination with `Link`) and `/limitado` (429 with `Retry-After`) |
 | mTLS | `https://localhost:8444` | Requires a client certificate |
 
 Against a public service you cannot break a certificate on purpose, ask for an

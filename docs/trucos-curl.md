@@ -135,7 +135,20 @@ Tres cosas que sirven las diez semanas:
 
 ## Semana 07 — Scripting bash con curl
 
-_Pendiente._
+| Truco | Cómo |
+|---|---|
+| Recoger el código de curl con `set -e` activo | `rc=0; curl ... \|\| rc=$?`. Con `curl ...; rc=$?`, el script aborta antes de llegar a la asignación |
+| Saber qué comando de una tubería falló | `echo "${PIPESTATUS[@]}"` justo después de la tubería: un código por comando |
+| El cuerpo del error sin perder el `exit` distinto de 0 | `--fail-with-body` (7.76+). En 7.81 no se combina con `--fail`: juntos salen con 2 |
+| Un solo cuerpo aunque curl reintente | `-o archivo`, nunca capturar stdout. curl trunca el archivo antes de cada intento; stdout no lo puede truncar |
+| El header de la respuesta final, no el del primer intento | `tr -d '\r' < cab.txt \| awk '/^HTTP\// { v = "" } tolower($1) == "retry-after:" { v = $2 } END { print v }'`. Cada línea `HTTP/` empieza un bloque |
+| Que jq falle si falta un campo | `jq -e -r .campo`. Sin `-e`, un campo que no existe llega como la cadena `null` |
+| Construir JSON con valores del shell | `jq -n --arg nombre "$nombre" '{nombre: $nombre}'`. Nunca pegando texto entre comillas |
+| Juntar varias listas JSON en una | `jq -s 'add // []' paginas.jsonl`. El `// []` cubre el caso sin ninguna página |
+| Sacar el `rel="next"` de un `Link` | `tr ',' '\n' \| awk '/rel="next"/ { if (match($0, /<[^>]*>/)) print substr($0, RSTART + 1, RLENGTH - 2) }'` |
+| Azar en una espera con aritmética entera | `ms=$(( (1000 << intento) + RANDOM % 1000 )); sleep "$((ms / 1000)).$(printf '%03d' $((ms % 1000)))"` |
+| `curl \| head` aborta un script con `pipefail` | curl sale con 23 al encontrarse la tubería cerrada. Guarda la respuesta en un archivo y aplica `head` al archivo |
+| `-o /dev/null` con `--retry` en 7.81 | Si el cuerpo no está vacío, el reintento sale con `(23) Failed to truncate file`. Usa `-o` a un temporal |
 
 ## Semana 08 — OAuth2 y autenticación avanzada
 

@@ -118,7 +118,7 @@ Nada de `httpbin.org`. Tres contenedores en tu máquina, ~300 MB de RAM:
 |---|---|---|
 | httpbin | `http://localhost:8080` | Métodos, status, headers, auth, cookies, redirects, compresión, multipart, ETag |
 | OAuth2 | `http://localhost:8081/default` | Tokens firmados de verdad, con `exp` y `jwks` |
-| TLS | `https://localhost:8443` | HTTPS con CA propia, HTTP/2 y HTTP/3 |
+| TLS | `https://localhost:8443` | HTTPS con CA propia, HTTP/2 y HTTP/3. Además, `/paginas` (paginación con `Link`) y `/limitado` (429 con `Retry-After`) |
 | mTLS | `https://localhost:8444` | Exige certificado de cliente |
 
 Contra un servicio público no puedes provocar un fallo de certificado a

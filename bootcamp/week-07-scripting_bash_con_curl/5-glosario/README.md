@@ -1,215 +1,143 @@
-# Glosario - Semana 7
+# Glosario — Semana 07
 
-## $?
-
-Variable especial de bash que contiene el exit code del ultimo comando ejecutado.
-Debe leerse inmediatamente despues del comando de interes, antes de ejecutar
-cualquier otra instruccion (que lo sobreescribiria con su propio exit code).
-
-```bash
-curl -sf https://httpbin.org/status/404
-echo $?   # 22 — exit code de curl con -f ante un 404
-```
+Términos de códigos de salida, scripts bash, jq, paginación, reintentos y rate
+limit que aparecen esta semana. El término real en inglés va entre paréntesis,
+y los flags que no son universales llevan **su versión mínima**. Los términos
+de todo el bootcamp están en
+[`docs/glosario-global.md`](../../../docs/glosario-global.md).
 
 ---
 
-## backoff
+## B
 
-Estrategia para reintentar operaciones fallidas esperando un tiempo entre intentos.
-En el backoff exponencial, el tiempo de espera se duplica en cada reintento (1s,
-2s, 4s, 8s, ...). Esto evita sobrecargar un servidor que ya esta bajo presion.
-Se usa tipicamente al recibir errores 429 (Too Many Requests) o 503 (Service
-Unavailable).
+**Backoff exponencial** (*exponential backoff*) · Esperar entre reintentos un
+tiempo que se dobla cada vez (1, 2, 4, 8 s...), con un tope. Es lo que hace
+`--retry`.
 
----
+## C
 
-## declare -a
+**Código de salida** (*exit status*) · El número entre 0 y 255 con el que
+termina un proceso. 0 es éxito. El shell lo guarda en `$?`.
 
-Sintaxis bash para declarar un array indexado. Permite acumular valores en un
-array durante un loop y acceder a ellos por indice o iterar sobre todos.
+**Cursor** · Estilo de paginación en el que la API devuelve un valor opaco
+(`next_cursor`) que hay que pasar tal cual en la petición siguiente.
 
-```bash
-declare -a resultados
-resultados+=("primer elemento")
-resultados+=("segundo elemento")
-printf '%s\n' "${resultados[@]}"
-```
+## E
 
----
+**`EX_TEMPFAIL`** · El código 75 de `sysexits.h`: fallo temporal, repetir más
+tarde puede funcionar. El toolkit lo usa para 429, 502, 503 y 504.
 
-## exit code
+**`errexit`** · El nombre largo de `set -e`: abortar cuando un comando falla.
+No actúa en la condición de un `if`, en un `&&` o `||` salvo el último comando,
+ni tras un `!`.
 
-Número entero (0-255) que un proceso retorna al sistema operativo al terminar. Por convencion,
-0 indica exito y cualquier valor distinto de 0 indica algun tipo de fallo. En bash,
-`$?` contiene el exit code del ultimo comando ejecutado. curl retorna 0 si la
-transferencia completo sin errores de curl, independientemente del codigo HTTP.
+## F
 
----
+**`--fail`, `-f`** · Sale con 22 ante una respuesta 400 o mayor, y no escribe
+el cuerpo. No es a prueba de fallos con 401 y 407.
 
-## --fail / -f
+**`--fail-early`** · Con varias URLs en la misma línea, para en la primera que
+falle.
 
-Flag de curl que hace que retorne exit code 22 cuando la respuesta HTTP tiene
-codigo 4xx o 5xx. Sin este flag, curl retorna 0 aunque el servidor responda con
-un error. En scripts que verifican el exito de un request, siempre usar `-f` o
-revisar el HTTP status code manualmente.
+**`--fail-with-body`** (7.76+) · Como `--fail`, pero escribe el cuerpo del
+error. En 7.81 no se combina con `--fail`: juntos salen con 2.
 
----
+## I
 
-## --fail-with-body
+**Idempotente** (*idempotent*) · Que repetirlo deja el servidor igual que
+hacerlo una vez. `GET`, `PUT` y `DELETE` lo son; `POST`, no. Solo lo
+idempotente se reintenta sin más.
 
-Variante de `-f` disponible desde curl 7.76.0. Retorna exit code 22 en errores
-HTTP 4xx/5xx igual que `-f`, pero ademas muestra el body de la respuesta en
-stdout. Util para depuracion cuando necesitas leer el mensaje de error del
-servidor al mismo tiempo que detectas el fallo.
+**`inherit_errexit`** (bash 4.4+) · `shopt` que hace que `$(...)` herede el
+`set -e` del script.
 
----
+## J
 
-## idempotente
+**Jitter** · El azar que se suma a una espera para que muchos clientes que
+fallaron a la vez no reintenten a la vez.
 
-Una operacion es idempotente si ejecutarla multiples veces produce el mismo
-resultado que ejecutarla una sola vez. En el contexto de scripts de sincronizacion
-de APIs, un script idempotente verifica si el recurso ya existe antes de crearlo,
-evitando duplicados. Es una propiedad fundamental para scripts que pueden
-ejecutarse varias veces por automatizacion o por error.
+**`jq -e`** (*exit status*) · Hace que el código de salida de jq dependa del
+último resultado: 1 si es `false` o `null`, 4 si no hubo ninguno. En jq 1.6, una
+entrada vacía sale con 0.
 
----
+**`jq -s`** (*slurp*) · Lee todas las entradas y las mete en un array. Con
+`add`, junta varias listas en una.
 
-## IFS
+## L
 
-"Internal Field Separator" — variable de bash que define los caracteres usados
-para separar palabras en la expansion de variables y en la lectura con `read`.
-El valor por defecto es espacio, tabulacion y salto de linea. Se cambia
-temporalmente para parsear formatos de texto con otro separador, como CSV:
+**`Link`** · Header de RFC 8288 con enlaces relacionados con la respuesta. En
+paginación: `<URL>; rel="next"`, y también `prev`, `first` y `last`, en
+cualquier orden.
 
-```bash
-while IFS=, read -r id nombre email; do
-    echo "$id | $nombre | $email"
-done < usuarios.csv
-```
+## M
 
----
+**`MAX_PAGINAS`** · El freno de `fetch-all`: cuántas páginas pide como mucho
+antes de fallar. Evita el bucle infinito de un `next` que apunta a sí mismo.
 
-## jq
+## N
 
-Procesador JSON de linea de comandos. Lee JSON de stdin o un archivo, aplica un
-filtro (expresion jq) y escribe el resultado en stdout. Es la herramienta estandar
-para trabajar con respuestas JSON en scripts bash. Permite acceder a campos,
-filtrar arrays, transformar estructuras y crear nuevo JSON desde variables bash.
+**`nounset`** · El nombre largo de `set -u`: abortar al usar una variable que
+no existe. `${VAR:-}` da una cadena vacía en su lugar.
 
----
+## P
 
-## paginacion
+**Paginación** (*pagination*) · Repartir un listado en varias respuestas. Por
+número de página, por desplazamiento, por cursor o con `Link`.
 
-Mecanismo por el que las APIs dividen colecciones grandes en "paginas" de N
-elementos. El cliente hace requests sucesivos para obtener cada pagina. Los
-patrones comunes son: paginacion por offset (`?page=2&limit=20`), por cursor
-(`?after=ID_del_ultimo_elemento`) o por URL en campo `next` de la respuesta.
-El loop termina cuando la respuesta indica que no hay mas paginas (campo `next`
-es null o la pagina retornada esta vacia).
+**`pipefail`** · Opción de bash: una tubería sale con el último código distinto
+de 0 de sus comandos, no con el del último comando.
 
----
+**`PIPESTATUS`** · Array de bash con el código de cada comando de la última
+tubería. En zsh, `pipestatus`.
 
-## pipeline (bash)
+## R
 
-En Unix/bash, una cadena de procesos donde la salida (stdout) de cada proceso se
-conecta a la entrada (stdin) del siguiente mediante el operador `|`. Ejemplo:
-`curl -s URL | jq '.campo' | grep "valor"`. Con `set -o pipefail`, el pipeline
-falla si cualquier proceso en la cadena retorna un exit code distinto de cero.
+**Rate limit** · El cupo de peticiones que una API te permite en un intervalo.
+Al superarlo responde 429 (GitHub, a veces 403).
 
----
+**`rel="next"`** · La relación del `Link` que apunta a la página siguiente. Su
+ausencia es el final del listado.
 
-## rate limit
+**`--retry N`** · Reintenta hasta N veces un error transitorio: timeout, 408,
+429, 500, 502, 503, 504. Esperas de 1, 2, 4... segundos, o lo que diga
+`Retry-After` (7.66+).
 
-Limite impuesto por una API en el numero de requests que se pueden hacer en un
-periodo de tiempo. Ejemplo: 100 requests por minuto. Cuando se supera el limite,
-la API retorna HTTP 429 (Too Many Requests), a menudo con un header `Retry-After`
-que indica cuantos segundos esperar. Los scripts deben respetar estos limites
-con delays (`sleep`) entre requests y backoff al recibir 429.
+**`--retry-all-errors`** (7.71+) · Reintenta cualquier fallo. La documentación lo
+desaconseja por defecto.
 
----
+**`--retry-connrefused`** (7.52+) · Cuenta la conexión rechazada (7) como error
+transitorio.
 
-## readonly
+**`--retry-delay S`** · Espera fija de S segundos entre reintentos, sin backoff.
 
-Palabra clave bash que marca una variable como inmutable. Cualquier intento de
-reasignarla produce un error de ejecucion. Se usa para variables de configuracion
-que no deben cambiar durante la ejecucion del script.
+**`--retry-max-time S`** · No empieza un reintento si ya han pasado S segundos.
+La espera en curso no se corta.
 
-```bash
-readonly BASE_URL="${BASE_URL:-https://api.ejemplo.com}"
-readonly TIMEOUT=30
-```
+**`Retry-After`** · Header que dice cuándo volver tras un 429 o un 503, en
+segundos o como fecha HTTP.
 
----
+## S
 
-## set -e
+**`sysexits.h`** · Convención de los BSD para códigos de salida con nombre, del
+64 al 78. Está en `/usr/include/` de cualquier Linux.
 
-Opción de bash (`set -e` o `set -o errexit`) que hace que el script termine
-inmediatamente si cualquier comando retorna un exit code distinto de cero.
-Util como red de seguridad en scripts simples, pero puede interferir con scripts
-que manejan errores de forma granular con estructuras `if` y `||`. Se puede
-desactivar temporalmente con `set +e`.
+## T
+
+**Transitorio** (*transient*) · Error que puede no repetirse si se reintenta:
+un timeout, un 503. Lo contrario de un 404, que dará lo mismo siempre.
+
+**`trap ... EXIT`** · Ejecuta un comando al salir el script por cualquier
+motivo, también por un `set -e`. Para borrar temporales.
+
+## X
+
+**`x-ratelimit-*`** · Headers de GitHub (y de otras APIs, con nombres
+parecidos) con el cupo: `limit`, `remaining`, `used` y `reset` (epoch).
 
 ---
 
-## set -o pipefail
+| Anterior | Siguiente |
+|---|---|
+| [Recursos](../4-recursos/README.md) | [README de la Semana 07](../README.md) |
 
-Opción de bash que hace que el exit code de un pipeline sea el del primer
-comando que falle, en lugar del exit code del ultimo comando. Sin esta opcion,
-`curl_fallido | jq '.'` retorna 0 (el exit code de jq, aunque curl haya fallado
-con exit code 6).
-
----
-
-## set -u
-
-Opción de bash (`set -u` o `set -o nounset`) que hace que el script termine con
-un error si se intenta usar una variable no definida. Previene bugs silenciosos
-por typos en nombres de variables. Para dar un valor por defecto a una variable
-que puede no estar definida, usar `${VAR:-default}`.
-
----
-
-## shebang
-
-La primera linea de un script, con formato `#!/ruta/al/interprete`. Le indica
-al sistema operativo que programa usar para ejecutar el archivo. Para scripts
-bash, la forma mas portable es `#!/usr/bin/env bash`, que encuentra bash en el
-PATH. Sin shebang, el sistema ejecuta el script con sh, que puede tener
-diferencias de comportamiento con bash.
-
----
-
-## sleep
-
-Comando que pausa la ejecucion del script por un numero de segundos (acepta
-valores decimales). Indispensable en loops que hacen requests a APIs externas
-para respetar los rate limits y evitar ser bloqueado por la API.
-
-```bash
-sleep 1      # 1 segundo completo
-sleep 0.5    # medio segundo (500 ms)
-sleep 0.2    # 200 milisegundos
-```
-
----
-
-## stderr
-
-"Standard Error" — canal de salida de error de un proceso (file descriptor 2).
-Por convencion, los mensajes de error, advertencias y logs van a stderr, y la
-data util va a stdout. Esta separacion permite redirigir o filtrar la salida de
-un script en pipelines sin que los mensajes de log interfieran con los datos.
-
-```bash
-echo "Error: fallo la conexion" >&2   # mensaje a stderr
-```
-
----
-
-## stdout
-
-"Standard Output" — canal de salida principal de un proceso (file descriptor 1).
-La data util que un script produce va a stdout. En bash, es el destino por
-defecto de `echo` y `printf`. Redirigir stdout a un archivo: `comando > archivo.txt`.
-
-
+[← Glosario global del bootcamp](../../../docs/glosario-global.md)

@@ -107,8 +107,11 @@ Todos anteriores a 7.68, así que están en cualquier distribución con soporte.
 | `-:` / `--next` | 7.36.0 | 09 |
 | `--unix-socket` | 7.40.0 | 06 |
 | `--tlsv1.3` | 7.52.0 | 05 |
+| `--retry-connrefused` | 7.52.0 | 05 |
+| `--fail-early` | 7.52.0 | 07 |
 | `--doh-url` | 7.62.0 | 05 |
 | `--alt-svc` | 7.64.1 | 09 |
+| `Retry-After` respetado por `--retry` | 7.66.0 | 07 |
 | `-Z` / `--parallel` | 7.66.0 | 09 |
 | `--parallel-max` | 7.66.0 | 09 |
 | `--http3` | 7.66.0 | 09 |
@@ -157,6 +160,18 @@ Por eso estas se marcan igual que los flags.
 | `%{time_queue}` | 8.12.0 | 09 | — |
 
 ---
+
+## Comportamientos que cambiaron entre 7.81 y 8.x
+
+No son flags nuevos: es el mismo comando, que hace otra cosa según la versión.
+Comprobados con 7.81.0 (Ubuntu 22.04) y la imagen `curlimages/curl:8.17.0`.
+
+| Comando | En 7.81 | En 8.x | Semana |
+|---|---|---|:--:|
+| `--fail --fail-with-body` | Error de uso: `is badly used here`, sale con 2 | Se acepta | 07 |
+| `--retry N -o /dev/null` con un cuerpo no vacío | El reintento sale con `(23) Failed to truncate file` | Funciona | 07 |
+| `-w '%header{nombre}'` | Imprime el texto literal, sin error | El valor del header (7.84+) | 06 |
+| Configuración en `$XDG_CONFIG_HOME` | Lee `.curlrc` | Lee `curlrc`, sin punto | 06 |
 
 ## `--http3` merece un párrafo aparte
 

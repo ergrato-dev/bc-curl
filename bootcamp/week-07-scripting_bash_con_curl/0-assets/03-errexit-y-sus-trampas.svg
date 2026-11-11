@@ -1,0 +1,41 @@
+<svg viewBox="0 0 820 420" role="img" xmlns="http://www.w3.org/2000/svg" font-family="Inter, system-ui, -apple-system, sans-serif">
+  <title>Las tres opciones de set -euo pipefail, cada una con lo que vigila y su trampa principal: -e aborta ante un comando que falla, pero no dentro de if, de || o de &amp;&amp;, ni en local x=$(...); -u aborta ante una variable sin definir, y se esquiva con ${VAR:-}; -o pipefail hace fallar una tubería si falla cualquiera de sus comandos, y por eso curl | head puede abortar con 23</title>
+  <rect width="820" height="420" fill="#0d1117"/>
+  <defs><marker id="f" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#8b949e"/></marker></defs>
+  <text x="410.0" y="34" text-anchor="middle" fill="#f0f6fc" font-size="22" font-weight="bold">set -euo pipefail: qué vigila y dónde no</text>
+  <rect x="30" y="65" width="240" height="320" rx="8" fill="#161b22" stroke="#f0883e" stroke-width="2"/>
+  <text x="150" y="97" text-anchor="middle" fill="#f0883e" font-size="18" font-weight="bold" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">-e  errexit</text>
+  <text x="150" y="125" text-anchor="middle" fill="#f0f6fc" font-size="13">aborta si un comando falla</text>
+  <path d="M50 142 L250 142" stroke="#30363d" stroke-width="1" fill="none"/>
+  <text x="50" y="168" fill="#f85149" font-size="13" font-weight="bold">trampa</text>
+  <text x="50" y="194" fill="#f0f6fc" font-size="13">no mira dentro de if f</text>
+  <text x="50" y="218" fill="#f0f6fc" font-size="13" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">ni en f || x, f &amp;&amp; x</text>
+  <text x="50" y="242" fill="#f0f6fc" font-size="13" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">local x=$(curl ...) oculta</text>
+  <text x="50" y="266" fill="#f0f6fc" font-size="13">el fallo de curl</text>
+  <path d="M50 302 L250 302" stroke="#30363d" stroke-width="1" fill="none"/>
+  <text x="50" y="328" fill="#3fb950" font-size="13" font-weight="bold">en su lugar</text>
+  <text x="50" y="354" fill="#f0f6fc" font-size="13" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">rc=0; curl ... || rc=$?</text>
+  <rect x="290" y="65" width="240" height="320" rx="8" fill="#161b22" stroke="#58a6ff" stroke-width="2"/>
+  <text x="410" y="97" text-anchor="middle" fill="#58a6ff" font-size="18" font-weight="bold" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">-u  nounset</text>
+  <text x="410" y="125" text-anchor="middle" fill="#f0f6fc" font-size="13">aborta con una variable sin definir</text>
+  <path d="M310 142 L510 142" stroke="#30363d" stroke-width="1" fill="none"/>
+  <text x="310" y="168" fill="#f85149" font-size="13" font-weight="bold">trampa</text>
+  <text x="310" y="194" fill="#f0f6fc" font-size="13" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">$API_TOKEN sin valor</text>
+  <text x="310" y="218" fill="#f0f6fc" font-size="13">aborta sin decir qué falta</text>
+  <text x="310" y="242" fill="#f0f6fc" font-size="13" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">$1 sin argumento, igual</text>
+  <path d="M310 302 L510 302" stroke="#30363d" stroke-width="1" fill="none"/>
+  <text x="310" y="328" fill="#3fb950" font-size="13" font-weight="bold">en su lugar</text>
+  <text x="310" y="354" fill="#f0f6fc" font-size="13" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">${API_TOKEN:-}</text>
+  <rect x="550" y="65" width="240" height="320" rx="8" fill="#161b22" stroke="#d2a8ff" stroke-width="2"/>
+  <text x="670" y="97" text-anchor="middle" fill="#d2a8ff" font-size="18" font-weight="bold" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">-o pipefail</text>
+  <text x="670" y="125" text-anchor="middle" fill="#f0f6fc" font-size="13">la tubería falla si falla cualquiera</text>
+  <path d="M570 142 L770 142" stroke="#30363d" stroke-width="1" fill="none"/>
+  <text x="570" y="168" fill="#f85149" font-size="13" font-weight="bold">trampa</text>
+  <text x="570" y="194" fill="#f0f6fc" font-size="13" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">sin él, curl | jq sale</text>
+  <text x="570" y="218" fill="#f0f6fc" font-size="13">con el código de jq</text>
+  <text x="570" y="242" fill="#f0f6fc" font-size="13" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">con él, curl | head -1</text>
+  <text x="570" y="266" fill="#f0f6fc" font-size="13">puede abortar con 23</text>
+  <path d="M570 302 L770 302" stroke="#30363d" stroke-width="1" fill="none"/>
+  <text x="570" y="328" fill="#3fb950" font-size="13" font-weight="bold">en su lugar</text>
+  <text x="570" y="354" fill="#f0f6fc" font-size="13" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">archivo, y head al archivo</text>
+</svg>

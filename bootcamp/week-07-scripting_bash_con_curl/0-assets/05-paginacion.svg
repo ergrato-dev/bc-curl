@@ -1,0 +1,44 @@
+<svg viewBox="0 0 820 440" role="img" xmlns="http://www.w3.org/2000/svg" font-family="Inter, system-ui, -apple-system, sans-serif">
+  <title>Las cuatro formas de paginar: número de página, desplazamiento, cursor opaco en el cuerpo y header Link de RFC 8288; debajo, el bucle común a todas: pedir la página, guardarla, buscar la siguiente y parar cuando no hay, con dos frenos marcados en rojo: un máximo de páginas y no salir nunca del host de la API</title>
+  <rect width="820" height="440" fill="#0d1117"/>
+  <defs><marker id="f" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#8b949e"/></marker></defs>
+  <text x="410.0" y="34" text-anchor="middle" fill="#f0f6fc" font-size="22" font-weight="bold">Paginación: cuatro estilos, un bucle</text>
+  <rect x="20" y="62" width="186" height="100" rx="8" fill="#161b22" stroke="#58a6ff" stroke-width="1"/>
+  <text x="113" y="90" text-anchor="middle" fill="#58a6ff" font-size="16" font-weight="bold">página</text>
+  <text x="113" y="118" text-anchor="middle" fill="#f0f6fc" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">?page=3&amp;per_page=50</text>
+  <text x="113" y="146" text-anchor="middle" fill="#8b949e" font-size="13">para: página vacía</text>
+  <rect x="218" y="62" width="186" height="100" rx="8" fill="#161b22" stroke="#58a6ff" stroke-width="1"/>
+  <text x="311" y="90" text-anchor="middle" fill="#58a6ff" font-size="16" font-weight="bold">desplazamiento</text>
+  <text x="311" y="118" text-anchor="middle" fill="#f0f6fc" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">?offset=100&amp;limit=50</text>
+  <text x="311" y="146" text-anchor="middle" fill="#8b949e" font-size="13">para: página vacía</text>
+  <rect x="416" y="62" width="186" height="100" rx="8" fill="#161b22" stroke="#58a6ff" stroke-width="1"/>
+  <text x="509" y="90" text-anchor="middle" fill="#58a6ff" font-size="16" font-weight="bold">cursor</text>
+  <text x="509" y="118" text-anchor="middle" fill="#f0f6fc" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">next_cursor en el cuerpo</text>
+  <text x="509" y="146" text-anchor="middle" fill="#8b949e" font-size="13">para: cursor null</text>
+  <rect x="614" y="62" width="186" height="100" rx="8" fill="#161b22" stroke="#f0883e" stroke-width="2"/>
+  <text x="707" y="90" text-anchor="middle" fill="#f0883e" font-size="16" font-weight="bold">header Link</text>
+  <text x="707" y="118" text-anchor="middle" fill="#f0f6fc" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">&lt;URL&gt;; rel=&quot;next&quot;</text>
+  <text x="707" y="146" text-anchor="middle" fill="#8b949e" font-size="13">para: sin rel=&quot;next&quot;</text>
+  <rect x="20.0" y="215" width="120" height="50" rx="8" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="80" y="246" text-anchor="middle" fill="#f0f6fc" font-size="15" font-weight="bold">pedir</text>
+  <rect x="175.0" y="215" width="180" height="50" rx="8" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="265" y="246" text-anchor="middle" fill="#f0f6fc" font-size="15" font-weight="bold">guardar la página</text>
+  <rect x="385.0" y="215" width="200" height="50" rx="8" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="485" y="246" text-anchor="middle" fill="#f0f6fc" font-size="15" font-weight="bold">buscar la siguiente</text>
+  <rect x="620.0" y="215" width="100" height="50" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="670" y="246" text-anchor="middle" fill="#f0f6fc" font-size="15" font-weight="bold">¿hay?</text>
+  <path d="M140 240 L173 240" stroke="#8b949e" stroke-width="2" fill="none" marker-end="url(#f)"/>
+  <path d="M355 240 L383 240" stroke="#8b949e" stroke-width="2" fill="none" marker-end="url(#f)"/>
+  <path d="M585 240 L618 240" stroke="#8b949e" stroke-width="2" fill="none" marker-end="url(#f)"/>
+  <text x="728" y="246" fill="#3fb950" font-size="13" font-weight="bold">no: fin</text>
+  <path d="M670 265 L670 320" stroke="#8b949e" stroke-width="1.5" fill="none"/>
+  <path d="M670 320 L80 320" stroke="#8b949e" stroke-width="1.5" fill="none"/>
+  <path d="M80 320 L80 267" stroke="#8b949e" stroke-width="1.5" fill="none" marker-end="url(#f)"/>
+  <text x="370" y="312" text-anchor="middle" fill="#8b949e" font-size="13">sí: la URL que da la API, tal cual</text>
+  <rect x="60" y="350" width="330" height="66" rx="8" fill="#161b22" stroke="#f85149" stroke-width="2"/>
+  <text x="225" y="377" text-anchor="middle" fill="#f85149" font-size="15" font-weight="bold">freno 1: un máximo de páginas</text>
+  <text x="225" y="401" text-anchor="middle" fill="#f0f6fc" font-size="13">un next que apunta a sí mismo no termina</text>
+  <rect x="430" y="350" width="330" height="66" rx="8" fill="#161b22" stroke="#f85149" stroke-width="2"/>
+  <text x="595" y="377" text-anchor="middle" fill="#f85149" font-size="15" font-weight="bold">freno 2: no salir de la API</text>
+  <text x="595" y="401" text-anchor="middle" fill="#f0f6fc" font-size="13" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">case &quot;$url&quot; in &quot;$BASE_URL&quot;/*</text>
+</svg>

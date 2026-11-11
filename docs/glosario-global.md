@@ -31,6 +31,8 @@ arquetipo del bootcamp es `-k`. _(S01)_
 ## B
 **Boundary** — Cadena aleatoria que separa las partes de un cuerpo multipart. La genera curl; no se escribe a mano. _(S04)_
 
+**Backoff exponencial** (exponential backoff) — Esperar entre reintentos un tiempo que se dobla cada vez, con un tope. Lo hace `--retry`; un bucle propio le suma azar (jitter). _(S07)_
+
 ## C
 
 **Cliente** (client) — Quien inicia la comunicación HTTP. En este bootcamp,
@@ -41,7 +43,8 @@ servidor resume el resultado. El primer dígito da la familia. _(S01)_
 
 **Código de salida** (exit code) — El número con el que termina el proceso
 `curl`. Dice si pudo hablar con el servidor, **no** si el servidor dijo que sí.
-_(S01)_
+Cada fase tiene el suyo: 6 DNS, 7 conexión, 28 timeout, 60 certificado.
+_(S01, S07)_
 
 **`Content-Length`** — Header con el tamaño del cuerpo en bytes. No existe
 cuando la respuesta va en trozos (`Transfer-Encoding: chunked`). _(S01)_
@@ -85,6 +88,8 @@ listan en `Features:` de `curl --version`. _(S01)_
 **Fragmento** (fragment) — Lo que sigue al `#` en una URL. No viaja al
 servidor. _(S01)_
 
+**`--fail-with-body`** — Sale con 22 ante un 4xx/5xx, como `--fail`, pero conserva el cuerpo del error. Desde 7.76; en 7.81 no se combina con `--fail`. _(S07)_
+
 ## H
 
 **Header** — Par `Nombre: valor` con metadatos. El nombre no distingue
@@ -104,6 +109,8 @@ mayúsculas; el valor sí. _(S01)_
 
 **JSON Lines** — Un objeto JSON por línea. Se añade con `>>` y se lee con `jq -s`. El formato de las métricas del toolkit. _(S06)_
 
+**Jitter** — Azar sumado a la espera de un reintento para que muchos clientes que fallaron a la vez no vuelvan a la vez. _(S07)_
+
 ## L
 
 **libcurl** — La biblioteca que hace el trabajo; `curl` es la capa de línea de
@@ -111,6 +118,8 @@ comandos por encima. _(S01)_
 
 **`Location`** — Header que acompaña a un 3xx e indica a dónde ir. Solo se sigue
 con `-L`. _(S01)_
+
+**`Link`** — Header de RFC 8288 con enlaces relacionados. En paginación, `<URL>; rel="next"` apunta a la página siguiente; su ausencia es el final. _(S07)_
 
 ## M
 
@@ -146,6 +155,10 @@ esquema. _(S01)_
 
 **Percentil** (percentile) — p50 (mediana) y p95: el valor por debajo del cual está el 50 % o el 95 % de las medidas. Describen la latencia mejor que la media. _(S06)_
 
+**Paginación** (pagination) — Repartir un listado en varias respuestas: por página, por desplazamiento, por cursor o con `Link`. Se para cuando la API lo dice, nunca "hasta que falle". _(S07)_
+
+**`pipefail`** — Opción de bash: una tubería sale con el último código distinto de 0, no con el del último comando. Sin ella, `curl | jq` esconde el fallo de curl. _(S07)_
+
 ## Q
 
 **Query string** — Lo que sigue al `?` en la URL, en pares `clave=valor`. Queda
@@ -160,6 +173,10 @@ opcional. _(S01)_
 
 **`--remove-on-error`** — Borra el archivo de salida si la transferencia falla. `--remove-on-error` desde 7.83. _(S04)_
 
+**Rate limit** — Cupo de peticiones por intervalo. Superarlo da 429 (GitHub, a veces 403), y la API suele decir cuánto queda en `x-ratelimit-*`. _(S07)_
+
+**`Retry-After`** — Header de un 429 o un 503 con cuándo volver: segundos o fecha HTTP. `--retry` lo respeta desde 7.66. _(S07)_
+
 ## S
 
 **Servidor** (server) — Quien recibe la petición y responde. _(S01)_
@@ -172,6 +189,8 @@ _(S01)_
 **SNI** (Server Name Indication) — Nombre que el cliente manda en el handshake para que el servidor elija certificado. _(S05)_
 
 **subjectAltName** (SAN) — Campo del certificado con los nombres para los que vale. El único que miran los clientes actuales. _(S05)_
+
+**`sysexits.h`** — Códigos de salida con nombre, del 64 al 78. El toolkit usa 69 (`EX_UNAVAILABLE`), 75 (`EX_TEMPFAIL`) y 77 (`EX_NOPERM`). _(S07)_
 
 ## T
 

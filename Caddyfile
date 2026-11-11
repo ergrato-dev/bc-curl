@@ -24,7 +24,41 @@ https://localhost:{$TLS_PORT:8443}, https://tls:{$TLS_PORT:8443} {
 	tls internal
 
 	header X-Lab-Endpoint "tls"
-	reverse_proxy httpbin:8080
+
+	# --- API paginada (Semana 07) ---------------------------------------------
+	# /paginas devuelve un listado JSON en tres paginas, con el header Link de
+	# RFC 8288 que usa GitHub: rel="next" mientras quedan paginas, y ademas
+	# prev, first y last. ?page=fuera devuelve un Link que salta a otro host:
+	# un script que lo siga le manda la credencial a quien no debe.
+	map {query.page} {lab_items} {lab_link} {
+		""      `[\{"id":1\},\{"id":2\},\{"id":3\}]` `<https://{http.request.hostport}/paginas?page=2>; rel="next", <https://{http.request.hostport}/paginas?page=3>; rel="last"`
+		1       `[\{"id":1\},\{"id":2\},\{"id":3\}]` `<https://{http.request.hostport}/paginas?page=2>; rel="next", <https://{http.request.hostport}/paginas?page=3>; rel="last"`
+		2       `[\{"id":4\},\{"id":5\},\{"id":6\}]` `<https://{http.request.hostport}/paginas?page=1>; rel="prev", <https://{http.request.hostport}/paginas?page=3>; rel="next", <https://{http.request.hostport}/paginas?page=1>; rel="first", <https://{http.request.hostport}/paginas?page=3>; rel="last"`
+		3       `[\{"id":7\}]` `<https://{http.request.hostport}/paginas?page=2>; rel="prev", <https://{http.request.hostport}/paginas?page=1>; rel="first"`
+		fuera   `[\{"id":1\}]` `<https://otra-api.invalid/paginas?page=2>; rel="next"`
+		bucle   `[\{"id":1\}]` `<https://{http.request.hostport}/paginas?page=bucle>; rel="next"`
+		default `[]` ""
+	}
+
+	handle /paginas {
+		@con_link expression `{lab_link} != ""`
+		header @con_link Link {lab_link}
+		header Content-Type application/json
+		respond {lab_items} 200
+	}
+
+	# --- Rate limit (Semana 07) -----------------------------------------------
+	# /limitado responde siempre 429 con Retry-After: 1, como una API que te
+	# ha cortado el grifo. curl --retry espera lo que dice el header.
+	handle /limitado {
+		header Retry-After 1
+		header Content-Type application/json
+		respond `{"error":"demasiadas peticiones"}` 429
+	}
+
+	handle {
+		reverse_proxy httpbin:8080
+	}
 }
 
 # --- Endpoint mTLS ---------------------------------------------------------

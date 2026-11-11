@@ -46,9 +46,9 @@ Dos decisiones que conviene entender antes de empezar:
 con un comentario `ponytail:` en el código). `--timing` con `download` es un
 error de uso; `METRICS_FILE`, simplemente no recibe la línea.
 
-Lo que desbloquea: la Semana 07 usará las métricas para decidir el backoff
-ante un 429, y la 09 medirá con `FORMATO_W` lo que gana el paralelismo. Sin
-esta capa, ninguna de las dos tiene con qué comparar.
+Lo que desbloquea: la Semana 07 apoya en `lanzar_curl` y en la línea de
+`FORMATO_W` sus reintentos y `fetch-all`, y la 09 medirá con `FORMATO_W` lo que
+gana el paralelismo. Sin esta capa, la 09 no tiene con qué comparar.
 
 ---
 

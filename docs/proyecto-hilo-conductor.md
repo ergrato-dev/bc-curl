@@ -82,7 +82,7 @@ Flags globales:
 | 04 | **Transferencias** | `download` con reanudación, subida de archivos y multipart |
 | 05 | **Red hostil** | CA propia, mTLS, cookies persistentes, redirects, timeouts y reintentos |
 | 06 | **Observable** | `--verbose` con credenciales tachadas, `--timing` y métricas JSON con `--write-out`, ignora el `~/.curlrc`, User-Agent propio |
-| 07 | **Robusto** | Falla cuando debe fallar, `fetch-all` con paginación, backoff ante 429 |
+| 07 | **Robusto** | Falla cuando debe fallar: errores por stderr, 429/502/503/504 salen con 75 y `Retry-After`, un solo cuerpo tras reintentar, `fetch-all` con paginación por `Link` |
 | 08 | **OAuth2** | `auth login/logout/status`, refresco automático del token caducado |
 | 09 | **Rápido** | Peticiones en paralelo, reutilización de conexión, `bench` |
 | 10 | **Entregable** | `init`, tests con `bats`, documentación, instalable, en CI |

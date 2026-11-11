@@ -1,47 +1,27 @@
-# 🎥 Videografía - Semana 7
+# Videografía — Semana 07
 
-## Videos Recomendados
+_Comprobado el 11 de noviembre de 2026: los tres enlaces resuelven y el título
+coincide con el que aparece aquí. Los tres están en la
+[página oficial de vídeos de curl](https://curl.se/docs/videos/)._
 
-### Bash Scripting
+Pocos y elegidos. Un vídeo solo entra aquí si enseña algo que en texto se
+entiende peor.
 
-| Título | Canal | Duración | Enlace | Idioma |
-|--------|-------|----------|--------|--------|
-| Bash Scripting Full Course | freeCodeCamp | 3h | [YouTube](https://www.youtube.com/watch?v=tK9Oc6AEnR4) | 🇬🇧 EN |
-| Bash Scripting en español | Pelado Nerd | 45min | [YouTube](https://www.youtube.com/watch?v=BUOqXhEIMs4) | 🇪🇸 ES |
-| Error Handling in Bash | LearnLinuxTV | 20min | [YouTube](https://www.youtube.com/watch?v=2rvq1a5u6MU) | 🇬🇧 EN |
+| Recurso | Por qué vale la pena |
+|---|---|
+| [Advanced HTTP Scripting with curl](https://curl.se/video/curlup-2017/2017-03-19_01_Dan_Fandrich_Advanced_HTTP_Scripting_with_curl.mp4) — Dan Fandrich, curl-up 2017 | 33 minutos de uno de los mantenedores de curl sobre scripting HTTP avanzado con curl: el tema de esta semana, contado desde dentro del proyecto |
+| [Next Level Curl](https://www.youtube.com/watch?v=8b5jkr35CRQ) — Daniel Stenberg, Nordic APIs Platform Summit 2023 | Opciones recientes y poco conocidas que cambian cómo se escribe un script con curl. Útil para saber qué te pierdes con 7.81 |
+| [curl from start to end](https://www.youtube.com/watch?v=WmMa1GVPWZ0) — Daniel Stenberg | Qué pasa desde que pulsas Enter hasta que curl sale: el shell, los argumentos, la red y el código de salida. Ayuda a entender en qué fase falla cada código de la teoría 01 |
 
-### jq
+> [!TIP]
+> Si tienes poco tiempo, el primero. Es de 2017 y algún flag ha cambiado desde
+> entonces, pero el razonamiento sigue igual.
 
-| Título | Canal | Duración | Enlace | Idioma |
-|--------|-------|----------|--------|--------|
-| jq Command Line JSON Processor | Academind | 15min | [YouTube](https://www.youtube.com/watch?v=FSn_38gDlOA) | 🇬🇧 EN |
-| Learn jq in 20 Minutes | NetworkChuck | 20min | [YouTube](https://www.youtube.com/watch?v=EvpZybhY5tg) | 🇬🇧 EN |
-| jq desde Cero | Fazt Code | 12min | [YouTube](https://www.youtube.com/watch?v=7NzvQ4PgQ_U) | 🇪🇸 ES |
-
-### curl Exit Codes
-
-| Título | Canal | Duración | Enlace | Idioma |
-|--------|-------|----------|--------|--------|
-| curl error handling | Hussein Nasser | 10min | [YouTube](https://www.youtube.com/watch?v=IKaISyq5tGc) | 🇬🇧 EN |
-| Debugging curl scripts | Traversy Media | 12min | [YouTube](https://www.youtube.com/watch?v=WxZvFEld0gE) | 🇬🇧 EN |
-
-### APIs y Automation
-
-| Título | Canal | Duración | Enlace | Idioma |
-|--------|-------|----------|--------|--------|
-| Automating APIs with curl | Programming with Mosh | 20min | [YouTube](https://www.youtube.com/watch?v=GZvSYJDk-xQ) | 🇬🇧 EN |
-| Bash API Automation | NetworkChuck | 15min | [YouTube](https://www.youtube.com/watch?v=PoAjmmD89Vw) | 🇬🇧 EN |
+Para lo demás, el laboratorio rinde más que un vídeo: provocar cada fallo y
+leer su código enseña más que verlo contado.
 
 ---
 
-## 📺 Canales Recomendados
-
-- **freeCodeCamp** - Cursos completos gratuitos
-- **Pelado Nerd** - DevOps, bash, terminal en español
-- **Fazt Code** - Tutoriales prácticos en español
-- **Hussein Nasser** - Backend engineering
-- **Academind** - Tutoriales detallados
-
----
-
-> 💡 **Tip**: Activa subtítulos en español si el video está en inglés.
+| Anterior | Siguiente |
+|---|---|
+| [Ebooks gratuitos](../ebooks-free/README.md) | [Webgrafía](../webgrafia/README.md) |
