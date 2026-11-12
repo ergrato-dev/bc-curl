@@ -1,0 +1,52 @@
+<svg viewBox="0 0 820 470" role="img" xmlns="http://www.w3.org/2000/svg" font-family="Inter, system-ui, -apple-system, sans-serif">
+  <title>Un JWT en sus tres trozos separados por puntos: la cabecera en base64url, que decodificada es un JSON con alg RS256, typ JWT y kid default; el payload con los claims iss, sub, aud, exp, iat y jti; y la firma, que solo se comprueba con la clave pública de jwks_uri. Debajo, quién hace qué: el cliente lo lee para depurar, la API lo valida, y la introspección se lo pregunta al servidor</title>
+  <rect width="820" height="470" fill="#0d1117"/>
+  <defs><marker id="f-bg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#0d1117"/></marker><marker id="f-sf" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#161b22"/></marker><marker id="f-bd" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#30363d"/></marker><marker id="f-tx" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#f0f6fc"/></marker><marker id="f-t2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#8b949e"/></marker><marker id="f-na" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#f0883e"/></marker><marker id="f-az" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#58a6ff"/></marker><marker id="f-az2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#79c0ff"/></marker><marker id="f-ve" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#3fb950"/></marker><marker id="f-am" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#e3b341"/></marker><marker id="f-ro" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#f85149"/></marker><marker id="f-mo" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#d2a8ff"/></marker></defs>
+  <text x="410.0" y="34" text-anchor="middle" fill="#f0f6fc" font-size="22" font-weight="bold">Un JWT por dentro</text>
+  <text x="150" y="76" text-anchor="middle" fill="#f85149" font-size="15" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">eyJraWQiOi…</text>
+  <text x="275" y="76" text-anchor="middle" fill="#f0f6fc" font-size="18" font-weight="bold">.</text>
+  <text x="410" y="76" text-anchor="middle" fill="#d2a8ff" font-size="15" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">eyJzdWIiOi…</text>
+  <text x="545" y="76" text-anchor="middle" fill="#f0f6fc" font-size="18" font-weight="bold">.</text>
+  <text x="670" y="76" text-anchor="middle" fill="#58a6ff" font-size="15" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">kq9mjlvrUv…</text>
+  <path d="M150 86 L150 108" stroke="#f85149" stroke-width="2.2" fill="none" marker-end="url(#f-ro)"/>
+  <path d="M410 86 L410 108" stroke="#d2a8ff" stroke-width="2.2" fill="none" marker-end="url(#f-mo)"/>
+  <path d="M670 86 L670 108" stroke="#58a6ff" stroke-width="2.2" fill="none" marker-end="url(#f-az)"/>
+  <rect x="30" y="112" width="240" height="160" rx="8" fill="#161b22" stroke="#f85149" stroke-width="2"/>
+  <text x="46" y="136" text-anchor="start" fill="#f85149" font-size="14" font-weight="bold">cabecera</text>
+  <text x="46" y="164" text-anchor="start" fill="#f0f6fc" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">{</text>
+  <text x="46" y="183" text-anchor="start" fill="#f0f6fc" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">  "kid": "default",</text>
+  <text x="46" y="202" text-anchor="start" fill="#f0f6fc" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">  "typ": "JWT",</text>
+  <text x="46" y="221" text-anchor="start" fill="#f0f6fc" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">  "alg": "RS256"</text>
+  <text x="46" y="240" text-anchor="start" fill="#f0f6fc" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">}</text>
+  <rect x="290" y="112" width="240" height="160" rx="8" fill="#161b22" stroke="#d2a8ff" stroke-width="2"/>
+  <text x="306" y="136" text-anchor="start" fill="#d2a8ff" font-size="14" font-weight="bold">payload: los claims</text>
+  <text x="306" y="162" text-anchor="start" fill="#f0f6fc" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">iss  quién lo emitió</text>
+  <text x="306" y="180" text-anchor="start" fill="#f0f6fc" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">sub  de quién es</text>
+  <text x="306" y="198" text-anchor="start" fill="#f0f6fc" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">aud  para qué API</text>
+  <text x="306" y="216" text-anchor="start" fill="#f0f6fc" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">exp  cuándo caduca</text>
+  <text x="306" y="234" text-anchor="start" fill="#f0f6fc" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">iat  cuándo se emitió</text>
+  <text x="306" y="252" text-anchor="start" fill="#f0f6fc" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">jti  su identificador</text>
+  <rect x="550" y="112" width="240" height="160" rx="8" fill="#161b22" stroke="#58a6ff" stroke-width="2"/>
+  <text x="566" y="136" text-anchor="start" fill="#58a6ff" font-size="14" font-weight="bold">firma</text>
+  <text x="566" y="164" text-anchor="start" fill="#f0f6fc" font-size="12.5">bytes, no texto</text>
+  <text x="566" y="184" text-anchor="start" fill="#f0f6fc" font-size="12.5">RS256 de cabecera.payload</text>
+  <text x="566" y="204" text-anchor="start" fill="#f0f6fc" font-size="12.5">se comprueba con la clave</text>
+  <text x="566" y="224" text-anchor="start" fill="#f0f6fc" font-size="12.5">pública de jwks_uri,</text>
+  <text x="566" y="244" text-anchor="start" fill="#f0f6fc" font-size="12.5">la del mismo kid</text>
+  <text x="410" y="300" text-anchor="middle" fill="#8b949e" font-size="13">base64url: se lee con base64. Leer no es validar.</text>
+  <rect x="30" y="326" width="240" height="120" rx="8" fill="#161b22" stroke="#f0883e" stroke-width="2"/>
+  <text x="46" y="352" text-anchor="start" fill="#f0883e" font-size="14" font-weight="bold">El cliente</text>
+  <text x="46" y="380" text-anchor="start" fill="#f0f6fc" font-size="12.5">lo guarda y lo manda</text>
+  <text x="46" y="400" text-anchor="start" fill="#f0f6fc" font-size="12.5">lo lee para depurar</text>
+  <text x="46" y="420" text-anchor="start" fill="#f0f6fc" font-size="12.5">lo trata como opaco</text>
+  <rect x="290" y="326" width="240" height="120" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="306" y="352" text-anchor="start" fill="#3fb950" font-size="14" font-weight="bold">La API</text>
+  <text x="306" y="380" text-anchor="start" fill="#f0f6fc" font-size="12.5">lo valida en cada petición:</text>
+  <text x="306" y="400" text-anchor="start" fill="#f0f6fc" font-size="12.5">firma, iss, aud, exp</text>
+  <text x="306" y="420" text-anchor="start" fill="#f0f6fc" font-size="12.5">rechaza alg: none</text>
+  <rect x="550" y="326" width="240" height="120" rx="8" fill="#161b22" stroke="#e3b341" stroke-width="2"/>
+  <text x="566" y="352" text-anchor="start" fill="#e3b341" font-size="14" font-weight="bold">La introspección</text>
+  <text x="566" y="380" text-anchor="start" fill="#f0f6fc" font-size="12.5">POST /introspect</text>
+  <text x="566" y="400" text-anchor="start" fill="#f0f6fc" font-size="12.5">¿active: true?</text>
+  <text x="566" y="420" text-anchor="start" fill="#f0f6fc" font-size="12.5">sabe si está revocado</text>
+</svg>

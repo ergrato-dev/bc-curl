@@ -54,7 +54,7 @@ services:
 
   # --- Servidor OAuth2 de laboratorio -------------------------------------
   # Emite tokens de verdad (firmados, con exp) para client credentials,
-  # authorization code + PKCE, device code y refresh. Semana 08.
+  # authorization code + PKCE y refresh (device code no). Semana 08.
   oauth:
     image: ghcr.io/navikt/mock-oauth2-server:${OAUTH_VERSION:-6.0.2}
     container_name: bc-curl-oauth

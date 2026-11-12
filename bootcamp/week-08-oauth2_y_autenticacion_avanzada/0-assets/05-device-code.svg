@@ -1,0 +1,42 @@
+<svg viewBox="0 0 820 560" role="img" xmlns="http://www.w3.org/2000/svg" font-family="Inter, system-ui, -apple-system, sans-serif">
+  <title>Secuencia de device code con dos aparatos: el programa pide a /device/code un device_code y un user_code; enseña la URL y el código corto; la persona, desde su portátil, abre la URL, escribe el código y aprueba; el programa sondea /token cada interval segundos recibiendo authorization_pending, sube la espera con slow_down, y al final recibe el access_token</title>
+  <rect width="820" height="560" fill="#0d1117"/>
+  <defs><marker id="f-bg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#0d1117"/></marker><marker id="f-sf" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#161b22"/></marker><marker id="f-bd" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#30363d"/></marker><marker id="f-tx" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#f0f6fc"/></marker><marker id="f-t2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#8b949e"/></marker><marker id="f-na" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#f0883e"/></marker><marker id="f-az" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#58a6ff"/></marker><marker id="f-az2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#79c0ff"/></marker><marker id="f-ve" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#3fb950"/></marker><marker id="f-am" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#e3b341"/></marker><marker id="f-ro" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#f85149"/></marker><marker id="f-mo" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#d2a8ff"/></marker></defs>
+  <text x="410.0" y="34" text-anchor="middle" fill="#f0f6fc" font-size="22" font-weight="bold">Device code: dos aparatos</text>
+  <rect x="35" y="56" width="190" height="52" rx="8" fill="#161b22" stroke="#f0883e" stroke-width="2"/>
+  <text x="130" y="79" text-anchor="middle" fill="#f0883e" font-size="15" font-weight="bold">Programa</text>
+  <text x="130" y="98" text-anchor="middle" fill="#8b949e" font-size="12">en un servidor SSH</text>
+  <path d="M130 108 L130 540" stroke="#30363d" stroke-width="2" stroke-dasharray="4 4"/>
+  <rect x="315" y="56" width="190" height="52" rx="8" fill="#161b22" stroke="#58a6ff" stroke-width="2"/>
+  <text x="410" y="79" text-anchor="middle" fill="#58a6ff" font-size="15" font-weight="bold">Servidor OAuth2</text>
+  <text x="410" y="98" text-anchor="middle" fill="#8b949e" font-size="12">/device/code, /token</text>
+  <path d="M410 108 L410 540" stroke="#30363d" stroke-width="2" stroke-dasharray="4 4"/>
+  <rect x="595" y="56" width="190" height="52" rx="8" fill="#161b22" stroke="#d2a8ff" stroke-width="2"/>
+  <text x="690" y="79" text-anchor="middle" fill="#d2a8ff" font-size="15" font-weight="bold">Persona</text>
+  <text x="690" y="98" text-anchor="middle" fill="#8b949e" font-size="12">en su portátil</text>
+  <path d="M690 108 L690 540" stroke="#30363d" stroke-width="2" stroke-dasharray="4 4"/>
+  <path d="M130 150 L406 150" stroke="#f0883e" stroke-width="2.2" fill="none" marker-end="url(#f-na)"/>
+  <text x="270.0" y="142" text-anchor="middle" fill="#f0883e" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">POST /device/code</text>
+  <text x="270.0" y="167" text-anchor="middle" fill="#8b949e" font-size="11.5">client_id, scope</text>
+  <path d="M410 205 L134 205" stroke="#58a6ff" stroke-width="2.2" fill="none" marker-end="url(#f-az)"/>
+  <text x="270.0" y="197" text-anchor="middle" fill="#58a6ff" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">device_code, user_code, interval</text>
+  <text x="270.0" y="222" text-anchor="middle" fill="#8b949e" font-size="11.5">device_code: secreto · user_code: se enseña</text>
+  <rect x="190" y="236" width="520" height="34" rx="8" fill="#161b22" stroke="#d2a8ff" stroke-width="2"/>
+  <text x="450" y="258" text-anchor="middle" fill="#d2a8ff" font-size="13" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">Abre https://…/device y escribe WDJB-MJHT</text>
+  <path d="M690 304 L414 304" stroke="#d2a8ff" stroke-width="2.2" fill="none" marker-end="url(#f-mo)"/>
+  <text x="550.0" y="296" text-anchor="middle" fill="#d2a8ff" font-size="12">abre la URL, escribe el código, aprueba</text>
+  <rect x="24" y="330" width="520" height="150" rx="8" fill="#161b22" stroke="#e3b341" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="36" y="350" text-anchor="start" fill="#e3b341" font-size="12" font-weight="bold">cada interval segundos</text>
+  <path d="M130 380 L406 380" stroke="#f0883e" stroke-width="2.2" fill="none" marker-end="url(#f-na)"/>
+  <text x="270.0" y="372" text-anchor="middle" fill="#f0883e" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">POST /token  device_code</text>
+  <path d="M410 410 L134 410" stroke="#e3b341" stroke-width="2.2" fill="none" marker-end="url(#f-am)"/>
+  <text x="270.0" y="402" text-anchor="middle" fill="#e3b341" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">400 authorization_pending</text>
+  <path d="M410 448 L134 448" stroke="#e3b341" stroke-width="2.2" fill="none" marker-end="url(#f-am)"/>
+  <text x="270.0" y="440" text-anchor="middle" fill="#e3b341" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">400 slow_down</text>
+  <text x="270.0" y="465" text-anchor="middle" fill="#8b949e" font-size="11.5">interval + 5, para siempre</text>
+  <path d="M410 520 L134 520" stroke="#3fb950" stroke-width="2.2" fill="none" marker-end="url(#f-ve)"/>
+  <text x="270.0" y="512" text-anchor="middle" fill="#3fb950" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">200 access_token</text>
+  <text x="562" y="400" text-anchor="start" fill="#f85149" font-size="12.5">access_denied o</text>
+  <text x="562" y="419" text-anchor="start" fill="#f85149" font-size="12.5">expired_token:</text>
+  <text x="562" y="438" text-anchor="start" fill="#f85149" font-size="12.5">parar</text>
+</svg>

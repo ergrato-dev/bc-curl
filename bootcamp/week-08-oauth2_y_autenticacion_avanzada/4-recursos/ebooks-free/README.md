@@ -1,27 +1,19 @@
-# 📖 Recursos de Ebooks Gratuitos - Semana 8
+# Libros gratuitos — Semana 08
 
-## OAuth 2.0
+_Comprobado el 11 de noviembre de 2026._
 
-| Título | Autor | Enlace | Descripción |
-|--------|-------|--------|-------------|
-| OAuth 2.0 Simplified | Aaron Parecki | [Link](https://oauth2simplified.com/) | Guía práctica de OAuth 2.0 |
-| OAuth 2.0 Cookbook | Adolfo Eloy | [Link](https://www.packtpub.com/product/oauth-2-0-cookbook/9781788295963) | Recetas prácticas de OAuth |
-| The Little Book of OAuth 2.0 | Aaron Parecki | [Link](https://www.oauth.com/) | Referencia online completa |
+## Libros
 
-## JWT y Seguridad
-
-| Título | Autor | Enlace | Descripción |
-|--------|-------|--------|-------------|
-| JWT Handbook | Auth0 | [Link](https://auth0.com/resources/ebooks/jwt-handbook) | Guía completa de JWT |
-| API Security in Action | Neil Madden | [Link](https://www.manning.com/books/api-security-in-action) | Seguridad de APIs con OAuth |
-
-## curl y APIs
-
-| Título | Autor | Enlace | Descripción |
-|--------|-------|--------|-------------|
-| Everything curl | Daniel Stenberg | [Link](https://everything.curl.dev/) | Guía oficial de curl |
-| RESTful Web APIs | Leonard Richardson | [Link](https://www.oreilly.com/library/view/restful-web-apis/9781449359713/) | Diseño de APIs REST |
+| Recurso | Por qué vale la pena |
+|---|---|
+| [OAuth 2.0 Simplified — Aaron Parecki](https://www.oauth.com/) | El libro entero, gratis en la web, de uno de los editores de OAuth 2.1. Explica cada flujo desde los dos lados, cliente y servidor. Es el mejor complemento a las teorías 03 a 06 |
+| [OAuth 2.0 Simplified — PKCE](https://www.oauth.com/oauth2-servers/pkce/) | El capítulo de PKCE: por qué existe, cómo se calcula el challenge y qué comprueba el servidor. Lo que la práctica 02 hace a mano |
+| [OAuth 2.0 Simplified — Device Flow](https://www.oauth.com/oauth2-servers/device-flow/) | El flujo que el laboratorio no tiene, con las pantallas que ve la persona. Completa la teoría 05 |
+| [OAuth 2.0 Simplified — Refreshing Access Tokens](https://www.oauth.com/oauth2-servers/access-tokens/refreshing-access-tokens/) | Qué hace el servidor con un refresh token, y por qué puede no devolver uno nuevo. Es el otro lado de `renovar` |
+| [everything.curl.dev — Authentication](https://everything.curl.dev/http/auth.html) | El capítulo del libro oficial de curl sobre autenticación HTTP, `--oauth2-bearer` incluido. Recordatorio de lo que curl hace por ti y lo que no |
 
 ---
 
-> 💡 **Nota**: Todos los recursos listados son gratuitos y legales.
+| Anterior | Siguiente |
+|---|---|
+| [Recursos](../README.md) | [Videografía](../videografia/README.md) |

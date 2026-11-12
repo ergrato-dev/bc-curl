@@ -1,48 +1,27 @@
-# 🎥 Videografía - Semana 8
+# Videografía — Semana 08
 
-## Videos Recomendados
+_Comprobado el 11 de noviembre de 2026: los cuatro enlaces resuelven y el
+título coincide con el que aparece aquí._
 
-### OAuth 2.0
+Pocos y elegidos. Un vídeo solo entra aquí si enseña algo que en texto se
+entiende peor.
 
-| Título | Canal | Duración | Enlace | Idioma |
-|--------|-------|----------|--------|--------|
-| OAuth 2.0 explained | ByteByteGo | 10min | [YouTube](https://www.youtube.com/watch?v=CPbvxxslDTU) | 🇬🇧 EN |
-| OAuth 2.0 in 5 minutes | Fireship | 5min | [YouTube](https://www.youtube.com/watch?v=996OiexHze0) | 🇬🇧 EN |
-| OAuth 2.0 y OpenID Connect | Pelado Nerd | 25min | [YouTube](https://www.youtube.com/watch?v=PCzCjW8hR9E) | 🇪🇸 ES |
-| OAuth 2.0 desde Cero | midulive | 15min | [YouTube](https://www.youtube.com/watch?v=ZRyYFUQYVoY) | 🇪🇸 ES |
+| Recurso | Por qué vale la pena |
+|---|---|
+| [What is OAuth and why does it matter? — OAuth in Five Minutes](https://www.youtube.com/watch?v=KT8ybowdyr0) — OktaDev | Cinco minutos sobre el problema que resuelve OAuth2, antes de cualquier flujo. Buen arranque para la teoría 01 |
+| [OAuth 2.0 and OpenID Connect (in plain English)](https://www.youtube.com/watch?v=996OiexHze0) — Nate Barbettini, OktaDev | La charla de referencia: los flujos con diagramas, la diferencia entre OAuth2 y OpenID Connect, y por qué el access token no es para el cliente. Larga y la mejor |
+| [What's going on with the OAuth 2.0 Implicit flow?](https://www.youtube.com/watch?v=CHzERullHe8) — OktaDev | Por qué el flujo implícito se abandonó en favor de authorization code + PKCE. Explica qué protege PKCE mejor que un diagrama |
+| [What's New With OAuth and OIDC?](https://www.youtube.com/watch?v=g_aVPdwBTfw) — Aaron Parecki, OktaDev | Lo que cambia OAuth 2.1: PKCE para todos, adiós al *password grant* y al implícito, refresh tokens con rotación. El porqué de la tabla del README |
 
-### Client Credentials y JWT
+> [!TIP]
+> Si tienes poco tiempo, el segundo. Está grabado antes de OAuth 2.1, así que
+> todavía menciona el flujo implícito: el tercero explica por qué ya no.
 
-| Título | Canal | Duración | Enlace | Idioma |
-|--------|-------|----------|--------|--------|
-| Client Credentials Flow | OktaDev | 10min | [YouTube](https://www.youtube.com/watch?v=hHn6fMZVH5A) | 🇬🇧 EN |
-| What is JWT? | ByteByteGo | 8min | [YouTube](https://www.youtube.com/watch?v=soGRyl9ztjI) | 🇬🇧 EN |
-| JWT Decoding Explained | Hussein Nasser | 12min | [YouTube](https://www.youtube.com/watch?v=_XbXkVdoG_0) | 🇬🇧 EN |
-
-### Authorization Code + PKCE
-
-| Título | Canal | Duración | Enlace | Idioma |
-|--------|-------|----------|--------|--------|
-| PKCE explained | OktaDev | 8min | [YouTube](https://www.youtube.com/watch?v=5_3dUO4iZT0) | 🇬🇧 EN |
-| Authorization Code Flow | Java Brains | 15min | [YouTube](https://www.youtube.com/watch?v=CHzERullHe8) | 🇬🇧 EN |
-
-### Refresh Tokens
-
-| Título | Canal | Duración | Enlace | Idioma |
-|--------|-------|----------|--------|--------|
-| Refresh Token Rotation | Fireship | 5min | [YouTube](https://www.youtube.com/watch?v=eY2g3a0SHWU) | 🇬🇧 EN |
-| OAuth Token Lifecycle | OktaDev | 12min | [YouTube](https://www.youtube.com/watch?v=TDbDD4yby-4) | 🇬🇧 EN |
+Para lo demás, el laboratorio rinde más que un vídeo: canjear un código con
+el verifier equivocado y leer el `invalid_grant` enseña más que verlo contado.
 
 ---
 
-## 📺 Canales Recomendados
-
-- **ByteByteGo** - Explicaciones visuales de sistemas
-- **OktaDev** - OAuth y autenticación
-- **Pelado Nerd** - DevOps y seguridad en español
-- **Fireship** - Explicaciones rápidas
-- **Hussein Nasser** - Backend engineering
-
----
-
-> 💡 **Tip**: Activa subtítulos en español si el video está en inglés.
+| Anterior | Siguiente |
+|---|---|
+| [Ebooks gratuitos](../ebooks-free/README.md) | [Webgrafía](../webgrafia/README.md) |

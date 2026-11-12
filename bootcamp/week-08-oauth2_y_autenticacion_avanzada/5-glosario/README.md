@@ -1,69 +1,209 @@
-# Glosario — Semana 8: OAuth2 y Autenticación Avanzada
+# Glosario — Semana 08
 
-## Términos Principales
+Términos de OAuth2, PKCE, JWT y sesiones que aparecen esta semana. El término
+real en inglés va entre paréntesis, y los flags que no son universales llevan
+**su versión mínima**. Los términos de todo el bootcamp están en
+[`docs/glosario-global.md`](../../../docs/glosario-global.md).
 
-**OAuth2**
-Protocolo de autorizacion (RFC 6749) que permite que aplicaciones accedan a recursos en nombre de un usuario o con identidad propia, sin compartir contraseñas. Define flujos estandarizados para distintos escenarios.
+---
 
-**Access Token**
-Credencial de corta duracion que se presenta al Resource Server para acceder a recursos protegidos. Se envia en el header `Authorization: Bearer TOKEN`. Puede ser opaco (string random) o estructurado (JWT).
+## A
 
-**Refresh Token**
-Credencial de larga duracion que se usa exclusivamente con el Authorization Server para obtener nuevos access tokens sin intervencion del usuario. Debe guardarse con maxima seguridad.
+**Access token** · La credencial que el cliente manda a la API, normalmente
+como `Authorization: Bearer`. Vive poco (una hora en el laboratorio). Para el
+cliente es opaco, aunque sea un JWT.
 
-**Client Credentials**
-Flujo OAuth2 para autenticacion maquina-a-maquina. El cliente se autentica con su propio `client_id` y `client_secret` para obtener un token, sin usuario involucrado.
+**`aud`** (*audience*) · Claim de un JWT: para qué API es el token. Una API
+debe rechazar un token con otro `aud`.
 
-**Authorization Code**
-Flujo OAuth2 para actuar en nombre de un usuario. El usuario autoriza en el browser, el servidor devuelve un `code` de un solo uso, que el cliente intercambia por tokens. Es el flujo mas seguro para aplicaciones que representan usuarios.
+**Authorization code** · Flujo en el que una persona hace login en el
+navegador y el servidor devuelve un código de un solo uso que el cliente
+cambia por un token. Con PKCE, siempre.
 
-**PKCE**
-Proof Key for Code Exchange (RFC 7636). Extension del flujo Authorization Code para apps publicas que no pueden guardar un `client_secret` de forma segura. Usa un par `code_verifier`/`code_challenge` generado en el cliente.
+**`authorization_pending`** · Error del sondeo de device code que no es un
+fallo: la persona todavía no ha aprobado. Se espera `interval` y se repite.
 
-**JWT**
-JSON Web Token (RFC 7519). Formato de token compacto con tres partes en base64url: `header.payload.signature`. El payload contiene claims (afirmaciones) verificables. La firma garantiza integridad.
+## B
 
-**Bearer**
-Esquema de autenticacion HTTP para tokens. `Authorization: Bearer TOKEN`. Cualquier portador del token tiene acceso — por eso es importante protegerlos.
+**base64url** · Variante de base64 que se puede poner en una URL: `-` y `_` en
+vez de `+` y `/`, y sin relleno `=`. La usan los JWT y el challenge de PKCE.
 
-**grant_type**
-Parametro en el request al token endpoint que indica que flujo OAuth2 se esta usando. Valores comunes: `client_credentials`, `authorization_code`, `refresh_token`.
+**Bearer** · Tipo de token que vale para quien lo tenga, sin más prueba
+(RFC 6750). Por eso no se imprime nunca.
 
-**scope**
-Cadena que define el nivel de acceso que solicita el cliente. Ejemplo: `read:user write:repos`. El servidor puede otorgar menos scopes que los solicitados. Principio de minimo privilegio: pedir solo lo necesario.
+## C
 
-**expires_in**
-Campo en la respuesta del token endpoint que indica cuantos segundos durara el access token. Tipicamente 3600 (1 hora). Permite calcular el timestamp de expiracion: `expiry = now + expires_in`.
+**Claim** · Cada campo del payload de un JWT: `iss`, `sub`, `aud`, `exp`...
+Es lo que el token afirma, no lo que está comprobado.
 
-**iss (issuer)**
-Claim estandar de JWT. Identifica quien emitio el token. El Resource Server debe verificar que el `iss` coincide con el Authorization Server esperado.
+**Client credentials** · Flujo en el que una máquina pide un token en nombre
+propio, con su `client_id` y su `client_secret`. No da refresh token.
 
-**sub (subject)**
-Claim estandar de JWT. Identifica el "sujeto" del token — quien es el usuario o aplicacion representada. Puede ser un ID de usuario, un ID de cliente, etc.
+**Cliente confidencial / público** (*confidential / public client*) · El
+confidencial puede guardar un secreto (un servidor, un cron); el público no
+(un CLI repartido, una app móvil). El público se apoya solo en PKCE.
 
-**exp (expiration time)**
-Claim estandar de JWT. Unix timestamp en que el token deja de ser valido. El Resource Server rechaza tokens con `exp` en el pasado.
+**`code_challenge`** · El SHA-256 del verifier en base64url (método S256). Va
+en la URL de autorización.
 
-**aud (audience)**
-Claim estandar de JWT. Identifica los destinatarios del token. El Resource Server debe verificar que esta en el `aud`. Previene que un token de un servicio sea usado en otro.
+**`code_verifier`** · Cadena aleatoria de 43 a 128 caracteres que el cliente
+guarda y manda solo en el canje. Demuestra que quien canjea es quien pidió.
 
-**iat (issued at)**
-Claim estandar de JWT. Unix timestamp de cuando fue creado el token. Util para auditoría y para detectar tokens demasiado viejos aunque no hayan expirado.
+**`--config`, `-K`** · Lee opciones de curl desde un archivo. Con permisos 600,
+es donde el toolkit pone el secreto del cliente y los tokens: no aparecen en
+`ps`.
 
-**Authorization Server**
-El servidor que autentica al usuario/cliente y emite tokens. Ejemplos: Keycloak, Auth0, GitHub OAuth, Google Identity Platform.
+## D
 
-**Resource Server**
-El servidor que tiene los datos protegidos y acepta tokens como credencial de acceso. Ejemplos: GitHub API, Google Calendar API, tu propia API.
+**`--data-urlencode`** (7.18.0+) · Codifica el valor para un formulario. Una
+línea `data-urlencode = "campo=valor"` por campo en el `--config` del
+endpoint de token.
 
-**Resource Owner**
-El usuario que posee los datos a los que se quiere acceder. En Client Credentials no hay Resource Owner — el cliente accede con su propia identidad.
+**Device code** · Flujo para una persona en una máquina sin navegador: el
+programa enseña un código corto, la persona lo aprueba en otro aparato, y el
+programa sondea `/token` (RFC 8628). El laboratorio no lo implementa.
 
-**OIDC (OpenID Connect)**
-Capa de identidad construida sobre OAuth2. Agrega el ID Token (JWT que contiene informacion del usuario) y el endpoint `/userinfo`. Convierte OAuth2 (autorizacion) en un sistema de autenticacion.
+**Discovery** · El documento `/.well-known/openid-configuration` (o
+`oauth-authorization-server`) donde el servidor publica sus endpoints
+(RFC 8414).
 
-**Token Introspection**
-Endpoint del Authorization Server (RFC 7662) donde el Resource Server puede verificar si un token opaco es valido y obtener sus claims. Para JWT se puede verificar localmente con la clave publica del servidor.
+## E
 
-**JWKS**
-JSON Web Key Set. Endpoint (tipicamente `/.well-known/jwks.json`) donde el Authorization Server publica sus claves publicas. Usado por Resource Servers para verificar firmas de JWT sin contactar al Authorization Server en cada request.
+**`exp`** (*expiration*) · Claim de un JWT: instante de caducidad, en segundos
+desde 1970. Lo que el servidor prometió, no lo que va a cumplir.
+
+**`expires_at`** · Campo que añade el toolkit a la sesión: `date +%s` +
+`expires_in` en el momento de recibir el token. Se compara con el reloj en
+cualquier momento.
+
+**`expires_in`** · Segundos de vida del token **desde la respuesta**. Guardado
+tal cual, no dice nada una hora después.
+
+## I
+
+**`id_token`** · Token de OpenID Connect que dice quién hizo login. Es para el
+cliente, que sí debe validarlo si lo usa. Esta semana no se usa.
+
+**Introspección** (*token introspection*) · Preguntarle al servidor si un token
+está activo (RFC 7662). Responde `{"active": false}` sin decir por qué.
+
+**`invalid_client`** · Error del endpoint de token: la autenticación del
+cliente falló o falta. El toolkit sale con 77.
+
+**`invalid_grant`** · Error del endpoint de token: el código, el verifier o el
+refresh token no valen. Sin arreglo automático: 77 y `auth login`.
+
+**`iss`** (*issuer*) · Claim de un JWT: quién lo emitió.
+
+## J
+
+**`jti`** (*JWT ID*) · Identificador único del token. Lo que se apunta en un
+log para saber qué token se usó, sin enseñarlo.
+
+**JWKS** (*JSON Web Key Set*) · El conjunto de claves públicas del servidor,
+publicado en `jwks_uri`. La API valida la firma con la que indica el `kid`.
+
+**JWT** (*JSON Web Token*) · Tres trozos en base64url separados por puntos:
+cabecera, payload y firma (RFC 7519). Se lee con `base64`; se valida con la
+clave pública.
+
+## K
+
+**`kid`** (*key ID*) · Campo de la cabecera del JWT: qué clave del JWKS lo
+firmó.
+
+## M
+
+**Margen de caducidad** · Segundos antes de `expires_at` en los que el toolkit
+ya renueva: `MARGEN_CADUCIDAD=30`. Cubre la red y un reloj desajustado.
+
+## O
+
+**OAuth 2.0** · Marco para que un programa obtenga acceso limitado a una API
+sin la contraseña del usuario (RFC 6749). Varios flujos, según quién actúa.
+
+**OAuth 2.1** · Revisión en borrador que recoge las buenas prácticas: PKCE
+siempre, sin flujo implícito ni *password grant*.
+
+**`--oauth2-bearer`** (7.61.0+ para HTTP) · Manda `Authorization: Bearer
+TOKEN`. Pone el token en los argumentos del proceso: en un script, mejor un
+`header` en el `--config`.
+
+**OpenID Connect** · Capa de identidad sobre OAuth2: añade el `id_token` y
+`/userinfo`. El discovery del laboratorio es el suyo.
+
+## P
+
+**Password grant** (*resource owner password credentials*) · Flujo en el que
+el cliente recibe la contraseña del usuario. Prohibido por el RFC 9700.
+
+**PKCE** (*Proof Key for Code Exchange*, se pronuncia "pixie") · El verifier y
+el challenge que atan el código de autorización al cliente que lo pidió
+(RFC 7636).
+
+## R
+
+**`redirect_uri`** · La URL a la que el servidor devuelve el código. Tiene que
+estar registrada, y el canje debe repetir la misma.
+
+**`%{redirect_url}`** (7.18.2+) · Variable de `--write-out`: la URL a la que lleva un
+redirect, sin seguirlo. Lee el código de la redirección en la práctica 02.
+
+**Refresh token** · Credencial de larga vida que sirve para pedir access
+tokens nuevos sin que la persona vuelva a hacer login. Conserva la identidad.
+
+**Revocación** (*token revocation*) · Pedirle al servidor que invalide un
+token (RFC 7009). Responde 200 también a tokens que no existen.
+
+**RFC 9700** · *OAuth 2.0 Security Best Current Practice*: lo que hoy es
+obligatorio o está prohibido en OAuth2.
+
+**Rotación** (*refresh token rotation*) · El servidor devuelve un refresh
+token nuevo en cada renovación e invalida el anterior. El laboratorio no rota.
+
+## S
+
+**Scope** · Los permisos que se piden, separados por espacios. El servidor
+devuelve los concedidos, que pueden ser menos.
+
+**Servidor de autorización** (*authorization server*) · El que emite los
+tokens: `/authorize`, `/token`, `/revoke`. En el laboratorio, el puerto 8081.
+
+**Servidor de recursos** (*resource server*) · La API que acepta el token y lo
+valida en cada petición.
+
+**Sesión** · El archivo `OAUTH_SESSION_FILE` (`~/.bc-curl-session`): la
+respuesta del endpoint de token más `expires_at`, con permisos 600.
+
+**`slow_down`** · Error del sondeo de device code: sondeas demasiado deprisa.
+Se suman 5 segundos a `interval`.
+
+**`state`** · Valor aleatorio que el cliente manda en la autorización y
+comprueba en la vuelta. Frena el CSRF.
+
+**`sub`** (*subject*) · Claim de un JWT: de quién es el token. `api-toolkit`
+con client credentials, `alumno` con authorization code.
+
+## T
+
+**Token endpoint** · `/token`: recibe un formulario (nunca JSON) con el
+`grant_type` y la autenticación del cliente, y devuelve el token.
+
+**`token_type_hint`** · Pista de qué tipo de token se revoca:
+`refresh_token` o `access_token`. El simulador la exige.
+
+## U
+
+**`unsupported_token_type`** · Error de `/revoke`: el servidor no revoca ese
+tipo de token. El toolkit avisa y borra la sesión.
+
+**`user_code`** · El código corto de device code que la persona escribe en
+otro aparato. Es lo único de ese flujo que se enseña en pantalla.
+
+---
+
+| Anterior | Siguiente |
+|---|---|
+| [Recursos](../4-recursos/README.md) | [README de la Semana 08](../README.md) |
+
+[← Glosario global del bootcamp](../../../docs/glosario-global.md)

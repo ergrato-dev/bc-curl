@@ -103,12 +103,12 @@ Todos anteriores a 7.68, así que están en cualquier distribución con soporte.
 | `--resolve` | 7.21.3 | 05 |
 | `--netrc-file` | 7.21.5 | 03 |
 | `--http2` | 7.33.0 | 09 |
-| `--oauth2-bearer` | 7.33.0 | 08 |
 | `-:` / `--next` | 7.36.0 | 09 |
 | `--unix-socket` | 7.40.0 | 06 |
 | `--tlsv1.3` | 7.52.0 | 05 |
 | `--retry-connrefused` | 7.52.0 | 05 |
 | `--fail-early` | 7.52.0 | 07 |
+| `--oauth2-bearer` | 7.61.0 | 08 |
 | `--doh-url` | 7.62.0 | 05 |
 | `--alt-svc` | 7.64.1 | 09 |
 | `Retry-After` respetado por `--retry` | 7.66.0 | 07 |

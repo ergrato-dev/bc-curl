@@ -1,0 +1,51 @@
+<svg viewBox="0 0 820 560" role="img" xmlns="http://www.w3.org/2000/svg" font-family="Inter, system-ui, -apple-system, sans-serif">
+  <title>El archivo de sesión y lo que lo protege: su contenido JSON en ~/.bc-curl-session con permisos 600, fuera del repositorio; la escritura atómica, con jq a un temporal del mismo directorio creado por mktemp y un mv sobre la sesión; y el logout en dos pasos, revocar el refresh_token y solo entonces borrar el archivo</title>
+  <rect width="820" height="560" fill="#0d1117"/>
+  <defs><marker id="f-bg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#0d1117"/></marker><marker id="f-sf" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#161b22"/></marker><marker id="f-bd" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#30363d"/></marker><marker id="f-tx" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#f0f6fc"/></marker><marker id="f-t2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#8b949e"/></marker><marker id="f-na" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#f0883e"/></marker><marker id="f-az" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#58a6ff"/></marker><marker id="f-az2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#79c0ff"/></marker><marker id="f-ve" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#3fb950"/></marker><marker id="f-am" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#e3b341"/></marker><marker id="f-ro" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#f85149"/></marker><marker id="f-mo" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#d2a8ff"/></marker></defs>
+  <text x="410.0" y="34" text-anchor="middle" fill="#f0f6fc" font-size="22" font-weight="bold">Guardar la sesión</text>
+  <rect x="30" y="62" width="360" height="170" rx="8" fill="#161b22" stroke="#f0883e" stroke-width="2"/>
+  <text x="46" y="86" text-anchor="start" fill="#f0883e" font-size="14" font-weight="bold" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">~/.bc-curl-session</text>
+  <text x="374" y="86" text-anchor="end" fill="#3fb950" font-size="12.5" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">-rw-------</text>
+  <text x="46" y="114" text-anchor="start" fill="#f0f6fc" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">{</text>
+  <text x="46" y="132" text-anchor="start" fill="#f0f6fc" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">  "access_token": "eyJ…",</text>
+  <text x="46" y="150" text-anchor="start" fill="#f0f6fc" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">  "token_type": "Bearer",</text>
+  <text x="46" y="168" text-anchor="start" fill="#f0f6fc" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">  "expires_in": 3599,</text>
+  <text x="46" y="186" text-anchor="start" fill="#d2a8ff" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">  "expires_at": 1794449607,</text>
+  <text x="46" y="204" text-anchor="start" fill="#f0f6fc" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">  "refresh_token": "…"   si lo hay</text>
+  <rect x="420" y="62" width="370" height="170" rx="8" fill="#161b22" stroke="#30363d" stroke-width="2"/>
+  <text x="436" y="88" text-anchor="start" fill="#f0f6fc" font-size="14" font-weight="bold">Reglas</text>
+  <text x="436" y="116" text-anchor="start" fill="#f0f6fc" font-size="12.5">fuera de cualquier repositorio</text>
+  <text x="436" y="137" text-anchor="start" fill="#f0f6fc" font-size="12.5">600 al crearla (mktemp) y al leerla</text>
+  <text x="436" y="158" text-anchor="start" fill="#f0f6fc" font-size="12.5">(exigir_600)</text>
+  <text x="436" y="179" text-anchor="start" fill="#f0f6fc" font-size="12.5">auth status enseña sub y cuánto queda;</text>
+  <text x="436" y="200" text-anchor="start" fill="#f0f6fc" font-size="12.5">el token, nunca</text>
+  <text x="30" y="268" text-anchor="start" fill="#f0f6fc" font-size="15" font-weight="bold">Escritura atómica</text>
+  <rect x="30" y="284" width="150" height="56" rx="8" fill="#161b22" stroke="#58a6ff" stroke-width="2"/>
+  <text x="105" y="308" text-anchor="middle" fill="#58a6ff" font-size="13" font-weight="bold" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">CUERPO</text>
+  <text x="105" y="326" text-anchor="middle" fill="#8b949e" font-size="11.5">respuesta</text>
+  <path d="M182 312 L216 312" stroke="#58a6ff" stroke-width="2.2" fill="none" marker-end="url(#f-az)"/>
+  <text x="199" y="302" text-anchor="middle" fill="#58a6ff" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">jq</text>
+  <rect x="220" y="284" width="260" height="56" rx="8" fill="#161b22" stroke="#d2a8ff" stroke-width="2"/>
+  <text x="350" y="308" text-anchor="middle" fill="#d2a8ff" font-size="13" font-weight="bold" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">session.XXXXXX</text>
+  <text x="350" y="326" text-anchor="middle" fill="#8b949e" font-size="11.5">mktemp: mismo directorio, 600</text>
+  <path d="M482 312 L516 312" stroke="#d2a8ff" stroke-width="2.2" fill="none" marker-end="url(#f-mo)"/>
+  <text x="499" y="302" text-anchor="middle" fill="#d2a8ff" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">mv</text>
+  <rect x="520" y="284" width="270" height="56" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="655" y="308" text-anchor="middle" fill="#3fb950" font-size="13" font-weight="bold" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">~/.bc-curl-session</text>
+  <text x="655" y="326" text-anchor="middle" fill="#8b949e" font-size="11.5">rename(): la vieja o la nueva</text>
+  <text x="410" y="364" text-anchor="middle" fill="#8b949e" font-size="12.5">Un corte a medias deja la sesión anterior intacta, nunca un JSON partido</text>
+  <text x="30" y="402" text-anchor="start" fill="#f0f6fc" font-size="15" font-weight="bold" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">auth logout</text>
+  <rect x="30" y="418" width="300" height="60" rx="8" fill="#161b22" stroke="#f0883e" stroke-width="2"/>
+  <text x="46" y="442" text-anchor="start" fill="#f0883e" font-size="13" font-weight="bold">1. revocar en el servidor</text>
+  <text x="46" y="462" text-anchor="start" fill="#f0f6fc" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">token_type_hint=refresh_token</text>
+  <path d="M332 448 L366 448" stroke="#3fb950" stroke-width="2.2" fill="none" marker-end="url(#f-ve)"/>
+  <text x="349" y="438" text-anchor="middle" fill="#3fb950" font-size="11.5" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">200</text>
+  <rect x="370" y="418" width="200" height="60" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="386" y="442" text-anchor="start" fill="#3fb950" font-size="13" font-weight="bold">2. borrar el archivo</text>
+  <text x="386" y="462" text-anchor="start" fill="#f0f6fc" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">rm -f</text>
+  <rect x="590" y="410" width="200" height="76" rx="8" fill="#161b22" stroke="#f85149" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="606" y="434" text-anchor="start" fill="#f85149" font-size="12.5" font-weight="bold">red caída o 5xx:</text>
+  <text x="606" y="454" text-anchor="start" fill="#f0f6fc" font-size="12">no se borra; el logout</text>
+  <text x="606" y="472" text-anchor="start" fill="#f0f6fc" font-size="12">se puede repetir</text>
+  <path d="M180 480 L180 520 L690 520 L690 490" stroke="#f85149" stroke-width="2.2" fill="none" stroke-dasharray="6 4" marker-end="url(#f-ro)"/>
+</svg>

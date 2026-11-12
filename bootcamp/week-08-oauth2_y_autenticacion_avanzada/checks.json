@@ -1,0 +1,132 @@
+{
+  "semana": "08",
+  "titulo": "OAuth2 y autenticacion avanzada",
+  "checks": [
+    {
+      "id": "laboratorio-oauth",
+      "descripcion": "El servidor OAuth2 del laboratorio responde en el puerto 8081",
+      "cmd": "curl -sf --max-time 5 {lab_oauth}/.well-known/openid-configuration | jq -r .token_endpoint",
+      "assert": "stdout~^http://localhost:8081/default/token$",
+      "pista": "ejecuta ./scripts/start.sh; si el puerto 8081 no responde, docker compose logs oauth"
+    },
+    {
+      "id": "toolkit-ejecutable",
+      "descripcion": "api-toolkit.sh existe, es ejecutable y arranca con set -euo pipefail",
+      "cmd": "test -x {semana}/3-proyecto/starter/api-toolkit.sh && grep -q 'set -euo pipefail' {semana}/3-proyecto/starter/api-toolkit.sh",
+      "assert": "exit0",
+      "pista": "3-proyecto/README.md, como entregarlo"
+    },
+    {
+      "id": "toolkit-sin-todos",
+      "descripcion": "No queda ningun TODO por resolver",
+      "cmd": "grep -c 'TODO [0-9]' {semana}/3-proyecto/starter/api-toolkit.sh",
+      "assert": "stdout~^0$",
+      "pista": "busca 'TODO' en el script: cada uno es un hueco de la capa 8"
+    },
+    {
+      "id": "toolkit-get-sigue",
+      "descripcion": "get sigue imprimiendo el cuerpo JSON por stdout",
+      "cmd": "{semana}/3-proyecto/starter/api-toolkit.sh get /get | jq -r .url",
+      "assert": "stdout~^http://localhost:8080/get$",
+      "pista": "la capa 8 no deberia tocar la peticion sin OAuth2: AUTH_MODE=none no lee ninguna sesion"
+    },
+    {
+      "id": "toolkit-login-sesion",
+      "descripcion": "auth login guarda una sesion con access_token y expires_at",
+      "cmd": "T={semana}/3-proyecto/starter/api-toolkit.sh; export OAUTH_CLIENT_ID=api-toolkit OAUTH_CLIENT_SECRET=secreto-de-laboratorio OAUTH_SESSION_FILE=$(mktemp -u); trap 'rm -f \"$OAUTH_SESSION_FILE\"' EXIT; $T auth login 2>/dev/null; jq -r '[(.access_token | type), (.expires_at | type)] | join(\" \")' \"$OAUTH_SESSION_FILE\"",
+      "assert": "stdout~^string number$",
+      "pista": "peticion_oauth manda el formulario (TODO 1) y guardar_sesion anade expires_at (TODO 2). Practica 01, paso 7, y practica 03, paso 2"
+    },
+    {
+      "id": "toolkit-login-600",
+      "descripcion": "El archivo de sesion se crea con permisos 600",
+      "cmd": "T={semana}/3-proyecto/starter/api-toolkit.sh; export OAUTH_CLIENT_ID=api-toolkit OAUTH_CLIENT_SECRET=secreto-de-laboratorio OAUTH_SESSION_FILE=$(mktemp -u); trap 'rm -f \"$OAUTH_SESSION_FILE\"' EXIT; $T auth login 2>/dev/null; ls -l \"$OAUTH_SESSION_FILE\" | cut -c1-10",
+      "assert": "stdout~^-rw-------$",
+      "pista": "guardar_sesion escribe en un mktemp del mismo directorio y lo renombra (TODO 2). Teoria 08, apartado 2.2"
+    },
+    {
+      "id": "toolkit-login-sin-token",
+      "descripcion": "auth login no imprime el token: ni por stdout ni por stderr",
+      "cmd": "T={semana}/3-proyecto/starter/api-toolkit.sh; export OAUTH_CLIENT_ID=api-toolkit OAUTH_CLIENT_SECRET=secreto-de-laboratorio OAUTH_SESSION_FILE=$(mktemp -u); trap 'rm -f \"$OAUTH_SESSION_FILE\"' EXIT; out=$($T auth login 2>&1); echo \"salida=$? jwt=$(grep -c eyJ <<<\"$out\")\"",
+      "assert": "stdout~^salida=0 jwt=0$",
+      "pista": "la respuesta del endpoint de token va a CUERPO con --output, y de ahi a la sesion; nunca a un echo. Teoria 08, apartado 2.5"
+    },
+    {
+      "id": "toolkit-login-traza-sin-secreto",
+      "descripcion": "--verbose auth login no muestra el client_secret en la traza",
+      "cmd": "T={semana}/3-proyecto/starter/api-toolkit.sh; export OAUTH_CLIENT_ID=api-toolkit OAUTH_CLIENT_SECRET=secreto-de-laboratorio OAUTH_SESSION_FILE=$(mktemp -u); trap 'rm -f \"$OAUTH_SESSION_FILE\"' EXIT; out=$($T --verbose auth login 2>&1); echo \"salida=$? secreto=$(grep -c \"$(printf %s api-toolkit:secreto-de-laboratorio | base64)\" <<<\"$out\")\"",
+      "assert": "stdout~^salida=0 secreto=0$",
+      "pista": "el secreto va en el --config como user (TODO 1), y lanzar_curl tacha el Authorization de la traza. Practica 01, paso 4"
+    },
+    {
+      "id": "toolkit-status-activa",
+      "descripcion": "auth status de una sesion recien abierta dice cuanto le queda y de quien es",
+      "cmd": "T={semana}/3-proyecto/starter/api-toolkit.sh; export OAUTH_CLIENT_ID=api-toolkit OAUTH_CLIENT_SECRET=secreto-de-laboratorio OAUTH_SESSION_FILE=$(mktemp -u); trap 'rm -f \"$OAUTH_SESSION_FILE\"' EXIT; $T auth login 2>/dev/null; $T auth status",
+      "assert": "stdout~^activa: expira en [0-9]+ s, sub=api-toolkit",
+      "pista": "estado_sesion lee expires_at y el sub del JWT con claims_jwt. Teoria 07, apartado 2.2"
+    },
+    {
+      "id": "toolkit-status-sin-sesion",
+      "descripcion": "auth status sin sesion sale con 1",
+      "cmd": "T={semana}/3-proyecto/starter/api-toolkit.sh; export OAUTH_CLIENT_ID=api-toolkit OAUTH_CLIENT_SECRET=secreto-de-laboratorio OAUTH_SESSION_FILE=$(mktemp -u); trap 'rm -f \"$OAUTH_SESSION_FILE\"' EXIT; $T auth status",
+      "assert": "exit=1",
+      "pista": "estado_sesion: sin archivo de sesion no hay nada que mirar"
+    },
+    {
+      "id": "toolkit-oauth-userinfo",
+      "descripcion": "AUTH_MODE=oauth usa el token de la sesion contra la API",
+      "cmd": "T={semana}/3-proyecto/starter/api-toolkit.sh; export OAUTH_CLIENT_ID=api-toolkit OAUTH_CLIENT_SECRET=secreto-de-laboratorio OAUTH_SESSION_FILE=$(mktemp -u); trap 'rm -f \"$OAUTH_SESSION_FILE\"' EXIT; $T auth login 2>/dev/null; AUTH_MODE=oauth BASE_URL={lab_oauth} $T get /userinfo | jq -r .sub",
+      "assert": "stdout~^api-toolkit$",
+      "pista": "construir_config: con oauth, token_de_sesion deja el token en API_TOKEN y viaja como Bearer. Practica 01, paso 8"
+    },
+    {
+      "id": "toolkit-renueva-caducado",
+      "descripcion": "Una sesion caducada se renueva antes de la peticion",
+      "cmd": "T={semana}/3-proyecto/starter/api-toolkit.sh; export OAUTH_CLIENT_ID=api-toolkit OAUTH_CLIENT_SECRET=secreto-de-laboratorio OAUTH_SESSION_FILE=$(mktemp -u); trap 'rm -f \"$OAUTH_SESSION_FILE\"' EXIT; $T auth login 2>/dev/null; jq '.expires_at = 0' \"$OAUTH_SESSION_FILE\" > \"$OAUTH_SESSION_FILE.x\" && cat \"$OAUTH_SESSION_FILE.x\" > \"$OAUTH_SESSION_FILE\" && rm -f \"$OAUTH_SESSION_FILE.x\"; AUTH_MODE=oauth BASE_URL={lab_oauth} $T get /userinfo >/dev/null 2>&1; jq '.expires_at > now' \"$OAUTH_SESSION_FILE\"",
+      "assert": "stdout~^true$",
+      "pista": "sesion_caducada compara expires_at con date +%s y el margen (TODO 3). Practica 03, paso 3"
+    },
+    {
+      "id": "toolkit-reintenta-401",
+      "descripcion": "Un 401 con OAuth2 renueva el token y repite la peticion una vez",
+      "cmd": "T={semana}/3-proyecto/starter/api-toolkit.sh; export OAUTH_CLIENT_ID=api-toolkit OAUTH_CLIENT_SECRET=secreto-de-laboratorio OAUTH_SESSION_FILE=$(mktemp -u); trap 'rm -f \"$OAUTH_SESSION_FILE\"' EXIT; $T auth login 2>/dev/null; jq '.access_token = \"a.b.c\"' \"$OAUTH_SESSION_FILE\" > \"$OAUTH_SESSION_FILE.x\" && cat \"$OAUTH_SESSION_FILE.x\" > \"$OAUTH_SESSION_FILE\" && rm -f \"$OAUTH_SESSION_FILE.x\"; AUTH_MODE=oauth BASE_URL={lab_oauth} $T get /userinfo 2>/dev/null | jq -r .sub",
+      "assert": "stdout~^api-toolkit$",
+      "pista": "ejecutar: ante un 401 con AUTH_MODE=oauth, renovar, construir_config y peticion otra vez (TODO 5). Practica 03, paso 6"
+    },
+    {
+      "id": "toolkit-refresh-token",
+      "descripcion": "Con refresh_token, la renovacion lo usa y conserva la identidad",
+      "cmd": "T={semana}/3-proyecto/starter/api-toolkit.sh; export OAUTH_CLIENT_ID=api-toolkit OAUTH_CLIENT_SECRET=secreto-de-laboratorio OAUTH_SESSION_FILE=$(mktemp -u); umask 077; trap 'rm -f \"$OAUTH_SESSION_FILE\"' EXIT; cb=$(curl -s --max-time 10 -o /dev/null -w '%{redirect_url}' '{lab_oauth}/authorize?response_type=code&client_id=api-toolkit&redirect_uri=http://localhost/cb&scope=openid&state=x' -d username=alumno); c=${cb#*code=}; curl -s --max-time 10 -u api-toolkit:secreto-de-laboratorio {lab_oauth}/token -d grant_type=authorization_code -d code=${c%%&*} -d redirect_uri=http://localhost/cb | jq '. + {expires_at: 0, access_token: \"a.b.c\"}' > \"$OAUTH_SESSION_FILE\"; AUTH_MODE=oauth BASE_URL={lab_oauth} $T get /userinfo 2>/dev/null | jq -r .sub",
+      "assert": "stdout~^alumno$",
+      "pista": "renovar usa grant_type=refresh_token si la sesion lo trae; client credentials daria sub=api-toolkit (TODO 4). Practica 04, paso 5"
+    },
+    {
+      "id": "toolkit-refresh-revocado-77",
+      "descripcion": "Un refresh_token revocado sale con 77, sin caer a client credentials",
+      "cmd": "T={semana}/3-proyecto/starter/api-toolkit.sh; export OAUTH_CLIENT_ID=api-toolkit OAUTH_CLIENT_SECRET=secreto-de-laboratorio OAUTH_SESSION_FILE=$(mktemp -u); umask 077; trap 'rm -f \"$OAUTH_SESSION_FILE\"' EXIT; cb=$(curl -s --max-time 10 -o /dev/null -w '%{redirect_url}' '{lab_oauth}/authorize?response_type=code&client_id=api-toolkit&redirect_uri=http://localhost/cb&scope=openid&state=x' -d username=alumno); c=${cb#*code=}; curl -s --max-time 10 -u api-toolkit:secreto-de-laboratorio {lab_oauth}/token -d grant_type=authorization_code -d code=${c%%&*} -d redirect_uri=http://localhost/cb | jq '. + {expires_at: 0}' > \"$OAUTH_SESSION_FILE\"; jq -j .refresh_token \"$OAUTH_SESSION_FILE\" | curl -s --max-time 10 -o /dev/null -u api-toolkit:secreto-de-laboratorio {lab_oauth}/revoke --data-urlencode token@- -d token_type_hint=refresh_token; AUTH_MODE=oauth BASE_URL={lab_oauth} $T get /userinfo",
+      "assert": "exit=77",
+      "pista": "renovar no prueba client credentials si el refresh_token falla: rechazo_oauth sale con 77 (TODO 4). Practica 04, paso 7"
+    },
+    {
+      "id": "toolkit-logout-borra",
+      "descripcion": "auth logout borra la sesion",
+      "cmd": "T={semana}/3-proyecto/starter/api-toolkit.sh; export OAUTH_CLIENT_ID=api-toolkit OAUTH_CLIENT_SECRET=secreto-de-laboratorio OAUTH_SESSION_FILE=$(mktemp -u); trap 'rm -f \"$OAUTH_SESSION_FILE\"' EXIT; $T auth login 2>/dev/null && $T auth logout 2>/dev/null; echo \"salida=$? $(test -e \"$OAUTH_SESSION_FILE\" && echo existe || echo borrada)\"",
+      "assert": "stdout~^salida=0 borrada$",
+      "pista": "cerrar_sesion: un unsupported_token_type no impide borrar la sesion (TODO 6). Practica 04, paso 9"
+    },
+    {
+      "id": "toolkit-logout-revoca",
+      "descripcion": "auth logout revoca el refresh_token en el servidor",
+      "cmd": "T={semana}/3-proyecto/starter/api-toolkit.sh; export OAUTH_CLIENT_ID=api-toolkit OAUTH_CLIENT_SECRET=secreto-de-laboratorio OAUTH_SESSION_FILE=$(mktemp -u); umask 077; trap 'rm -f \"$OAUTH_SESSION_FILE\"' EXIT; cb=$(curl -s --max-time 10 -o /dev/null -w '%{redirect_url}' '{lab_oauth}/authorize?response_type=code&client_id=api-toolkit&redirect_uri=http://localhost/cb&scope=openid&state=x' -d username=alumno); c=${cb#*code=}; curl -s --max-time 10 -u api-toolkit:secreto-de-laboratorio {lab_oauth}/token -d grant_type=authorization_code -d code=${c%%&*} -d redirect_uri=http://localhost/cb | jq '. + {expires_at: 0}' > \"$OAUTH_SESSION_FILE\"; rt=$(jq -r .refresh_token \"$OAUTH_SESSION_FILE\"); $T auth logout 2>/dev/null; printf %s \"$rt\" | curl -s --max-time 10 -o /dev/null -w '%{http_code}' -u api-toolkit:secreto-de-laboratorio {lab_oauth}/token -d grant_type=refresh_token --data-urlencode refresh_token@-",
+      "assert": "stdout~^400$",
+      "pista": "cerrar_sesion revoca con token_type_hint=refresh_token antes de borrar (TODO 6). Practica 04, paso 8"
+    },
+    {
+      "id": "toolkit-shellcheck",
+      "descripcion": "shellcheck -S warning no encuentra nada",
+      "cmd": "shellcheck -S warning {semana}/3-proyecto/starter/api-toolkit.sh",
+      "assert": "exit0",
+      "pista": "instala shellcheck (docs/setup-entorno.md) y corrige lo que diga"
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+<svg viewBox="0 0 820 540" role="img" xmlns="http://www.w3.org/2000/svg" font-family="Inter, system-ui, -apple-system, sans-serif">
+  <title>Los cuatro roles de OAuth2: la persona autoriza en el servidor de autorización; el cliente pide un token y lo recibe; el cliente presenta el token a la API, que lo valida sin ver nunca la password. Debajo, qué flujo usar según quién actúa</title>
+  <rect width="820" height="540" fill="#0d1117"/>
+  <defs><marker id="f-bg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#0d1117"/></marker><marker id="f-sf" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#161b22"/></marker><marker id="f-bd" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#30363d"/></marker><marker id="f-tx" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#f0f6fc"/></marker><marker id="f-t2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#8b949e"/></marker><marker id="f-na" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#f0883e"/></marker><marker id="f-az" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#58a6ff"/></marker><marker id="f-az2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#79c0ff"/></marker><marker id="f-ve" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#3fb950"/></marker><marker id="f-am" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#e3b341"/></marker><marker id="f-ro" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#f85149"/></marker><marker id="f-mo" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#d2a8ff"/></marker></defs>
+  <text x="410.0" y="34" text-anchor="middle" fill="#f0f6fc" font-size="22" font-weight="bold">OAuth2: cuatro roles y un token</text>
+  <rect x="40" y="70" width="220" height="64" rx="8" fill="#161b22" stroke="#d2a8ff" stroke-width="2"/>
+  <text x="150" y="98" text-anchor="middle" fill="#d2a8ff" font-size="15" font-weight="bold">Propietario del recurso</text>
+  <text x="150" y="118" text-anchor="middle" fill="#8b949e" font-size="12.5">una persona</text>
+  <rect x="40" y="230" width="220" height="64" rx="8" fill="#161b22" stroke="#f0883e" stroke-width="2"/>
+  <text x="150" y="258" text-anchor="middle" fill="#f0883e" font-size="15" font-weight="bold">Cliente</text>
+  <text x="150" y="278" text-anchor="middle" fill="#8b949e" font-size="12.5">tu script, api-toolkit</text>
+  <rect x="560" y="70" width="220" height="64" rx="8" fill="#161b22" stroke="#58a6ff" stroke-width="2"/>
+  <text x="670" y="98" text-anchor="middle" fill="#58a6ff" font-size="15" font-weight="bold">Servidor de autorización</text>
+  <text x="670" y="118" text-anchor="middle" fill="#8b949e" font-size="12.5" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">/authorize, /token, /revoke</text>
+  <rect x="560" y="230" width="220" height="64" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="670" y="258" text-anchor="middle" fill="#3fb950" font-size="15" font-weight="bold">Servidor de recursos</text>
+  <text x="670" y="278" text-anchor="middle" fill="#8b949e" font-size="12.5">la API</text>
+  <path d="M262 102 L556 102" stroke="#d2a8ff" stroke-width="2.2" fill="none" marker-end="url(#f-mo)"/>
+  <text x="409" y="94" text-anchor="middle" fill="#d2a8ff" font-size="12.5">hace login y autoriza</text>
+  <text x="409" y="120" text-anchor="middle" fill="#8b949e" font-size="12">la password solo la ve este servidor</text>
+  <path d="M262 240 L600 138" stroke="#f0883e" stroke-width="2.2" fill="none" marker-end="url(#f-na)"/>
+  <text x="400" y="176" text-anchor="middle" fill="#f0883e" font-size="12.5">1. pide un token</text>
+  <path d="M640 138 L268 256" stroke="#58a6ff" stroke-width="2.2" fill="none" marker-end="url(#f-az)"/>
+  <text x="500" y="222" text-anchor="middle" fill="#58a6ff" font-size="12.5" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">2. access_token</text>
+  <path d="M262 282 L556 282" stroke="#f0883e" stroke-width="2.2" fill="none" marker-end="url(#f-na)"/>
+  <text x="409" y="274" text-anchor="middle" fill="#f0883e" font-size="12.5" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">3. Authorization: Bearer ...</text>
+  <text x="409" y="302" text-anchor="middle" fill="#3fb950" font-size="12.5">4. la API valida el token</text>
+  <text x="410" y="350" text-anchor="middle" fill="#f0f6fc" font-size="15" font-weight="bold">Qué flujo, según quién actúa</text>
+  <rect x="60" y="368" width="700" height="34" rx="8" fill="#161b22" stroke="#30363d" stroke-width="2"/>
+  <text x="80" y="390" text-anchor="start" fill="#f0f6fc" font-size="13">Un script o un cron, en nombre propio</text>
+  <text x="740" y="390" text-anchor="end" fill="#3fb950" font-size="13" font-weight="bold">Client credentials</text>
+  <rect x="60" y="408" width="700" height="34" rx="8" fill="#161b22" stroke="#30363d" stroke-width="2"/>
+  <text x="80" y="430" text-anchor="start" fill="#f0f6fc" font-size="13">Una persona, con navegador en esa máquina</text>
+  <text x="740" y="430" text-anchor="end" fill="#3fb950" font-size="13" font-weight="bold">Authorization code + PKCE</text>
+  <rect x="60" y="448" width="700" height="34" rx="8" fill="#161b22" stroke="#30363d" stroke-width="2"/>
+  <text x="80" y="470" text-anchor="start" fill="#f0f6fc" font-size="13">Una persona, sin navegador (SSH, TV, CI)</text>
+  <text x="740" y="470" text-anchor="end" fill="#3fb950" font-size="13" font-weight="bold">Device code</text>
+  <rect x="60" y="488" width="700" height="34" rx="8" fill="#161b22" stroke="#30363d" stroke-width="2"/>
+  <text x="80" y="510" text-anchor="start" fill="#f0f6fc" font-size="13">Una persona que te da su password</text>
+  <text x="740" y="510" text-anchor="end" fill="#f85149" font-size="13" font-weight="bold">Ninguno: prohibido (RFC 9700)</text>
+</svg>

@@ -1,29 +1,19 @@
-# 📚 Recursos - Semana 08
+# Recursos — Semana 08
 
-## 📖 Contenido
+Lo que merece la pena leer, ver y consultar sobre OAuth2 desde un script:
+los flujos, PKCE, el ciclo de vida del token, la revocación, los JWT y cómo
+se guarda una sesión. Cada recurso lleva una línea de por qué vale la pena:
+si no la tiene, no está aquí.
 
-Esta carpeta contiene recursos adicionales para complementar tu aprendizaje sobre OAuth 2.0 y autenticación avanzada:
+| Carpeta | Qué hay |
+|---|---|
+| [ebooks-free](ebooks-free/README.md) | Libros y guías que se leen enteros |
+| [videografia](videografia/README.md) | Charlas que aportan algo que el texto no |
+| [webgrafia](webgrafia/README.md) | RFCs, documentación y referencias |
 
-| Carpeta | Contenido |
-|---------|-----------|
-| [ebooks-free/](./ebooks-free) | Libros electrónicos gratuitos |
-| [videografia/](./videografia) | Videos y tutoriales recomendados |
-| [webgrafia/](./webgrafia) | Enlaces a documentación y artículos |
-
----
-
-## 🎯 Cómo Usar Estos Recursos
-
-1. **Teoría primero**: Completa el material de [1-teoria/](../1-teoria) antes de explorar estos recursos
-2. **Complementa**: Usa estos recursos para profundizar en temas específicos
-3. **Práctica**: Aplica lo aprendido en las [prácticas](../2-practicas) y el [proyecto](../3-proyecto)
+Los enlaces se comprobaron el **11 de noviembre de 2026**. Si encuentras uno
+roto, un issue con la URL y la fecha es suficiente.
 
 ---
 
-## 💡 Recomendación
-
-No intentes consumir todo el contenido de una vez. Usa estos recursos como referencia cuando necesites profundizar en un tema específico.
-
----
-
-[← Volver a Semana 08](../README.md)
+[← README de la Semana 08](../README.md)

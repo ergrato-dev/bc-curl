@@ -1,0 +1,39 @@
+<svg viewBox="0 0 820 600" role="img" xmlns="http://www.w3.org/2000/svg" font-family="Inter, system-ui, -apple-system, sans-serif">
+  <title>Secuencia de authorization code con PKCE: el cliente genera el verifier y calcula el challenge; abre /authorize con el challenge y el state; la persona hace login y el servidor redirige con code y state; el cliente comprueba el state y canjea el code con el verifier; el servidor compara el hash con el challenge y entrega los tokens. Debajo, el atacante con el code y sin verifier recibe invalid_grant</title>
+  <rect width="820" height="600" fill="#0d1117"/>
+  <defs><marker id="f-bg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#0d1117"/></marker><marker id="f-sf" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#161b22"/></marker><marker id="f-bd" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#30363d"/></marker><marker id="f-tx" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#f0f6fc"/></marker><marker id="f-t2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#8b949e"/></marker><marker id="f-na" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#f0883e"/></marker><marker id="f-az" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#58a6ff"/></marker><marker id="f-az2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#79c0ff"/></marker><marker id="f-ve" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#3fb950"/></marker><marker id="f-am" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#e3b341"/></marker><marker id="f-ro" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#f85149"/></marker><marker id="f-mo" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#d2a8ff"/></marker></defs>
+  <text x="410.0" y="34" text-anchor="middle" fill="#f0f6fc" font-size="22" font-weight="bold">Authorization code + PKCE</text>
+  <rect x="35" y="56" width="190" height="52" rx="8" fill="#161b22" stroke="#f0883e" stroke-width="2"/>
+  <text x="130" y="79" text-anchor="middle" fill="#f0883e" font-size="15" font-weight="bold">Cliente</text>
+  <text x="130" y="98" text-anchor="middle" fill="#8b949e" font-size="12">tu CLI</text>
+  <path d="M130 108 L130 470" stroke="#30363d" stroke-width="2" stroke-dasharray="4 4"/>
+  <rect x="315" y="56" width="190" height="52" rx="8" fill="#161b22" stroke="#d2a8ff" stroke-width="2"/>
+  <text x="410" y="79" text-anchor="middle" fill="#d2a8ff" font-size="15" font-weight="bold">Navegador</text>
+  <text x="410" y="98" text-anchor="middle" fill="#8b949e" font-size="12">la persona</text>
+  <path d="M410 108 L410 470" stroke="#30363d" stroke-width="2" stroke-dasharray="4 4"/>
+  <rect x="595" y="56" width="190" height="52" rx="8" fill="#161b22" stroke="#58a6ff" stroke-width="2"/>
+  <text x="690" y="79" text-anchor="middle" fill="#58a6ff" font-size="15" font-weight="bold">Servidor OAuth2</text>
+  <text x="690" y="98" text-anchor="middle" fill="#8b949e" font-size="12">/authorize, /token</text>
+  <path d="M690 108 L690 470" stroke="#30363d" stroke-width="2" stroke-dasharray="4 4"/>
+  <rect x="24" y="120" width="290" height="52" rx="8" fill="#161b22" stroke="#f0883e" stroke-width="2"/>
+  <text x="36" y="142" text-anchor="start" fill="#f0f6fc" font-size="12.5">1. verifier = aleatorio (43-128)</text>
+  <text x="36" y="161" text-anchor="start" fill="#f0f6fc" font-size="12.5">   challenge = BASE64URL(SHA256(v))</text>
+  <path d="M130 204 L686 204" stroke="#f0883e" stroke-width="2.2" fill="none" marker-end="url(#f-na)"/>
+  <text x="410.0" y="196" text-anchor="middle" fill="#f0883e" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">2. /authorize?code_challenge=…&amp;state=…</text>
+  <path d="M410 254 L686 254" stroke="#d2a8ff" stroke-width="2.2" fill="none" marker-end="url(#f-mo)"/>
+  <text x="550.0" y="246" text-anchor="middle" fill="#d2a8ff" font-size="12">3. login y permisos</text>
+  <path d="M690 304 L134 304" stroke="#58a6ff" stroke-width="2.2" fill="none" marker-end="url(#f-az)"/>
+  <text x="410.0" y="296" text-anchor="middle" fill="#58a6ff" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">4. 302 redirect_uri?code=…&amp;state=…</text>
+  <rect x="24" y="322" width="300" height="52" rx="8" fill="#161b22" stroke="#f0883e" stroke-width="2"/>
+  <text x="36" y="344" text-anchor="start" fill="#f0f6fc" font-size="12.5">5. ¿state es el mío?</text>
+  <text x="36" y="363" text-anchor="start" fill="#f0f6fc" font-size="12.5">   POST /token code + code_verifier</text>
+  <path d="M130 398 L686 398" stroke="#f0883e" stroke-width="2.2" fill="none" marker-end="url(#f-na)"/>
+  <text x="410.0" y="390" text-anchor="middle" fill="#f0883e" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">5. code + code_verifier</text>
+  <rect x="520" y="412" width="280" height="52" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="532" y="434" text-anchor="start" fill="#f0f6fc" font-size="12.5">6. SHA256(verifier) == challenge</text>
+  <text x="532" y="453" text-anchor="start" fill="#f0f6fc" font-size="12.5">   → access_token + refresh_token</text>
+  <rect x="24" y="490" width="776" height="90" rx="8" fill="#161b22" stroke="#f85149" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="44" y="516" text-anchor="start" fill="#f85149" font-size="14" font-weight="bold">El atacante que roba el code en la redirección</text>
+  <text x="44" y="540" text-anchor="start" fill="#f0f6fc" font-size="12.5" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">POST /token code=…  (sin verifier, o con uno inventado)</text>
+  <text x="44" y="562" text-anchor="start" fill="#f85149" font-size="12.5" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">→ 400 invalid_grant: el verifier nunca pasó por el navegador</text>
+</svg>

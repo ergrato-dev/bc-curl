@@ -152,7 +152,18 @@ Tres cosas que sirven las diez semanas:
 
 ## Semana 08 — OAuth2 y autenticación avanzada
 
-_Pendiente._
+| Truco | Cómo |
+|---|---|
+| Descubrir los endpoints de un servidor OAuth2 sin leer su documentación | `curl -s https://servidor/.well-known/openid-configuration \| jq '{token_endpoint, authorization_endpoint, revocation_endpoint, jwks_uri}'` |
+| Un campo de formulario sin escaparlo a mano | `--data-urlencode 'scope=leer escribir'` codifica el espacio (`+` en 7.81) y cualquier `&` o `=` del valor. Con `-d`, un `&` dentro del valor parte el campo en dos |
+| Mandar un valor secreto codificado sin ponerlo en la línea | `printf %s "$TOKEN" \| curl --data-urlencode token@- ...`. `nombre@-` lee el valor de stdin y lo codifica; `@-` a secas codificaría también el `=` |
+| El secreto del cliente fuera de `ps` | Una línea `user = "id:secreto"` en un `--config` temporal con permisos 600. `-u id:secreto` lo deja en `/proc/PID/cmdline` |
+| Leer un JWT sin herramientas | `cut -d. -f2 <<<"$JWT" \| tr '_-' '/+' \| base64 -d 2>/dev/null \| jq .` (añade `=` hasta que la longitud sea múltiplo de 4 si `base64` se queja) |
+| Calcular un `code_challenge` S256 | `printf %s "$VERIFIER" \| openssl dgst -sha256 -binary \| base64 \| tr '+/' '-_' \| tr -d '='` |
+| El código de una redirección sin seguirla | `curl -s -o /dev/null -w '%{redirect_url}' URL`. El `code` va en la query de esa URL |
+| Saber si un token sigue vivo según el servidor | `POST /introspect` con `token=...`: `{"active": true, ...}`. Más fiable que leer el `exp`, y cuesta una petición |
+| Convertir `expires_in` en algo que siga valiendo dentro de una hora | `jq --argjson ahora "$(date +%s)" '.expires_at = $ahora + .expires_in'`. Guarda el instante, no la duración |
+| Comprobar la caducidad sin decodificar el token | `[ "$(date +%s)" -ge $(( expires_at - 30 )) ]`. El margen cubre el reloj desajustado y el viaje de la petición |
 
 ## Semana 09 — HTTP/2, paralelismo y rendimiento
 

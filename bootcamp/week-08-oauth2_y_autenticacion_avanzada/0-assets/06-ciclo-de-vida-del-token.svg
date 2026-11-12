@@ -1,0 +1,50 @@
+<svg viewBox="0 0 820 480" role="img" xmlns="http://www.w3.org/2000/svg" font-family="Inter, system-ui, -apple-system, sans-serif">
+  <title>Ciclo de vida de una sesión OAuth2: vigente, en el margen de caducidad, caducada, y muerta antes de tiempo por revocación o rotación de claves. Se renueva antes de la petición al llegar al margen y después de un 401; con refresh_token si lo hay y con client credentials si no. Los finales: sesión renovada, o salida 77 si el refresh_token ya no vale</title>
+  <rect width="820" height="480" fill="#0d1117"/>
+  <defs><marker id="f-bg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#0d1117"/></marker><marker id="f-sf" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#161b22"/></marker><marker id="f-bd" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#30363d"/></marker><marker id="f-tx" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#f0f6fc"/></marker><marker id="f-t2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#8b949e"/></marker><marker id="f-na" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#f0883e"/></marker><marker id="f-az" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#58a6ff"/></marker><marker id="f-az2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#79c0ff"/></marker><marker id="f-ve" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#3fb950"/></marker><marker id="f-am" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#e3b341"/></marker><marker id="f-ro" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#f85149"/></marker><marker id="f-mo" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#d2a8ff"/></marker></defs>
+  <text x="410.0" y="34" text-anchor="middle" fill="#f0f6fc" font-size="22" font-weight="bold">El ciclo de vida del token</text>
+  <rect x="30" y="70" width="200" height="64" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="130" y="98" text-anchor="middle" fill="#3fb950" font-size="15" font-weight="bold">Vigente</text>
+  <text x="130" y="118" text-anchor="middle" fill="#8b949e" font-size="12">quedan más de 30 s</text>
+  <rect x="310" y="70" width="200" height="64" rx="8" fill="#161b22" stroke="#e3b341" stroke-width="2"/>
+  <text x="410" y="98" text-anchor="middle" fill="#e3b341" font-size="15" font-weight="bold">En el margen</text>
+  <text x="410" y="118" text-anchor="middle" fill="#8b949e" font-size="12">quedan 30 s o menos</text>
+  <rect x="590" y="70" width="200" height="64" rx="8" fill="#161b22" stroke="#f0883e" stroke-width="2"/>
+  <text x="690" y="98" text-anchor="middle" fill="#f0883e" font-size="15" font-weight="bold">Caducada</text>
+  <text x="690" y="118" text-anchor="middle" fill="#8b949e" font-size="12">ya pasó expires_at</text>
+  <rect x="30" y="230" width="200" height="80" rx="8" fill="#161b22" stroke="#f85149" stroke-width="2"/>
+  <text x="130" y="256" text-anchor="middle" fill="#f85149" font-size="15" font-weight="bold">Muerta antes</text>
+  <text x="130" y="276" text-anchor="middle" fill="#8b949e" font-size="12">revocada, claves</text>
+  <text x="130" y="294" text-anchor="middle" fill="#8b949e" font-size="12">rotadas, permisos</text>
+  <path d="M232 102 L306 102" stroke="#8b949e" stroke-width="2.2" fill="none" marker-end="url(#f-t2)"/>
+  <text x="269" y="94" text-anchor="middle" fill="#8b949e" font-size="11.5">el reloj</text>
+  <path d="M512 102 L586 102" stroke="#8b949e" stroke-width="2.2" fill="none" marker-end="url(#f-t2)"/>
+  <path d="M130 136 L130 226" stroke="#f85149" stroke-width="2.2" fill="none" stroke-dasharray="6 4" marker-end="url(#f-ro)"/>
+  <text x="140" y="186" text-anchor="start" fill="#f85149" font-size="11.5">nadie avisa</text>
+  <rect x="310" y="210" width="200" height="120" rx="8" fill="#161b22" stroke="#d2a8ff" stroke-width="2"/>
+  <text x="410" y="236" text-anchor="middle" fill="#d2a8ff" font-size="16" font-weight="bold" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">renovar</text>
+  <text x="410" y="262" text-anchor="middle" fill="#f0f6fc" font-size="12">refresh_token si hay:</text>
+  <text x="410" y="280" text-anchor="middle" fill="#f0f6fc" font-size="12">misma identidad</text>
+  <text x="410" y="298" text-anchor="middle" fill="#f0f6fc" font-size="12">si no, client credentials</text>
+  <path d="M410 136 L410 206" stroke="#e3b341" stroke-width="2.2" fill="none" marker-end="url(#f-am)"/>
+  <text x="420" y="176" text-anchor="start" fill="#e3b341" font-size="12">antes de la petición</text>
+  <path d="M690 136 L690 180 L514 236" stroke="#f0883e" stroke-width="2.2" fill="none" marker-end="url(#f-na)"/>
+  <text x="682" y="166" text-anchor="end" fill="#f0883e" font-size="12">antes de la petición</text>
+  <path d="M232 270 L306 270" stroke="#f85149" stroke-width="2.2" fill="none" marker-end="url(#f-ro)"/>
+  <text x="269" y="262" text-anchor="middle" fill="#f85149" font-size="12" font-weight="bold" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">401</text>
+  <text x="269" y="290" text-anchor="middle" fill="#f85149" font-size="11.5">una vez</text>
+  <rect x="590" y="220" width="200" height="50" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="690" y="251" text-anchor="middle" fill="#3fb950" font-size="14" font-weight="bold">Sesión renovada</text>
+  <path d="M512 245 L586 245" stroke="#3fb950" stroke-width="2.2" fill="none" marker-end="url(#f-ve)"/>
+  <text x="690" y="290" text-anchor="middle" fill="#8b949e" font-size="12">vuelve a Vigente</text>
+  <rect x="590" y="360" width="200" height="76" rx="8" fill="#161b22" stroke="#f85149" stroke-width="2"/>
+  <text x="690" y="386" text-anchor="middle" fill="#f85149" font-size="15" font-weight="bold">Salida 77</text>
+  <text x="690" y="406" text-anchor="middle" fill="#8b949e" font-size="12">invalid_grant:</text>
+  <text x="690" y="424" text-anchor="middle" fill="#8b949e" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">ejecuta auth login</text>
+  <path d="M410 332 L410 398 L586 398" stroke="#f85149" stroke-width="2.2" fill="none" marker-end="url(#f-ro)"/>
+  <text x="420" y="380" text-anchor="start" fill="#f85149" font-size="12">el refresh_token no vale</text>
+  <text x="30" y="380" text-anchor="start" fill="#f85149" font-size="13" font-weight="bold">Nunca:</text>
+  <text x="30" y="402" text-anchor="start" fill="#f0f6fc" font-size="12.5">caer a client credentials</text>
+  <text x="30" y="421" text-anchor="start" fill="#f0f6fc" font-size="12.5">si el refresh falla</text>
+  <text x="30" y="440" text-anchor="start" fill="#f0f6fc" font-size="12.5">reintentar el 401 en bucle</text>
+</svg>

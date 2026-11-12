@@ -1,70 +1,41 @@
-# 🔗 Webgrafía - Semana 8
+# Webgrafía — Semana 08
 
-## Documentación Oficial
+_Comprobado el 11 de noviembre de 2026._
 
-| Recurso | URL | Descripción |
-|---------|-----|-------------|
-| **RFC 6749 — OAuth 2.0** | [https://datatracker.ietf.org/doc/html/rfc6749](https://datatracker.ietf.org/doc/html/rfc6749) | Especificación oficial de OAuth 2.0 |
-| **RFC 7636 — PKCE** | [https://datatracker.ietf.org/doc/html/rfc7636](https://datatracker.ietf.org/doc/html/rfc7636) | Proof Key for Code Exchange |
-| **RFC 7519 — JWT** | [https://datatracker.ietf.org/doc/html/rfc7519](https://datatracker.ietf.org/doc/html/rfc7519) | JSON Web Token spec |
-| **OAuth 2.0 Simplified** | [https://oauth2simplified.com/](https://oauth2simplified.com/) | Guía práctica simplificada |
-| **OAuth.net** | [https://oauth.net/2/](https://oauth.net/2/) | Portal de recursos OAuth 2.0 |
+## Las especificaciones
 
----
+| Recurso | Por qué vale la pena |
+|---|---|
+| [RFC 6749 — The OAuth 2.0 Authorization Framework](https://datatracker.ietf.org/doc/html/rfc6749) | La base. Los apartados 4.1 (authorization code), 4.4 (client credentials), 5.2 (errores) y 6 (refresh) son los que usa el toolkit |
+| [RFC 6750 — Bearer Token Usage](https://datatracker.ietf.org/doc/html/rfc6750) | Cómo viaja el access token a la API, y qué significa el `WWW-Authenticate` de un 401 |
+| [RFC 7636 — PKCE](https://datatracker.ietf.org/doc/html/rfc7636) | El verifier, el challenge S256 y lo que el servidor comprueba. Corto y directo |
+| [RFC 7009 — Token Revocation](https://www.rfc-editor.org/rfc/rfc7009) | Por qué `/revoke` responde 200 a un token que no existe, y qué es `unsupported_token_type` |
+| [RFC 8252 — OAuth 2.0 for Native Apps](https://datatracker.ietf.org/doc/html/rfc8252) | La redirección a loopback en un CLI, y por qué un cliente nativo es público |
+| [RFC 8414 — Authorization Server Metadata](https://datatracker.ietf.org/doc/html/rfc8414) | El documento de discovery: qué campos publica un servidor y cuáles son opcionales |
+| [RFC 9700 — OAuth 2.0 Security Best Current Practice](https://datatracker.ietf.org/doc/html/rfc9700) | Lo que hoy está prohibido o es obligatorio: sin *password grant*, PKCE siempre, rotación de refresh tokens en clientes públicos |
+| [OAuth 2.1 (borrador)](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-v2-1) | RFC 6749 con diez años de lecciones aplicadas. Hacia donde va todo |
 
-## Tutoriales y Guías
+## Guías y referencias
 
-| Recurso | URL | Descripción |
-|---------|-----|-------------|
-| jwt.io Debugger | [https://jwt.io/](https://jwt.io/) | Decodificador interactivo de JWT |
-| OAuth 2.0 Playground | [https://oauth.tools/](https://oauth.tools/) | Playground interactivo |
-| Duende Demo | [https://demo.duendesoftware.com/](https://demo.duendesoftware.com/) | Servidor OAuth público para pruebas |
-| Auth0 JWT Guide | [https://auth0.com/docs/secure/tokens/json-web-tokens](https://auth0.com/docs/secure/tokens/json-web-tokens) | Guía de JWT de Auth0 |
-| Okta OAuth Guide | [https://developer.okta.com/docs/concepts/oauth-openid/](https://developer.okta.com/docs/concepts/oauth-openid/) | OAuth y OIDC por Okta |
+| Recurso | Por qué vale la pena |
+|---|---|
+| [oauth.net — OAuth 2.0](https://oauth.net/2/) | El índice de todo: cada flujo, cada extensión y su RFC, en una página |
+| [oauth.net — OAuth 2.1](https://oauth.net/2.1/) | Resumen de lo que cambia frente a 2.0, en una lista |
+| [OWASP — OAuth2 Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/OAuth2_Cheat_Sheet.html) | Las comprobaciones de seguridad de un cliente y un servidor OAuth2, en formato lista |
+| [PortSwigger — OAuth 2.0 authentication vulnerabilities](https://portswigger.net/web-security/oauth) | Los ataques reales contra el `state`, la `redirect_uri` y el código, con laboratorios. Lo que pasa cuando falta alguna pieza de la teoría 04 |
+| [PortSwigger — JWT attacks](https://portswigger.net/web-security/jwt) | `alg: none`, claves débiles y confusión de algoritmos: por qué la API, y no el cliente, valida el JWT |
+| [jwt.io — Introduction to JSON Web Tokens](https://jwt.io/introduction) | Las tres partes y los claims, con diagramas. No pegues ahí un token de verdad: decodifícalo con `claims_jwt` |
+| [GitHub — Authorizing OAuth apps](https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/authorizing-oauth-apps) | Authorization code y device code en un proveedor real, con sus errores propios. El ejemplo opcional de la teoría 05 |
 
----
+## curl y el laboratorio
 
-## Artículos Recomendados
-
-| Artículo | URL | Tema |
-|----------|-----|------|
-| Choosing an OAuth2 Flow | [https://auth0.com/docs/get-started/authentication-and-authorization-flow/](https://auth0.com/docs/get-started/authentication-and-authorization-flow/) | Qué flow usar |
-| Why PKCE matters | [https://www.oauth.com/oauth2-servers/pkce/](https://www.oauth.com/oauth2-servers/pkce/) | Importancia de PKCE |
-| Access Token vs Refresh Token | [https://auth0.com/blog/refresh-tokens-what-are-they-and-when-to-use-them/](https://auth0.com/blog/refresh-tokens-what-are-they-and-when-to-use-them/) | Tipos de token |
-| Token Lifetime Best Practices | [https://curity.io/resources/learn/token-lifetime-best-practices/](https://curity.io/resources/learn/token-lifetime-best-practices/) | Ciclo de vida de tokens |
-
----
-
-## APIs y Servidores de Prueba
-
-| API | URL | Descripción |
-|-----|-----|-------------|
-| **Duende Demo** | [https://demo.duendesoftware.com/](https://demo.duendesoftware.com/) | Servidor OAuth2 público |
-| **httpbin.org/bearer** | [https://httpbin.org/bearer](https://httpbin.org/bearer) | Prueba Bearer token |
-| **jwt.io** | [https://jwt.io/](https://jwt.io/) | Debugger de JWT |
-| **OAuth Tools** | [https://oauth.tools/](https://oauth.tools/) | Playground interactivo |
+| Recurso | Por qué vale la pena |
+|---|---|
+| [`--oauth2-bearer`](https://curl.se/docs/manpage.html#--oauth2-bearer) | 7.61+ para HTTP (la opción es de la 7.33, solo para correo). Manda el `Authorization: Bearer`; el toolkit usa un `header` en el `--config` para que el token no vaya en la línea |
+| [mock-oauth2-server](https://github.com/navikt/mock-oauth2-server) | El simulador del laboratorio. Su README dice qué implementa y qué no: útil cuando algo del laboratorio no coincide con el RFC |
 
 ---
 
-## Herramientas
-
-| Herramienta | URL | Uso |
-|-------------|-----|-----|
-| **jq** | [https://jqlang.github.io/jq/](https://jqlang.github.io/jq/) | Extraer campos de JSON de token |
-| **base64** | built-in | Decodificar JWT payload |
-| **openssl** | built-in | Generar PKCE (rand + sha256) |
-| **curl** | [https://curl.se/](https://curl.se/) | Cliente OAuth2 por CLI |
-
----
-
-## Comunidad
-
-| Recurso | URL | Descripción |
-|---------|-----|-------------|
-| OAuth Working Group | [https://datatracker.ietf.org/wg/oauth/about/](https://datatracker.ietf.org/wg/oauth/about/) | Grupo de trabajo IETF |
-| StackOverflow OAuth | [https://stackoverflow.com/questions/tagged/oauth](https://stackoverflow.com/questions/tagged/oauth) | Preguntas sobre OAuth |
-| r/oauth2 | [https://reddit.com/r/oauth2](https://reddit.com/r/oauth2) | Comunidad de OAuth |
-
----
-
-> 💡 **Tip**: Guarda estos enlaces en tus favoritos para referencia rápida.
+| Anterior | Siguiente |
+|---|---|
+| [Videografía](../videografia/README.md) | [Glosario](../../5-glosario/README.md) |
