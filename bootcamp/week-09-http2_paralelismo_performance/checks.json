@@ -1,0 +1,132 @@
+{
+  "semana": "09",
+  "titulo": "HTTP/2, paralelismo y rendimiento",
+  "checks": [
+    {
+      "id": "laboratorio-http2",
+      "descripcion": "El laboratorio TLS responde por HTTP/2",
+      "cmd": "curl --cacert {ca} -s -o /dev/null --max-time 5 -w '%{http_version}' {lab_tls}/get",
+      "assert": "stdout~^2$",
+      "pista": "ejecuta ./scripts/start.sh; si responde 1.1, tu curl no trae HTTP2 en curl --version (Features)"
+    },
+    {
+      "id": "toolkit-ejecutable",
+      "descripcion": "api-toolkit.sh existe, es ejecutable y arranca con set -euo pipefail",
+      "cmd": "test -x {semana}/3-proyecto/starter/api-toolkit.sh && grep -q 'set -euo pipefail' {semana}/3-proyecto/starter/api-toolkit.sh",
+      "assert": "exit0",
+      "pista": "3-proyecto/README.md, como entregarlo"
+    },
+    {
+      "id": "toolkit-sin-todos",
+      "descripcion": "No queda ningun TODO por resolver",
+      "cmd": "grep -c 'TODO [0-9]' {semana}/3-proyecto/starter/api-toolkit.sh",
+      "assert": "stdout~^0$",
+      "pista": "busca 'TODO' en el script: cada uno es un hueco de la capa 9"
+    },
+    {
+      "id": "toolkit-version",
+      "descripcion": "El User-Agent anuncia la version 0.9.0",
+      "cmd": "T={semana}/3-proyecto/starter/api-toolkit.sh; $T get /user-agent | jq -r '.[\"user-agent\"]'",
+      "assert": "stdout~^api-toolkit/0[.]9[.]0$",
+      "pista": "readonly VERSION al principio del script"
+    },
+    {
+      "id": "toolkit-get-sigue",
+      "descripcion": "get sigue imprimiendo el cuerpo JSON por stdout",
+      "cmd": "T={semana}/3-proyecto/starter/api-toolkit.sh; $T get /get | jq -r .url",
+      "assert": "stdout~^http://localhost:8080/get$",
+      "pista": "sin API_CACHE_DIR, servir_respuesta imprime CUERPO tal cual. Practica 04, paso 6"
+    },
+    {
+      "id": "bench-un-solo-curl",
+      "descripcion": "bench lanza todas las peticiones con un solo curl en paralelo",
+      "cmd": "T={semana}/3-proyecto/starter/api-toolkit.sh; $T --dry-run bench /get 3 | grep -c -- ' --parallel '",
+      "assert": "stdout~^1$",
+      "pista": "construir_args_bench: --parallel y --parallel-max van en ARGS_CURL. Practica 02, paso 6"
+    },
+    {
+      "id": "bench-resumen",
+      "descripcion": "bench imprime cuantas peticiones, cuantas en paralelo y la version de HTTP",
+      "cmd": "T={semana}/3-proyecto/starter/api-toolkit.sh; $T bench /get 8 | head -n 1",
+      "assert": "stdout~^8 peticiones, 4 en paralelo, HTTP/1[.]1$",
+      "pista": "estadisticas, la primera linea. Practica 03, paso 6"
+    },
+    {
+      "id": "bench-estadisticas",
+      "descripcion": "bench imprime min, media, p95 y max en segundos con tres decimales",
+      "cmd": "T={semana}/3-proyecto/starter/api-toolkit.sh; $T bench /get 10 | grep -cE '^  (min|media|p95|max) +[0-9]+[.][0-9]{3}s$'",
+      "assert": "stdout~^4$",
+      "pista": "estadisticas: printf con %.3fs, dos espacios delante. Practica 03, pasos 4 a 6"
+    },
+    {
+      "id": "bench-en-paralelo",
+      "descripcion": "8 peticiones a /delay/1 con BENCH_PARALELO=4 tardan 2 o 3 segundos, no 8",
+      "cmd": "T={semana}/3-proyecto/starter/api-toolkit.sh; s=$(date +%s); BENCH_PARALELO=4 $T bench /delay/1 8 >/dev/null; echo $(( $(date +%s) - s ))",
+      "assert": "stdout~^[23]$",
+      "pista": "si tarda 8, no hay -Z; si tarda 3 o mas con http://, falta --parallel-immediate. Practica 02, pasos 3 y 6"
+    },
+    {
+      "id": "bench-reutiliza-http2",
+      "descripcion": "Sobre HTTPS, bench multiplexa por HTTP/2: 7 de 8 peticiones reutilizan la conexion",
+      "cmd": "T={semana}/3-proyecto/starter/api-toolkit.sh; export BASE_URL={lab_tls} API_CACERT={ca}; BENCH_PARALELO=4 $T bench /get 8 | grep -cE '^8 peticiones, 4 en paralelo, HTTP/2$|^  reutilizacion de conexion: 7/8$'",
+      "assert": "stdout~^2$",
+      "pista": "%{num_connects} vale 0 en una peticion que reutilizo; con https:// no pongas --parallel-immediate. Practica 02, paso 7"
+    },
+    {
+      "id": "bench-errores",
+      "descripcion": "bench cuenta las peticiones fallidas y sale con 1",
+      "cmd": "T={semana}/3-proyecto/starter/api-toolkit.sh; out=$($T bench /status/503 3 2>/dev/null); echo \"$? $(grep -o 'errores: [0-9]*' <<<\"$out\")\"",
+      "assert": "stdout~^1 errores: 3$",
+      "pista": "estadisticas: un codigo que no empieza por 2 o 3 es un error, y awk sale con exit (errores > 0). Practica 03, paso 5"
+    },
+    {
+      "id": "bench-sin-reintentos",
+      "descripcion": "bench no reintenta: 3 peticiones a /status/503 terminan en menos de 2 segundos",
+      "cmd": "T={semana}/3-proyecto/starter/api-toolkit.sh; s=$(date +%s); $T bench /status/503 3 >/dev/null 2>&1; echo $(( $(date +%s) - s ))",
+      "assert": "stdout~^[01]$",
+      "pista": "construir_red BENCH no anade --retry. Teoria 05, apartado 2.5"
+    },
+    {
+      "id": "cache-304",
+      "descripcion": "Con API_CACHE_DIR, el segundo get pregunta con If-None-Match y la API responde 304",
+      "cmd": "T={semana}/3-proyecto/starter/api-toolkit.sh; D=$(mktemp -u); trap 'rm -rf \"$D\"' EXIT; export API_CACHE_DIR=$D; $T get /etag/v1 >/dev/null; $T --verbose get /etag/v1 2>&1 >/dev/null | grep -c '^< HTTP/1.1 304'",
+      "assert": "stdout~^1$",
+      "pista": "preparar_cache: --header If-None-Match con el ETag guardado. Practica 04, pasos 4 y 5"
+    },
+    {
+      "id": "cache-mismo-cuerpo",
+      "descripcion": "El get que recibe un 304 imprime el cuerpo guardado",
+      "cmd": "T={semana}/3-proyecto/starter/api-toolkit.sh; D=$(mktemp -u); trap 'rm -rf \"$D\"' EXIT; export API_CACHE_DIR=$D; a=$($T get /etag/v1); b=$($T get /etag/v1); [ -n \"$b\" ] && [ \"$a\" = \"$b\" ] && echo igual",
+      "assert": "stdout~^igual$",
+      "pista": "servir_respuesta: con 304, cat del .cuerpo guardado. Practica 04, paso 6"
+    },
+    {
+      "id": "cache-700",
+      "descripcion": "El directorio de la cache se crea con permisos 700",
+      "cmd": "T={semana}/3-proyecto/starter/api-toolkit.sh; D=$(mktemp -u); trap 'rm -rf \"$D\"' EXIT; export API_CACHE_DIR=$D; $T get /etag/v1 >/dev/null; stat -c '%a' \"$D\" 2>/dev/null || stat -f '%Lp' \"$D\"",
+      "assert": "stdout~^700$",
+      "pista": "(umask 077 && mkdir -p ...). Practica 04, paso 4"
+    },
+    {
+      "id": "cache-sin-etag",
+      "descripcion": "Una respuesta sin ETag no se guarda en la cache",
+      "cmd": "T={semana}/3-proyecto/starter/api-toolkit.sh; D=$(mktemp -u); trap 'rm -rf \"$D\"' EXIT; export API_CACHE_DIR=$D; $T get /get >/dev/null; find \"$D\" -type f | wc -l",
+      "assert": "stdout~^ *0$",
+      "pista": "servir_respuesta guarda solo un 200 con header ETag. Practica 04, paso 6"
+    },
+    {
+      "id": "renovar-una-vez",
+      "descripcion": "Ocho procesos con el token caducado lo renuevan una sola vez",
+      "cmd": "T={semana}/3-proyecto/starter/api-toolkit.sh; export OAUTH_CLIENT_ID=api-toolkit OAUTH_CLIENT_SECRET=secreto-de-laboratorio OAUTH_SESSION_FILE=$(mktemp -u); umask 077; trap 'rm -f \"$OAUTH_SESSION_FILE\" \"$OAUTH_SESSION_FILE.lock\" \"$OAUTH_SESSION_FILE.err\"' EXIT; $T auth login >/dev/null 2>&1; t=$(mktemp); jq '.expires_at = 0' \"$OAUTH_SESSION_FILE\" > \"$t\" && cat \"$t\" > \"$OAUTH_SESSION_FILE\"; rm -f \"$t\"; for i in 1 2 3 4 5 6 7 8; do AUTH_MODE=oauth BASE_URL={lab_oauth} $T get /userinfo >/dev/null 2>>\"$OAUTH_SESSION_FILE.err\" & done; wait; grep -c renovado \"$OAUTH_SESSION_FILE.err\"",
+      "assert": "stdout~^1$",
+      "pista": "renovar: flock sobre SESION.lock y, con el cerrojo, mira si otro proceso ya cambio el token. Practica 04, pasos 7 a 9"
+    },
+    {
+      "id": "toolkit-shellcheck",
+      "descripcion": "shellcheck -S warning no encuentra nada",
+      "cmd": "shellcheck -S warning {semana}/3-proyecto/starter/api-toolkit.sh",
+      "assert": "exit0",
+      "pista": "instala shellcheck (docs/setup-entorno.md) y corrige lo que diga"
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+<svg viewBox="0 0 820 520" role="img" xmlns="http://www.w3.org/2000/svg" font-family="Inter, system-ui, -apple-system, sans-serif">
+  <title>A la izquierda, la pila de HTTP/2 (TLS sobre TCP) frente a la de HTTP/3 (QUIC sobre UDP, con TLS 1.3 dentro), y el descubrimiento por la cabecera alt-svc. A la derecha, el handshake de WebSocket: una petición GET con Upgrade: websocket y Sec-WebSocket-Key, la respuesta 101 Switching Protocols con Sec-WebSocket-Accept, y a partir de ahí mensajes en las dos direcciones sobre la misma conexión</title>
+  <rect width="820" height="520" fill="#0d1117"/>
+  <defs><marker id="f-bg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#0d1117"/></marker><marker id="f-sf" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#161b22"/></marker><marker id="f-bd" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#30363d"/></marker><marker id="f-tx" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#f0f6fc"/></marker><marker id="f-t2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#8b949e"/></marker><marker id="f-na" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#f0883e"/></marker><marker id="f-az" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#58a6ff"/></marker><marker id="f-az2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#79c0ff"/></marker><marker id="f-ve" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#3fb950"/></marker><marker id="f-am" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#e3b341"/></marker><marker id="f-ro" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#f85149"/></marker><marker id="f-mo" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#d2a8ff"/></marker></defs>
+  <text x="410.0" y="34" text-anchor="middle" fill="#f0f6fc" font-size="22" font-weight="bold">HTTP/3 y WebSockets</text>
+  <rect x="40" y="90" width="150" height="38" rx="8" fill="#161b22" stroke="#58a6ff" stroke-width="2"/>
+  <text x="115" y="114" text-anchor="middle" fill="#58a6ff" font-size="13" font-weight="bold">HTTP/2</text>
+  <rect x="40" y="134" width="150" height="38" rx="8" fill="#161b22" stroke="#f0883e" stroke-width="2"/>
+  <text x="115" y="158" text-anchor="middle" fill="#f0883e" font-size="13" font-weight="bold">TLS</text>
+  <rect x="40" y="178" width="150" height="38" rx="8" fill="#161b22" stroke="#e3b341" stroke-width="2"/>
+  <text x="115" y="202" text-anchor="middle" fill="#e3b341" font-size="13" font-weight="bold">TCP</text>
+  <rect x="40" y="222" width="150" height="38" rx="8" fill="#161b22" stroke="#8b949e" stroke-width="2"/>
+  <text x="115" y="246" text-anchor="middle" fill="#8b949e" font-size="13" font-weight="bold">IP</text>
+  <rect x="210" y="90" width="150" height="38" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="285" y="114" text-anchor="middle" fill="#3fb950" font-size="13" font-weight="bold">HTTP/3</text>
+  <rect x="210" y="134" width="150" height="38" rx="8" fill="#161b22" stroke="#d2a8ff" stroke-width="2"/>
+  <text x="285" y="158" text-anchor="middle" fill="#d2a8ff" font-size="13" font-weight="bold">QUIC + TLS 1.3</text>
+  <rect x="210" y="178" width="150" height="38" rx="8" fill="#161b22" stroke="#e3b341" stroke-width="2"/>
+  <text x="285" y="202" text-anchor="middle" fill="#e3b341" font-size="13" font-weight="bold">UDP</text>
+  <rect x="210" y="222" width="150" height="38" rx="8" fill="#161b22" stroke="#8b949e" stroke-width="2"/>
+  <text x="285" y="246" text-anchor="middle" fill="#8b949e" font-size="13" font-weight="bold">IP</text>
+  <text x="40" y="290" text-anchor="start" fill="#8b949e" font-size="12">TCP entrega en orden: un paquete perdido</text>
+  <text x="40" y="308" text-anchor="start" fill="#8b949e" font-size="12">frena a todos los streams.</text>
+  <text x="40" y="326" text-anchor="start" fill="#8b949e" font-size="12">QUIC entrega por stream.</text>
+  <rect x="40" y="360" width="320" height="71" rx="8" fill="#161b22" stroke="#30363d" stroke-width="2"/>
+  <text x="52" y="382" text-anchor="start" fill="#f0f6fc" font-size="12.5">alt-svc: h3=":8443"; ma=2592000</text>
+  <text x="52" y="401" text-anchor="start" fill="#f0f6fc" font-size="12.5">--http3 (7.66.0): solo si</text>
+  <text x="52" y="420" text-anchor="start" fill="#f0f6fc" font-size="12.5">"HTTP3" sale en curl --version</text>
+  <rect x="400" y="70" width="390" height="400" rx="8" fill="#161b22" stroke="#30363d" stroke-width="2"/>
+  <text x="595" y="96" text-anchor="middle" fill="#f0f6fc" font-size="14" font-weight="bold">WebSocket: el handshake es HTTP</text>
+  <path d="M450 110 L450 450" stroke="#30363d" stroke-width="2" stroke-dasharray="4 4"/>
+  <path d="M740 110 L740 450" stroke="#30363d" stroke-width="2" stroke-dasharray="4 4"/>
+  <text x="450" y="124" text-anchor="middle" fill="#f0883e" font-size="12">cliente</text>
+  <text x="740" y="124" text-anchor="middle" fill="#58a6ff" font-size="12">servidor</text>
+  <path d="M450 160 L736 160" stroke="#f0883e" stroke-width="2.2" fill="none" marker-end="url(#f-na)"/>
+  <text x="460" y="180" text-anchor="start" fill="#f0883e" font-size="11.5" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">GET /websocket/echo</text>
+  <text x="460" y="196" text-anchor="start" fill="#f0883e" font-size="11.5" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">Upgrade: websocket</text>
+  <text x="460" y="212" text-anchor="start" fill="#f0883e" font-size="11.5" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">Sec-WebSocket-Key: ...</text>
+  <path d="M740 250 L454 250" stroke="#58a6ff" stroke-width="2.2" fill="none" marker-end="url(#f-az)"/>
+  <text x="470" y="270" text-anchor="start" fill="#58a6ff" font-size="11.5" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">101 Switching Protocols</text>
+  <text x="470" y="286" text-anchor="start" fill="#58a6ff" font-size="11.5" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">Sec-WebSocket-Accept: ...</text>
+  <path d="M450 330 L736 330" stroke="#3fb950" stroke-width="2.2" fill="none" marker-end="url(#f-ve)"/>
+  <path d="M740 364 L454 364" stroke="#3fb950" stroke-width="2.2" fill="none" marker-end="url(#f-ve)"/>
+  <path d="M450 398 L736 398" stroke="#3fb950" stroke-width="2.2" fill="none" marker-end="url(#f-ve)"/>
+  <text x="595" y="324" text-anchor="middle" fill="#3fb950" font-size="12">frames en las dos direcciones</text>
+  <text x="595" y="448" text-anchor="middle" fill="#8b949e" font-size="11.5">curl 7.81: llega al 101 · ws:// desde 7.86 (exp.), 8.11</text>
+</svg>

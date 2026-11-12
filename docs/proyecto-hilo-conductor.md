@@ -84,7 +84,7 @@ Flags globales:
 | 06 | **Observable** | `--verbose` con credenciales tachadas, `--timing` y métricas JSON con `--write-out`, ignora el `~/.curlrc`, User-Agent propio |
 | 07 | **Robusto** | Falla cuando debe fallar: errores por stderr, 429/502/503/504 salen con 75 y `Retry-After`, un solo cuerpo tras reintentar, `fetch-all` con paginación por `Link` |
 | 08 | **OAuth2** | `auth login/logout/status`, refresco automático del token caducado |
-| 09 | **Rápido** | Peticiones en paralelo, reutilización de conexión, `bench` |
+| 09 | **Rápido** | `bench` con un solo curl en paralelo (min, media, p95, max, reutilización y errores), caché por ETag con `API_CACHE_DIR`, renovación OAuth2 con cerrojo entre procesos |
 | 10 | **Entregable** | `init`, tests con `bats`, documentación, instalable, en CI |
 
 Cada capa se apoya en la anterior. La Semana 08 no puede refrescar un token si
@@ -145,12 +145,13 @@ Pagina 4/4   37 elementos  0.22s
 337 elementos en repos.json
 
 $ api-toolkit bench /rate_limit 20
-20 peticiones, 4 en paralelo
+20 peticiones, 4 en paralelo, HTTP/2
   min    0.089s
   media  0.134s
   p95    0.221s
   max    0.298s
   reutilizacion de conexion: 19/20
+  errores: 0
 ```
 
 Eso no es un ejercicio. Es una herramienta.

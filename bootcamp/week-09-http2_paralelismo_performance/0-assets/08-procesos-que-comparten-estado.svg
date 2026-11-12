@@ -1,0 +1,129 @@
+<svg viewBox="0 0 820 540" role="img" xmlns="http://www.w3.org/2000/svg" font-family="Inter, system-ui, -apple-system, sans-serif">
+  <title>Ocho procesos encuentran a la vez la sesión caducada. Sin cerrojo, los ocho piden un token nuevo al servidor y escriben la sesión uno encima de otro; con un refresh token que rota, el segundo y siguientes reciben invalid_grant. Con flock, el primero renueva mientras los demás esperan; al entrar, cada uno relee la sesión, ve que el token ya cambió y no ha caducado, y la usa sin renovar</title>
+  <rect width="820" height="540" fill="#0d1117"/>
+  <defs><marker id="f-bg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#0d1117"/></marker><marker id="f-sf" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#161b22"/></marker><marker id="f-bd" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#30363d"/></marker><marker id="f-tx" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#f0f6fc"/></marker><marker id="f-t2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#8b949e"/></marker><marker id="f-na" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#f0883e"/></marker><marker id="f-az" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#58a6ff"/></marker><marker id="f-az2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#79c0ff"/></marker><marker id="f-ve" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#3fb950"/></marker><marker id="f-am" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#e3b341"/></marker><marker id="f-ro" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#f85149"/></marker><marker id="f-mo" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#d2a8ff"/></marker></defs>
+  <text x="410.0" y="34" text-anchor="middle" fill="#f0f6fc" font-size="22" font-weight="bold">Ocho procesos, una sesión</text>
+  <rect x="30" y="62" width="370" height="330" rx="8" fill="#161b22" stroke="#f85149" stroke-width="2"/>
+  <text x="215" y="88" text-anchor="middle" fill="#f85149" font-size="14" font-weight="bold">Sin cerrojo</text>
+  <text x="48" y="121" text-anchor="start" fill="#8b949e" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">p1</text>
+  <rect x="80" y="104" width="90" height="22" rx="8" fill="#161b22" stroke="#e3b341" stroke-width="1.6"/>
+  <text x="125.0" y="119.5" text-anchor="middle" fill="#e3b341" font-size="11.5">caducada</text>
+  <rect x="172" y="104" width="90" height="22" rx="8" fill="#161b22" stroke="#f0883e" stroke-width="1.6"/>
+  <text x="217.0" y="119.5" text-anchor="middle" fill="#f0883e" font-size="11.5">renueva</text>
+  <rect x="264" y="104" width="120" height="22" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="1.6"/>
+  <text x="324.0" y="119.5" text-anchor="middle" fill="#3fb950" font-size="11.5">ok</text>
+  <text x="48" y="151" text-anchor="start" fill="#8b949e" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">p2</text>
+  <rect x="80" y="134" width="90" height="22" rx="8" fill="#161b22" stroke="#e3b341" stroke-width="1.6"/>
+  <text x="125.0" y="149.5" text-anchor="middle" fill="#e3b341" font-size="11.5">caducada</text>
+  <rect x="172" y="134" width="90" height="22" rx="8" fill="#161b22" stroke="#f0883e" stroke-width="1.6"/>
+  <text x="217.0" y="149.5" text-anchor="middle" fill="#f0883e" font-size="11.5">renueva</text>
+  <rect x="264" y="134" width="120" height="22" rx="8" fill="#161b22" stroke="#f85149" stroke-width="1.6"/>
+  <text x="324.0" y="149.5" text-anchor="middle" fill="#f85149" font-size="11.5">invalid_grant</text>
+  <text x="48" y="181" text-anchor="start" fill="#8b949e" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">p3</text>
+  <rect x="80" y="164" width="90" height="22" rx="8" fill="#161b22" stroke="#e3b341" stroke-width="1.6"/>
+  <text x="125.0" y="179.5" text-anchor="middle" fill="#e3b341" font-size="11.5">caducada</text>
+  <rect x="172" y="164" width="90" height="22" rx="8" fill="#161b22" stroke="#f0883e" stroke-width="1.6"/>
+  <text x="217.0" y="179.5" text-anchor="middle" fill="#f0883e" font-size="11.5">renueva</text>
+  <rect x="264" y="164" width="120" height="22" rx="8" fill="#161b22" stroke="#f85149" stroke-width="1.6"/>
+  <text x="324.0" y="179.5" text-anchor="middle" fill="#f85149" font-size="11.5">invalid_grant</text>
+  <text x="48" y="211" text-anchor="start" fill="#8b949e" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">p4</text>
+  <rect x="80" y="194" width="90" height="22" rx="8" fill="#161b22" stroke="#e3b341" stroke-width="1.6"/>
+  <text x="125.0" y="209.5" text-anchor="middle" fill="#e3b341" font-size="11.5">caducada</text>
+  <rect x="172" y="194" width="90" height="22" rx="8" fill="#161b22" stroke="#f0883e" stroke-width="1.6"/>
+  <text x="217.0" y="209.5" text-anchor="middle" fill="#f0883e" font-size="11.5">renueva</text>
+  <rect x="264" y="194" width="120" height="22" rx="8" fill="#161b22" stroke="#f85149" stroke-width="1.6"/>
+  <text x="324.0" y="209.5" text-anchor="middle" fill="#f85149" font-size="11.5">invalid_grant</text>
+  <text x="48" y="241" text-anchor="start" fill="#8b949e" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">p5</text>
+  <rect x="80" y="224" width="90" height="22" rx="8" fill="#161b22" stroke="#e3b341" stroke-width="1.6"/>
+  <text x="125.0" y="239.5" text-anchor="middle" fill="#e3b341" font-size="11.5">caducada</text>
+  <rect x="172" y="224" width="90" height="22" rx="8" fill="#161b22" stroke="#f0883e" stroke-width="1.6"/>
+  <text x="217.0" y="239.5" text-anchor="middle" fill="#f0883e" font-size="11.5">renueva</text>
+  <rect x="264" y="224" width="120" height="22" rx="8" fill="#161b22" stroke="#f85149" stroke-width="1.6"/>
+  <text x="324.0" y="239.5" text-anchor="middle" fill="#f85149" font-size="11.5">invalid_grant</text>
+  <text x="48" y="271" text-anchor="start" fill="#8b949e" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">p6</text>
+  <rect x="80" y="254" width="90" height="22" rx="8" fill="#161b22" stroke="#e3b341" stroke-width="1.6"/>
+  <text x="125.0" y="269.5" text-anchor="middle" fill="#e3b341" font-size="11.5">caducada</text>
+  <rect x="172" y="254" width="90" height="22" rx="8" fill="#161b22" stroke="#f0883e" stroke-width="1.6"/>
+  <text x="217.0" y="269.5" text-anchor="middle" fill="#f0883e" font-size="11.5">renueva</text>
+  <rect x="264" y="254" width="120" height="22" rx="8" fill="#161b22" stroke="#f85149" stroke-width="1.6"/>
+  <text x="324.0" y="269.5" text-anchor="middle" fill="#f85149" font-size="11.5">invalid_grant</text>
+  <text x="48" y="301" text-anchor="start" fill="#8b949e" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">p7</text>
+  <rect x="80" y="284" width="90" height="22" rx="8" fill="#161b22" stroke="#e3b341" stroke-width="1.6"/>
+  <text x="125.0" y="299.5" text-anchor="middle" fill="#e3b341" font-size="11.5">caducada</text>
+  <rect x="172" y="284" width="90" height="22" rx="8" fill="#161b22" stroke="#f0883e" stroke-width="1.6"/>
+  <text x="217.0" y="299.5" text-anchor="middle" fill="#f0883e" font-size="11.5">renueva</text>
+  <rect x="264" y="284" width="120" height="22" rx="8" fill="#161b22" stroke="#f85149" stroke-width="1.6"/>
+  <text x="324.0" y="299.5" text-anchor="middle" fill="#f85149" font-size="11.5">invalid_grant</text>
+  <text x="48" y="331" text-anchor="start" fill="#8b949e" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">p8</text>
+  <rect x="80" y="314" width="90" height="22" rx="8" fill="#161b22" stroke="#e3b341" stroke-width="1.6"/>
+  <text x="125.0" y="329.5" text-anchor="middle" fill="#e3b341" font-size="11.5">caducada</text>
+  <rect x="172" y="314" width="90" height="22" rx="8" fill="#161b22" stroke="#f0883e" stroke-width="1.6"/>
+  <text x="217.0" y="329.5" text-anchor="middle" fill="#f0883e" font-size="11.5">renueva</text>
+  <rect x="264" y="314" width="120" height="22" rx="8" fill="#161b22" stroke="#f85149" stroke-width="1.6"/>
+  <text x="324.0" y="329.5" text-anchor="middle" fill="#f85149" font-size="11.5">invalid_grant</text>
+  <text x="215" y="372" text-anchor="middle" fill="#f85149" font-size="12">si el refresh token rota: 7 de 8 fallan</text>
+  <rect x="420" y="62" width="370" height="330" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="605" y="88" text-anchor="middle" fill="#3fb950" font-size="14" font-weight="bold">Con flock + segunda comprobación</text>
+  <text x="438" y="121" text-anchor="start" fill="#8b949e" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">p1</text>
+  <rect x="470" y="104" width="90" height="22" rx="8" fill="#161b22" stroke="#e3b341" stroke-width="1.6"/>
+  <text x="515.0" y="119.5" text-anchor="middle" fill="#e3b341" font-size="11.5">caducada</text>
+  <rect x="562" y="104" width="80" height="22" rx="8" fill="#161b22" stroke="#d2a8ff" stroke-width="1.6"/>
+  <text x="602.0" y="119.5" text-anchor="middle" fill="#d2a8ff" font-size="11.5">cerrojo</text>
+  <rect x="644" y="104" width="130" height="22" rx="8" fill="#161b22" stroke="#f0883e" stroke-width="1.6"/>
+  <text x="709.0" y="119.5" text-anchor="middle" fill="#f0883e" font-size="11.5">renueva</text>
+  <text x="438" y="151" text-anchor="start" fill="#8b949e" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">p2</text>
+  <rect x="470" y="134" width="90" height="22" rx="8" fill="#161b22" stroke="#e3b341" stroke-width="1.6"/>
+  <text x="515.0" y="149.5" text-anchor="middle" fill="#e3b341" font-size="11.5">caducada</text>
+  <rect x="562" y="134" width="80" height="22" rx="8" fill="#161b22" stroke="#8b949e" stroke-width="1.6"/>
+  <text x="602.0" y="149.5" text-anchor="middle" fill="#8b949e" font-size="11.5">espera</text>
+  <rect x="644" y="134" width="130" height="22" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="1.6"/>
+  <text x="709.0" y="149.5" text-anchor="middle" fill="#3fb950" font-size="11.5">token nuevo: usa</text>
+  <text x="438" y="181" text-anchor="start" fill="#8b949e" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">p3</text>
+  <rect x="470" y="164" width="90" height="22" rx="8" fill="#161b22" stroke="#e3b341" stroke-width="1.6"/>
+  <text x="515.0" y="179.5" text-anchor="middle" fill="#e3b341" font-size="11.5">caducada</text>
+  <rect x="562" y="164" width="80" height="22" rx="8" fill="#161b22" stroke="#8b949e" stroke-width="1.6"/>
+  <text x="602.0" y="179.5" text-anchor="middle" fill="#8b949e" font-size="11.5">espera</text>
+  <rect x="644" y="164" width="130" height="22" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="1.6"/>
+  <text x="709.0" y="179.5" text-anchor="middle" fill="#3fb950" font-size="11.5">token nuevo: usa</text>
+  <text x="438" y="211" text-anchor="start" fill="#8b949e" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">p4</text>
+  <rect x="470" y="194" width="90" height="22" rx="8" fill="#161b22" stroke="#e3b341" stroke-width="1.6"/>
+  <text x="515.0" y="209.5" text-anchor="middle" fill="#e3b341" font-size="11.5">caducada</text>
+  <rect x="562" y="194" width="80" height="22" rx="8" fill="#161b22" stroke="#8b949e" stroke-width="1.6"/>
+  <text x="602.0" y="209.5" text-anchor="middle" fill="#8b949e" font-size="11.5">espera</text>
+  <rect x="644" y="194" width="130" height="22" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="1.6"/>
+  <text x="709.0" y="209.5" text-anchor="middle" fill="#3fb950" font-size="11.5">token nuevo: usa</text>
+  <text x="438" y="241" text-anchor="start" fill="#8b949e" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">p5</text>
+  <rect x="470" y="224" width="90" height="22" rx="8" fill="#161b22" stroke="#e3b341" stroke-width="1.6"/>
+  <text x="515.0" y="239.5" text-anchor="middle" fill="#e3b341" font-size="11.5">caducada</text>
+  <rect x="562" y="224" width="80" height="22" rx="8" fill="#161b22" stroke="#8b949e" stroke-width="1.6"/>
+  <text x="602.0" y="239.5" text-anchor="middle" fill="#8b949e" font-size="11.5">espera</text>
+  <rect x="644" y="224" width="130" height="22" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="1.6"/>
+  <text x="709.0" y="239.5" text-anchor="middle" fill="#3fb950" font-size="11.5">token nuevo: usa</text>
+  <text x="438" y="271" text-anchor="start" fill="#8b949e" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">p6</text>
+  <rect x="470" y="254" width="90" height="22" rx="8" fill="#161b22" stroke="#e3b341" stroke-width="1.6"/>
+  <text x="515.0" y="269.5" text-anchor="middle" fill="#e3b341" font-size="11.5">caducada</text>
+  <rect x="562" y="254" width="80" height="22" rx="8" fill="#161b22" stroke="#8b949e" stroke-width="1.6"/>
+  <text x="602.0" y="269.5" text-anchor="middle" fill="#8b949e" font-size="11.5">espera</text>
+  <rect x="644" y="254" width="130" height="22" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="1.6"/>
+  <text x="709.0" y="269.5" text-anchor="middle" fill="#3fb950" font-size="11.5">token nuevo: usa</text>
+  <text x="438" y="301" text-anchor="start" fill="#8b949e" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">p7</text>
+  <rect x="470" y="284" width="90" height="22" rx="8" fill="#161b22" stroke="#e3b341" stroke-width="1.6"/>
+  <text x="515.0" y="299.5" text-anchor="middle" fill="#e3b341" font-size="11.5">caducada</text>
+  <rect x="562" y="284" width="80" height="22" rx="8" fill="#161b22" stroke="#8b949e" stroke-width="1.6"/>
+  <text x="602.0" y="299.5" text-anchor="middle" fill="#8b949e" font-size="11.5">espera</text>
+  <rect x="644" y="284" width="130" height="22" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="1.6"/>
+  <text x="709.0" y="299.5" text-anchor="middle" fill="#3fb950" font-size="11.5">token nuevo: usa</text>
+  <text x="438" y="331" text-anchor="start" fill="#8b949e" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">p8</text>
+  <rect x="470" y="314" width="90" height="22" rx="8" fill="#161b22" stroke="#e3b341" stroke-width="1.6"/>
+  <text x="515.0" y="329.5" text-anchor="middle" fill="#e3b341" font-size="11.5">caducada</text>
+  <rect x="562" y="314" width="80" height="22" rx="8" fill="#161b22" stroke="#8b949e" stroke-width="1.6"/>
+  <text x="602.0" y="329.5" text-anchor="middle" fill="#8b949e" font-size="11.5">espera</text>
+  <rect x="644" y="314" width="130" height="22" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="1.6"/>
+  <text x="709.0" y="329.5" text-anchor="middle" fill="#3fb950" font-size="11.5">token nuevo: usa</text>
+  <text x="605" y="372" text-anchor="middle" fill="#3fb950" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">grep -c renovado  →  1</text>
+  <rect x="30" y="410" width="760" height="90" rx="8" fill="#161b22" stroke="#30363d" stroke-width="2"/>
+  <text x="42" y="432" text-anchor="start" fill="#f0f6fc" font-size="12.5">exec 9&gt;&gt;SESION.lock ; flock -w 30 9        (el kernel lo suelta si el proceso muere)</text>
+  <text x="42" y="451" text-anchor="start" fill="#f0f6fc" font-size="12.5">con el cerrojo: si el token ya no es VISTO y no ha caducado → otro renovó → exec 9&gt;&amp;-</text>
+  <text x="42" y="470" text-anchor="start" fill="#f0f6fc" font-size="12.5">El mv atómico evita leer un JSON a medias; no evita que ocho decidan renovar a la vez.</text>
+  <text x="42" y="489" text-anchor="start" fill="#f0f6fc" font-size="12.5">El .lock no se borra: borrarlo abre otra carrera.</text>
+</svg>

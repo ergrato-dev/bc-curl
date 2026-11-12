@@ -99,12 +99,15 @@ Todos anteriores a 7.68, así que están en cualquier distribución con soporte.
 | `--trace-time` | 7.14.0 | 06 |
 | `--libcurl` | 7.16.1 | 06 |
 | `--data-urlencode` | 7.18.0 | 02 |
+| `--no-keepalive` / `--keepalive-time` | 7.18.0 | 09 |
+| `--remote-name-all` | 7.19.0 | 09 |
 | `-J` / `--remote-header-name` | 7.20.0 | 04 |
 | `--resolve` | 7.21.3 | 05 |
 | `--netrc-file` | 7.21.5 | 03 |
-| `--http2` | 7.33.0 | 09 |
+| `--http2` / `--http1.1` | 7.33.0 | 09 |
 | `-:` / `--next` | 7.36.0 | 09 |
 | `--unix-socket` | 7.40.0 | 06 |
+| `--http2-prior-knowledge` | 7.49.0 | 09 |
 | `--tlsv1.3` | 7.52.0 | 05 |
 | `--retry-connrefused` | 7.52.0 | 05 |
 | `--fail-early` | 7.52.0 | 07 |
@@ -117,6 +120,7 @@ Todos anteriores a 7.68, así que están en cualquier distribución con soporte.
 | `--http3` | 7.66.0 | 09 |
 | `--no-progress-meter` | 7.67.0 | 06 |
 | `--etag-save` / `--etag-compare` | 7.68.0 | 09 |
+| `--parallel-immediate` | 7.68.0 | 09 |
 
 ### Flags que hay que marcar en el material
 
@@ -132,7 +136,9 @@ alternativa.**
 | **`--fail-with-body`** | **7.76.0** | **07** | `-f` a secas, perdiendo el cuerpo del error; o `-w '%{http_code}'` y comparar en bash |
 | **`--json`** | **7.82.0** | **02** | `-H 'Content-Type: application/json' -H 'Accept: application/json' -d '...'` — exactamente lo que hace el flag |
 | `--remove-on-error` | 7.83.0 | 04 | `curl -o f ... \|\| rm -f f` |
+| `--rate` | 7.84.0 | 09 | `--parallel-max` como freno de concurrencia, o `sleep` entre lotes |
 | `--url-query` | 7.87.0 | 02 | `--data-urlencode` con `-G` |
+| `--http3-only` | 7.88.0 | 09 | Ninguna: requiere un curl con HTTP/3 (ver más abajo) |
 | `--trace-ids` | 8.2.0 | 06 | Lanzar las transferencias por separado, una traza cada una |
 | `--variable` | 8.3.0 | 06 | Variables de bash normales |
 | `--trace-config` | 8.3.0 | 06 | `-v` o `--trace-ascii`, sin el detalle por componente |
@@ -152,6 +158,7 @@ Por eso estas se marcan igual que los flags.
 |---|:--:|:--:|---|
 | `%{json}` | 7.70.0 | 06 | — (7.81 la tiene) |
 | `%{exitcode}`, `%{errormsg}`, `%{onerror}`, `%{url}` | 7.75.0 | 06 | — (7.81 las tiene) |
+| `%{urlnum}` | 7.75.0 | 09 | — (7.81 la tiene) |
 | `%{header_json}` | 7.83.0 | 06 | `-D -` y `awk` |
 | `%header{nombre}` | 7.84.0 | 06 | `-D - -o /dev/null \| tr -d '\r' \| awk ...` |
 | `%{certs}` | 7.88.0 | 05 | `openssl s_client -showcerts` |
@@ -172,6 +179,7 @@ Comprobados con 7.81.0 (Ubuntu 22.04) y la imagen `curlimages/curl:8.17.0`.
 | `--retry N -o /dev/null` con un cuerpo no vacío | El reintento sale con `(23) Failed to truncate file` | Funciona | 07 |
 | `-w '%header{nombre}'` | Imprime el texto literal, sin error | El valor del header (7.84+) | 06 |
 | Configuración en `$XDG_CONFIG_HOME` | Lee `.curlrc` | Lee `curlrc`, sin punto | 06 |
+| URLs `ws://` y `wss://` | Sale con 1: `Protocol "ws" not supported or disabled in libcurl` | Soportadas por defecto desde 8.11.0 (experimentales desde 7.86.0) | 09 |
 
 ## `--http3` merece un párrafo aparte
 
@@ -181,7 +189,7 @@ No lo trae ninguna distribución mayor, y tampoco la imagen oficial
 
 ```bash
 curl --http3 https://localhost:8443/get
-# curl: option --http3: the installed libcurl version does not support this
+# curl: option --http3: the installed libcurl version doesn't support this
 # curl: try 'curl --help' or 'curl --manual' for more information
 echo $?
 # 2

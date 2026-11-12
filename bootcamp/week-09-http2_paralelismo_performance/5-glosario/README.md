@@ -1,75 +1,197 @@
-# Glosario — Semana 9: HTTP/2, Paralelismo y Performance
+# Glosario — Semana 09
 
-## Términos Principales
+Términos de rendimiento, HTTP/2, paralelismo, caché y concurrencia que
+aparecen esta semana. El término real en inglés va entre paréntesis, y los
+flags que no son universales llevan **su versión mínima**. Los términos de
+todo el bootcamp están en
+[`docs/glosario-global.md`](../../../docs/glosario-global.md).
 
-**HTTP/2**
-Versión 2 del protocolo HTTP (RFC 7540). Introduce multiplexing, compresion de headers HPACK y transmision binaria. Permite multiples requests simultaneos sobre una sola conexion TCP. Requiere soporte en el servidor y en el cliente (curl compilado con nghttp2).
+---
 
-**HTTP/3**
-Versión 3 del protocolo HTTP (RFC 9114). Usa QUIC (sobre UDP) en lugar de TCP, eliminando el head-of-line blocking a nivel de transporte. curl tiene soporte experimental con `--http3`.
+## 0-9
 
-**QUIC**
-Protocolo de transporte desarrollado por Google, estandarizado en RFC 9000. Implementa control de congestión, corrección de errores y multiplexing sobre UDP. Base de HTTP/3.
+**101 Switching Protocols** · Respuesta con la que el servidor acepta el
+`Upgrade`. curl 7.81 la recibe, pero no sabe seguir hablando WebSocket.
 
-**Multiplexing**
-Capacidad de enviar multiples requests y recibir multiples respuestas de forma simultanea sobre una sola conexion TCP. Característica central de HTTP/2. Elimina la necesidad de abrir multiples conexiones paralelas.
+**304 Not Modified** · Respuesta a una petición condicional cuando la versión
+no cambió. Sin cuerpo: el cliente sirve el que tenía.
 
-**HPACK**
-Algoritmo de compresion de headers HTTP definido en RFC 7541, usado en HTTP/2. Mantiene una tabla de headers previamente enviados y los referencia con indices compactos, reduciendo el tamaño de headers repetidos a uno o pocos bytes.
+## A
 
-**nghttp2**
-Libreria C que implementa el protocolo HTTP/2. curl usa nghttp2 cuando se compila con soporte HTTP/2. `curl --version | grep nghttp2` muestra si esta presente.
+**ALPN** (*Application-Layer Protocol Negotiation*) · Extensión de TLS con la
+que cliente y servidor eligen la versión de HTTP dentro del handshake, sin
+ningún viaje extra. curl ofrece `h2` y `http/1.1`.
 
-**Keepalive**
-Mecanismo de HTTP/1.1 (header `Connection: keep-alive`) que mantiene la conexion TCP abierta para reutilizar en requests subsiguientes. Evita el overhead de TCP+TLS handshake por cada request. Activado por defecto en curl.
+**`alt-svc`** · Cabecera con la que un servidor anuncia que también sirve otro
+protocolo o puerto: `h3=":8443"; ma=2592000`. `--alt-svc` (7.64.1+) la guarda
+en un archivo.
 
-**TTFB**
-Time To First Byte. El tiempo desde que el cliente envia el request hasta que recibe el primer byte de la respuesta (excluyendo la descarga del body). Indicador del tiempo de procesamiento del servidor. En curl: `time_starttransfer`.
+## B
 
-**parallel**
-Flag de curl (`--parallel` o `-Z`) que activa el modo de requests paralelos. Multiples URLs se descargan simultaneamente en el mismo proceso curl. Disponible desde curl 7.66.
+**`bench`** · Subcomando de la capa 9: N GET con un solo curl en paralelo, y
+un resumen con min, media, p95, max, reutilización y errores.
 
-**parallel-max**
-Flag de curl (`--parallel-max N`) que limita el numero maximo de conexiones paralelas cuando se usa `--parallel`. Default: 50. Se recomienda reducirlo para no saturar servidores o violar rate limits.
+## C
 
-**WebSocket**
-Protocolo de comunicacion full-duplex sobre una conexion TCP persistente. Comienza con un upgrade desde HTTP. Permite que servidor y cliente envien mensajes en cualquier momento sin que haya un request previo.
+**Caché condicional** · Guardar una respuesta con su ETag y, la siguiente vez,
+preguntar si sigue valiendo. Ahorra el cuerpo, no el viaje.
 
-**Upgrade**
-Header HTTP que solicita cambiar el protocolo de la conexion actual. En WebSockets: `Upgrade: websocket`. El servidor responde con `101 Switching Protocols` si acepta.
+**`Cache-Control: max-age`** · Cuántos segundos vale una respuesta sin volver a
+preguntar. El toolkit no lo usa: solo revalida.
 
-**101 Switching Protocols**
-Código de estado HTTP que indica que el servidor acepto cambiar el protocolo segun lo solicitado en el header `Upgrade`. Unico uso comun: handshake de WebSocket.
+**Cerrojo** (*lock*) · Mecanismo para que solo un proceso a la vez entre en
+una sección. En bash, `flock`.
 
-**ALPN**
-Application-Layer Protocol Negotiation. Extension de TLS que permite al cliente y servidor negociar que protocolo de capa de aplicacion usar (HTTP/1.1, HTTP/2) durante el TLS handshake, sin necesidad de un round-trip adicional.
+**Condición de carrera** (*race condition*) · Fallo que depende de en qué
+orden se ejecutan dos procesos. Ocho procesos que ven a la vez el token
+caducado y lo renuevan ocho veces.
 
-**h2**
-Identificador del protocolo HTTP/2 en la negociacion ALPN. Se ve en logs de curl con `-v` como `ALPN: offering h2` o `ALPN: server accepted h2`.
+**Conexión persistente** (*persistent connection*, *keep-alive*) · Conexión
+HTTP que sigue abierta después de la respuesta, para la siguiente petición. Por
+defecto en HTTP/1.1.
 
-**h2c**
-HTTP/2 cleartext — HTTP/2 sin TLS. Poco comun en produccion (requiere "prior knowledge" o upgrade HTTP/1.1). Util para desarrollo local. En curl: `--http2-prior-knowledge`.
+## E
 
-**time_namelookup**
-Variable de `--write-out` en curl. Tiempo desde el inicio hasta que el DNS lookup completo. Valores altos indican DNS lento.
+**ETag** (*entity tag*) · Etiqueta que el servidor pone a cada versión de un
+recurso. Con `W/` delante es **débil**: semánticamente igual, aunque los bytes
+cambien.
 
-**time_connect**
-Variable de `--write-out` en curl. Tiempo desde el inicio hasta que se completo el TCP handshake (3-way handshake).
+**`--etag-compare`** (7.68.0+) · Lee un ETag de un archivo y lo manda como
+`If-None-Match`. Si el archivo está vacío, manda `""`.
 
-**time_appconnect**
-Variable de `--write-out` en curl. Tiempo desde el inicio hasta que se completo el TLS/SSL handshake. Para HTTP sin TLS, es 0.
+**`--etag-save`** (7.68.0+) · Guarda el ETag de la respuesta en un archivo. No
+guarda el cuerpo con él.
 
-**time_starttransfer**
-Variable de `--write-out` en curl. Tiempo desde el inicio hasta que se recibio el primer byte del body de la respuesta. Equivale a TTFB.
+## F
 
-**time_total**
-Variable de `--write-out` en curl. Tiempo total desde el inicio hasta que se completo la transferencia (headers + body completo).
+**`flock`** · Orden de util-linux que coge un cerrojo del kernel sobre un
+archivo. `-w N` espera como mucho N segundos; `-n` no espera. No viene en
+macOS.
 
-**p50 / p90 / p99**
-Percentiles de una distribucion de tiempos. p50 (mediana): el 50% de los requests fue mas rapido que este valor. p90: el 90% fue mas rapido. p99: el 99% fue mas rapido. Los percentiles altos (p99) revelan los casos mas lentos ("tail latency") que el promedio oculta.
+**Frame** · Unidad binaria de HTTP/2: `HEADERS`, `DATA`, `SETTINGS`,
+`GOAWAY`… Cada uno lleva el número de su stream.
 
-**Head-of-line blocking**
-Fenomeno donde un elemento en una cola bloquea a todos los siguientes. En HTTP/1.1 pipelining: un request lento bloquea los que vienen despues. HTTP/2 lo resuelve a nivel HTTP pero TCP lo sigue teniendo. HTTP/3/QUIC lo resuelve completamente.
+## H
 
-**websocat**
-Herramienta de linea de comandos para interactuar con servidores WebSocket. Similar a curl pero especializada en WS. Permite enviar y recibir mensajes WebSocket de forma interactiva o en scripts.
+**h2c** · HTTP/2 sin TLS. Casi ningún servidor público lo sirve; el go-httpbin
+del laboratorio tampoco.
+
+**Head-of-line blocking** · Lo que espera detrás de algo lento. En HTTP/1.1,
+una petición detrás de otra; en HTTP/2, todos los streams detrás de un paquete
+TCP perdido.
+
+**HPACK** · Compresión de cabeceras de HTTP/2: una cabecera repetida viaja
+entera una vez y después como un índice.
+
+**HTTP/2** · Versión binaria y multiplexada de HTTP (RFC 9113). curl la ofrece
+por defecto en `https://` desde la 7.62.0.
+
+**HTTP/3** · HTTP sobre QUIC, sobre UDP (RFC 9114). `--http3` (7.66.0+) solo
+funciona si curl se compiló con soporte: `HTTP3` en `Features:`.
+
+**`--http1.1`** (7.33.0+) · Fuerza HTTP/1.1. Para comparar con HTTP/2.
+
+**`--http2`** (7.33.0+) · En `https://`, lo mismo que sin nada. En `http://`,
+pide el cambio con `Upgrade: h2c`.
+
+**`--http2-prior-knowledge`** (7.49.0+) · Habla HTTP/2 desde el primer byte,
+sin negociar. Contra un servidor que no lo sabe, curl sale con 52.
+
+**`%{http_version}`** (7.50.0+) · Variable de `-w`: la versión de HTTP que se
+usó de verdad, `1.1`, `2` o `3`.
+
+## I
+
+**`If-Modified-Since`** · Petición condicional por fecha. curl la manda con
+`-z` / `--time-cond`.
+
+**`If-None-Match`** · Petición condicional por ETag: "dame el recurso solo si
+ya no es esta versión".
+
+## L
+
+**Latencia** (*latency*, RTT) · Lo que tarda un paquete en ir y volver. En una
+API manda más que el ancho de banda.
+
+## M
+
+**Media** (*mean*) · La suma entre N. Un solo valor extremo la arrastra.
+
+**Mediana** (p50) · El valor del medio de la lista ordenada. No la mueve un
+valor extremo.
+
+**Multiplexación** · Varias peticiones intercaladas a la vez en una misma
+conexión. Lo que hace HTTP/2.
+
+## N
+
+**`--next`, `-:`** (7.36.0+) · Separa operaciones con opciones distintas en
+un mismo curl. La conexión se reutiliza igual.
+
+**`--no-keepalive`** (7.18.0+) · Apaga las sondas de keepalive de **TCP**. No
+cierra la conexión persistente de HTTP.
+
+**`%{num_connects}`** (7.12.3+) · Variable de `-w`: conexiones nuevas que abrió
+esa transferencia. 1 si abrió, 0 si reutilizó.
+
+## P
+
+**p95** · El valor que deja por debajo al 95 % de las muestras. Por rango
+(*nearest-rank*), la posición ⌈N × 0,95⌉ de la lista ordenada. Con 10
+muestras es el max.
+
+**`-Z`, `--parallel`** (7.66.0+) · Lanza las transferencias a la vez.
+
+**`--parallel-immediate`** (7.68.0+) · Abre conexiones nuevas sin esperar a
+ver si puede multiplexar. Sí en `http://`; no en `https://`.
+
+**`--parallel-max`** (7.66.0+) · Máximo de transferencias simultáneas con
+`-Z`. Por defecto, 50.
+
+**Prueba de carga** (*load test*) · Miles de peticiones para ver cuándo se
+rompe un servidor. No es lo que hace `bench`, y nunca sin permiso.
+
+## Q
+
+**QUIC** · Transporte sobre UDP con TLS 1.3 dentro (RFC 9000). Entrega por
+stream: un paquete perdido solo frena al suyo.
+
+## R
+
+**`--rate`** (7.84.0+) · Limita las transferencias por unidad de tiempo. No
+existe en 7.81: allí el freno es `--parallel-max`.
+
+**Revalidar** · Preguntar al servidor si lo que tienes sigue valiendo, con
+`If-None-Match` o `If-Modified-Since`.
+
+## S
+
+**Stream** · Una petición y su respuesta dentro de una conexión HTTP/2, con su
+número: 1, 3, 5… si los abre el cliente.
+
+## T
+
+**`-z`, `--time-cond`** · Manda `If-Modified-Since` con una fecha, o con la
+fecha de modificación de un archivo.
+
+## U
+
+**`Upgrade`** · Cabecera con la que el cliente pide cambiar de protocolo en la
+misma conexión: `h2c` o `websocket`.
+
+**`%{urlnum}`** (7.75.0+) · Variable de `-w`: la posición (desde 0) de la URL
+en la línea. Con `-Z` las líneas llegan en orden de terminación.
+
+## W
+
+**WebSocket** · Canal bidireccional que empieza como una petición HTTP/1.1 y
+cambia de protocolo con un 101 (RFC 6455). curl habla `ws://` desde la 7.86.0
+(experimental) y por defecto desde la 8.11.0.
+
+---
+
+| Anterior | Siguiente |
+|---|---|
+| [Recursos](../4-recursos/README.md) | [README de la Semana 09](../README.md) |
+
+[← Glosario global del bootcamp](../../../docs/glosario-global.md)

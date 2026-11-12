@@ -1,0 +1,67 @@
+<svg viewBox="0 0 820 520" role="img" xmlns="http://www.w3.org/2000/svg" font-family="Inter, system-ui, -apple-system, sans-serif">
+  <title>Un bucle bash que lanza un curl por petición: cada proceso abre su conexión con DNS, TCP y TLS, pide, y muere con ella. Un solo curl con varias URLs: abre una conexión y la reutiliza. Al pie, las tres formas de dar varias URLs a un mismo curl: en la línea, con --next y en un --config</title>
+  <rect width="820" height="520" fill="#0d1117"/>
+  <defs><marker id="f-bg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#0d1117"/></marker><marker id="f-sf" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#161b22"/></marker><marker id="f-bd" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#30363d"/></marker><marker id="f-tx" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#f0f6fc"/></marker><marker id="f-t2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#8b949e"/></marker><marker id="f-na" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#f0883e"/></marker><marker id="f-az" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#58a6ff"/></marker><marker id="f-az2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#79c0ff"/></marker><marker id="f-ve" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#3fb950"/></marker><marker id="f-am" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#e3b341"/></marker><marker id="f-ro" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#f85149"/></marker><marker id="f-mo" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#d2a8ff"/></marker></defs>
+  <text x="410.0" y="34" text-anchor="middle" fill="#f0f6fc" font-size="22" font-weight="bold">Un curl por petición frente a un curl para todas</text>
+  <rect x="30" y="64" width="370" height="250" rx="8" fill="#161b22" stroke="#f85149" stroke-width="2"/>
+  <text x="215" y="90" text-anchor="middle" fill="#f85149" font-size="13" font-weight="bold" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">for ...; do curl URL; done</text>
+  <text x="48" y="128" text-anchor="start" fill="#8b949e" font-size="12">proceso 1</text>
+  <rect x="130" y="110" width="40" height="26" rx="8" fill="#161b22" stroke="#58a6ff" stroke-width="1.6"/>
+  <text x="150.0" y="127.5" text-anchor="middle" fill="#58a6ff" font-size="11.5">TCP</text>
+  <rect x="170" y="110" width="80" height="26" rx="8" fill="#161b22" stroke="#f0883e" stroke-width="1.6"/>
+  <text x="210.0" y="127.5" text-anchor="middle" fill="#f0883e" font-size="11.5">TLS</text>
+  <rect x="250" y="110" width="70" height="26" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="1.6"/>
+  <text x="285.0" y="127.5" text-anchor="middle" fill="#3fb950" font-size="11.5">GET</text>
+  <text x="330" y="128" text-anchor="start" fill="#f85149" font-size="12">✕ muere</text>
+  <text x="48" y="174" text-anchor="start" fill="#8b949e" font-size="12">proceso 2</text>
+  <rect x="130" y="156" width="40" height="26" rx="8" fill="#161b22" stroke="#58a6ff" stroke-width="1.6"/>
+  <text x="150.0" y="173.5" text-anchor="middle" fill="#58a6ff" font-size="11.5">TCP</text>
+  <rect x="170" y="156" width="80" height="26" rx="8" fill="#161b22" stroke="#f0883e" stroke-width="1.6"/>
+  <text x="210.0" y="173.5" text-anchor="middle" fill="#f0883e" font-size="11.5">TLS</text>
+  <rect x="250" y="156" width="70" height="26" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="1.6"/>
+  <text x="285.0" y="173.5" text-anchor="middle" fill="#3fb950" font-size="11.5">GET</text>
+  <text x="330" y="174" text-anchor="start" fill="#f85149" font-size="12">✕ muere</text>
+  <text x="48" y="220" text-anchor="start" fill="#8b949e" font-size="12">proceso 3</text>
+  <rect x="130" y="202" width="40" height="26" rx="8" fill="#161b22" stroke="#58a6ff" stroke-width="1.6"/>
+  <text x="150.0" y="219.5" text-anchor="middle" fill="#58a6ff" font-size="11.5">TCP</text>
+  <rect x="170" y="202" width="80" height="26" rx="8" fill="#161b22" stroke="#f0883e" stroke-width="1.6"/>
+  <text x="210.0" y="219.5" text-anchor="middle" fill="#f0883e" font-size="11.5">TLS</text>
+  <rect x="250" y="202" width="70" height="26" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="1.6"/>
+  <text x="285.0" y="219.5" text-anchor="middle" fill="#3fb950" font-size="11.5">GET</text>
+  <text x="330" y="220" text-anchor="start" fill="#f85149" font-size="12">✕ muere</text>
+  <text x="48" y="266" text-anchor="start" fill="#8b949e" font-size="12">proceso 4</text>
+  <rect x="130" y="248" width="40" height="26" rx="8" fill="#161b22" stroke="#58a6ff" stroke-width="1.6"/>
+  <text x="150.0" y="265.5" text-anchor="middle" fill="#58a6ff" font-size="11.5">TCP</text>
+  <rect x="170" y="248" width="80" height="26" rx="8" fill="#161b22" stroke="#f0883e" stroke-width="1.6"/>
+  <text x="210.0" y="265.5" text-anchor="middle" fill="#f0883e" font-size="11.5">TLS</text>
+  <rect x="250" y="248" width="70" height="26" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="1.6"/>
+  <text x="285.0" y="265.5" text-anchor="middle" fill="#3fb950" font-size="11.5">GET</text>
+  <text x="330" y="266" text-anchor="start" fill="#f85149" font-size="12">✕ muere</text>
+  <rect x="420" y="64" width="370" height="250" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="605" y="90" text-anchor="middle" fill="#3fb950" font-size="13" font-weight="bold" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">curl -K lista.txt</text>
+  <text x="438" y="128" text-anchor="start" fill="#8b949e" font-size="12">proceso 1</text>
+  <rect x="520" y="110" width="40" height="26" rx="8" fill="#161b22" stroke="#58a6ff" stroke-width="1.6"/>
+  <text x="540.0" y="127.5" text-anchor="middle" fill="#58a6ff" font-size="11.5">TCP</text>
+  <rect x="560" y="110" width="80" height="26" rx="8" fill="#161b22" stroke="#f0883e" stroke-width="1.6"/>
+  <text x="600.0" y="127.5" text-anchor="middle" fill="#f0883e" font-size="11.5">TLS</text>
+  <rect x="640" y="110" width="70" height="26" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="1.6"/>
+  <text x="675.0" y="127.5" text-anchor="middle" fill="#3fb950" font-size="11.5">GET 1</text>
+  <rect x="640" y="156" width="70" height="26" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="1.6"/>
+  <text x="675.0" y="173.5" text-anchor="middle" fill="#3fb950" font-size="11.5">GET 2</text>
+  <text x="720" y="174" text-anchor="start" fill="#3fb950" font-size="12">reusa</text>
+  <rect x="640" y="202" width="70" height="26" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="1.6"/>
+  <text x="675.0" y="219.5" text-anchor="middle" fill="#3fb950" font-size="11.5">GET 3</text>
+  <text x="720" y="220" text-anchor="start" fill="#3fb950" font-size="12">reusa</text>
+  <rect x="640" y="248" width="70" height="26" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="1.6"/>
+  <text x="675.0" y="265.5" text-anchor="middle" fill="#3fb950" font-size="11.5">GET 4</text>
+  <text x="720" y="266" text-anchor="start" fill="#3fb950" font-size="12">reusa</text>
+  <text x="605" y="300" text-anchor="middle" fill="#f0f6fc" font-size="12.5" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">num_connects: 1 0 0 0</text>
+  <text x="215" y="300" text-anchor="middle" fill="#f0f6fc" font-size="12.5" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">num_connects: 1 1 1 1</text>
+  <rect x="30" y="340" width="760" height="150" rx="8" fill="#161b22" stroke="#30363d" stroke-width="2"/>
+  <text x="42" y="362" text-anchor="start" fill="#f0f6fc" font-size="12.5">En la línea:   curl -o a -o b URL_A URL_B        (un -o por URL, en orden)</text>
+  <text x="42" y="381" text-anchor="start" fill="#f0f6fc" font-size="12.5">Con --next:    curl URL_A --next -X POST -d ... URL_B   (7.36.0+)</text>
+  <text x="42" y="400" text-anchor="start" fill="#f0f6fc" font-size="12.5">En --config:   url = "..."  /  output = "/dev/null"   (escala, y fuera de ps)</text>
+  <text x="42" y="419" text-anchor="start" fill="#f0f6fc" font-size="12.5"></text>
+  <text x="42" y="438" text-anchor="start" fill="#f0f6fc" font-size="12.5">--no-keepalive NO cierra la conexión HTTP: apaga las sondas de TCP.</text>
+  <text x="42" y="457" text-anchor="start" fill="#f0f6fc" font-size="12.5">Para forzar una conexión nueva:  -H "Connection: close"</text>
+</svg>

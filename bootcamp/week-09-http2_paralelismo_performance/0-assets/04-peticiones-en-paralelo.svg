@@ -1,0 +1,56 @@
+<svg viewBox="0 0 820 560" role="img" xmlns="http://www.w3.org/2000/svg" font-family="Inter, system-ui, -apple-system, sans-serif">
+  <title>Tres formas de lanzar ocho peticiones a /delay/1. En serie, ocho segundos. Con -Z y --parallel-max 4 sobre HTTP/1.1, cuatro conexiones y dos tandas, dos segundos. Con -Z sobre HTTP/2, una conexión con cuatro streams a la vez, también dos segundos. Debajo, la espera de curl 7.x antes de abrir más conexiones, y cómo la quita --parallel-immediate</title>
+  <rect width="820" height="560" fill="#0d1117"/>
+  <defs><marker id="f-bg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#0d1117"/></marker><marker id="f-sf" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#161b22"/></marker><marker id="f-bd" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#30363d"/></marker><marker id="f-tx" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#f0f6fc"/></marker><marker id="f-t2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#8b949e"/></marker><marker id="f-na" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#f0883e"/></marker><marker id="f-az" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#58a6ff"/></marker><marker id="f-az2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#79c0ff"/></marker><marker id="f-ve" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#3fb950"/></marker><marker id="f-am" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#e3b341"/></marker><marker id="f-ro" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#f85149"/></marker><marker id="f-mo" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#d2a8ff"/></marker></defs>
+  <text x="410.0" y="34" text-anchor="middle" fill="#f0f6fc" font-size="22" font-weight="bold">Ocho peticiones a /delay/1</text>
+  <text x="40" y="76" text-anchor="start" fill="#f85149" font-size="13.5" font-weight="bold">En serie (sin -Z)</text>
+  <text x="40" y="103" text-anchor="start" fill="#8b949e" font-size="12">conexión 1</text>
+  <rect x="150" y="86" width="67" height="22" rx="8" fill="#161b22" stroke="#f85149" stroke-width="1.6"/>
+  <rect x="220" y="86" width="67" height="22" rx="8" fill="#161b22" stroke="#f85149" stroke-width="1.6"/>
+  <rect x="290" y="86" width="67" height="22" rx="8" fill="#161b22" stroke="#f85149" stroke-width="1.6"/>
+  <rect x="360" y="86" width="67" height="22" rx="8" fill="#161b22" stroke="#f85149" stroke-width="1.6"/>
+  <rect x="430" y="86" width="67" height="22" rx="8" fill="#161b22" stroke="#f85149" stroke-width="1.6"/>
+  <rect x="500" y="86" width="67" height="22" rx="8" fill="#161b22" stroke="#f85149" stroke-width="1.6"/>
+  <rect x="570" y="86" width="67" height="22" rx="8" fill="#161b22" stroke="#f85149" stroke-width="1.6"/>
+  <rect x="640" y="86" width="67" height="22" rx="8" fill="#161b22" stroke="#f85149" stroke-width="1.6"/>
+  <text x="790" y="103" text-anchor="end" fill="#f85149" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">8 s</text>
+  <text x="40" y="140" text-anchor="start" fill="#e3b341" font-size="13.5" font-weight="bold">-Z --parallel-max 4, HTTP/1.1 (http://)</text>
+  <text x="40" y="167" text-anchor="start" fill="#8b949e" font-size="12">conexión 1</text>
+  <rect x="150" y="150" width="67" height="22" rx="8" fill="#161b22" stroke="#e3b341" stroke-width="1.6"/>
+  <rect x="220" y="150" width="67" height="22" rx="8" fill="#161b22" stroke="#e3b341" stroke-width="1.6"/>
+  <text x="790" y="167" text-anchor="end" fill="#e3b341" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">2 s</text>
+  <text x="40" y="195" text-anchor="start" fill="#8b949e" font-size="12">conexión 2</text>
+  <rect x="150" y="178" width="67" height="22" rx="8" fill="#161b22" stroke="#e3b341" stroke-width="1.6"/>
+  <rect x="220" y="178" width="67" height="22" rx="8" fill="#161b22" stroke="#e3b341" stroke-width="1.6"/>
+  <text x="790" y="195" text-anchor="end" fill="#e3b341" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve"></text>
+  <text x="40" y="223" text-anchor="start" fill="#8b949e" font-size="12">conexión 3</text>
+  <rect x="150" y="206" width="67" height="22" rx="8" fill="#161b22" stroke="#e3b341" stroke-width="1.6"/>
+  <rect x="220" y="206" width="67" height="22" rx="8" fill="#161b22" stroke="#e3b341" stroke-width="1.6"/>
+  <text x="790" y="223" text-anchor="end" fill="#e3b341" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve"></text>
+  <text x="40" y="251" text-anchor="start" fill="#8b949e" font-size="12">conexión 4</text>
+  <rect x="150" y="234" width="67" height="22" rx="8" fill="#161b22" stroke="#e3b341" stroke-width="1.6"/>
+  <rect x="220" y="234" width="67" height="22" rx="8" fill="#161b22" stroke="#e3b341" stroke-width="1.6"/>
+  <text x="790" y="251" text-anchor="end" fill="#e3b341" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve"></text>
+  <text x="40" y="290" text-anchor="start" fill="#3fb950" font-size="13.5" font-weight="bold">-Z --parallel-max 4, HTTP/2 (https://)</text>
+  <text x="40" y="317" text-anchor="start" fill="#8b949e" font-size="12">conexión 1</text>
+  <rect x="150" y="300" width="67" height="22" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="1.6"/>
+  <rect x="220" y="300" width="67" height="22" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="1.6"/>
+  <text x="790" y="317" text-anchor="end" fill="#3fb950" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">2 s</text>
+  <text x="150" y="342" text-anchor="start" fill="#3fb950" font-size="12">4 streams a la vez en la misma conexión</text>
+  <text x="150" y="366" text-anchor="middle" fill="#8b949e" font-size="11">0s</text>
+  <text x="220" y="366" text-anchor="middle" fill="#8b949e" font-size="11">1s</text>
+  <text x="290" y="366" text-anchor="middle" fill="#8b949e" font-size="11">2s</text>
+  <text x="360" y="366" text-anchor="middle" fill="#8b949e" font-size="11">3s</text>
+  <text x="430" y="366" text-anchor="middle" fill="#8b949e" font-size="11">4s</text>
+  <text x="500" y="366" text-anchor="middle" fill="#8b949e" font-size="11">5s</text>
+  <text x="570" y="366" text-anchor="middle" fill="#8b949e" font-size="11">6s</text>
+  <text x="640" y="366" text-anchor="middle" fill="#8b949e" font-size="11">7s</text>
+  <text x="710" y="366" text-anchor="middle" fill="#8b949e" font-size="11">8s</text>
+  <rect x="40" y="386" width="750" height="150" rx="8" fill="#161b22" stroke="#30363d" stroke-width="2"/>
+  <text x="52" y="408" text-anchor="start" fill="#f0f6fc" font-size="12.5">curl 7.x espera a que la primera conexión esté lista para ver si puede multiplexar.</text>
+  <text x="52" y="427" text-anchor="start" fill="#f0f6fc" font-size="12.5">Sobre http:// no habrá h2: la primera petición va sola y el lote tarda un turno más.</text>
+  <text x="52" y="446" text-anchor="start" fill="#f0f6fc" font-size="12.5"></text>
+  <text x="52" y="465" text-anchor="start" fill="#f0f6fc" font-size="12.5">--parallel-immediate (7.68.0):  sí en http://   ·   no en https://</text>
+  <text x="52" y="484" text-anchor="start" fill="#f0f6fc" font-size="12.5">(en https:// la espera es lo que mete todo en una conexión HTTP/2)</text>
+  <text x="52" y="503" text-anchor="start" fill="#f0f6fc" font-size="12.5">-w se escribe al terminar cada transferencia: usa %{urlnum} (7.75.0) para saber cuál</text>
+</svg>

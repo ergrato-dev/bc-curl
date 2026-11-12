@@ -1,0 +1,37 @@
+<svg viewBox="0 0 820 560" role="img" xmlns="http://www.w3.org/2000/svg" font-family="Inter, system-ui, -apple-system, sans-serif">
+  <title>Dos peticiones al mismo recurso: la primera responde 200 con el cuerpo y un ETag, que el cliente guarda junto al cuerpo; la segunda manda If-None-Match con ese ETag y el servidor responde 304 Not Modified sin cuerpo, y el cliente sirve el cuerpo que tenía. Al pie, Last-Modified con If-Modified-Since como alternativa por fecha, y Cache-Control max-age, que evita incluso preguntar</title>
+  <rect width="820" height="560" fill="#0d1117"/>
+  <defs><marker id="f-bg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#0d1117"/></marker><marker id="f-sf" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#161b22"/></marker><marker id="f-bd" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#30363d"/></marker><marker id="f-tx" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#f0f6fc"/></marker><marker id="f-t2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#8b949e"/></marker><marker id="f-na" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#f0883e"/></marker><marker id="f-az" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#58a6ff"/></marker><marker id="f-az2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#79c0ff"/></marker><marker id="f-ve" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#3fb950"/></marker><marker id="f-am" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#e3b341"/></marker><marker id="f-ro" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#f85149"/></marker><marker id="f-mo" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#d2a8ff"/></marker></defs>
+  <text x="410.0" y="34" text-anchor="middle" fill="#f0f6fc" font-size="22" font-weight="bold">Revalidar con ETag</text>
+  <rect x="55" y="64" width="190" height="52" rx="8" fill="#161b22" stroke="#f0883e" stroke-width="2"/>
+  <text x="150" y="87" text-anchor="middle" fill="#f0883e" font-size="15" font-weight="bold">api-toolkit</text>
+  <text x="150" y="106" text-anchor="middle" fill="#8b949e" font-size="12">get /etag/v1</text>
+  <path d="M150 116 L150 370" stroke="#30363d" stroke-width="2" stroke-dasharray="4 4"/>
+  <rect x="315" y="64" width="190" height="52" rx="8" fill="#161b22" stroke="#d2a8ff" stroke-width="2"/>
+  <text x="410" y="87" text-anchor="middle" fill="#d2a8ff" font-size="15" font-weight="bold">Caché</text>
+  <text x="410" y="106" text-anchor="middle" fill="#8b949e" font-size="12">API_CACHE_DIR (700)</text>
+  <path d="M410 116 L410 370" stroke="#30363d" stroke-width="2" stroke-dasharray="4 4"/>
+  <rect x="575" y="64" width="190" height="52" rx="8" fill="#161b22" stroke="#58a6ff" stroke-width="2"/>
+  <text x="670" y="87" text-anchor="middle" fill="#58a6ff" font-size="15" font-weight="bold">API</text>
+  <text x="670" y="106" text-anchor="middle" fill="#8b949e" font-size="12">servidor</text>
+  <path d="M670 116 L670 370" stroke="#30363d" stroke-width="2" stroke-dasharray="4 4"/>
+  <path d="M150 150 L666 150" stroke="#f0883e" stroke-width="2.2" fill="none" marker-end="url(#f-na)"/>
+  <text x="410.0" y="142" text-anchor="middle" fill="#f0883e" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">GET /etag/v1</text>
+  <text x="410.0" y="167" text-anchor="middle" fill="#8b949e" font-size="11.5">1.ª vez: sin ETag guardado</text>
+  <path d="M670 200 L154 200" stroke="#58a6ff" stroke-width="2.2" fill="none" marker-end="url(#f-az)"/>
+  <text x="410.0" y="192" text-anchor="middle" fill="#58a6ff" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">200 + ETag: "v1" + cuerpo</text>
+  <path d="M150 240 L406 240" stroke="#d2a8ff" stroke-width="2.2" fill="none" marker-end="url(#f-mo)"/>
+  <text x="280.0" y="232" text-anchor="middle" fill="#d2a8ff" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">guarda .cuerpo, después .etag</text>
+  <text x="280.0" y="257" text-anchor="middle" fill="#8b949e" font-size="11.5">cada uno con mktemp y mv</text>
+  <path d="M150 300 L666 300" stroke="#f0883e" stroke-width="2.2" fill="none" marker-end="url(#f-na)"/>
+  <text x="410.0" y="292" text-anchor="middle" fill="#f0883e" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">GET + If-None-Match: "v1"</text>
+  <text x="410.0" y="317" text-anchor="middle" fill="#8b949e" font-size="11.5">2.ª vez</text>
+  <path d="M670 350 L154 350" stroke="#3fb950" stroke-width="2.2" fill="none" marker-end="url(#f-ve)"/>
+  <text x="410.0" y="342" text-anchor="middle" fill="#3fb950" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">304 Not Modified (sin cuerpo)</text>
+  <path d="M410 400 L154 400" stroke="#d2a8ff" stroke-width="2.2" fill="none" marker-end="url(#f-mo)"/>
+  <text x="280.0" y="392" text-anchor="middle" fill="#d2a8ff" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">cat SHA256(URL).cuerpo</text>
+  <rect x="40" y="446" width="740" height="71" rx="8" fill="#161b22" stroke="#30363d" stroke-width="2"/>
+  <text x="52" y="468" text-anchor="start" fill="#f0f6fc" font-size="12.5">Por fecha: Last-Modified  →  If-Modified-Since  (curl -z), resolución de 1 s</text>
+  <text x="52" y="487" text-anchor="start" fill="#f0f6fc" font-size="12.5">Cache-Control: max-age=60  →  ni siquiera pregunta (el toolkit no lo usa)</text>
+  <text x="52" y="506" text-anchor="start" fill="#f0f6fc" font-size="12.5">El 304 ahorra el cuerpo, no el viaje.</text>
+</svg>

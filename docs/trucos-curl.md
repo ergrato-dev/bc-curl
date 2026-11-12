@@ -167,7 +167,20 @@ Tres cosas que sirven las diez semanas:
 
 ## Semana 09 — HTTP/2, paralelismo y rendimiento
 
-_Pendiente._
+| Truco | Cómo |
+|---|---|
+| Saber si una petición abrió conexión o reutilizó | `-w '%{num_connects}\n'`: 1 si abrió, 0 si reutilizó. Con varias URLs, una línea por cada una |
+| Muchas peticiones con un solo curl y sin una línea gigante | Un `--config` con pares `url = "..."` y `output = "/dev/null"`, y `curl -K lista.txt`. Con `-K -`, la lista llega por stdin |
+| Forzar una conexión nueva para medir el peor caso | `-H 'Connection: close'`. `--no-keepalive` no sirve: apaga las sondas de TCP, no la conexión de HTTP |
+| Un GET y un POST sobre la misma conexión | `curl URL1 --next -X POST -d '...' URL2` (7.36.0+). Lo que va antes de `--next` no pasa a la siguiente operación |
+| Saber qué versión de HTTP se usó de verdad | `-w '%{http_version}\n'` (7.50.0+): `1.1`, `2` o `3`. En `https://`, curl ofrece h2 por defecto desde la 7.62.0 |
+| Paralelo sin perder un segundo en `http://` | `curl -Z --parallel-max 4 --parallel-immediate -K lista.txt` (7.68.0+). En `https://` sin el `immediate`: la espera es lo que multiplexa por HTTP/2 |
+| Saber cuál es cada línea de un lote con `-Z` | `-w '%{urlnum} %{http_code}\n'` (7.75.0+): llegan en orden de terminación, no de la línea |
+| Contar los errores de un lote | `... -w '%{http_code}\n' \| grep -vc '^[23]'`. El código de salida no lo dice: sin `-f`, un 500 sale con 0 |
+| El p95 de una columna de tiempos | `sort -n t.txt \| awk '{t[NR]=$1} END {i=int(NR*0.95); if (i<NR*0.95) i++; print t[i]}'`. Con 10 muestras es el max |
+| Revalidar un recurso por ETag | `curl -H 'If-None-Match: "v1"' -w '%{http_code} %{size_download}\n' URL` responde `304 0` si no cambió |
+| Ver si una API ofrece HTTP/3 | `curl -sI URL \| grep -i '^alt-svc'`. Para usarlo, tu curl necesita `HTTP3` en `curl --version` |
+| Que un cron no arranque dos veces a la vez | `flock -n /ruta/job.lock ./job.sh`: si ya hay uno corriendo, el segundo sale sin hacer nada |
 
 ## Semana 10 — Proyecto final
 

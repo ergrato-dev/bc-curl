@@ -1,74 +1,54 @@
-# 🔗 Webgrafía - Semana 9
+# Webgrafía — Semana 09
 
-## Documentación Oficial
+_Comprobado el 11 de noviembre de 2026._
 
-| Recurso | URL | Descripción |
-|---------|-----|-------------|
-| **RFC 7540 — HTTP/2** | [https://datatracker.ietf.org/doc/html/rfc7540](https://datatracker.ietf.org/doc/html/rfc7540) | Especificación de HTTP/2 |
-| **RFC 9114 — HTTP/3** | [https://datatracker.ietf.org/doc/html/rfc9114](https://datatracker.ietf.org/doc/html/rfc9114) | Especificación de HTTP/3 |
-| **RFC 9000 — QUIC** | [https://datatracker.ietf.org/doc/html/rfc9000](https://datatracker.ietf.org/doc/html/rfc9000) | Transporte QUIC |
-| **RFC 6455 — WebSocket** | [https://datatracker.ietf.org/doc/html/rfc6455](https://datatracker.ietf.org/doc/html/rfc6455) | Protocolo WebSocket |
-| **curl Manual: Parallel** | [https://curl.se/docs/manpage.html#--parallel](https://curl.se/docs/manpage.html#--parallel) | Documentación de --parallel |
+## Las especificaciones
 
----
+| Recurso | Por qué vale la pena |
+|---|---|
+| [RFC 9112 — HTTP/1.1](https://datatracker.ietf.org/doc/html/rfc9112) | El apartado 9, *Connection Management*: cuándo una conexión persiste y quién la cierra |
+| [RFC 9113 — HTTP/2](https://datatracker.ietf.org/doc/html/rfc9113) | Frames, streams y `SETTINGS_MAX_CONCURRENT_STREAMS`. El apartado 3 explica la negociación con ALPN |
+| [RFC 9000 — QUIC](https://datatracker.ietf.org/doc/html/rfc9000) | El transporte sobre UDP de HTTP/3. Para entender por qué un paquete perdido solo frena a su stream |
+| [RFC 9114 — HTTP/3](https://datatracker.ietf.org/doc/html/rfc9114) | HTTP sobre QUIC, y cómo se descubre con `alt-svc` |
+| [RFC 7838 — HTTP Alternative Services](https://datatracker.ietf.org/doc/html/rfc7838) | La cabecera `alt-svc` que manda el laboratorio: `h3=":8443"; ma=2592000` |
+| [RFC 9110 — HTTP Semantics](https://datatracker.ietf.org/doc/html/rfc9110) | El apartado 13, *Conditional Requests*: `If-None-Match`, `If-Modified-Since` y el 304. El 8.8.3 define el ETag débil |
+| [RFC 9111 — HTTP Caching](https://datatracker.ietf.org/doc/html/rfc9111) | `Cache-Control`, `max-age`, `no-store`: todo lo que el toolkit decide no implementar, y por qué es mucho |
+| [RFC 6455 — The WebSocket Protocol](https://datatracker.ietf.org/doc/html/rfc6455) | El handshake del 101 y cómo se calcula `Sec-WebSocket-Accept` |
 
-## Tutoriales y Guías
+## curl
 
-| Recurso | URL | Descripción |
-|---------|-----|-------------|
-| Everything curl: HTTP/2 | [https://everything.curl.dev/usingcurl/http2](https://everything.curl.dev/usingcurl/http2) | HTTP/2 con curl |
-| Everything curl: Parallel | [https://everything.curl.dev/cmdline/parallel](https://everything.curl.dev/cmdline/parallel) | Requests paralelos |
-| Everything curl: Write-out | [https://everything.curl.dev/usingcurl/verbose/writeout](https://everything.curl.dev/usingcurl/verbose/writeout) | Variables de --write-out |
-| HTTP/2 Explained | [https://http2-explained.haxx.se/](https://http2-explained.haxx.se/) | Libro online del creador de curl |
-| Performance of curl | [https://curl.se/docs/performance.html](https://curl.se/docs/performance.html) | Guía de performance |
-| WebSocket Echo Server | [https://ws.postman-echo.com/raw](https://ws.postman-echo.com/raw) | Servidor WS público |
+| Recurso | Por qué vale la pena |
+|---|---|
+| [curl manpage](https://curl.se/docs/manpage.html) | `-Z`, `--parallel-max` (7.66.0), `--parallel-immediate` (7.68.0), `--etag-save` y `--etag-compare` (7.68.0), `--http2-prior-knowledge` (7.49.0). La fuente de verdad, pero describe la última versión: contrasta con `curl --manual` |
+| [curl — HTTP/3](https://curl.se/docs/http3.html) | Con qué bibliotecas se compila curl con HTTP/3, y por qué casi ninguna distribución lo hace |
+| [curl — WebSocket](https://curl.se/docs/websocket.html) | El soporte de `ws://` y `wss://` en curl: qué hace el CLI y qué deja para libcurl |
+| [everything.curl.dev — HTTP/2](https://everything.curl.dev/http/versions/http2.html) | Cuándo negocia curl HTTP/2 y qué hace con `--http2` sobre `http://` |
+| [everything.curl.dev — HTTP/3](https://everything.curl.dev/http/versions/http3.html) | `--http3` frente a `--http3-only`, y el *happy eyeballs* entre QUIC y TCP |
+| [everything.curl.dev — Keep alive](https://everything.curl.dev/usingcurl/connections/keepalive.html) | El keepalive de TCP, que es lo que apaga `--no-keepalive`. Deshace la confusión con la conexión persistente de HTTP |
+| [everything.curl.dev — Write out](https://everything.curl.dev/usingcurl/verbose/writeout.html) | Todas las variables de `-w`, incluidas `%{num_connects}`, `%{http_version}` y `%{urlnum}` |
 
----
+## Medir, cachear y compartir estado
 
-## Artículos Recomendados
+| Recurso | Por qué vale la pena |
+|---|---|
+| [Gil Tene — How NOT to Measure Latency (InfoQ)](https://www.infoq.com/presentations/latency-response-time/) | La misma charla de la videografía, con la transcripción y las diapositivas |
+| [Wikipedia — Percentile](https://en.wikipedia.org/wiki/Percentile) | El método *nearest-rank* que usa `estadisticas`, junto a los que interpolan. Para saber por qué dos herramientas dan p95 distintos con los mismos datos |
+| [Google SRE Book — Service Level Objectives](https://sre.google/sre-book/service-level-objectives/) | Por qué los objetivos de una API se escriben en percentiles y no en medias |
+| [MDN — ETag](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/ETag) | El ETag fuerte y el débil, con ejemplos de petición y respuesta |
+| [MDN — HTTP caching](https://developer.mozilla.org/en-US/docs/Web/HTTP/Caching) | Revalidar frente a cachear con `max-age`, explicado sin RFC |
+| [GitHub — Best practices for using the REST API](https://docs.github.com/en/rest/using-the-rest-api/best-practices-for-using-the-rest-api) | Peticiones condicionales en una API real, y que un 304 no gasta rate limit |
+| [Manual de flock(1)](https://man7.org/linux/man-pages/man1/flock.1.html) | `-w`, `-n` y la forma con descriptor que usa `renovar` |
+| [Bash Reference Manual — Redirections](https://www.gnu.org/software/bash/manual/html_node/Redirections.html) | `exec 9>>archivo` y `exec 9>&-`: abrir y cerrar un descriptor sin lanzar nada |
 
-| Artículo | URL | Tema |
-|----------|-----|------|
-| Why HTTP/2 is faster | [https://blog.cloudflare.com/http2-for-faster-web/](https://blog.cloudflare.com/http2-for-faster-web/) | Ventajas de HTTP/2 |
-| ALPN Explained | [https://www.cloudflare.com/learning/ssl/what-is-alpn/](https://www.cloudflare.com/learning/ssl/what-is-alpn/) | Negociación ALPN |
-| curl Performance Tips | [https://everything.curl.dev/usingcurl/performance](https://everything.curl.dev/usingcurl/performance) | Tips de performance |
-| Latency Numbers Reference | [https://gist.github.com/jboner/2841832](https://gist.github.com/jboner/2841832) | Números clave de latencia |
+## El laboratorio
 
----
-
-## Herramientas
-
-| Herramienta | URL | Uso |
-|-------------|-----|-----|
-| **curl** | [https://curl.se/](https://curl.se/) | Cliente HTTP/2 y HTTP/3 |
-| **nghttp2** | [https://nghttp2.org/](https://nghttp2.org/) | Biblioteca HTTP/2 usada por curl |
-| **websocat** | [https://github.com/vi/websocat](https://github.com/vi/websocat) | Cliente WebSocket CLI |
-| **wscat** | [https://github.com/websockets/wscat](https://github.com/websockets/wscat) | Cliente WebSocket (Node.js) |
-| **xargs** | built-in | Paralelismo en shell |
-| **time** | built-in | Medir tiempo de ejecución |
-
----
-
-## APIs para Practicar
-
-| API | URL | Descripción |
-|-----|-----|-------------|
-| **api.github.com** | [https://api.github.com/](https://api.github.com/) | HTTP/2 por defecto |
-| **cloudflare.com** | [https://cloudflare.com/](https://cloudflare.com/) | HTTP/2 y HTTP/3 |
-| **jsonplaceholder** | [https://jsonplaceholder.typicode.com/](https://jsonplaceholder.typicode.com/) | API REST de prueba |
-| **httpbin.org** | [https://httpbin.org/](https://httpbin.org/) | HTTP tests |
-| **Postman Echo WS** | `wss://ws.postman-echo.com/raw` | WebSocket público |
+| Recurso | Por qué vale la pena |
+|---|---|
+| [go-httpbin](https://github.com/mccutchen/go-httpbin) | Los endpoints de esta semana: `/delay/N`, `/etag/{etag}`, `/cache`, `/cache/N` y `/websocket/echo` |
+| [Caddy — opciones globales](https://caddyserver.com/docs/caddyfile/options) | `servers { protocols h1 h2 h3 }`: la línea del `Caddyfile` que hace que el laboratorio hable las tres versiones |
 
 ---
 
-## Comunidad
-
-| Recurso | URL | Descripción |
-|---------|-----|-------------|
-| curl Mailing List | [https://curl.se/mail/](https://curl.se/mail/) | Comunidad oficial |
-| HTTP Working Group | [https://httpwg.org/](https://httpwg.org/) | Grupo de trabajo HTTP |
-| StackOverflow HTTP2 | [https://stackoverflow.com/questions/tagged/http2](https://stackoverflow.com/questions/tagged/http2) | Preguntas HTTP/2 |
-
----
-
-> 💡 **Tip**: Guarda estos enlaces en tus favoritos para referencia rápida.
+| Anterior | Siguiente |
+|---|---|
+| [Videografía](../videografia/README.md) | [Glosario](../../5-glosario/README.md) |

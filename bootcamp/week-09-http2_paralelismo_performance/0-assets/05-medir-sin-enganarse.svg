@@ -1,0 +1,30 @@
+<svg viewBox="0 0 820 500" role="img" xmlns="http://www.w3.org/2000/svg" font-family="Inter, system-ui, -apple-system, sans-serif">
+  <title>Histograma de veinte tiempos de respuesta: diecinueve agrupados alrededor de 10 ms y uno solo a 1000 ms. Marcas para el mínimo, la mediana, la media (arrastrada hacia la derecha por el valor lento) y el p95. Debajo, cómo se calcula el p95 por rango: ordenar, multiplicar N por 0,95, redondear hacia arriba y tomar esa posición</title>
+  <rect width="820" height="500" fill="#0d1117"/>
+  <defs><marker id="f-bg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#0d1117"/></marker><marker id="f-sf" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#161b22"/></marker><marker id="f-bd" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#30363d"/></marker><marker id="f-tx" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#f0f6fc"/></marker><marker id="f-t2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#8b949e"/></marker><marker id="f-na" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#f0883e"/></marker><marker id="f-az" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#58a6ff"/></marker><marker id="f-az2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#79c0ff"/></marker><marker id="f-ve" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#3fb950"/></marker><marker id="f-am" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#e3b341"/></marker><marker id="f-ro" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#f85149"/></marker><marker id="f-mo" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#d2a8ff"/></marker></defs>
+  <text x="410.0" y="34" text-anchor="middle" fill="#f0f6fc" font-size="22" font-weight="bold">La media se traga la cola</text>
+  <path d="M60 280 L780 280" stroke="#8b949e" stroke-width="1.5" fill="none" marker-end="url(#f-t2)"/>
+  <rect x="80" y="202" width="20" height="78" rx="8" fill="#161b22" stroke="#58a6ff" stroke-width="1.6"/>
+  <rect x="102" y="150" width="20" height="130" rx="8" fill="#161b22" stroke="#58a6ff" stroke-width="1.6"/>
+  <rect x="124" y="124" width="20" height="156" rx="8" fill="#161b22" stroke="#58a6ff" stroke-width="1.6"/>
+  <rect x="146" y="202" width="20" height="78" rx="8" fill="#161b22" stroke="#58a6ff" stroke-width="1.6"/>
+  <rect x="168" y="228" width="20" height="52" rx="8" fill="#161b22" stroke="#58a6ff" stroke-width="1.6"/>
+  <rect x="740" y="254" width="20" height="26" rx="8" fill="#161b22" stroke="#f85149" stroke-width="1.6"/>
+  <text x="750" y="246" text-anchor="middle" fill="#f85149" font-size="12">1000 ms</text>
+  <text x="130" y="300" text-anchor="middle" fill="#58a6ff" font-size="12">≈ 10 ms</text>
+  <path d="M420 310 L460 310" stroke="#8b949e" stroke-width="1.2" fill="none" stroke-dasharray="6 4" marker-end="url(#f-t2)"/>
+  <text x="440" y="326" text-anchor="middle" fill="#8b949e" font-size="11">eje partido</text>
+  <path d="M82 90 L82 280" stroke="#3fb950" stroke-width="1.4" fill="none" stroke-dasharray="6 4" marker-end="url(#f-ve)"/>
+  <path d="M128 90 L128 280" stroke="#e3b341" stroke-width="1.4" fill="none" stroke-dasharray="6 4" marker-end="url(#f-am)"/>
+  <path d="M330 90 L330 280" stroke="#f85149" stroke-width="1.4" fill="none" stroke-dasharray="6 4" marker-end="url(#f-ro)"/>
+  <path d="M750 90 L750 280" stroke="#f85149" stroke-width="1.4" fill="none" stroke-dasharray="6 4" marker-end="url(#f-ro)"/>
+  <text x="88" y="100" text-anchor="start" fill="#3fb950" font-size="12.5">min</text>
+  <text x="134" y="120" text-anchor="start" fill="#e3b341" font-size="12.5">mediana = p95</text>
+  <text x="336" y="140" text-anchor="start" fill="#f85149" font-size="12.5">media = 59,5 ms</text>
+  <text x="756" y="160" text-anchor="start" fill="#f85149" font-size="12.5">max</text>
+  <rect x="40" y="350" width="740" height="90" rx="8" fill="#161b22" stroke="#30363d" stroke-width="2"/>
+  <text x="52" y="372" text-anchor="start" fill="#f0f6fc" font-size="12.5">p95 por rango:  ordenar  →  i = ⌈N × 0,95⌉  →  t[i]</text>
+  <text x="52" y="391" text-anchor="start" fill="#f0f6fc" font-size="12.5">N = 10 → i = 10 (es el max)      N = 20 → i = 19      N = 100 → i = 95</text>
+  <text x="52" y="410" text-anchor="start" fill="#f0f6fc" font-size="12.5">Ninguna petición tardó 59,5 ms: la media describe un caso que no existe.</text>
+  <text x="52" y="429" text-anchor="start" fill="#f0f6fc" font-size="12.5">bench: sin --retry ni --location, para medir la API y no la política de reintentos.</text>
+</svg>
