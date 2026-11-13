@@ -1,61 +1,60 @@
-# 🔗 Webgrafía - Semana 10
+# Webgrafía — Semana 10
 
-## Documentación Oficial
+_Comprobado el 11 de noviembre de 2026: todos los enlaces resuelven._
 
-| Recurso | URL | Descripción |
-|---------|-----|-------------|
-| **CLI Guidelines** | [https://clig.dev/](https://clig.dev/) | Principios de diseño de CLI |
-| **bats-core** | [https://bats-core.readthedocs.io/](https://bats-core.readthedocs.io/) | Testing framework para bash |
-| **GitHub Actions Docs** | [https://docs.github.com/en/actions](https://docs.github.com/en/actions) | CI/CD con GitHub |
-| **Docker Healthcheck** | [https://docs.docker.com/engine/reference/builder/#healthcheck](https://docs.docker.com/engine/reference/builder/#healthcheck) | Healthcheck en Docker |
-| **Semantic Versioning** | [https://semver.org/](https://semver.org/) | Especificación SemVer |
-| **Keep a Changelog** | [https://keepachangelog.com/](https://keepachangelog.com/) | Formato de CHANGELOG |
+Documentación de referencia. Se consulta, no se lee entera.
 
----
+## Configuración e `init`
 
-## Tutoriales y Guías
+| Recurso | Por qué vale la pena |
+|---|---|
+| [Bash Reference Manual — Shell Parameter Expansion](https://www.gnu.org/software/bash/manual/html_node/Shell-Parameter-Expansion.html) | `${!nombre}`, `${var:-defecto}` y el resto de expansiones de la teoría 02, con su definición exacta |
+| [BashFAQ/006 — variables con nombre variable](https://mywiki.wooledge.org/BashFAQ/006) | Por qué `printf -v` y `${!clave}` en lugar de `eval`, con los casos en que `eval` ejecuta lo que no debe |
+| [Bash Reference Manual — The Set Builtin](https://www.gnu.org/software/bash/manual/html_node/The-Set-Builtin.html) | `-C` (`noclobber`) y `-e`, las dos opciones que más pesan esta semana |
+| [open(2)](https://man7.org/linux/man-pages/man2/open.2.html) | `O_EXCL`: la garantía del kernel que hace a `noclobber` seguro con dos procesos |
+| [XDG Base Directory Specification](https://specifications.freedesktop.org/basedir-spec/latest/) | Dónde deberían vivir la configuración (`~/.config`) y los ejecutables del usuario (`~/.local/bin`) |
 
-| Recurso | URL | Descripción |
-|---------|-----|-------------|
-| Bash Best Practices | [https://bertvv.github.io/cheat-sheets/Bash.html](https://bertvv.github.io/cheat-sheets/Bash.html) | Chuleta de buenas prácticas bash |
-| ShellCheck | [https://www.shellcheck.net/](https://www.shellcheck.net/) | Linter online de scripts bash |
-| Google Shell Style Guide | [https://google.github.io/styleguide/shellguide.html](https://google.github.io/styleguide/shellguide.html) | Guía de estilo bash |
-| Bats Tutorial | [https://bats-core.readthedocs.io/en/stable/tutorial.html](https://bats-core.readthedocs.io/en/stable/tutorial.html) | Tutorial oficial de bats |
+## Tests
 
----
+| Recurso | Por qué vale la pena |
+|---|---|
+| [bats-core — Gotchas](https://bats-core.readthedocs.io/en/stable/gotchas.html) | Las trampas conocidas de bats, la del `!` incluida. Léelo antes de que una te cueste una tarde |
+| [bats-core — CHANGELOG](https://github.com/bats-core/bats-core/blob/master/docs/CHANGELOG.md) | Desde qué versión existe cada función. La tabla de la teoría 04 sale de aquí |
+| [Test Anything Protocol](https://testanything.org/) | El formato de la salida de bats, que entienden muchas otras herramientas |
+| [Martin Fowler — Test Double](https://martinfowler.com/bliki/TestDouble.html) | Stubs, fakes y mocks: el vocabulario para cuando `/bin/true` en lugar del toolkit se quede corto |
+| [ShellCheck — wiki](https://www.shellcheck.net/wiki/) | Cada aviso de shellcheck explicado, con el ejemplo que lo dispara y su arreglo |
 
-## Artículos Recomendados
+## Documentar e instalar
 
-| Artículo | URL | Tema |
-|----------|-----|------|
-| 12 Factor App: Config | [https://12factor.net/config](https://12factor.net/config) | Configuración externa |
-| Designing a CLI | [https://smallstep.com/blog/command-line-secrets/](https://smallstep.com/blog/command-line-secrets/) | Secretos de diseño CLI |
-| curl in CI/CD | [https://everything.curl.dev/usingcurl/scripting](https://everything.curl.dev/usingcurl/scripting) | Curl en scripts |
-| Bash exit traps | [https://linuxize.com/post/bash-trap-command/](https://linuxize.com/post/bash-trap-command/) | trap para cleanup |
+| Recurso | Por qué vale la pena |
+|---|---|
+| [Semantic Versioning 2.0.0](https://semver.org/lang/es/) | Qué significa cada número de `1.0.0`, y qué cambio obliga a subir cuál |
+| [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/) | El formato del `CHANGELOG` de la teoría 06, con sus grupos y por qué se escribe para personas |
+| [GNU Coding Standards — Command-Line Interfaces](https://www.gnu.org/prep/standards/html_node/Command_002dLine-Interfaces.html) | Las convenciones de `--help` y `--version` que siguen casi todas las herramientas de Unix |
+| [install — GNU coreutils](https://www.gnu.org/software/coreutils/manual/html_node/install-invocation.html) | Todas las opciones de `install`; recuerda que `-D` no existe en macOS |
+| [Pro Git — Etiquetado](https://git-scm.com/book/es/v2/Fundamentos-de-Git-Etiquetado) | Etiquetas anotadas frente a ligeras, y cómo se empujan |
 
----
+## Integración continua
 
-## Herramientas
+| Recurso | Por qué vale la pena |
+|---|---|
+| [GitHub Actions — Workflow syntax](https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions) | La referencia de cada clave del YAML: `on`, `permissions`, `strategy`, `container`, `timeout-minutes` |
+| [GitHub Actions — Running jobs in a container](https://docs.github.com/en/actions/using-jobs/running-jobs-in-a-container) | Cómo funciona `container:` y qué cambia dentro (eres root, la imagen viene casi vacía) |
+| [GitHub Actions — Security hardening](https://docs.github.com/en/actions/security-for-github-actions/security-guides/security-hardening-for-github-actions) | Por qué fijar las acciones por SHA, cómo tratar los secretos y qué puede hacer una acción comprometida |
+| [GitHub Actions — Automatic token authentication](https://docs.github.com/en/actions/security-for-github-actions/security-guides/automatic-token-authentication) | Qué puede hacer el `GITHUB_TOKEN` y cómo lo limita el bloque `permissions` |
+| [actions/runner-images](https://github.com/actions/runner-images) | Qué runners existen, qué traen y cuándo se retiran. Ahí se anunció la retirada de Ubuntu 22 |
+| [actionlint](https://github.com/rhysd/actionlint) | Revisa un workflow antes de empujarlo: sintaxis, expresiones y errores frecuentes |
+| [gh run watch](https://cli.github.com/manual/gh_run_watch) | Seguir un run de la CI desde la terminal, y salir con su código |
 
-| Herramienta | URL | Uso |
-|-------------|-----|-----|
-| **curl** | [https://curl.se/](https://curl.se/) | HTTP client |
-| **jq** | [https://jqlang.github.io/jq/](https://jqlang.github.io/jq/) | Procesar JSON |
-| **bats** | [https://github.com/bats-core/bats-core](https://github.com/bats-core/bats-core) | Testing bash |
-| **ShellCheck** | [https://www.shellcheck.net/](https://www.shellcheck.net/) | Linter bash |
-| **shfmt** | [https://github.com/mvdan/sh](https://github.com/mvdan/sh) | Formateador bash |
-| **gh (GitHub CLI)** | [https://cli.github.com/](https://cli.github.com/) | CLI de GitHub Actions |
+## El laboratorio y el bootcamp
 
----
-
-## Comunidad
-
-| Recurso | URL | Descripción |
-|---------|-----|-------------|
-| r/bash | [https://reddit.com/r/bash](https://reddit.com/r/bash) | Comunidad bash |
-| StackOverflow bash | [https://stackoverflow.com/questions/tagged/bash](https://stackoverflow.com/questions/tagged/bash) | Preguntas bash |
-| DevOps StackExchange | [https://devops.stackexchange.com/](https://devops.stackexchange.com/) | CI/CD y DevOps |
+| Recurso | Por qué vale la pena |
+|---|---|
+| [bats-core](https://github.com/bats-core/bats-core) | El repositorio de bats: instalación desde el código si tu sistema no lo trae |
+| [Command Line Interface Guidelines — Distribution](https://clig.dev/#distribution) | Cómo distribuir una CLI: un archivo, sin dependencias, y fácil de quitar |
 
 ---
 
-> 💡 **Tip**: Guarda estos enlaces en tus favoritos para referencia rápida.
+| Anterior | Siguiente |
+|---|---|
+| [Videografía](../videografia/README.md) | [Glosario](../../5-glosario/README.md) |

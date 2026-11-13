@@ -1,167 +1,178 @@
-# Semana 10: Proyecto Final — api-toolkit
+# Semana 10 — Proyecto final
 
-[← Semana 9](../week-09-http2_paralelismo_performance/) | [↑ Inicio](../../README.md)
-
----
-
-## Objetivos finales del bootcamp
-
-Esta semana cierra el ciclo. No hay conceptos nuevos: todo lo que se trabaja aquí fue aprendido en las semanas 1 a 9. El objetivo es integrar esos conocimientos en una herramienta real, completa y usable.
-
-Al terminar esta semana, el estudiante habrá construido `api-toolkit`: una CLI configurable para interactuar con cualquier API REST desde la terminal.
-
-### Lo que se integra
-
-| Semana | Tema | Cómo aparece en api-toolkit |
-|--------|------|------------------------------|
-| 01-02 | HTTP, métodos, headers y JSON | `cmd_get`, `cmd_post`, `cmd_put`, `cmd_delete` |
-| 03 | Auth: Basic, API Key, Bearer | `get_auth_header()`, `AUTH_TYPE` en config |
-| 04 | Archivos, formularios y multipart | `cmd_download` con reanudación, subida con `-F` |
-| 05 | SSL/TLS, cookies y redirects | `--cacert`, cookie jar, `--max-time` y `--retry` |
-| 06 | Output, debug y configuración | `--verbose`, métricas con `--write-out`, `.curlrc` |
-| 07 | Scripting bash y jq | Manejo de errores, paginación, `--output table/json/csv` |
-| 08 | OAuth2 y autenticación avanzada | `cmd_auth_login`, `ensure_auth`, refresh automático |
-| 09 | HTTP/2, paralelismo y rendimiento | `cmd_bench` con percentiles y `cmd_monitor --parallel` |
+> Nueve semanas después, `api-toolkit.sh` habla con casi cualquier API REST:
+> verbos, credenciales fuera de la línea de comandos, descargas reanudables,
+> TLS con CA propia, trazas tachadas, reintentos con códigos que se pueden
+> automatizar, OAuth2, `bench` y caché. Solo hay un problema: solo funciona
+> en tu carpeta, con tus variables, y nadie sabe si el cambio de ayer rompió
+> algo. Esta semana no aprendes nada nuevo de HTTP. Aprendes a entregar: a
+> que otra persona lo instale, lo configure, lo entienda y confíe en él.
 
 ---
 
-## api-toolkit: descripción general
+## 🎯 Objetivos de la Semana
 
-`api-toolkit` es una CLI configurable para interactuar con cualquier API REST. Se instala una vez y se configura por proyecto mediante `~/.api-toolkit/config`.
+Al terminar serás capaz de:
 
-### Subcomandos
-
-```
-api-toolkit auth login              Obtener y guardar token de acceso
-api-toolkit auth logout             Borrar token guardado
-api-toolkit auth status             Mostrar estado del token actual
-
-api-toolkit get ENDPOINT            GET request
-api-toolkit post ENDPOINT [--data]  POST con body JSON
-api-toolkit put ENDPOINT --data     PUT con body JSON
-api-toolkit delete ENDPOINT         DELETE request
-
-api-toolkit monitor FILE            Health check de lista de URLs
-api-toolkit bench ENDPOINT [--times N]  Benchmark de latencia
-api-toolkit init                    Inicializar configuración interactivamente
-```
-
-### Ejemplo de uso
-
-```bash
-# Configurar para una API
-api-toolkit init
-
-# Autenticarse (si la API usa OAuth2)
-api-toolkit auth login
-
-# Hacer requests
-api-toolkit get /users | jq '.[].name'
-api-toolkit post /users --data '{"name": "Ana", "email": "ana@ejemplo.com"}'
-api-toolkit put /users/42 --data '{"name": "Ana Lopez"}'
-
-# Monitoring y benchmarking
-api-toolkit monitor urls.txt
-api-toolkit bench /users --times 20
-
-# Ver qué haría sin ejecutar
-api-toolkit --dry-run post /users --data '{"name": "test"}'
-```
+- Reconocer la interfaz de una CLI (argumentos, entorno, stdout, stderr y código de salida) y tratarla como un contrato con versión
+- Leer la configuración con la precedencia entorno, archivo y valor por defecto, sin ejecutar el archivo
+- Crear un archivo de configuración con permisos 600 sin pisar uno existente, también con dos procesos a la vez
+- Escribir tests con bats 1.2.1 que no dependan de quien los ejecuta y que sean capaces de fallar
+- Documentar una CLI repartiendo lo que va en `--help`, en el `README` y en el `CHANGELOG`
+- Instalar y desinstalar sin `sudo` y sin borrar los datos del usuario, y explicar el riesgo de `curl | bash`
+- Montar una CI con GitHub Actions que pruebe con curl 7.81 y 8.5, con permisos mínimos y acciones fijadas por SHA
 
 ---
 
-## Estructura de la semana
+## 📋 Prerrequisitos
+
+- **Semana 09 completada**: `api-toolkit.sh` con la capa 9 y `./scripts/verificar-semana.sh 09` en verde. El starter de esta semana parte de ella
+- **Semana 03 repasada**: `~/.bc-curl` con permisos 600 y la regla de que ningún secreto pasa por la línea de comandos. Esta semana el mismo archivo guarda también la configuración
+- **Semana 07 repasada**: los códigos de salida 0, 1, 69, 75 y 77, que esta semana se documentan como parte de la interfaz
+- **Semana 02 repasada**: `--dry-run`, la puerta para probar el toolkit sin red
+- **El laboratorio arriba**: `./scripts/start.sh`. Solo lo necesitan un check y un test; el resto se prueba sin red
+- **bats 1.2.1 o posterior**: `sudo apt install bats` en Ubuntu (22.04 trae la 1.2.1, el suelo del bootcamp) o `brew install bats-core` en macOS. Compruébalo con `bats --version`
+- **Una cuenta de GitHub** para la práctica 04 y la entrega. Si quieres hacerlo desde la terminal, `gh` con sesión iniciada; sin `gh`, se hace desde la web
+
+---
+
+## 🗂️ Estructura de la Semana
 
 ```
 week-10-proyecto_final/
-├── README.md                        (este archivo)
-├── 1-teoria/
-│   ├── 01-arquitectura-cli.md       Diseño de CLIs profesionales con bash
-│   ├── 02-configuracion-persistente.md  Config files y jerarquía de precedencia
-│   ├── 03-testing-scripts-bash.md   Testing con bats-core
-│   ├── 04-documentacion-cli.md      --help, README, CHANGELOG
-│   └── 05-ci-cd-curl.md             curl en pipelines CI/CD
-├── 2-practicas/
-│   ├── README.md                    Descripción de las 4 etapas
-│   ├── 01-ejercicio-estructura/     Scaffolding, dispatcher, --help
-│   ├── 02-ejercicio-auth-module/    login/logout/status con token lifecycle
-│   ├── 03-ejercicio-request-module/ get/post/put/delete con retry y logging
-│   └── 04-ejercicio-features-avanzadas/  monitor, bench, dry-run
-├── 3-proyecto/
-│   ├── README.md                    Descripción del proyecto final
-│   ├── starter/
-│   │   ├── api-toolkit.sh           Punto de partida con estructura completa
-│   │   └── demo.md                  Plantilla para documentar la demo
-├── 5-glosario/
-│   └── README.md                    Glosario completo del bootcamp
-└── rubrica-evaluacion.md            Criterios de evaluación
+├── README.md                  # Este archivo
+├── rubrica-evaluacion.md      # Cómo se evalúa
+├── checks.json                # Las 18 comprobaciones automáticas
+├── 0-assets/                  # Diagramas
+├── 1-teoria/                  # 8 archivos, un concepto cada uno
+├── 2-practicas/               # 4 prácticas, del toolkit a tu repositorio
+├── 3-proyecto/                # La capa 10: entregable
+│   └── starter/               # api-toolkit.sh, install.sh, tests/ y .github/
+├── 4-recursos/                # Libros, vídeos y enlaces
+└── 5-glosario/                # Términos de esta semana
 ```
 
-**Tiempo estimado:** 5 horas (teoría) + 4 horas (prácticas) = 9 horas
+---
 
-Las prácticas son las etapas del proyecto. Al completar la práctica 04, el proyecto final está listo.
+## 📝 Contenidos
+
+### Teoría
+
+| Archivo | Tema | Duración |
+|---|---|:--:|
+| [01 — De script a herramienta](1-teoria/01-de-script-a-herramienta.md) | Los cinco canales de la interfaz de una CLI, qué añade la capa 10, un archivo o varios, la versión como promesa y lo que se queda fuera | 15 min |
+| [02 — Configuración y precedencia](1-teoria/02-configuracion-y-precedencia.md) | Entorno, archivo y valor por defecto, por qué no `source`, la lista de claves, `${!clave}` y `printf -v`, y dónde vive la configuración | 15 min |
+| [03 — `init` sin pisar nada](1-teoria/03-init-sin-pisar-nada.md) | `noclobber` y `O_EXCL`, `umask 077` en un subshell, qué escribe `init` y qué no, por qué sin preguntas y sin `--force` | 15 min |
+| [04 — Tests con bats](1-teoria/04-tests-con-bats.md) | `run`, `$status`, `$output`, `setup`, `teardown` y `skip`, qué tiene bats 1.2.1, la trampa de `!` y cómo leer un fallo | 15 min |
+| [05 — Tests que prueban algo](1-teoria/05-tests-que-prueban-algo.md) | Aislar el HOME y el entorno, valores que no salen por casualidad, `--dry-run` como caja negra, un fallo de red sin red y `TK=/bin/true` | 15 min |
+| [06 — Documentar una CLI](1-teoria/06-documentar-una-cli.md) | `--help` junto al código, `--version`, los códigos de salida como interfaz, el `README`, el `CHANGELOG` y la etiqueta de git | 15 min |
+| [07 — Instalar y desinstalar](1-teoria/07-instalar-y-desinstalar.md) | `PREFIX` y `~/.local/bin`, `install` frente a `cp`, comprobar y avisar del PATH, desinstalar sin borrar lo del usuario y `curl \| bash` | 15 min |
+| [08 — Integración continua](1-teoria/08-integracion-continua.md) | Anatomía de un workflow, una matriz de contenedores con curl 7.81 y 8.5, acciones por SHA, permisos mínimos y lo que la CI no prueba | 15 min |
+
+### Prácticas
+
+| Práctica | Qué haces | Duración |
+|---|---|:--:|
+| [01 — Configuración e `init`](2-practicas/01-configuracion-e-init.md) | El archivo que la capa 9 ignoraba, `source` ejecutando un `touch`, la lectura con `read`, `PATH=/nada` ignorado, `init` y ocho `init` en carrera | 50 min |
+| [02 — Tests con bats](2-practicas/02-tests-con-bats.md) | La suite del starter, leer un fallo, la suite rota con otro HOME, el aislamiento, `skip`, los tests de `init` y `TK=/bin/true` | 50 min |
+| [03 — Instalar y documentar](2-practicas/03-instalar-y-documentar.md) | El instalador en una carpeta temporal y en `~/.local/bin`, `cp` frente a `install`, `hash -r`, y tu repositorio con `README`, `CHANGELOG` y `v1.0.0` | 50 min |
+| [04 — Integración continua](2-practicas/04-integracion-continua.md) | Permisos y pasos del workflow, lo mismo en local, el SHA con `git ls-remote`, el check roto con `@v6`, y la CI en verde en GitHub | 50 min |
+
+### Proyecto
+
+La **capa 10** de tu plataforma: `api-toolkit.sh` se vuelve entregable, en
+su versión `1.0.0`. Lee `BASE_URL`, `AUTH_MODE` y `API_CACERT` también de
+`~/.bc-curl`, con el entorno por encima y sin ejecutar el archivo; `init` lo
+crea con 600 sin pisar nada; `--version` y `--help` lo documentan;
+`install.sh` lo instala y lo quita; `tests/` lo prueba con bats; y un
+workflow de GitHub Actions lo prueba en cada push con curl 7.81 y 8.5. La
+entrega es tu repositorio, con la CI en verde. Detalles en
+[3-proyecto](3-proyecto/README.md).
 
 ---
 
-## Checklist final del bootcamp
+## ⏱️ Distribución del Tiempo (8 horas)
 
-Al terminar el bootcamp, el estudiante debe ser capaz de:
+| Bloque | Tiempo |
+|---|:--:|
+| Teoría (8 archivos) | 2 h 00 |
+| Prácticas (4 × 50 min) | 3 h 20 |
+| Proyecto | 2 h 00 |
+| Revisión y verificación | 40 min |
+| **Total** | **8 h 00** |
 
-### HTTP y curl fundamentals
-- [ ] Hacer GET, POST, PUT, PATCH, DELETE con curl
-- [ ] Enviar headers personalizados con `-H`
-- [ ] Enviar body JSON con `-d` y `Content-Type: application/json`
-- [ ] Interpretar los status codes HTTP (2xx, 3xx, 4xx, 5xx)
-- [ ] Usar `-v` para debugging y `-s` para silencio
-- [ ] Extraer status code con `-w "%{http_code}"` y `-o /dev/null`
-
-### Autenticación
-- [ ] Implementar HTTP Basic Auth con `-u user:pass`
-- [ ] Enviar API Keys en header y query string
-- [ ] Obtener tokens Bearer con client_credentials grant
-- [ ] Enviar Authorization: Bearer en requests subsiguientes
-- [ ] Decodificar un JWT (base64) para leer `exp`
-- [ ] Renovar tokens expirados automáticamente
-
-### Manejo de errores
-- [ ] Distinguir errores de curl (exit codes) de errores HTTP (status codes)
-- [ ] Implementar retry con backoff exponencial
-- [ ] Manejar 429 con `Retry-After`
-- [ ] Manejar 401 con renovación de token
-
-### SSL
-- [ ] Verificar que curl valida SSL por defecto
-- [ ] Usar `--cacert` con un CA bundle personalizado
-- [ ] Entender cuándo (no) usar `--insecure`
-
-### Scripting y jq
-- [ ] Extraer campos de JSON con jq: `.field`, `.[].field`
-- [ ] Filtrar arrays: `select(.active == true)`
-- [ ] Transformar JSON: `{name: .name, id: .id}`
-- [ ] Iterar resultados en un loop bash
-- [ ] Usar `--arg` para pasar variables a jq
-
-### Performance y monitoring
-- [ ] Usar `--write-out` para métricas de tiempo
-- [ ] Hacer requests en paralelo con `&` y `wait`
-- [ ] Calcular percentiles (p50, p90, p99)
-- [ ] Implementar un health check loop
-
-### Scripting bash para CLIs
-- [ ] Usar `set -euo pipefail`
-- [ ] Implementar un dispatcher con `case`
-- [ ] Escribir a stdout y a stderr correctamente
-- [ ] Retornar exit codes apropiados
-- [ ] Cargar configuración desde archivo con `source`
-- [ ] Guardar estado entre ejecuciones en archivos
-
-### CI/CD y automatización
-- [ ] Usar curl en GitHub Actions para smoke tests
-- [ ] Triggerear webhooks con curl
-- [ ] Escribir un health check para docker-compose
+> [!TIP]
+> Haz la práctica 01 antes de los TODOs 1 y 2 del proyecto, la 02 antes del
+> 3 y el 4, la 03 antes del 5, y la 04 antes del 6. No quites el
+> `export HOME` del `setup` de los tests: sin él, los de `init` escriben en tu
+> `~/.bc-curl` de verdad.
 
 ---
 
-## Navegación
+## 🧳 Qué entregas, y dónde vive
 
-[← Semana 09: HTTP/2, paralelismo y rendimiento](../week-09-http2_paralelismo_performance/) | [↑ Inicio del bootcamp](../../README.md)
+Al final de la semana hay dos copias del toolkit, y cada una tiene su papel:
+
+| Dónde | Qué | Para qué |
+|---|---|---|
+| `3-proyecto/starter/` de este repositorio | `api-toolkit.sh`, `install.sh`, `tests/`, `.github/` | El autograding: `./scripts/verificar-semana.sh 10` |
+| `~/bc-curl-trabajo/api-toolkit/`, en tu GitHub | Lo mismo, más `README.md` y `CHANGELOG.md`, con la etiqueta `v1.0.0` | La entrega: lo que otra persona clona |
+| `~/.local/bin/api-toolkit` | La copia instalada | El comando que usas cada día |
+| `~/.bc-curl` | Tu configuración y tus secretos, con 600 | Solo tuyo: ni en el repositorio ni en la CI |
+
+El repositorio de la entrega **no** lleva `~/.bc-curl`, ni un `.env`, ni un
+token en el workflow. Si alguna vez se coló uno en un commit, borrarlo en el
+siguiente no basta: está en el historial. Rótalo.
+
+---
+
+## 🎩 Trucos y atajos
+
+| Truco | Cómo |
+|---|---|
+| Probar el toolkit como otra persona | `env -i HOME="$(mktemp -d)" PATH="$PATH" api-toolkit --version`: sin tu entorno ni tu `~/.bc-curl` |
+| Desactivar `~/.bc-curl` para una orden | `BC_CURL_FILE=/dev/null api-toolkit get /x`: no es un archivo normal, y no se lee |
+| Ver de dónde sale la URL final | `api-toolkit --dry-run get /x \| grep -o 'http[^ ]*'`. Si no es la esperada, mira primero `env \| grep BASE_URL` |
+| Crear un archivo vacío con 600 en una línea | `( umask 077 && : > archivo )`: nace cerrado, sin ventana con 644 |
+| No truncar por un `>` de más en tu shell | `set -o noclobber` en el `~/.bashrc`; para pisar a propósito, `>\|` |
+| Lanzar solo un grupo de tests | `bats -f init tests/`: filtra por el nombre del test |
+| Ver qué imprimió el toolkit en un test que falla | `echo "salida: $output"` antes de la aserción: bats solo lo enseña si el test falla |
+| Comprobar que tus tests pueden fallar | `TK=/bin/true bats tests/` tiene que salir con 1 |
+| El SHA de una acción, sin clonar | `git ls-remote https://github.com/actions/checkout refs/tags/v6.1.0` |
+| El comando borrado que el shell aún "encuentra" | `hash -r` olvida las rutas recordadas; `type -a api-toolkit` las lista todas |
+| Instalar sin tocar nada para probar | `PREFIX="$(mktemp -d)" ./install.sh` |
+| El paso rojo de un run de la CI | `gh run view --log-failed`: solo las líneas de los pasos que fallaron |
+
+---
+
+## 📌 Entregables
+
+1. `configuracion.md` con el archivo que la capa 9 ignoraba, el `touch` de `source`, la precedencia, `PATH=/nada` ignorado, el archivo de `init` y la carrera de ocho `init`
+2. `tests.md` con un fallo leído hasta su línea, la suite rota con otro HOME y arreglada, el test que pasaba con `/bin/true` y la mutación de la umask
+3. `instalacion.md` con la instalación temporal y la real, `cp` frente a `install` y la desinstalación con `hash -r`
+4. `ci.md` con el SHA comprobado, el check roto con `@v6` y la URL del run en verde
+5. El starter con la capa 10 completa y ningún `TODO` pendiente: `api-toolkit.sh`, `install.sh`, `tests/api-toolkit.bats` y `.github/workflows/ci.yml`
+6. Tu repositorio `api-toolkit` en GitHub con `README.md`, `CHANGELOG.md`, la CI en verde con las dos imágenes y la etiqueta `v1.0.0`
+
+---
+
+## ✅ Verificación
+
+```bash
+./scripts/start.sh
+./scripts/verificar-semana.sh 10
+```
+
+Las 18 comprobaciones tienen que pasar. Si alguna falla, la pista te dice en qué
+práctica y en qué paso se arregla. La CI en verde de tu repositorio no la ve
+el script: va en la rúbrica.
+
+---
+
+## 🔗 Navegación
+
+| Anterior | Actual | Siguiente |
+|---|---|---|
+| [Semana 09 — HTTP/2, paralelismo y rendimiento](../week-09-http2_paralelismo_performance/README.md) | **Semana 10 — Proyecto final** | — |
+
+[← Volver al inicio del bootcamp](../README.md)

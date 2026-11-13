@@ -1,45 +1,28 @@
-# 🎥 Videografía - Semana 10
+# Videografía — Semana 10
 
-## Videos Recomendados
+_Comprobado el 11 de noviembre de 2026: los cinco enlaces resuelven y el
+título coincide con el que aparece aquí._
 
-### CLI Design
+Pocos y elegidos. Un vídeo solo entra aquí si enseña algo que en texto se
+entiende peor.
 
-| Título | Canal | Duración | Enlace | Idioma |
-|--------|-------|----------|--------|--------|
-| How to Build a Great CLI | freeCodeCamp | 25min | [YouTube](https://www.youtube.com/watch?v=vGU4qSwGqhc) | 🇬🇧 EN |
-| Bash Scripting Architecture | LearnLinuxTV | 15min | [YouTube](https://www.youtube.com/watch?v=2rvq1a5u6MU) | 🇬🇧 EN |
+| Recurso | Por qué vale la pena |
+|---|---|
+| [Designing Command-Line Tools People Love](https://www.youtube.com/watch?v=l89Z0RYseFs) — FOSDEM | Cómo se diseña la interfaz de una CLI pensando en quien la usa: nombres, ayuda, errores y consistencia. La teoría 01 en forma de charla |
+| [Designing for the command line - Amanda Pinsker (Config Europe)](https://www.youtube.com/watch?v=zsjeZZVAk1E) — Figma | Diseño cuando la única interfaz es texto: qué hace que una salida se lea bien y que un error diga qué hacer después |
+| [Designing a delightful command line interface - Nahid Samsami and Jeff Dickey](https://www.youtube.com/watch?v=PHiDG-_XoRk) — Dev Rel | El equipo de la CLI de Heroku cuenta qué decisiones tomaron y por qué: ayuda, salida para personas y para scripts, y cómo mantener la interfaz estable |
+| [How to Test Docker Images and Shell Scripts (with bats-core)](https://www.youtube.com/watch?v=SB7e5qdGh9E) — Redhwan Nacef | bats en funcionamiento, de la instalación a la primera suite. Ver la salida TAP aparecer ayuda antes de la práctica 02 |
+| [Keeping your GitHub Actions and workflows secure - GitHub Checkout](https://www.youtube.com/watch?v=Jn0kfAuJI2o) — GitHub | Los errores de seguridad más frecuentes en los workflows, contados por GitHub: permisos del token, acciones de terceros y secretos. El porqué del bloque `permissions` y del SHA de la teoría 08 |
 
-### Bash Testing
+> [!TIP]
+> Si tienes poco tiempo, el último. Es el que evita un problema real en tu
+> repositorio.
 
-| Título | Canal | Duración | Enlace | Idioma |
-|--------|-------|----------|--------|--------|
-| Testing Bash Scripts with bats | Programming with Mosh | 15min | [YouTube](https://www.youtube.com/watch?v=e7BufAVwRio) | 🇬🇧 EN |
-| Bats Testing Framework | DevOps Toolkit | 12min | [YouTube](https://www.youtube.com/watch?v=ZT0Bq6dVHLk) | 🇬🇧 EN |
-
-### CI/CD
-
-| Título | Canal | Duración | Enlace | Idioma |
-|--------|-------|----------|--------|--------|
-| GitHub Actions Tutorial | Traversy Media | 30min | [YouTube](https://www.youtube.com/watch?v=eB0nUzAI7M8) | 🇬🇧 EN |
-| CI/CD con GitHub Actions | Pelado Nerd | 20min | [YouTube](https://www.youtube.com/watch?v=sIWPmNGGB4Q) | 🇪🇸 ES |
-| Docker Healthcheck | Hussein Nasser | 10min | [YouTube](https://www.youtube.com/watch?v=mLcH_dkDOBw) | 🇬🇧 EN |
-
-### API Toolkit Design
-
-| Título | Canal | Duración | Enlace | Idioma |
-|--------|-------|----------|--------|--------|
-| Building a REST Client CLI | Academind | 20min | [YouTube](https://www.youtube.com/watch?v=IKaISyq5tGc) | 🇬🇧 EN |
-| Professional Bash Script Structure | NetworkChuck | 15min | [YouTube](https://www.youtube.com/watch?v=PoAjmmD89Vw) | 🇬🇧 EN |
+Para lo demás, la práctica rinde más que un vídeo: ver `TK=/bin/true` dejar
+un test en verde enseña más que oírlo contado.
 
 ---
 
-## 📺 Canales Recomendados
-
-- **freeCodeCamp** - Cursos completos
-- **Pelado Nerd** - DevOps y CI/CD en español
-- **Hussein Nasser** - Backend engineering
-- **Traversy Media** - Desarrollo web y herramientas
-
----
-
-> 💡 **Tip**: Activa subtítulos en español si el video está en inglés.
+| Anterior | Siguiente |
+|---|---|
+| [Libros gratuitos](../ebooks-free/README.md) | [Webgrafía](../webgrafia/README.md) |

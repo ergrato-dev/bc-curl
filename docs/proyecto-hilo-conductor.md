@@ -85,7 +85,7 @@ Flags globales:
 | 07 | **Robusto** | Falla cuando debe fallar: errores por stderr, 429/502/503/504 salen con 75 y `Retry-After`, un solo cuerpo tras reintentar, `fetch-all` con paginación por `Link` |
 | 08 | **OAuth2** | `auth login/logout/status`, refresco automático del token caducado |
 | 09 | **Rápido** | `bench` con un solo curl en paralelo (min, media, p95, max, reutilización y errores), caché por ETag con `API_CACHE_DIR`, renovación OAuth2 con cerrojo entre procesos |
-| 10 | **Entregable** | `init`, tests con `bats`, documentación, instalable, en CI |
+| 10 | **Entregable** | Configuración en `~/.bc-curl` con el entorno por encima, `init` con 600 y sin pisar, `--version`, `install.sh`, tests con `bats` y CI con curl 7.81 y 8.5 |
 
 Cada capa se apoya en la anterior. La Semana 08 no puede refrescar un token si
 la 03 no dejó dónde guardarlo; la 09 no puede medir si la 06 no instrumentó.
@@ -94,8 +94,9 @@ la 03 no dejó dónde guardarlo; la 09 no puede medir si la 06 no instrumentó.
 
 ## 4. Reglas del proyecto
 
-1. **Un solo archivo.** `api-toolkit.sh`. Cuando pase de unas 600 líneas,
-   partirlo es un ejercicio de la Semana 10, no de antes.
+1. **Un solo archivo.** `api-toolkit.sh`. Pasa de las 1400 líneas y sigue
+   siendo uno: se instala copiando un archivo. La Semana 10 (teoría 01) explica
+   cuándo compensaría partirlo.
 2. **Sin dependencias más allá de curl, jq y bash.** Si algo necesita Python,
    es que estás resolviendo el problema equivocado para este bootcamp.
 3. **`set -euo pipefail` desde la primera línea de la primera semana.**
@@ -128,21 +129,15 @@ repositorio es el material; tu entrega es tuya.
 Semana 10, con el dominio GitHub:
 
 ```bash
-$ api-toolkit init
-Dominio: github
-Base URL: https://api.github.com
-Autenticacion: bearer
-Guardado en ~/.bc-curl
+$ ./install.sh
+instalado: /home/ana/.local/bin/api-toolkit (api-toolkit 1.0.0)
 
-$ api-toolkit auth status
-Token valido. Expira en 3h 42m. Scopes: repo, read:org
+$ BASE_URL=https://api.github.com AUTH_MODE=bearer api-toolkit init
+configuracion creada en /home/ana/.bc-curl (permisos 600)
+$ "$EDITOR" ~/.bc-curl          # descomenta API_TOKEN= y pega el token
 
-$ api-toolkit fetch-all /user/repos --output repos.json
-Pagina 1/4  100 elementos  0.42s
-Pagina 2/4  100 elementos  0.31s
-Pagina 3/4  100 elementos  0.29s
-Pagina 4/4   37 elementos  0.22s
-337 elementos en repos.json
+$ api-toolkit fetch-all '/user/repos?per_page=100' | jq length
+337
 
 $ api-toolkit bench /rate_limit 20
 20 peticiones, 4 en paralelo, HTTP/2
@@ -152,6 +147,9 @@ $ api-toolkit bench /rate_limit 20
   max    0.298s
   reutilizacion de conexion: 19/20
   errores: 0
+
+$ bats tests/ | tail -1
+ok 14 un archivo de configuracion legible por otros se rechaza
 ```
 
 Eso no es un ejercicio. Es una herramienta.

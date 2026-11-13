@@ -1,0 +1,25 @@
+<svg viewBox="0 0 820 420" role="img" xmlns="http://www.w3.org/2000/svg" font-family="Inter, system-ui, -apple-system, sans-serif">
+  <title>Tres intentos de crear ~/.bc-curl. El primero, con &gt; a secas, pisa un archivo que ya tenía el token. El segundo, comprobando antes con test -e, deja un hueco en el que otro proceso puede crear el archivo. El tercero, con set -o noclobber dentro de un subshell con umask 077, abre con O_EXCL: si el archivo existe, falla sin tocarlo, y si no, nace con permisos 600</title>
+  <rect width="820" height="420" fill="#0d1117"/>
+  <defs><marker id="f-bg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#0d1117"/></marker><marker id="f-sf" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#161b22"/></marker><marker id="f-bd" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#30363d"/></marker><marker id="f-tx" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#f0f6fc"/></marker><marker id="f-t2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#8b949e"/></marker><marker id="f-na" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#f0883e"/></marker><marker id="f-az" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#58a6ff"/></marker><marker id="f-az2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#79c0ff"/></marker><marker id="f-ve" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#3fb950"/></marker><marker id="f-am" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#e3b341"/></marker><marker id="f-ro" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#f85149"/></marker><marker id="f-mo" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#d2a8ff"/></marker></defs>
+  <text x="410.0" y="34" text-anchor="middle" fill="#f0f6fc" font-size="22" font-weight="bold">init sin pisar nada</text>
+  <rect x="40" y="70" width="490" height="60" rx="8" fill="#0d1117" stroke="#f85149" stroke-width="2"/>
+  <text x="52" y="92" text-anchor="start" fill="#f0f6fc" font-size="11.5" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">echo "BASE_URL=..." &gt; ~/.bc-curl; chmod 600 ...</text>
+  <path d="M536 100 L566 100" stroke="#f85149" stroke-width="2.2" fill="none" marker-end="url(#f-ro)"/>
+  <rect x="570" y="70" width="210" height="60" rx="8" fill="#161b22" stroke="#f85149" stroke-width="1.6"/>
+  <text x="582" y="94" text-anchor="start" fill="#f0f6fc" font-size="11.5">Trunca el token que ya estaba,</text>
+  <text x="582" y="114" text-anchor="start" fill="#f0f6fc" font-size="11.5">y nace con 644 hasta el chmod</text>
+  <rect x="40" y="175" width="490" height="60" rx="8" fill="#0d1117" stroke="#e3b341" stroke-width="2"/>
+  <text x="52" y="197" text-anchor="start" fill="#f0f6fc" font-size="11.5" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">[ -e ~/.bc-curl ] || echo ... &gt; ~/.bc-curl</text>
+  <path d="M536 205 L566 205" stroke="#e3b341" stroke-width="2.2" fill="none" marker-end="url(#f-am)"/>
+  <rect x="570" y="175" width="210" height="60" rx="8" fill="#161b22" stroke="#e3b341" stroke-width="1.6"/>
+  <text x="582" y="199" text-anchor="start" fill="#f0f6fc" font-size="11.5">Entre la prueba y el &gt; cabe otro</text>
+  <text x="582" y="219" text-anchor="start" fill="#f0f6fc" font-size="11.5">proceso: 19 de 160 en la práctica</text>
+  <rect x="40" y="280" width="490" height="60" rx="8" fill="#0d1117" stroke="#3fb950" stroke-width="2"/>
+  <text x="52" y="302" text-anchor="start" fill="#f0f6fc" font-size="11.5" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">( umask 077 &amp;&amp; set -o noclobber &amp;&amp; plantilla &gt; ~/.bc-curl )</text>
+  <path d="M536 310 L566 310" stroke="#3fb950" stroke-width="2.2" fill="none" marker-end="url(#f-ve)"/>
+  <rect x="570" y="280" width="210" height="60" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="1.6"/>
+  <text x="582" y="304" text-anchor="start" fill="#f0f6fc" font-size="11.5">Abre con O_EXCL: crea con 600</text>
+  <text x="582" y="324" text-anchor="start" fill="#f0f6fc" font-size="11.5">o falla sin tocar nada</text>
+  <text x="410" y="380" text-anchor="middle" fill="#8b949e" font-size="13">Los paréntesis: la umask y noclobber solo valen dentro del subshell</text>
+</svg>

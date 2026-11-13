@@ -1,28 +1,24 @@
-# 📖 Recursos de Ebooks Gratuitos - Semana 10
+# Libros gratuitos — Semana 10
 
-## Bash CLI Profesional
+_Comprobado el 11 de noviembre de 2026: los cinco enlaces resuelven._
 
-| Título | Autor | Enlace | Descripción |
-|--------|-------|--------|-------------|
-| The Linux Command Line | William Shotts | [Link](https://linuxcommand.org/tlcl.php) | Bash completo para CLI |
-| Advanced Bash-Scripting Guide | Mendel Cooper | [Link](https://tldp.org/LDP/abs/html/) | Scripting bash avanzado |
-| Command Line Interface Guidelines | Aanand Prasad et al. | [Link](https://clig.dev/) | Principios de diseño de CLI |
+Se leen enteros, o por capítulos, y siguen valiendo cuando cambie la versión
+de la herramienta.
 
-## CI/CD y Automatización
+| Recurso | Por qué vale la pena |
+|---|---|
+| [Command Line Interface Guidelines](https://clig.dev/) — Aanand Prasad, Ben Firshman, Carl Tashian y Eva Parish | La guía moderna de cómo debe comportarse una CLI: ayuda, salida, errores, argumentos, configuración y distribución. La teoría 01 y la 06 resumen algunas de sus reglas; aquí están todas, con sus razones |
+| [The Art of Unix Programming](http://www.catb.org/esr/writings/taoup/html/) — Eric S. Raymond | Los principios detrás de stdout para los datos, stderr para el resto y el silencio cuando todo va bien. El capítulo 10 trata la configuración y su precedencia, como la teoría 02 |
+| [Pro Git, en español](https://git-scm.com/book/es/v2) — Scott Chacon y Ben Straub | El libro oficial de git. El apartado de etiquetado explica la diferencia entre etiquetas ligeras y anotadas que usa la teoría 06 |
+| [Google Shell Style Guide](https://google.github.io/styleguide/shellguide.html) — Google | Cuándo un script de bash debe dejar de serlo, cómo comentar funciones y cómo organizar uno largo. Una segunda opinión sobre "un archivo o varios" |
+| [Documentación de bats-core](https://bats-core.readthedocs.io/en/stable/writing-tests.html) — bats-core | El manual entero de bats: `run`, `setup`, `skip`, los formatos de salida y las trampas conocidas. Mira en cada función desde qué versión existe: tu suelo es la 1.2.1 |
 
-| Título | Autor | Enlace | Descripción |
-|--------|-------|--------|-------------|
-| GitHub Actions Documentation | GitHub | [Link](https://docs.github.com/en/actions) | Documentación oficial |
-| Docker Documentation | Docker | [Link](https://docs.docker.com/) | Docker y healthchecks |
-| Site Reliability Engineering | Google | [Link](https://sre.google/books/) | Patrones de automatización |
-
-## Testing
-
-| Título | Autor | Enlace | Descripción |
-|--------|-------|--------|-------------|
-| bats-core Documentation | bats-core team | [Link](https://bats-core.readthedocs.io/) | Framework de testing bash |
-| Testing Bash Scripts | Julia Evans | [Link](https://jvns.ca/blog/2017/06/14/testing-bash-scripts/) | Guía práctica de testing bash |
+> [!TIP]
+> Si solo lees uno, el primero. Son unas horas, y cambian cómo escribes
+> cualquier `--help`.
 
 ---
 
-> 💡 **Nota**: Todos los recursos listados son gratuitos y legales.
+| Anterior | Siguiente |
+|---|---|
+| [Recursos](../README.md) | [Videografía](../videografia/README.md) |

@@ -1,0 +1,31 @@
+<svg viewBox="0 0 820 480" role="img" xmlns="http://www.w3.org/2000/svg" font-family="Inter, system-ui, -apple-system, sans-serif">
+  <title>Tres tests que mienten y su arreglo. El primero pasa porque lee el ~/.bc-curl y el BASE_URL de quien lo ejecuta; se arregla con un HOME vacío y unset de las variables en setup. El segundo solo mira $status, y un toolkit que no hace nada también sale con 0; se arregla comprobando $output. El tercero necesita red; se arregla con --dry-run, que enseña el comando sin ejecutarlo, o con skip si falta el laboratorio. Abajo, la prueba de que los tests sirven: con TK=/bin/true, la suite tiene que fallar</title>
+  <rect width="820" height="480" fill="#0d1117"/>
+  <defs><marker id="f-bg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#0d1117"/></marker><marker id="f-sf" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#161b22"/></marker><marker id="f-bd" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#30363d"/></marker><marker id="f-tx" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#f0f6fc"/></marker><marker id="f-t2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#8b949e"/></marker><marker id="f-na" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#f0883e"/></marker><marker id="f-az" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#58a6ff"/></marker><marker id="f-az2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#79c0ff"/></marker><marker id="f-ve" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#3fb950"/></marker><marker id="f-am" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#e3b341"/></marker><marker id="f-ro" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#f85149"/></marker><marker id="f-mo" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#d2a8ff"/></marker></defs>
+  <text x="410.0" y="34" text-anchor="middle" fill="#f0f6fc" font-size="22" font-weight="bold">Tests que prueban algo</text>
+  <text x="200" y="70" text-anchor="middle" fill="#f85149" font-size="14" font-weight="bold">El test miente porque…</text>
+  <text x="620" y="70" text-anchor="middle" fill="#3fb950" font-size="14" font-weight="bold">Se arregla con…</text>
+  <rect x="40" y="86" width="320" height="70" rx="8" fill="#161b22" stroke="#f85149" stroke-width="1.6"/>
+  <text x="56" y="116" text-anchor="start" fill="#f0f6fc" font-size="12.5">lee tu ~/.bc-curl y tu BASE_URL</text>
+  <path d="M366 121 L450 121" stroke="#f0883e" stroke-width="2.2" fill="none" marker-end="url(#f-na)"/>
+  <rect x="456" y="86" width="330" height="70" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="1.6"/>
+  <text x="470" y="116" text-anchor="start" fill="#f0f6fc" font-size="11.5" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">export HOME="$DIR"</text>
+  <text x="470" y="136" text-anchor="start" fill="#f0f6fc" font-size="11.5" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">unset BASE_URL AUTH_MODE ...</text>
+  <rect x="40" y="176" width="320" height="70" rx="8" fill="#161b22" stroke="#f85149" stroke-width="1.6"/>
+  <text x="56" y="206" text-anchor="start" fill="#f0f6fc" font-size="12.5">solo mira $status: /bin/true</text>
+  <text x="56" y="226" text-anchor="start" fill="#f0f6fc" font-size="12.5">también sale con 0</text>
+  <path d="M366 211 L450 211" stroke="#f0883e" stroke-width="2.2" fill="none" marker-end="url(#f-na)"/>
+  <rect x="456" y="176" width="330" height="70" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="1.6"/>
+  <text x="470" y="206" text-anchor="start" fill="#f0f6fc" font-size="11.5" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">[[ "$output" == *"credencial:"* ]]</text>
+  <text x="470" y="226" text-anchor="start" fill="#f0f6fc" font-size="11.5" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">valores como ejemplo.invalid</text>
+  <rect x="40" y="266" width="320" height="70" rx="8" fill="#161b22" stroke="#f85149" stroke-width="1.6"/>
+  <text x="56" y="296" text-anchor="start" fill="#f0f6fc" font-size="12.5">necesita red: falla en la CI</text>
+  <text x="56" y="316" text-anchor="start" fill="#f0f6fc" font-size="12.5">o tarda 7 s en reintentar</text>
+  <path d="M366 301 L450 301" stroke="#f0883e" stroke-width="2.2" fill="none" marker-end="url(#f-na)"/>
+  <rect x="456" y="266" width="330" height="70" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="1.6"/>
+  <text x="470" y="296" text-anchor="start" fill="#f0f6fc" font-size="11.5" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">--dry-run, o un POST a 127.0.0.1:9</text>
+  <text x="470" y="316" text-anchor="start" fill="#f0f6fc" font-size="11.5" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">skip si el laboratorio no responde</text>
+  <rect x="40" y="376" width="746" height="70" rx="8" fill="#161b22" stroke="#d2a8ff" stroke-width="2"/>
+  <text x="413" y="402" text-anchor="middle" fill="#d2a8ff" font-size="14" font-weight="bold" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">TK=/bin/true bats tests/</text>
+  <text x="413" y="426" text-anchor="middle" fill="#f0f6fc" font-size="12.5">tiene que salir con 1: si algún test pasa, ese test no comprueba la salida</text>
+</svg>

@@ -69,6 +69,15 @@ shellcheck --version | head -2
 > ejemplos del bootcamp llevan una alternativa marcada al lado. No es un
 > problema: es información que necesitas antes de que un comando falle.
 
+La Semana 10 añade **bats**, para los tests del toolkit. Puedes instalarlo
+ya o cuando llegues:
+
+```bash
+sudo apt install -y bats    # Debian / Ubuntu: 22.04 trae la 1.2.1, el suelo del bootcamp
+brew install bats-core      # macOS
+bats --version
+```
+
 ### Docker
 
 ```bash

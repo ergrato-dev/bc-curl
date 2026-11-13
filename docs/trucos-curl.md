@@ -184,7 +184,20 @@ Tres cosas que sirven las diez semanas:
 
 ## Semana 10 — Proyecto final
 
-_Pendiente._
+| Truco | Cómo |
+|---|---|
+| Probar el toolkit como otra persona | `env -i HOME="$(mktemp -d)" PATH="$PATH" api-toolkit --version`: sin tu entorno ni tu `~/.bc-curl` |
+| Desactivar `~/.bc-curl` para una orden | `BC_CURL_FILE=/dev/null api-toolkit get /x`: no es un archivo normal, y no se lee |
+| Ver de dónde sale la URL final | `api-toolkit --dry-run get /x \| grep -o 'http[^ ]*'`. Si no es la esperada, mira primero `env \| grep BASE_URL` |
+| Crear un archivo vacío con 600 en una línea | `( umask 077 && : > archivo )`: nace cerrado, sin ventana con 644 |
+| No truncar por un `>` de más en tu shell | `set -o noclobber` en el `~/.bashrc`; para pisar a propósito, `>\|` |
+| Lanzar solo un grupo de tests | `bats -f init tests/`: filtra por el nombre del test |
+| Ver qué imprimió el toolkit en un test que falla | `echo "salida: $output"` antes de la aserción: bats solo lo enseña si el test falla |
+| Comprobar que tus tests pueden fallar | `TK=/bin/true bats tests/` tiene que salir con 1 |
+| El SHA de una acción, sin clonar | `git ls-remote https://github.com/actions/checkout refs/tags/v6.1.0` |
+| El comando borrado que el shell aún "encuentra" | `hash -r` olvida las rutas recordadas; `type -a api-toolkit` las lista todas |
+| Instalar sin tocar nada para probar | `PREFIX="$(mktemp -d)" ./install.sh` |
+| El paso rojo de un run de la CI | `gh run view --log-failed`: solo las líneas de los pasos que fallaron |
 
 ---
 

@@ -1,56 +1,90 @@
-# Proyecto Semana 10 — `api-toolkit` entregable
+# Proyecto — Capa 10: entregable
 
-> Nueve semanas de capas sueltas se convierten en una herramienta que instalas
-> en tu `PATH` y usas mañana sin acordarte de cómo está hecha por dentro.
+> Nueve capas después, `api-toolkit.sh` sabe hablar con casi cualquier API
+> REST. Lo que no sabe es salir de tu carpeta. Esta capa no le añade nada de
+> HTTP: le añade un `init` que crea su configuración sin pisar nada, una
+> configuración que se lee y no se ejecuta, un instalador, una suite de
+> tests que se puede creer y una CI que la ejecuta con curl 7.81 y con 8.5.
+> Es la versión `1.0.0`, y es la que entregas.
 
 ---
 
 ## 🎯 Objetivo
 
-Cerrar `api-toolkit`: configuración persistente, tests que corren solos,
-documentación que alguien más pueda seguir, y un pipeline de CI que lo
-verifique en cada cambio.
+Que el toolkit **lo pueda usar otra persona**, en otra máquina, sin leer el
+código y sin preguntarte. Concretamente:
 
-No hay conceptos nuevos. Todo lo que se usa aquí se aprendió entre la Semana 01
-y la 09. Lo que se aprende esta semana es **cómo se entrega**.
+- `BASE_URL`, `AUTH_MODE`, `API_CACERT` y las URLs de OAuth2 se leen también
+  de `~/.bc-curl`, con el entorno por encima y sin ejecutar el archivo.
+- `api-toolkit init` crea ese archivo con permisos 600, sin pisar uno que ya
+  existe y sin escribir ningún secreto.
+- `--version` y un `--help` que documenta todos los subcomandos.
+- `install.sh` lo instala en `~/.local/bin` y lo desinstala sin tocar tu
+  configuración.
+- `tests/api-toolkit.bats`: al menos 13 tests, aislados de tu HOME y de tu
+  entorno, que fallan si el toolkit no hace nada.
+- `.github/workflows/ci.yml`: shellcheck y bats en cada push, con permisos de
+  solo lectura y las acciones fijadas por SHA.
+
+Y, fuera del autograding, tu repositorio `api-toolkit/` con `README.md`,
+`CHANGELOG.md`, la etiqueta `v1.0.0` y la CI en verde.
 
 ---
 
 ## 📦 Qué añade esta capa
 
-La capa 9 dejó un script que hace muchas cosas y que solo sabe usar quien lo
-escribió. Esta capa lo convierte en un producto:
+La Semana 09 hizo al toolkit rápido. Esta lo hace entregable.
 
-| Antes (capa 9) | Después (capa 10) |
+| Viene de la Semana 09 | Lo añade esta capa |
 |---|---|
-| Variables al principio del archivo | `api-toolkit init` escribe `~/.api-toolkit/config` |
-| Se prueba ejecutándolo a mano | `bats` cubre los caminos críticos |
-| Sabes usarlo porque lo escribiste | `--help` y un `README` que se lee en cinco minutos |
-| Corre en tu máquina | Corre en CI en cada push |
-| Los errores se ven en pantalla | Log estructurado en `~/.api-toolkit/requests.log` |
+| `BASE_URL` y `AUTH_MODE` solo del entorno; su valor por defecto en la primera línea | `cargar_configuracion`: entorno, después `BC_CURL_FILE`, después el valor por defecto |
+| `~/.bc-curl` con seis claves de credenciales, una por una en un `case` | `CLAVES_ARCHIVO`: una lista; `${!clave}` y `printf -v` en un bucle |
+| El archivo se escribía a mano | `init`: `plantilla_configuracion` e `iniciar_configuracion`, con `umask 077` y `noclobber` |
+| La versión solo en el User-Agent | `--version`, y la versión `1.0.0` |
+| Se ejecutaba con su ruta | `install.sh`: `install -m 755` en `PREFIX/bin`, y `uninstall` |
+| Lo probaba `verificar-semana.sh`, desde fuera | `tests/api-toolkit.bats`: 14 tests, 8 de ellos ya escritos |
+| — | `.github/workflows/ci.yml`: matriz `ubuntu:22.04` y `ubuntu:24.04` |
 
-Es la última capa: no desbloquea nada porque ya no hay semana siguiente. Lo que
-desbloquea es que puedas enseñárselo a alguien.
+Tres decisiones que conviene entender antes de empezar:
+
+- **Un solo archivo.** 1400 líneas, pero se instala copiando uno. Partirlo
+  en `lib/` añade rutas que resolver al instalar y no aporta nada a quien
+  lo usa (teoría 01, apartado 2.3).
+- **`init` no pregunta.** Se configura por entorno:
+  `BASE_URL=... AUTH_MODE=bearer api-toolkit init`. Así funciona desde un
+  script, desde la CI y desde bats (teoría 03, apartado 2.4).
+- **La CI no levanta el laboratorio.** Los tests que lo necesitan se saltan
+  solos; el `ponytail:` del workflow dice cómo añadirlo si un día hace falta
+  (teoría 08, apartado 2.6).
 
 ---
 
 ## ✅ Requisitos verificables
 
-> Estos requisitos son copia literal de las descripciones de `checks.json`. Si
-> una comprobación sale en ❌, la frase que ves aquí es la misma que verás allí.
+`./scripts/verificar-semana.sh 10` comprueba estas dieciocho cosas. Las
+descripciones son literales: si una falla, es la que tienes que buscar aquí.
 
-- [ ] `api-toolkit.sh` existe, es ejecutable y arranca con `set -euo pipefail`
-- [ ] `--help` lista todos los subcomandos implementados y sale con codigo 0
-- [ ] `init` crea `~/.api-toolkit/config` con permisos 600
-- [ ] El script lee la configuracion del archivo, no de constantes en el codigo
-- [ ] `--dry-run` imprime la peticion que haria y no la ejecuta
-- [ ] `get` sale distinto de 0 cuando la API responde 503
-- [ ] `get` no se queda colgado cuando el servidor tarda mas que el timeout
-- [ ] Ningun curl del script lleva la credencial escrita en la linea de comandos
-- [ ] El script pasa shellcheck -S warning sin avisos
-- [ ] Existe un archivo de tests bats y todos sus casos pasan
-- [ ] El README del proyecto documenta instalacion, configuracion y cada subcomando
-- [ ] El workflow de CI ejecuta shellcheck y los tests bats
+1. bats 1.2.1 o posterior esta instalado
+2. api-toolkit.sh e install.sh son ejecutables y arrancan con set -euo pipefail
+3. No queda ningun TODO por resolver en el starter
+4. --version imprime api-toolkit 1.0.0
+5. get sigue funcionando contra el laboratorio
+6. --help documenta todos los subcomandos, init incluido
+7. init crea ~/.bc-curl con permisos 600 y sin los secretos del entorno
+8. init no pisa un ~/.bc-curl que ya existe y sale con 1
+9. La BASE_URL de ~/.bc-curl se usa si no esta en el entorno
+10. Una BASE_URL del entorno manda sobre la del archivo
+11. El archivo de configuracion se lee, no se ejecuta
+12. install.sh instala en PREFIX/bin/api-toolkit y uninstall lo borra
+13. tests/ tiene al menos 13 tests
+14. bats tests/ pasa entero
+15. Los tests pasan aunque tu HOME y tu entorno esten rotos
+16. Los tests fallan si el toolkit no hace nada
+17. El workflow de CI tiene permisos de solo lectura, acciones fijadas por SHA, shellcheck y bats
+18. shellcheck -S warning no encuentra nada en api-toolkit.sh ni en install.sh
+
+Las comprobaciones de `init` y de la configuración se ejecutan con un HOME
+temporal: tu `~/.bc-curl` real no se toca.
 
 ---
 
@@ -58,57 +92,107 @@ desbloquea es que puedas enseñárselo a alguien.
 
 Lo que el autograding no ve y la rúbrica sí:
 
-- **Los mensajes de error sirven para algo.** `Error: falta el token` es inútil;
-  `Error: no hay token guardado. Ejecuta 'api-toolkit auth login'` es una
-  instrucción.
-- **Las funciones tienen un nombre que dice lo que hacen** y hacen solo eso.
-- **No hay código muerto.** Ni funciones que nadie llama, ni flags que no se
-  procesan, ni ramas `else` vacías.
-- **El `--help` no miente.** Todo lo que lista existe; todo lo que existe está
-  listado.
-- **La configuración tiene precedencia clara y documentada**: flag de línea de
-  comandos > variable de entorno > archivo de configuración > valor por defecto.
-- **Los secretos no aparecen nunca en la salida**, ni con `--verbose`.
+- **Ningún `source` ni `eval`** sobre el archivo de configuración, y ninguna
+  clave fuera de `CLAVES_ARCHIVO`.
+- **Los valores por defecto, después de leer el archivo**, y en un solo
+  sitio.
+- **`umask 077` y `noclobber` dentro de un subshell**: el resto del toolkit
+  sigue con la umask de quien lo ejecuta.
+- **`init` no tiene `--force`**: borrar un archivo con secretos es una
+  decisión con `rm`.
+- **`install.sh` busca el origen a su lado**, avisa del PATH sin tocar el
+  `~/.bashrc` de nadie, y `uninstall` solo borra el ejecutable.
+- **Cada test se puede leer por su nombre**, comprueba la salida además del
+  código, y no depende de otro.
+- **`teardown` borra `$DIR`, nunca `$HOME`.**
+- **Ningún `! comando` en medio de un test** (teoría 04, apartado 2.3).
+- **El workflow lleva `timeout-minutes`** y `persist-credentials: false`, y
+  el comentario de cada acción dice su versión.
+- **El `README` de tu repositorio** tiene las siete secciones de la teoría
+  06 y no copia `--help` entero; el `CHANGELOG` habla de lo que cambia para
+  quien lo usa.
 
 ---
 
 ## 💡 Adaptación a tu dominio
 
-| Dominio | Cómo se concreta esta capa |
-|---|---|
-| **GitHub** | `init` pide el token con scopes; `monitor` vigila el `rate_limit`; los tests usan el laboratorio, no la API real |
-| **Clima (Open-Meteo)** | Sin autenticación: `init` solo pide la URL base y las coordenadas por defecto; el CI puede correr contra la API real porque no hay credencial |
-| **Transporte (TfL)** | `init` guarda la API key; el log estructurado registra qué línea se consultó, útil para depurar por qué una consulta salió vacía |
-| **Cine (TMDB)** | `download` guarda pósters; los tests comprueban que el nombre de archivo se deriva del `Content-Disposition` |
+La configuración es lo que hace que tu toolkit hable con tu API sin
+exportar nada. En tu repositorio, deja en el `README` el `init` de tu
+dominio:
+
+| Dominio | `init` | Qué va después en `~/.bc-curl` |
+|---|---|---|
+| GitHub | `BASE_URL=https://api.github.com AUTH_MODE=bearer api-toolkit init` | `API_TOKEN=` con un token de grano fino, solo lectura |
+| Open-Meteo | `BASE_URL=https://api.open-meteo.com AUTH_MODE=none api-toolkit init` | Nada: no necesita credencial |
+| TfL | `BASE_URL=https://api.tfl.gov.uk AUTH_MODE=apikey api-toolkit init` | `API_KEY=`, y `API_KEY_HEADER` en el entorno si no es la de por defecto |
+| TMDB | `BASE_URL=https://api.themoviedb.org/3 AUTH_MODE=bearer api-toolkit init` | `API_TOKEN=` con el token de lectura de la API |
+
+`API_KEY_HEADER` no está en `CLAVES_ARCHIVO`: si tu API la necesita
+distinta, o la exportas, o la añades a la lista (y a la cabecera). Es una
+decisión tuya; anótala en el `CHANGELOG`.
+
+Ningún test de tu suite debe llamar a la API de tu dominio: gastaría rate
+limit en cada push y necesitaría un secreto en la CI (teoría 05, apartado 4).
 
 ---
 
 ## 🚦 Cómo entregarlo
 
-1. Tu copia de `api-toolkit.sh` vive en **tu** repositorio, no en este.
-2. Estructura mínima de la entrega:
+**1.** El starter trae la capa 9 resuelta y el esqueleto de la 10: el
+toolkit, `install.sh`, `tests/` y `.github/`. Edítalos en su sitio: el
+autograding comprueba esos archivos.
 
-   ```
-   api-toolkit/
-   ├── api-toolkit.sh
-   ├── README.md
-   ├── tests/
-   │   └── api-toolkit.bats
-   └── .github/workflows/ci.yml
-   ```
+```bash
+cd bootcamp/week-10-proyecto_final/3-proyecto/starter/
+ls -A
+# .github  api-toolkit.sh  install.sh  tests
+```
 
-3. Levanta el laboratorio y pasa el autograding:
+**2.** Resuelve los seis TODOs, en orden:
 
-   ```bash
-   ./scripts/start.sh
-   ./scripts/verificar-semana.sh 10
-   ```
+| TODO | Archivo | Qué | Dónde se practica |
+|---|---|---|---|
+| 1 | `api-toolkit.sh` | `cargar_configuracion`: leer el archivo sin ejecutarlo | Teoría 02 §2.2 a §2.4; práctica 01, pasos 3 a 5 |
+| 2 | `api-toolkit.sh` | `iniciar_configuracion`: `init` con 600 y sin pisar | Teoría 03 §2.1 a §2.3; práctica 01, pasos 6 y 7 |
+| 3 | `tests/api-toolkit.bats` | `setup`: sin las variables del toolkit (el HOME vacío ya viene) | Teoría 05 §2.1; práctica 02, pasos 3 y 4 |
+| 4 | `tests/api-toolkit.bats` | Los tests de `init` y de la configuración | Teoría 05 §2.2; práctica 02, pasos 6 y 7 |
+| 5 | `install.sh` | `instalar` y `desinstalar` | Teoría 07 §2.2 a §2.5; práctica 03, pasos 2 a 5 |
+| 6 | `.github/workflows/ci.yml` | Permisos y los cuatro pasos | Teoría 08 §2.4 y §2.5; práctica 04, pasos 2 y 3 |
 
-4. Commit final:
+El starter ya aísla el HOME de cada test: no quites ese `export`, o los tests
+de `init` escribirán en tu `~/.bc-curl` real. El 4 prueba lo que hacen el 1 y
+el 2.
 
-   ```
-   feat(week-10): api-toolkit completo con tests, docs y CI
-   ```
+**3.** Pruébalo a mano, desde la raíz del repositorio:
+
+```bash
+ST=bootcamp/week-10-proyecto_final/3-proyecto/starter
+H="$(mktemp -d)"
+
+HOME="$H" BASE_URL=http://localhost:8080/anything "$ST/api-toolkit.sh" init
+# configuracion creada en /tmp/tmp.XXXXXXXXXX/.bc-curl (permisos 600)
+HOME="$H" "$ST/api-toolkit.sh" get /x | jq -r .url
+# http://localhost:8080/anything/x
+
+P="$(mktemp -d)"
+PREFIX="$P" "$ST/install.sh" 2> /dev/null
+# instalado: /tmp/tmp.YYYYYYYYYY/bin/api-toolkit (api-toolkit 1.0.0)
+
+(cd "$ST" && bats tests/ | tail -1)
+# ok 14 un archivo de configuracion legible por otros se rechaza
+rm -rf "$H" "$P"
+```
+
+**4.** Pásale el autograding y shellcheck:
+
+```bash
+./scripts/verificar-semana.sh 10
+shellcheck -S warning "$ST/api-toolkit.sh" "$ST/install.sh"
+```
+
+**5.** Llévalo a tu repositorio (prácticas 03 y 04): los cuatro archivos del
+starter, tu `README.md` y tu `CHANGELOG.md`, la CI en verde y la etiqueta
+`v1.0.0` sobre ese commit. La URL del repositorio es lo que entregas.
 
 ---
 
@@ -116,19 +200,23 @@ Lo que el autograding no ve y la rúbrica sí:
 
 | Síntoma | Causa | Solución |
 |---|---|---|
-| Los tests pasan en tu máquina y fallan en CI | El runner no tiene el laboratorio levantado | Levanta los servicios como `services:` del job, o marca esos tests como de integración |
-| `init` deja el config con permisos 644 | `touch` antes de `chmod` deja la ventana abierta | `umask 077` antes de crear el archivo, o `install -m 600 /dev/null "$config"` |
-| `--dry-run` ejecuta la petición igualmente | La comprobación está después del `curl`, no antes | El `if $DRY_RUN` va antes de construir la llamada, no dentro de ella |
-| El script funciona con `bash` y falla con `sh` | Estás usando bashismos con shebang genérico | El shebang es `#!/usr/bin/env bash`. No lo cambies |
-| `shellcheck` se queja de `$VAR` sin comillas | Es un aviso real: una ruta con espacios rompe el script | Comillas siempre: `"$VAR"` |
-| El token aparece en el log | Se registra el comando completo | Registra método, ruta y código, nunca los headers |
+| `bats-instalado` falla | bats no está, o es anterior a 1.2.1 | `sudo apt install bats` o `brew install bats-core` |
+| `config-del-archivo` da `localhost:8080/x` | El bucle no asigna, o los valores por defecto siguen arriba del todo | TODO 1; `BASE_URL="${BASE_URL:-}"` arriba, el valor por defecto al final de `cargar_configuracion` |
+| `config-no-ejecuta` dice `ejecutado` | `source` o `eval` sobre el archivo | El bucle con `read` y `printf -v` |
+| `config-no-ejecuta` sale con 1 | `PATH=/nada` se aplicó: la clave no se filtró por `CLAVES_ARCHIVO` | El `case " $CLAVES_ARCHIVO " in *" $clave "*)` |
+| `init-crea-600` da `-rw-r--r--` | `umask` fuera del subshell, o `chmod` después | `( umask 077 && set -o noclobber && ... )` |
+| `init-crea-600` termina en `1` | La plantilla escribe el `API_TOKEN` del entorno | Los secretos, comentados y vacíos |
+| `instalar` termina en `1` en lugar de `0` | `desinstalar` no borra, o borra otra ruta | `rm -f "$DESTINO"` |
+| `tests-aislados` falla | Falta el TODO 3, o una variable en el `unset` | Práctica 02, paso 4 |
+| `tests-detectan-fallos` falla | Todos los tests solo miran `$status`, o comprueban solo ausencias | Práctica 02, paso 7 |
+| `ci-workflow` falla con todo escrito | Una acción con `@v6`, o el `permissions` comentado | Práctica 04, paso 6 |
 
 ---
 
 ## 🔗 Navegación
 
-| Anterior | Actual | Siguiente |
-|---|---|---|
-| [Semana 09 — HTTP/2, paralelismo y rendimiento](../../week-09-http2_paralelismo_performance/README.md) | **Semana 10 — Proyecto final** | — |
+| Anterior | Siguiente |
+|---|---|
+| [Práctica 04 — Integración continua](../2-practicas/04-integracion-continua.md) | [Rúbrica de evaluación](../rubrica-evaluacion.md) |
 
-[← Volver a la Semana 10](../README.md) · [↑ Inicio del bootcamp](../../../README.md)
+[← Volver a la Semana 10](../README.md)

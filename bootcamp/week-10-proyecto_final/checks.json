@@ -1,0 +1,132 @@
+{
+  "semana": "10",
+  "titulo": "Proyecto final",
+  "checks": [
+    {
+      "id": "bats-instalado",
+      "descripcion": "bats 1.2.1 o posterior esta instalado",
+      "cmd": "bats --version",
+      "assert": "stdout~^Bats 1[.]([2-9]|[1-9][0-9])[.]",
+      "pista": "instala bats: sudo apt install bats (Ubuntu/Debian) o brew install bats-core (macOS); practica 02, paso 1"
+    },
+    {
+      "id": "toolkit-ejecutable",
+      "descripcion": "api-toolkit.sh e install.sh son ejecutables y arrancan con set -euo pipefail",
+      "cmd": "for f in {semana}/3-proyecto/starter/api-toolkit.sh {semana}/3-proyecto/starter/install.sh; do test -x $f && grep -q 'set -euo pipefail' $f || exit 1; done",
+      "assert": "exit0",
+      "pista": "chmod +x a los dos; 3-proyecto/README.md, como entregarlo"
+    },
+    {
+      "id": "toolkit-sin-todos",
+      "descripcion": "No queda ningun TODO por resolver en el starter",
+      "cmd": "grep -r 'TODO [0-9]' {semana}/3-proyecto/starter | wc -l",
+      "assert": "stdout~^ *0$",
+      "pista": "grep -rn 'TODO [0-9]' en el starter: hay TODOs en api-toolkit.sh, install.sh, tests/ y .github/"
+    },
+    {
+      "id": "toolkit-version",
+      "descripcion": "--version imprime api-toolkit 1.0.0",
+      "cmd": "{semana}/3-proyecto/starter/api-toolkit.sh --version",
+      "assert": "stdout~^api-toolkit 1[.]0[.]0$",
+      "pista": "practica 01, paso 8"
+    },
+    {
+      "id": "toolkit-get-sigue",
+      "descripcion": "get sigue funcionando contra el laboratorio",
+      "cmd": "unset BASE_URL AUTH_MODE BC_CURL_FILE API_TOKEN API_CACERT; H=$(mktemp -d); HOME=$H {semana}/3-proyecto/starter/api-toolkit.sh get /get | jq -r .url; rm -rf $H",
+      "assert": "stdout~^http://localhost:8080/get$",
+      "pista": "levanta el laboratorio con ./scripts/start.sh; si responde, revisa los valores por defecto de cargar_configuracion (practica 01, paso 3)"
+    },
+    {
+      "id": "ayuda-completa",
+      "descripcion": "--help documenta todos los subcomandos, init incluido",
+      "cmd": "for s in init get post put delete download upload fetch-all auth bench; do {semana}/3-proyecto/starter/api-toolkit.sh --help | grep -qE \"^  $s \" || echo \"falta $s\"; done; echo fin",
+      "assert": "stdout~^fin$",
+      "pista": "practica 03, paso 6; cada subcomando en su linea de la cabecera, con dos espacios delante"
+    },
+    {
+      "id": "init-crea-600",
+      "descripcion": "init crea ~/.bc-curl con permisos 600 y sin los secretos del entorno",
+      "cmd": "unset BASE_URL AUTH_MODE BC_CURL_FILE API_TOKEN API_CACERT; H=$(mktemp -d); API_TOKEN=valor-de-prueba HOME=$H {semana}/3-proyecto/starter/api-toolkit.sh init 2>/dev/null; echo \"$(ls -l $H/.bc-curl | cut -c1-10) $(grep -c valor-de-prueba $H/.bc-curl)\"; rm -rf $H",
+      "assert": "stdout~^-rw------- 0$",
+      "pista": "practica 01, paso 6 (TODO 2)"
+    },
+    {
+      "id": "init-no-pisa",
+      "descripcion": "init no pisa un ~/.bc-curl que ya existe y sale con 1",
+      "cmd": "unset BASE_URL AUTH_MODE BC_CURL_FILE API_TOKEN API_CACERT; H=$(mktemp -d); echo X=1 > $H/.bc-curl; chmod 600 $H/.bc-curl; HOME=$H {semana}/3-proyecto/starter/api-toolkit.sh init 2>/dev/null; echo \"$? $(cat $H/.bc-curl)\"; rm -rf $H",
+      "assert": "stdout~^1 X=1$",
+      "pista": "practica 01, paso 7"
+    },
+    {
+      "id": "config-del-archivo",
+      "descripcion": "La BASE_URL de ~/.bc-curl se usa si no esta en el entorno",
+      "cmd": "unset BASE_URL AUTH_MODE BC_CURL_FILE API_TOKEN API_CACERT; H=$(mktemp -d); HOME=$H BASE_URL=http://ejemplo.invalid {semana}/3-proyecto/starter/api-toolkit.sh init 2>/dev/null; HOME=$H {semana}/3-proyecto/starter/api-toolkit.sh --dry-run get /x; rm -rf $H",
+      "assert": "stdout~http://ejemplo[.]invalid/x",
+      "pista": "practica 01, paso 3 (TODO 1)"
+    },
+    {
+      "id": "config-entorno-manda",
+      "descripcion": "Una BASE_URL del entorno manda sobre la del archivo",
+      "cmd": "unset BASE_URL AUTH_MODE BC_CURL_FILE API_TOKEN API_CACERT; H=$(mktemp -d); HOME=$H BASE_URL=http://ejemplo.invalid {semana}/3-proyecto/starter/api-toolkit.sh init 2>/dev/null; HOME=$H BASE_URL=http://otra.invalid {semana}/3-proyecto/starter/api-toolkit.sh --dry-run get /x; rm -rf $H",
+      "assert": "stdout~http://otra[.]invalid/x",
+      "pista": "practica 01, paso 4"
+    },
+    {
+      "id": "config-no-ejecuta",
+      "descripcion": "El archivo de configuracion se lee, no se ejecuta",
+      "cmd": "unset BASE_URL AUTH_MODE BC_CURL_FILE API_TOKEN API_CACERT; H=$(mktemp -d); printf 'BASE_URL=http://ejemplo.invalid\\nPATH=/nada\\nAPI_KEY=$(touch '$H'/ejecutado)\\n' > $H/.bc-curl; chmod 600 $H/.bc-curl; HOME=$H {semana}/3-proyecto/starter/api-toolkit.sh --dry-run get /x >/dev/null 2>&1; echo \"$? $(test -e $H/ejecutado && echo ejecutado || echo leido)\"; rm -rf $H",
+      "assert": "stdout~^0 leido$",
+      "pista": "practica 01, paso 5: nada de source; solo las claves de CLAVES_ARCHIVO, con printf -v"
+    },
+    {
+      "id": "instalar",
+      "descripcion": "install.sh instala en PREFIX/bin/api-toolkit y uninstall lo borra",
+      "cmd": "P=$(mktemp -d); PREFIX=$P {semana}/3-proyecto/starter/install.sh >/dev/null 2>&1; v=$($P/bin/api-toolkit --version); PREFIX=$P {semana}/3-proyecto/starter/install.sh uninstall >/dev/null 2>&1; echo \"$v $(ls $P/bin | wc -l)\"; rm -rf $P",
+      "assert": "stdout~^api-toolkit 1[.]0[.]0 +0$",
+      "pista": "practica 03, pasos 2 y 5 (TODO 5)"
+    },
+    {
+      "id": "tests-cuentan",
+      "descripcion": "tests/ tiene al menos 13 tests",
+      "cmd": "bats --count {semana}/3-proyecto/starter/tests",
+      "assert": "stdout~^(1[3-9]|[2-9][0-9]|[1-9][0-9][0-9])$",
+      "pista": "practica 02, paso 6 (TODO 4): faltan los tests de init y de la configuracion"
+    },
+    {
+      "id": "tests-pasan",
+      "descripcion": "bats tests/ pasa entero",
+      "cmd": "H=$(mktemp -d); HOME=$H bats {semana}/3-proyecto/starter/tests >/dev/null; c=$?; rm -rf $H; exit $c",
+      "assert": "exit0",
+      "pista": "ejecuta bats tests/ en el starter y mira el primer 'not ok'"
+    },
+    {
+      "id": "tests-aislados",
+      "descripcion": "Los tests pasan aunque tu HOME y tu entorno esten rotos",
+      "cmd": "H=$(mktemp -d); echo BASE_URL=http://127.0.0.1:9 > $H/.bc-curl; chmod 644 $H/.bc-curl; HOME=$H BASE_URL=http://127.0.0.1:9 AUTH_MODE=bearer bats {semana}/3-proyecto/starter/tests >/dev/null; c=$?; rm -rf $H; exit $c",
+      "assert": "exit0",
+      "pista": "practica 02, paso 4 (TODO 3): cada test con su HOME vacio y sin las variables del toolkit"
+    },
+    {
+      "id": "tests-detectan-fallos",
+      "descripcion": "Los tests fallan si el toolkit no hace nada",
+      "cmd": "H=$(mktemp -d); HOME=$H TK=/bin/true bats {semana}/3-proyecto/starter/tests >/dev/null; c=$?; rm -rf $H; exit $c",
+      "assert": "exit!=0",
+      "pista": "practica 02, paso 7: algun test tiene que comprobar la salida, no solo el codigo"
+    },
+    {
+      "id": "ci-workflow",
+      "descripcion": "El workflow de CI tiene permisos de solo lectura, acciones fijadas por SHA, shellcheck y bats",
+      "cmd": "c=$(grep -v '^ *#' {semana}/3-proyecto/starter/.github/workflows/ci.yml); grep -q '^permissions:' <<<\"$c\" && grep -q 'contents: read' <<<\"$c\" && grep -qE 'shellcheck .*api-toolkit[.]sh' <<<\"$c\" && grep -qE 'bats .*tests' <<<\"$c\" && ! grep 'uses:' <<<\"$c\" | grep -vqE '@[0-9a-f]{40}'",
+      "assert": "exit0",
+      "pista": "practica 04, pasos 2, 3 y 5 (TODO 6)"
+    },
+    {
+      "id": "toolkit-shellcheck",
+      "descripcion": "shellcheck -S warning no encuentra nada en api-toolkit.sh ni en install.sh",
+      "cmd": "shellcheck -S warning {semana}/3-proyecto/starter/api-toolkit.sh {semana}/3-proyecto/starter/install.sh",
+      "assert": "exit0",
+      "pista": "ejecuta el mismo comando y arregla el primer aviso"
+    }
+  ]
+}

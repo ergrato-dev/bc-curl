@@ -1,0 +1,38 @@
+<svg viewBox="0 0 820 450" role="img" xmlns="http://www.w3.org/2000/svg" font-family="Inter, system-ui, -apple-system, sans-serif">
+  <title>Tres documentos y la pregunta que responde cada uno. --help, generado desde la cabecera del propio script, responde cómo se usa ahora: subcomandos, flags, variables y códigos de salida. El README responde qué es, cómo se instala y cómo se empieza, con un ejemplo de cinco líneas. El CHANGELOG responde qué cambió entre versiones, agrupado en Añadido, Cambiado y Corregido. Una flecha marca la versión: --version, el User-Agent y la etiqueta git v1.0.0 dicen lo mismo</title>
+  <rect width="820" height="450" fill="#0d1117"/>
+  <defs><marker id="f-bg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#0d1117"/></marker><marker id="f-sf" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#161b22"/></marker><marker id="f-bd" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#30363d"/></marker><marker id="f-tx" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#f0f6fc"/></marker><marker id="f-t2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#8b949e"/></marker><marker id="f-na" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#f0883e"/></marker><marker id="f-az" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#58a6ff"/></marker><marker id="f-az2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#79c0ff"/></marker><marker id="f-ve" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#3fb950"/></marker><marker id="f-am" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#e3b341"/></marker><marker id="f-ro" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#f85149"/></marker><marker id="f-mo" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#d2a8ff"/></marker></defs>
+  <text x="410.0" y="34" text-anchor="middle" fill="#f0f6fc" font-size="22" font-weight="bold">Dónde va cada cosa</text>
+  <rect x="40" y="66" width="220" height="230" rx="8" fill="#161b22" stroke="#58a6ff" stroke-width="2"/>
+  <text x="150" y="94" text-anchor="middle" fill="#58a6ff" font-size="16" font-weight="bold" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">--help</text>
+  <text x="150" y="118" text-anchor="middle" fill="#f0f6fc" font-size="13">¿Cómo hago X?</text>
+  <text x="58" y="156" text-anchor="start" fill="#f0f6fc" font-size="12">la cabecera del script</text>
+  <text x="58" y="182" text-anchor="start" fill="#f0f6fc" font-size="12">subcomandos y flags</text>
+  <text x="58" y="208" text-anchor="start" fill="#f0f6fc" font-size="12">variables y defectos</text>
+  <text x="58" y="234" text-anchor="start" fill="#f0f6fc" font-size="12">códigos de salida</text>
+  <text x="150" y="282" text-anchor="middle" fill="#8b949e" font-size="12">en la terminal</text>
+  <rect x="300" y="66" width="220" height="230" rx="8" fill="#161b22" stroke="#f0883e" stroke-width="2"/>
+  <text x="410" y="94" text-anchor="middle" fill="#f0883e" font-size="16" font-weight="bold" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">README.md</text>
+  <text x="410" y="118" text-anchor="middle" fill="#f0f6fc" font-size="13">¿Qué es y cómo empiezo?</text>
+  <text x="318" y="156" text-anchor="start" fill="#f0f6fc" font-size="12">qué es, en una frase</text>
+  <text x="318" y="182" text-anchor="start" fill="#f0f6fc" font-size="12">requisitos e instalar</text>
+  <text x="318" y="208" text-anchor="start" fill="#f0f6fc" font-size="12">empezar: 5 líneas</text>
+  <text x="318" y="234" text-anchor="start" fill="#f0f6fc" font-size="12">remite a --help</text>
+  <text x="410" y="282" text-anchor="middle" fill="#8b949e" font-size="12">en el navegador</text>
+  <rect x="560" y="66" width="220" height="230" rx="8" fill="#161b22" stroke="#d2a8ff" stroke-width="2"/>
+  <text x="670" y="94" text-anchor="middle" fill="#d2a8ff" font-size="16" font-weight="bold" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">CHANGELOG.md</text>
+  <text x="670" y="118" text-anchor="middle" fill="#f0f6fc" font-size="13">¿Qué cambió?</text>
+  <text x="578" y="156" text-anchor="start" fill="#f0f6fc" font-size="12">## [1.0.0] - fecha</text>
+  <text x="578" y="182" text-anchor="start" fill="#f0f6fc" font-size="12">### Añadido</text>
+  <text x="578" y="208" text-anchor="start" fill="#f0f6fc" font-size="12">### Cambiado</text>
+  <text x="578" y="234" text-anchor="start" fill="#f0f6fc" font-size="12">para quien lo usa</text>
+  <text x="670" y="282" text-anchor="middle" fill="#8b949e" font-size="12">al actualizar</text>
+  <rect x="40" y="330" width="740" height="90" rx="8" fill="#161b22" stroke="#e3b341" stroke-width="1.6"/>
+  <text x="410" y="356" text-anchor="middle" fill="#e3b341" font-size="14" font-weight="bold" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">readonly VERSION=1.0.0</text>
+  <text x="170" y="400" text-anchor="middle" fill="#f0f6fc" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">api-toolkit --version</text>
+  <text x="410" y="400" text-anchor="middle" fill="#f0f6fc" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">User-Agent: api-toolkit/1.0.0</text>
+  <text x="650" y="400" text-anchor="middle" fill="#f0f6fc" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">git tag -a v1.0.0</text>
+  <path d="M330 364 L190 386" stroke="#e3b341" stroke-width="2.2" fill="none" marker-end="url(#f-am)"/>
+  <path d="M410 364 L410 386" stroke="#e3b341" stroke-width="2.2" fill="none" marker-end="url(#f-am)"/>
+  <path d="M490 364 L630 386" stroke="#e3b341" stroke-width="2.2" fill="none" marker-end="url(#f-am)"/>
+</svg>

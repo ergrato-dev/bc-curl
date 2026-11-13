@@ -1,0 +1,37 @@
+# CI de api-toolkit: shellcheck y bats en cada push y en cada pull request,
+# con dos versiones de curl: la 7.81 de Ubuntu 22.04, el suelo del bootcamp,
+# y la 8.5 de Ubuntu 24.04.
+name: CI
+
+on:
+  push:
+  pull_request:
+
+# TODO 6: limita los permisos del token del workflow a leer el repositorio
+# (bloque permissions, a este nivel).
+
+# ponytail: aqui no hay laboratorio, asi que los tests que lo necesitan se
+# saltan solos (skip) y la parte de red se prueba en local. Si un dia hace
+# falta en la CI, se levanta con docker compose en un paso antes de los tests.
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        # Un contenedor, no el runner ubuntu-22.04: la imagen fija la version
+        # de curl, y el runner se retira cuando GitHub decide.
+        imagen: ["ubuntu:22.04", "ubuntu:24.04"]
+    runs-on: ubuntu-24.04
+    container: ${{ matrix.imagen }}
+    timeout-minutes: 10
+    steps:
+      # Fijada por el SHA del commit, no por la etiqueta: una etiqueta se
+      # puede mover a otro codigo; un SHA, no.
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
+        with:
+          persist-credentials: false
+
+      # TODO 6 (sigue): cuatro pasos mas. Instalar con apt-get (en el
+      # contenedor eres root: sin sudo) ca-certificates, curl, jq, shellcheck y
+      # bats; imprimir sus versiones; shellcheck -S warning de api-toolkit.sh e
+      # install.sh; y bats tests/.

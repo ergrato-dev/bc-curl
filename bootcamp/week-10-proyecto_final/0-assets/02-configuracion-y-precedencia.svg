@@ -1,0 +1,38 @@
+<svg viewBox="0 0 820 470" role="img" xmlns="http://www.w3.org/2000/svg" font-family="Inter, system-ui, -apple-system, sans-serif">
+  <title>Tres capas apiladas para resolver cada variable. Arriba el entorno, que manda; en medio ~/.bc-curl, con permisos 600; abajo el valor por defecto del script. Una flecha baja por las capas hasta encontrar la primera que tiene valor. Al lado, el archivo se lee con un while y read, y solo se aceptan las claves de una lista; una línea con $(...) se queda como texto, mientras que source la ejecutaría</title>
+  <rect width="820" height="470" fill="#0d1117"/>
+  <defs><marker id="f-bg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#0d1117"/></marker><marker id="f-sf" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#161b22"/></marker><marker id="f-bd" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#30363d"/></marker><marker id="f-tx" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#f0f6fc"/></marker><marker id="f-t2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#8b949e"/></marker><marker id="f-na" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#f0883e"/></marker><marker id="f-az" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#58a6ff"/></marker><marker id="f-az2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#79c0ff"/></marker><marker id="f-ve" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#3fb950"/></marker><marker id="f-am" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#e3b341"/></marker><marker id="f-ro" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#f85149"/></marker><marker id="f-mo" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#d2a8ff"/></marker></defs>
+  <text x="410.0" y="34" text-anchor="middle" fill="#f0f6fc" font-size="22" font-weight="bold">Configuración: quién manda</text>
+  <rect x="40" y="70" width="360" height="74" rx="8" fill="#161b22" stroke="#58a6ff" stroke-width="2"/>
+  <text x="56" y="94" text-anchor="start" fill="#58a6ff" font-size="14" font-weight="bold">1. Entorno</text>
+  <text x="56" y="116" text-anchor="start" fill="#f0f6fc" font-size="11.5" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">BASE_URL=http://otra.invalid api-toolkit ...</text>
+  <text x="56" y="134" text-anchor="start" fill="#8b949e" font-size="11.5">manda</text>
+  <rect x="40" y="170" width="360" height="74" rx="8" fill="#161b22" stroke="#d2a8ff" stroke-width="2"/>
+  <text x="56" y="194" text-anchor="start" fill="#d2a8ff" font-size="14" font-weight="bold">2. ~/.bc-curl (600)</text>
+  <text x="56" y="216" text-anchor="start" fill="#f0f6fc" font-size="11.5" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">BASE_URL=https://api.github.com</text>
+  <text x="56" y="234" text-anchor="start" fill="#8b949e" font-size="11.5">si el entorno no dice nada</text>
+  <rect x="40" y="270" width="360" height="74" rx="8" fill="#161b22" stroke="#8b949e" stroke-width="2"/>
+  <text x="56" y="294" text-anchor="start" fill="#8b949e" font-size="14" font-weight="bold">3. Valor por defecto</text>
+  <text x="56" y="316" text-anchor="start" fill="#f0f6fc" font-size="11.5" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">http://localhost:8080</text>
+  <text x="56" y="334" text-anchor="start" fill="#8b949e" font-size="11.5">si nadie dijo nada</text>
+  <path d="M420 80 L420 330" stroke="#f0883e" stroke-width="2.2" fill="none" marker-end="url(#f-na)"/>
+  <text x="432" y="210" text-anchor="start" fill="#f0883e" font-size="12">primer valor</text>
+  <text x="432" y="228" text-anchor="start" fill="#f0883e" font-size="12">no vacío</text>
+  <rect x="520" y="70" width="270" height="130" rx="8" fill="#0d1117" stroke="#3fb950" stroke-width="2"/>
+  <text x="532" y="92" text-anchor="start" fill="#f0f6fc" font-size="12.5" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">while IFS="=" read -r \</text>
+  <text x="532" y="111" text-anchor="start" fill="#f0f6fc" font-size="12.5" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">      clave valor; do</text>
+  <text x="532" y="130" text-anchor="start" fill="#f0f6fc" font-size="12.5" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">  case " $CLAVES_ARCHIVO " in</text>
+  <text x="532" y="149" text-anchor="start" fill="#f0f6fc" font-size="12.5" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">    *" $clave "*) printf -v ...</text>
+  <text x="532" y="168" text-anchor="start" fill="#f0f6fc" font-size="12.5" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">  esac</text>
+  <text x="532" y="187" text-anchor="start" fill="#f0f6fc" font-size="12.5" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">done</text>
+  <rect x="520" y="206" width="270" height="64" rx="8" fill="#161b22" stroke="#3fb950" stroke-width="1.6"/>
+  <text x="534" y="228" text-anchor="start" fill="#f0f6fc" font-size="12">API_KEY=$(touch x)  </text>
+  <text x="534" y="246" text-anchor="start" fill="#f0f6fc" font-size="12">se queda como texto</text>
+  <text x="534" y="264" text-anchor="start" fill="#f0f6fc" font-size="12">PATH=/nada  se ignora</text>
+  <rect x="520" y="290" width="270" height="64" rx="8" fill="#161b22" stroke="#f85149" stroke-width="1.6"/>
+  <text x="534" y="312" text-anchor="start" fill="#f85149" font-size="12">source ~/.bc-curl</text>
+  <text x="534" y="330" text-anchor="start" fill="#f0f6fc" font-size="12">ejecuta $(touch x)</text>
+  <text x="534" y="348" text-anchor="start" fill="#f0f6fc" font-size="12">y cambia el PATH</text>
+  <text x="410" y="400" text-anchor="middle" fill="#8b949e" font-size="13">Los valores por defecto se ponen después de leer el archivo:</text>
+  <text x="410" y="424" text-anchor="middle" fill="#f0f6fc" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">BASE_URL="${BASE_URL:-http://localhost:8080}"   al final de cargar_configuracion</text>
+</svg>

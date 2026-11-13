@@ -1,0 +1,41 @@
+<svg viewBox="0 0 820 450" role="img" xmlns="http://www.w3.org/2000/svg" font-family="Inter, system-ui, -apple-system, sans-serif">
+  <title>Un archivo .bats con setup, un @test y teardown. Para cada test, bats lanza un proceso nuevo, ejecuta setup, el cuerpo del test y teardown. Dentro, run ejecuta el toolkit y guarda su código en $status y su salida en $output y $lines. Cada línea del test que falla hace fallar el test, como con set -e. A la derecha, la salida en formato TAP: 1..3, ok 1, not ok 2 con la línea que falló, ok 3 # skip</title>
+  <rect width="820" height="450" fill="#0d1117"/>
+  <defs><marker id="f-bg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#0d1117"/></marker><marker id="f-sf" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#161b22"/></marker><marker id="f-bd" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#30363d"/></marker><marker id="f-tx" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#f0f6fc"/></marker><marker id="f-t2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#8b949e"/></marker><marker id="f-na" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#f0883e"/></marker><marker id="f-az" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#58a6ff"/></marker><marker id="f-az2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#79c0ff"/></marker><marker id="f-ve" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#3fb950"/></marker><marker id="f-am" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#e3b341"/></marker><marker id="f-ro" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#f85149"/></marker><marker id="f-mo" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#d2a8ff"/></marker></defs>
+  <text x="410.0" y="34" text-anchor="middle" fill="#f0f6fc" font-size="22" font-weight="bold">Un test de bats, por dentro</text>
+  <rect x="30" y="64" width="300" height="225" rx="8" fill="#0d1117" stroke="#30363d" stroke-width="2"/>
+  <text x="42" y="86" text-anchor="start" fill="#f0f6fc" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">setup() {</text>
+  <text x="42" y="105" text-anchor="start" fill="#f0f6fc" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">  DIR="$(mktemp -d)"</text>
+  <text x="42" y="124" text-anchor="start" fill="#f0f6fc" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">  export HOME="$DIR"</text>
+  <text x="42" y="143" text-anchor="start" fill="#f0f6fc" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">}</text>
+  <text x="42" y="162" text-anchor="start" fill="#f0f6fc" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve"></text>
+  <text x="42" y="181" text-anchor="start" fill="#f0f6fc" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">@test "init no pisa" {</text>
+  <text x="42" y="200" text-anchor="start" fill="#f0f6fc" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">  run "$TK" init</text>
+  <text x="42" y="219" text-anchor="start" fill="#f0f6fc" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">  [ "$status" -eq 1 ]</text>
+  <text x="42" y="238" text-anchor="start" fill="#f0f6fc" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">}</text>
+  <text x="42" y="257" text-anchor="start" fill="#f0f6fc" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve"></text>
+  <text x="42" y="276" text-anchor="start" fill="#f0f6fc" font-size="12" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">teardown() { rm -rf "$DIR"; }</text>
+  <rect x="360" y="70" width="200" height="40" rx="8" fill="#161b22" stroke="#58a6ff" stroke-width="2"/>
+  <text x="460" y="95" text-anchor="middle" fill="#58a6ff" font-size="13" font-weight="bold">setup</text>
+  <path d="M460 110 L460 128" stroke="#58a6ff" stroke-width="2.2" fill="none" marker-end="url(#f-az)"/>
+  <rect x="360" y="130" width="200" height="120" rx="8" fill="#161b22" stroke="#f0883e" stroke-width="2"/>
+  <text x="460" y="152" text-anchor="middle" fill="#f0883e" font-size="12.5" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">run "$TK" init</text>
+  <text x="372" y="178" text-anchor="start" fill="#f0f6fc" font-size="11.5" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">$status   código</text>
+  <text x="372" y="200" text-anchor="start" fill="#f0f6fc" font-size="11.5" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">$output   stdout+stderr</text>
+  <text x="372" y="222" text-anchor="start" fill="#f0f6fc" font-size="11.5" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">${lines[@]} líneas</text>
+  <path d="M460 250 L460 268" stroke="#58a6ff" stroke-width="2.2" fill="none" marker-end="url(#f-az)"/>
+  <rect x="360" y="270" width="200" height="40" rx="8" fill="#161b22" stroke="#58a6ff" stroke-width="2"/>
+  <text x="460" y="295" text-anchor="middle" fill="#58a6ff" font-size="13" font-weight="bold">teardown</text>
+  <text x="460" y="336" text-anchor="middle" fill="#8b949e" font-size="12">un proceso por test</text>
+  <text x="460" y="354" text-anchor="middle" fill="#8b949e" font-size="12">cada línea, una aserción</text>
+  <rect x="590" y="64" width="210" height="130" rx="8" fill="#0d1117" stroke="#30363d" stroke-width="2"/>
+  <text x="602" y="86" text-anchor="start" fill="#f0f6fc" font-size="11.5" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">1..3</text>
+  <text x="602" y="105" text-anchor="start" fill="#f0f6fc" font-size="11.5" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">ok 1 --version ...</text>
+  <text x="602" y="124" text-anchor="start" fill="#f0f6fc" font-size="11.5" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">not ok 2 init no pisa</text>
+  <text x="602" y="143" text-anchor="start" fill="#f0f6fc" font-size="11.5" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve"># (in test file ...,</text>
+  <text x="602" y="162" text-anchor="start" fill="#f0f6fc" font-size="11.5" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">#  line 104)</text>
+  <text x="602" y="181" text-anchor="start" fill="#f0f6fc" font-size="11.5" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" xml:space="preserve">ok 3 get ... # skip</text>
+  <text x="695" y="210" text-anchor="middle" fill="#8b949e" font-size="12">salida TAP</text>
+  <rect x="30" y="380" width="770" height="46" rx="8" fill="#161b22" stroke="#d2a8ff" stroke-width="1.6"/>
+  <text x="415" y="408" text-anchor="middle" fill="#f0f6fc" font-size="12.5">bats 1.2.1 (Ubuntu 22.04): sin $BATS_TEST_TMPDIR (1.4.0) ni run --separate-stderr (1.5.0)</text>
+</svg>
